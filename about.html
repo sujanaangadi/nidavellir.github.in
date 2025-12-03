@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Village Project</title>
+
+<style>
+/* RESET */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #1e1e1e;
+    color: white;
+}
+/* NAVBAR */
+.navbar {
+    width: 100%;
+    background: #8be0ff;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+}
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+}
+/* ------------------ INTRO SCREEN ------------------ */
+#introScreen {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fadeOut 1s ease-in-out 4s forwards;
+}
+
+#introScreen img {
+    width: 45%;
+    animation: zoomIn 2s ease-in-out;
+}
+
+#introScreen h1 {
+    margin-top: 20px;
+    font-size: 40px;
+    color: #00eaff;
+    text-shadow: 0 0 10px #00eaff;
+    animation: fadeInText 3s ease-in-out;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.3); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; visibility: hidden; }
+}
+
+@keyframes fadeInText {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ------------------ MAIN PAGE ------------------ */
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+    margin-top: 80px;
+}
+
+/* LEFT BOX */
+.left-box {
+    width: 25%;
+    background: #000;
+    padding: 25px;
+    border-radius: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 0 15px #00eaff55;
+    animation: slideLeft 1.5s ease-out;
+}
+
+@keyframes slideLeft {
+    from { transform: translateX(-80px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* MIDDLE IMAGE BOX */
+.middle-box {
+    width: 40%;
+    background: #111;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 0 15px #00eaff55;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.middle-box img {
+    width: 100%;
+    border-radius: 15px;
+    animation: fadeIn 3s ease-in-out infinite alternate;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0.3; }
+    to { opacity: 1; }
+}
+
+/* RIGHT BOX */
+.right-box {
+    width: 30%;
+    background: #000;
+    padding: 25px;
+    border-radius: 15px;
+    font-size: 20px;
+    min-height: 300px;
+    line-height: 1.6;
+    box-shadow: 0 0 15px #00eaff55;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+
+/* slide fade animation */
+.fade {
+    opacity: 0;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ------------------ INTRO PAGE ------------------ -->
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">CITY DESIGN</div>
+
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">about</a></li>
+      <li><a href="project.html">Project</a></li>
+      <li><a href="SHRAVANA.html">SHRAVANA</a></li>
+      <li><a href="SUJANA.html">SUJANA</a></li>
+      <li><a href="KHUSHI.html">KHUSHI</a></li>
+      <li><a href="LAXMI.html">LAXMI</a></li>
+      <li><a href="collabz.html">Collabz</a></li>
+    </ul>
+</div>
+<!-- ------------------ MAIN 3 COLUMN PAGE ------------------ -->
+<div class="container">
+
+    <!-- LEFT -->
+    <div class="left-box">
+        I am  <br>
+        <span style="color:#00eaff;">NIDAVELLIR Village</span>
+    </div>
+
+    <!-- MIDDLE -->
+   
+<div class="card">
+    <h2>MY IMAGE</h2>
+    <img src="image.jpg" alt="Village Project Image" 
+         style="width: 300px; margin-top: 20px; border-radius: 10px;">
+</div>
+
+
+    <!-- RIGHT -->
+    <div class="right-box" id="geoBox">
+        <!-- JS inserts data here -->
+    </div>
+
+</div>
+
+<script>
+// ------------- GEOGRAPHY SLIDES -------------
+const slides = [
+    `<h2> Village Location</h2>
+     • Southern Rajasthan<br>
+     • Between Harji, Pasalia Jawal & Sumerpur<br>
+     • Near Aravalli Hills<br>
+     • Close to Jawai River`,
+
+    `<h2> Natural Features</h2>
+     • Aravalli Mountain Range<br>
+     • Jawai River<br>
+     • Forest patches<br>
+     • Granite rock hills`,
+
+    `<h2> Climate</h2>
+     • Semi–arid zone<br>
+     • Hot summers<br>
+     • Mild winters<br>
+     • Monsoon rainfall (moderate)`,
+
+    `<h2> Agriculture</h2>
+     • Wheat, Bajra, Mustard<br>
+     • Jawai river irrigation<br>
+     • Fertile soil patches<br>
+     • Dairy & livestock`,
+
+    `<h2> Nearby Towns</h2>
+     • Sumerpur (major town)<br>
+     • Harji village<br>
+     • Pasalia Jawal<br>
+     • Jawai Bandh railway`,
+
+    `<h2> Land Type</h2>
+     • Rocky slopes (Aravalli)<br>
+     • Sandy-loam soil<br>
+     • Plains + hills mixed<br>
+     • High mineral content`
+];
+
+let index = 0;
+const box = document.getElementById("geoBox");
+
+function showSlide() {
+    box.classList.add("fade");
+    setTimeout(() => {
+        box.innerHTML = slides[index];
+        box.classList.remove("fade");
+        index = (index + 1) % slides.length;
+    }, 1000);
+}
+
+// load first slide
+showSlide();
+
+// auto change every 10 sec
+setInterval(showSlide, 10000);
+
+</script>
+
+</body>
+</html>
