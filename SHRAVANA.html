@@ -3,29 +3,27 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>AI POWERHOUSE & RENEWABLE ENERGY — Ideas + Algorithms (HTML)</title>
+  <title>POWERHOUSE & RENEWABLE ENERGY SYSTEM — Ideas + C++</title>
   <style>
     :root{--bg:#0f1724;--card:#0b1220;--accent:#00c2a8;--muted:#94a3b8;--glass:rgba(255,255,255,0.03)}
     html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial}
     body{background:linear-gradient(180deg,#071428 0%, #07192b 60%);color:#e6eef6;padding:28px}
-    .container{max-width:1100px;margin:0 auto}
+    .container{max-width:1200px;margin:0 auto}
     header{display:flex;align-items:center;gap:16px;margin-bottom:20px}
-    h1{font-size:20px;margin:0}
+    h1{font-size:24px;margin:0;color:var(--accent)}
     p.lead{margin:0;color:var(--muted)}
     .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:18px}
     .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03));border-radius:12px;padding:16px;box-shadow:0 6px 18px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
     .card h2{margin:0 0 8px 0;font-size:16px;color:var(--accent)}
     .meta{color:var(--muted);font-size:13px;margin-bottom:10px}
-    pre{background:var(--glass);padding:12px;border-radius:8px;overflow:auto;color:#dffcf0;font-size:13px;margin:8px 0}
-    code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono',Courier New,monospace}
-    .alg{margin:8px 0 12px 0}
+    .alg{margin:8px 0 12px 0;color:#fff}
+    .alg ol{padding-left:18px;margin:6px 0}
     .btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
     .btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 10px;border-radius:8px;color:var(--accent);cursor:pointer;font-weight:600}
-    .small{font-size:12px;padding:6px 8px}
-    footer{margin-top:22px;color:var(--muted);font-size:13px}
-    .code-panel{display:none;margin-top:8px}
+    .code-panel{display:none;margin-top:8px;background:var(--glass);padding:12px;border-radius:8px;color:#dffcf0;font-size:13px;white-space:pre-wrap}
     .code-panel.show{display:block}
-    .search{width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--muted);margin-bottom:12px}
+    .search{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--muted);margin-bottom:12px}
+    footer{margin-top:22px;color:var(--muted);font-size:13px;text-align:center}
     @media (max-width:880px){.grid{grid-template-columns:1fr}}
   </style>
 </head>
@@ -33,8 +31,8 @@
   <div class="container">
     <header>
       <div>
-        <h1>AI Powerhouse & Renewable Energy — Ideas + Algorithms</h1>
-        <p class="lead">Click "View Code" on any idea to reveal the algorithm implementation.</p>
+        <h1>POWERHOUSE & RENEWABLE ENERGY SYSTEM</h1>
+        <p class="lead">Click "View Code" on any idea to reveal the C++ implementation (code hidden by default).</p>
       </div>
     </header>
 
@@ -42,111 +40,2198 @@
 
     <div class="grid" id="grid">
 
-      <!-- CARD 1 -->
-      <section class="card" data-title="AI Smart Power Distribution Controller">
-        <h2>1. AI Smart Power Distribution Controller</h2>
-        <div class="meta">Decides how much power to send to houses, industries & EV stations.</div>
+      <!-- We'll list 110 cards. Each card: title, meta, algorithm steps, View Code button, hidden C++ code. -->
+      
+      <!-- 1 -->
+      <section class="card" data-title="Smart Power Distribution Controller">
+        <h2>1. Smart Power Distribution Controller</h2>
+        <div class="meta">Decides how much power to send to homes, factories & EV stations based on demand.</div>
         <div class="alg"><strong>Algorithm:</strong>
           <ol>
-            <li>Collect demand.</li>
-            <li>Check solar + wind + powerhouse generation.</li>
-            <li>Distribute based on priority.</li>
-            <li>Prevent overload.</li>
+            <li>Collect per-zone demand and generation.</li>
+            <li>Prioritize critical loads.</li>
+            <li>Allocate power avoiding overload.</li>
           </ol>
         </div>
-        <div class="btn-row">
-          <button class="btn" onclick="toggleCode(this)">View Code</button>
-          <button class="btn small" onclick="copySnippet(this)">Copy Snippet</button>
-        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
         <div class="code-panel">
-<pre><code>// Python logic
-class PowerDistributor:
-    def __init__(self, batteries, nodes):
-        self.batteries = batteries
-        self.nodes = nodes
-
-    def distribute(self, demands, generation):
-        total_energy = generation['solar'] + generation['wind'] + generation['powerhouse'] + self.available_battery()
-        order = ['hospitals','industry','homes','ev']
-        allocation = {}
-        for k in order:
-            need = demands.get(k,0)
-            give = min(need, total_energy)
-            allocation[k] = give
-            total_energy -= give
-        return allocation
-
-    def available_battery(self):
-        return sum(b.charge for b in self.batteries)
-</code></pre>
+<code>// C++: simple allocation function
+#include &lt;iostream&gt;
+#include &lt;map&gt;
+using namespace std;
+map&lt;string,int&gt; distribute(int total, map&lt;string,int&gt; need){
+  map&lt;string,int&gt; alloc;
+  for(auto &p:need){
+    int give = min(total,p.second);
+    alloc[p.first]=give;
+    total-=give;
+  }
+  return alloc;
+}
+</code>
         </div>
       </section>
 
-      <!-- CARD 2 -->
+      <!-- 2 -->
       <section class="card" data-title="Solar Panel Efficiency Analyzer">
         <h2>2. Solar Panel Efficiency Analyzer</h2>
-        <div class="meta">Finds low-efficiency panels & predicts cleaning dates.</div>
+        <div class="meta">Ranks panels by efficiency and schedules cleaning/repair.</div>
         <div class="alg"><strong>Algorithm:</strong>
           <ol>
-            <li>Read daily output.</li>
-            <li>Compare with expected sunlight output.</li>
-            <li>Flag low-efficiency panels.</li>
+            <li>Measure actual vs expected output.</li>
+            <li>Compute efficiency percent.</li>
+            <li>Flag low performers for maintenance.</li>
           </ol>
         </div>
-        <div class="btn-row">
-          <button class="btn" onclick="toggleCode(this)">View Code</button>
-          <button class="btn small" onclick="copySnippet(this)">Copy Snippet</button>
-        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
         <div class="code-panel">
-<pre><code># quicksort for ranking panels
-def quicksort(arr):
-    if len(arr) <= 1:
-        return arr
-    pivot = arr[len(arr)//2]
-    left = [x for x in arr if x['eff'] < pivot['eff']]
-    mid = [x for x in arr if x['eff'] == pivot['eff']]
-    right = [x for x in arr if x['eff'] > pivot['eff']]
-    return quicksort(left) + mid + quicksort(right)
-</code></pre>
+<code>// C++: compute efficiency and flag
+#include &lt;vector&gt; using namespace std;
+struct Panel{int id; double expected, actual;};
+vector&lt;int&gt; flagLow(const vector&lt;Panel&gt;& panels){
+  vector&lt;int&gt; res;
+  for(auto &p:panels) if(p.actual/p.expected*100 &lt; 75) res.push_back(p.id);
+  return res;
+}
+</code>
         </div>
       </section>
 
-      <!-- --------------------------------------------------------- -->
-      <!-- Continue cards 3 – 14 EXACTLY AS IN YOUR ORIGINAL CODE   -->
-      <!-- (I can add all remaining cards if you want full version) -->
-      <!-- --------------------------------------------------------- -->
+      <!-- 3 -->
+      <section class="card" data-title="Wind Turbine RPM Controller">
+        <h2>3. Wind Turbine RPM Controller</h2>
+        <div class="meta">Adjusts blade pitch to achieve ideal RPM for current wind speed.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Read wind speed.</li>
+            <li>Predict ideal RPM.</li>
+            <li>Adjust blade pitch accordingly.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: simple mapping from wind speed to angle
+int pitchFromSpeed(double speed){
+  if(speed&lt;4) return 80;
+  if(speed&lt;12) return 40;
+  return 10;
+}
+</code>
+        </div>
+      </section>
+
+      <!-- 4 -->
+      <section class="card" data-title="Battery Storage Optimization">
+        <h2>4. Battery Storage Optimization</h2>
+        <div class="meta">Decides when to charge/discharge batteries to balance supply and demand.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Monitor generation vs demand.</li>
+            <li>Charge if surplus, discharge if deficit.</li>
+            <li>Respect SOC limits.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: battery charge/discharge decision
+int decideBattery(int generation, int demand, int soc, int cap){
+  int net = generation - demand;
+  if(net &gt; 0) return min(net, cap - soc); // charge
+  return max(-min(soc, -net), 0); // discharge positive kW
+}
+</code>
+        </div>
+      </section>
+
+      <!-- 5 -->
+      <section class="card" data-title="Power Theft Detection">
+        <h2>5. Power Theft Detection</h2>
+        <div class="meta">Detects anomalies in billed vs sensor usage to find theft.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Compare meter readings to expected baseline.</li>
+            <li>Detect large discrepancies.</li>
+            <li>Flag for inspection.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: simple detector
+#include &lt;vector&gt; using namespace std;
+vector&lt;int&gt; detect(const vector&lt;int&gt;& sensor,const vector&lt;int&gt;& billed){
+  vector&lt;int&gt; res;
+  for(size_t i=0;i&lt;sensor.size();++i) if(sensor[i]-billed[i]&gt;50) res.push_back(i);
+  return res;
+}
+</code>
+        </div>
+      </section>
+
+      <!-- 6 -->
+      <section class="card" data-title="Emergency Auto-Switching">
+        <h2>6. Emergency Auto-Switching</h2>
+        <div class="meta">Switches to backup battery storage during grid failure.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Monitor grid voltage/frequency.</li>
+            <li>Detect failure threshold.</li>
+            <li>Isolate and switch to local supply.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: emergency switch check
+bool needSwitch(double voltage,double freq){ return voltage&lt;190 || freq&lt;48; }
+</code>
+        </div>
+      </section>
+
+      <!-- 7 -->
+      <section class="card" data-title="City-Wide Demand Predictor">
+        <h2>7. City-Wide Demand Predictor</h2>
+        <div class="meta">Forecasts near-term city energy demand using historical series.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Collect historical demand.</li>
+            <li>Apply moving average or AR model.</li>
+            <li>Emit short-term forecast.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: simple moving average
+double movingAvg(const vector&lt;double&gt;& s,int w){
+  double sum=0; for(int i=0;i&lt;w;i++) sum+=s[s.size()-1-i]; return sum/w;
+}
+</code>
+        </div>
+      </section>
+
+      <!-- 8 -->
+      <section class="card" data-title="Real-Time Price Optimizer">
+        <h2>8. Real-Time Price Optimizer</h2>
+        <div class="meta">Adjusts prices depending on demand to shape load.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Measure current load vs capacity.</li>
+            <li>Increase price when load high.</li>
+            <li>Decrease price when low.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: compute dynamic price factor
+double computePrice(double base,double load,double cap){ return base*(1+load/cap); }
+</code>
+        </div>
+      </section>
+
+      <!-- 9 -->
+      <section class="card" data-title="Peer-to-Peer Energy Sharing">
+        <h2>9. Peer-to-Peer Energy Sharing</h2>
+        <div class="meta">Allows homes with surplus solar to share energy with neighbors.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Detect surplus nodes.</li>
+            <li>Match with deficit nodes.</li>
+            <li>Transfer and record credit.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: simple credit ledger map
+#include &lt;map&gt; using namespace std;
+void credit(map&lt;int,int&gt;& L,int id,int k){ L[id]+=k; }
+</code>
+        </div>
+      </section>
+
+      <!-- 10 -->
+      <section class="card" data-title="Smart Load Control">
+        <h2>10. Smart Load Control</h2>
+        <div class="meta">Automatically turn off low-priority devices during peaks.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Define device priorities.</li>
+            <li>When grid_load&gt;limit, shed low priority.</li>
+            <li>Restore when safe.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: select low priority devices to shed
+#include &lt;vector&gt; using namespace std;
+vector&lt;int&gt; shed(const vector&lt;pair&lt;int,int&gt;&gt;& devs,int limit){
+  vector&lt;int&gt; result; int freed=0;
+  for(auto &d:devs) if(d.second==0 && freed&lt;limit){result.push_back(d.first); freed+=1;}
+  return result;
+}
+</code>
+        </div>
+      </section>
+
+      <!-- 11 -->
+      <section class="card" data-title="Microgrid Islanding">
+        <h2>11. Microgrid Islanding</h2>
+        <div class="meta">Isolates microgrid sections to keep local supply during main-grid faults.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Detect grid instability.</li>
+            <li>Open isolating switches.</li>
+            <li>Operate local resources.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: simple DSU for grouping nodes
+#include &lt;vector&gt; using namespace std;
+struct DSU{vector&lt;int&gt;p;DSU(int n):p(n){for(int i=0;i<n;i++)p[i]=i;}int find(int x){return p[x]==x?x:p[x]=find(p[x]);}void uni(int a,int b){p[find(a)]=find(b);}};
+</code>
+        </div>
+      </section>
+
+      <!-- 12 -->
+      <section class="card" data-title="Predictive Maintenance">
+        <h2>12. Predictive Maintenance</h2>
+        <div class="meta">Predicts equipment failure from telemetry (temp, vibration).</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Collect sensor features.</li>
+            <li>Compute risk score.</li>
+            <li>Schedule maintenance if high.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: logistic-style risk score
+double sigmoid(double x){return 1.0/(1.0+exp(-x));}
+double predictRisk(const vector&lt;double&gt;& f,const vector&lt;double&gt;& w,double b){
+  double s=b; for(size_t i=0;i&lt;f.size();++i) s+=f[i]*w[i]; return sigmoid(s);
+}
+</code>
+        </div>
+      </section>
+
+      <!-- 13 -->
+      <section class="card" data-title="Dynamic Load Balancer">
+        <h2>13. Dynamic Load Balancer</h2>
+        <div class="meta">Shifts load between zones to prevent local blackouts.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Detect overloaded zones.</li>
+            <li>Find spare capacity elsewhere.</li>
+            <li>Transfer load using switches/lines.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: transfer if capacity exists
+bool transfer(int &fromCap,int &toCap,int amount){ if(toCap+amount&lt;=fromCap){ toCap+=amount; fromCap-=amount; return true;} return false;}
+</code>
+        </div>
+      </section>
+
+      <!-- 14 -->
+      <section class="card" data-title="Renewable Forecasting">
+        <h2>14. Renewable Forecasting</h2>
+        <div class="meta">Predicts next-day solar & wind production from weather forecasts.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Collect weather features.</li>
+            <li>Apply regression/time-series.</li>
+            <li>Output expected generation.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: simple linear prediction
+double predict(double a,double b,double x){ return a*x + b; }
+</code>
+        </div>
+      </section>
+
+      <!-- 15 -->
+      <section class="card" data-title="EV Charging Scheduler">
+        <h2>15. EV Charging Scheduler</h2>
+        <div class="meta">Schedules EV charging to avoid grid overloads and respect deadlines.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Collect EV requests with deadlines.</li>
+            <li>Prioritize by earliest deadline.</li>
+            <li>Assign available capacity greedily.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: greedy assign by deadline stub
+#include &lt;algorithm&gt; using namespace std;
+struct EV{int id,need,dl;};
+void schedule(vector&lt;EV&gt;& evs,int cap){ sort(evs.begin(),evs.end(),[](EV&a,EV&b){return a.dl&lt;b.dl;}); for(auto &e:evs){ if(cap<=0) break; int assign=min(cap,e.need); cap-=assign; }}
+</code>
+        </div>
+      </section>
+
+      <!-- 16 -->
+      <section class="card" data-title="Transmission Loss Minimizer">
+        <h2>16. Transmission Loss Minimizer</h2>
+        <div class="meta">Routes power along paths that minimize losses.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Model network with weighted edges (loss).</li>
+            <li>Run shortest-path (loss) algorithm.</li>
+            <li>Select lowest-loss route.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: Dijkstra skeleton using adjacency list
+// (for brevity, pseudo-structure)
+</code>
+        </div>
+      </section>
+
+      <!-- 17 -->
+      <section class="card" data-title="Peak Shaving Controller">
+        <h2>17. Peak Shaving Controller</h2>
+        <div class="meta">Reduces peak demand by activating storage and load-shedding.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Detect upcoming peak window.</li>
+            <li>Discharge batteries & defer flexible loads.</li>
+            <li>Reduce peak to target.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: peak check
+bool shavePeak(int forecast,int threshold){ return forecast&gt;threshold; }
+</code>
+        </div>
+      </section>
+
+      <!-- 18 -->
+      <section class="card" data-title="Voltage Regulation">
+        <h2>18. Voltage Regulation</h2>
+        <div class="meta">Keeps voltages within safe bounds across distribution feeders.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Monitor node voltages.</li>
+            <li>Adjust tap changers or reactive devices.</li>
+            <li>Maintain voltage band.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: simple regulator function
+double regulate(double v,double minV,double maxV){ if(v&lt;minV) return minV; if(v&gt;maxV) return maxV; return v; }
+</code>
+        </div>
+      </section>
+
+      <!-- 19 -->
+      <section class="card" data-title="Battery Health Monitor">
+        <h2>19. Battery Health Monitor</h2>
+        <div class="meta">Monitors battery temperature and cycles to estimate remaining life.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Track cycles and temperatures.</li>
+            <li>Estimate SOH (state of health).</li>
+            <li>Schedule replacements.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: simple SOH estimate
+double estimateSOH(int cycles,double avgTemp){ return 100.0 - cycles*0.05 - (avgTemp-25)*0.1; }
+</code>
+        </div>
+      </section>
+
+      <!-- 20 -->
+      <section class="card" data-title="Demand Response Coordinator">
+        <h2>20. Demand Response Coordinator</h2>
+        <div class="meta">Coordinates incentives to shift user loads to off-peak periods.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Identify flexible loads.</li>
+            <li>Offer incentives to shift.</li>
+            <li>Accept responses and reschedule loads.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: mark flexible devices
+vector&lt;int&gt; findFlexible(const vector&lt;pair&lt;int,bool&gt;&gt;& devs){ vector&lt;int&gt; r; for(auto &d:devs) if(d.second) r.push_back(d.first); return r; }
+</code>
+        </div>
+      </section>
+
+      <!-- 21 -->
+      <section class="card" data-title="Curtailment Optimizer">
+        <h2>21. Curtailment Optimizer</h2>
+        <div class="meta">Decides which renewable output to curtail when overgeneration occurs.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Estimate surplus generation.</li>
+            <li>Rank sources by priority.</li>
+            <li>Curtail lowest-priority sources first.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: choose curtailment
+void curtail(vector&lt;pair&lt;int,int&gt;&gt;& sources,int surplus){
+  sort(sources.begin(),sources.end()); // by priority
+  for(auto &s:sources) if(surplus&gt;0){ int c=min(s.second,surplus); s.second-=c; surplus-=c; }
+}
+</code>
+        </div>
+      </section>
+
+      <!-- 22 -->
+      <section class="card" data-title="Islanded Microgrid Coordinator">
+        <h2>22. Islanded Microgrid Coordinator</h2>
+        <div class="meta">Manages local assets when islanded to maintain critical load supply.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Prioritize critical loads.</li>
+            <li>Dispatch local generation & storage.</li>
+            <li>Balance supply-demand locally.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: simple dispatch loop
+void dispatch(int totalGen, vector&lt;pair&lt;int,int&gt;&gt;& loads){
+  for(auto &l:loads){ if(totalGen&lt;=0) break; int s=min(l.second,totalGen); l.second-=s; totalGen-=s;}
+}
+</code>
+        </div>
+      </section>
+
+      <!-- 23 -->
+      <section class="card" data-title="Distributed State Estimation">
+        <h2>23. Distributed State Estimation</h2>
+        <div class="meta">Estimates network state from distributed measurements for control decisions.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Collect measurements from sensors.</li>
+            <li>Run distributed estimator (e.g., consensus-based).</li>
+            <li>Produce local state estimates.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: consensus averaging step
+void consensus(vector&lt;double&gt;& x,const vector&lt;vector&lt;double&gt;&gt;& W){
+  vector&lt;double&gt; nx=x; for(size_t i=0;i&lt;x.size();++i) for(size_t j=0;j&lt;x.size();++j) nx[i]+=W[i][j]*x[j];
+  x=nx;
+}
+</code>
+        </div>
+      </section>
+
+      <!-- 24 -->
+      <section class="card" data-title="Fault Detection & Localization">
+        <h2>24. Fault Detection & Localization</h2>
+        <div class="meta">Detects line faults and localizes them for faster repairs.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Analyze sudden changes in measurements.</li>
+            <li>Compute likely fault zones.</li>
+            <li>Dispatch repair crew.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: naive fault detect by delta thresholds
+vector&lt;int&gt; detectFault(const vector&lt;double&gt;& delta,double th){
+  vector&lt;int&gt; idx; for(size_t i=0;i&lt;delta.size();++i) if(fabs(delta[i])&gt;th) idx.push_back(i); return idx;
+}
+</code>
+        </div>
+      </section>
+
+      <!-- 25 -->
+      <section class="card" data-title="Topology Reconfiguration">
+        <h2>25. Topology Reconfiguration</h2>
+        <div class="meta">Reconfigure network topology to relieve overloaded feeders.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Detect overloaded edges.</li>
+            <li>Find reconfiguration options.</li>
+            <li>Apply switches minimizing loss/overload.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: apply a candidate switch
+void applySwitch(vector&lt;vector&lt;int&gt;&gt;& adj,int a,int b){ adj[a][b]^=1; adj[b][a]^=1; }
+</code>
+        </div>
+      </section>
+
+      <!-- 26 -->
+      <section class="card" data-title="Storage Sizing Advisor">
+        <h2>26. Storage Sizing Advisor</h2>
+        <div class="meta">Recommends battery size for a site based on load and generation patterns.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Analyze historical net-load.</li>
+            <li>Compute energy needed to cover target hours.</li>
+            <li>Recommend capacity and power rating.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: recommend capacity
+int recommendCapacity(const vector&lt;int&gt;& deficit,int hours){ int sum=0; for(int i=0;i&lt;hours;i++) sum+=deficit[i]; return sum; }
+</code>
+        </div>
+      </section>
+
+      <!-- 27 -->
+      <section class="card" data-title="Hybrid Plant Scheduler">
+        <h2>27. Hybrid Plant Scheduler</h2>
+        <div class="meta">Schedules powerhouse+renewables to meet dispatch targets cost-effectively.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Forecast renewable output.</li>
+            <li>Commit dispatchable units to meet residual load.</li>
+            <li>Optimize for cost & emissions.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: choose dispatch using simple merit order
+void dispatch(vector&lt;pair&lt;int,int&gt;&gt;& units,int demand){
+  sort(units.begin(),units.end()); for(auto &u:units){ if(demand&lt;=0) break; int use=min(demand,u.second); demand-=use; }
+}
+</code>
+        </div>
+      </section>
+
+      <!-- 28 -->
+      <section class="card" data-title="Curtailment Cost Minimizer">
+        <h2>28. Curtailment Cost Minimizer</h2>
+        <div class="meta">Minimizes cost of curtailing renewables when required.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Estimate curtailment costs per plant.</li>
+            <li>Select set to curtail minimizing total cost.</li>
+            <li>Apply curtailment plan.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: greedy choose low-cost curtail
+void minimizeCurtail(vector&lt;pair&lt;double,int&gt;&gt;& plants,int surplus){
+  sort(plants.begin(),plants.end());
+  for(auto &p:plants) if(surplus&gt;0){ int c=min(p.second,surplus); p.second-=c; surplus-=c; }
+}
+</code>
+        </div>
+      </section>
+
+      <!-- 29 -->
+      <section class="card" data-title="Line Congestion Predictor">
+        <h2>29. Line Congestion Predictor</h2>
+        <div class="meta">Predicts potential line congestion events to proactively re-route flows.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Use load forecasts on lines.</li>
+            <li>Compare against thermal limits.</li>
+            <li>Alert/prepare reconfiguration.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: check against limits
+vector&lt;int&gt; predict(const vector&lt;int&gt;& load,const vector&lt;int&gt;& limit){
+  vector&lt;int&gt; r; for(size_t i=0;i&lt;load.size();++i) if(load[i]&gt;limit[i]) r.push_back(i); return r;
+}
+</code>
+        </div>
+      </section>
+
+      <!-- 30 -->
+      <section class="card" data-title="Reactive Power Optimizer">
+        <h2>30. Reactive Power Optimizer</h2>
+        <div class="meta">Controls reactive devices to minimize losses and maintain voltages.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Measure voltage/reactive flows.</li>
+            <li>Adjust capacitor/inverter Q outputs.</li>
+            <li>Minimize voltage deviations and losses.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: simple reactive adjust
+double adjustQ(double V,double Vref,double Q){ return Q + (Vref-V)*0.1; }
+</code>
+        </div>
+      </section>
+
+      <!-- 31 -->
+      <section class="card" data-title="Fault-Tolerant Routing">
+        <h2>31. Fault-Tolerant Routing</h2>
+        <div class="meta">Finds alternate routes for energy when primary lines fail.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Detect failed component.</li>
+            <li>Search for feasible alternative paths.</li>
+            <li>Switch routes to maintain supply.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: BFS to find alternate path (pseudo)
+#include &lt;queue&gt; // use BFS to find path avoiding failed nodes
+</code>
+        </div>
+      </section>
+
+      <!-- 32 -->
+      <section class="card" data-title="Asset Utilization Optimizer">
+        <h2>32. Asset Utilization Optimizer</h2>
+        <div class="meta">Maximizes use of available renewable assets to reduce fuel costs.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Forecast renewables</li>
+            <li>Schedule assets to minimize fossil generation</li>
+            <li>Respect constraints</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: simple optimizer skeleton
+int useRenewable(int avail,int demand){ return min(avail,demand); }
+</code>
+        </div>
+      </section>
+
+      <!-- 33 -->
+      <section class="card" data-title="Island Restoration Planner">
+        <h2>33. Island Restoration Planner</h2>
+        <div class="meta">Plans stepwise reconnection after islanding to prevent instability.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Assess stable islanded zones.</li>
+            <li>Re-synchronize and reconnect progressively.</li>
+            <li>Monitor stability at each step.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: reconnection plan store
+vector&lt;int&gt; planReconn(const vector&lt;int&gt;& islands){ return islands; }
+</code>
+        </div>
+      </section>
+
+      <!-- 34 -->
+      <section class="card" data-title="DER Aggregation Manager">
+        <h2>34. DER Aggregation Manager</h2>
+        <div class="meta">Aggregates distributed energy resources for market participation.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Collect DER capabilities.</li>
+            <li>Aggregate into virtual plant schedules.</li>
+            <li>Bid into markets or provide ancillary services.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: aggregate power
+int aggregate(const vector&lt;int&gt;& powers){ int s=0; for(auto&p:powers) s+=p; return s; }
+</code>
+        </div>
+      </section>
+
+      <!-- 35 -->
+      <section class="card" data-title="Reserve Margin Calculator">
+        <h2>35. Reserve Margin Calculator</h2>
+        <div class="meta">Calculates reserve margins required for reliability under uncertainty.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Model forecast uncertainty.</li>
+            <li>Compute required reserves to meet reliability target.</li>
+            <li>Allocate reserves across resources.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: compute margin
+int reserveMargin(int peak,int available){ return max(0,available-peak); }
+</code>
+        </div>
+      </section>
+
+      <!-- 36 -->
+      <section class="card" data-title="Ancillary Service Optimizer">
+        <h2>36. Ancillary Service Optimizer</h2>
+        <div class="meta">Allocates resources to provide frequency/voltage regulation services.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Collect service bids/capabilities.</li>
+            <li>Clear market to meet service requirements.</li>
+            <li>Dispatch winning resources.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: select resources with enough capacity
+vector&lt;int&gt; select(const vector&lt;int&gt;& caps,int req){ vector&lt;int&gt; r; int sum=0; for(size_t i=0;i&lt;caps.size() && sum&lt;req;i++){ r.push_back(i); sum+=caps[i]; } return r; }
+</code>
+        </div>
+      </section>
+
+      <!-- 37 -->
+      <section class="card" data-title="Curtailment Fairness Allocator">
+        <h2>37. Curtailment Fairness Allocator</h2>
+        <div class="meta">Ensures curtailment is distributed fairly across producers.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Compute proportional shares.</li>
+            <li>Apply curtailment to meet target with fairness.</li>
+            <li>Track historical curtailment to balance over time.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: proportional curtail
+vector&lt;int&gt; proportionalCurtail(const vector&lt;int&gt;& cap,int totalCurtail){
+  int sum=0; for(auto c:cap) sum+=c; vector&lt;int&gt; out;
+  for(auto c:cap) out.push_back((long long)c*totalCurtail/sum);
+  return out;
+}
+</code>
+        </div>
+      </section>
+
+      <!-- 38 -->
+      <section class="card" data-title="Grid Resilience Scorer">
+        <h2>38. Grid Resilience Scorer</h2>
+        <div class="meta">Rates grid segments by resilience to outages using multiple indicators.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Gather vulnerability metrics.</li>
+            <li>Compute composite resilience score.</li>
+            <li>Prioritize upgrades.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: compute weighted score
+double score(const vector&lt;double&gt;& metrics,const vector&lt;double&gt;& w){ double s=0; for(size_t i=0;i&lt;metrics.size();++i) s+=metrics[i]*w[i]; return s;}
+</code>
+        </div>
+      </section>
+
+      <!-- 39 -->
+      <section class="card" data-title="Greenhouse Gas Estimator">
+        <h2>39. Greenhouse Gas Estimator</h2>
+        <div class="meta">Estimates emissions for generation mixes to inform dispatch decisions.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Map generation to emission factors.</li>
+            <li>Sum emissions for chosen dispatch.</li>
+            <li>Use as objective or constraint.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: emissions calc
+double emissions(const vector&lt;int&gt;& gen,const vector&lt;double&gt;& ef){
+  double e=0; for(size_t i=0;i&lt;gen.size();++i) e+=gen[i]*ef[i]; return e;
+}
+</code>
+        </div>
+      </section>
+
+      <!-- 40 -->
+      <section class="card" data-title="Market Participation Optimizer">
+        <h2>40. Market Participation Optimizer</h2>
+        <div class="meta">Decides bids for energy and services to maximize revenue given constraints.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Model asset offers and costs.</li>
+            <li>Solve small optimization for best bids.</li>
+            <li>Submit bids to market.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: naive revenue calc
+double revenue(const vector&lt;int&gt;& offered,const vector&lt;double&gt;& price){ double r=0; for(size_t i=0;i&lt;offered.size();++i) r+=offered[i]*price[i]; return r; }
+</code>
+        </div>
+      </section>
+
+      <!-- 41 -->
+      <section class="card" data-title="Real-time Grid Balancer">
+        <h2>41. Real-time Grid Balancer</h2>
+        <div class="meta">Per-second balancing of generation and loads for frequency stability.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Monitor frequency deviation.</li>
+            <li>Dispatch fast resources to restore balance.</li>
+            <li>Update control signals continuously.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: basic P-control
+double controlP(double err,double Kp){ return Kp*err; }
+</code>
+        </div>
+      </section>
+
+      <!-- 42 -->
+      <section class="card" data-title="EV Fleet Coordination">
+        <h2>42. EV Fleet Coordination</h2>
+        <div class="meta">Co-ordinates charging of large EV fleets to minimize cost and grid impact.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Collect fleet state-of-charge.</li>
+            <li>Schedule staggered charging windows.</li>
+            <li>Meet availability constraints.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: stagger assignment brute
+void stagger(vector&lt;int&gt;& soc,int capacity){ for(size_t i=0;i&lt;soc.size();++i) soc[i]+=min(capacity,100-soc[i]); }
+</code>
+        </div>
+      </section>
+
+      <!-- 43 -->
+      <section class="card" data-title="Charging Station Placement">
+        <h2>43. Charging Station Placement</h2>
+        <div class="meta">Optimizes siting of EV chargers to minimize detours and balance load.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Model demand hotspots.</li>
+            <li>Place chargers to maximize coverage.</li>
+            <li>Evaluate grid capacity at sites.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: greedy place at top-demand nodes
+vector&lt;int&gt; placeStations(const vector&lt;int&gt;& demand,int k){
+  vector&lt;int&gt; idx; // choose k largest - omitted for brevity
+  return idx;
+}
+</code>
+        </div>
+      </section>
+
+      <!-- 44 -->
+      <section class="card" data-title="Renewable Site Selection">
+        <h2>44. Renewable Site Selection</h2>
+        <div class="meta">Selects best sites for solar/wind based on resource and grid access.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Score candidate sites by resource, land, grid cost.</li>
+            <li>Rank and select top sites.</li>
+            <li>Perform further feasibility checks.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: simple scoring
+int scoreSite(int resource,int gridAccess,int cost){ return resource*5 + gridAccess*3 - cost; }
+</code>
+        </div>
+      </section>
+
+      <!-- 45 -->
+      <section class="card" data-title="Transmission Expansion Planner">
+        <h2>45. Transmission Expansion Planner</h2>
+        <div class="meta">Plans new lines to relieve constraints and integrate renewables.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Identify bottlenecks.</li>
+            <li>Evaluate candidate expansions.</li>
+            <li>Select projects optimizing cost vs benefit.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: eval candidate ROI
+double roi(double benefit,double cost){ if(cost==0) return 0; return benefit/cost; }
+</code>
+        </div>
+      </section>
+
+      <!-- 46 -->
+      <section class="card" data-title="Storage Dispatch Optimizer">
+        <h2>46. Storage Dispatch Optimizer</h2>
+        <div class="meta">Optimally dispatches storage to reduce costs and support grid services.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Forecast net-load.</li>
+            <li>Solve optimization over horizon.</li>
+            <li>Dispatch charge/discharge schedules.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: simple heuristic dispatch
+void storageDispatch(int soc,int need){ if(need&gt;0) soc-=min(soc,need); else soc+=min(100-soc,-need); }
+</code>
+        </div>
+      </section>
+
+      <!-- 47 -->
+      <section class="card" data-title="Curtailment Forecasting">
+        <h2>47. Curtailment Forecasting</h2>
+        <div class="meta">Forecasts likely curtailment events ahead of time to plan operations.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Forecast generation & demand.</li>
+            <li>Predict surplus events.</li>
+            <li>Plan mitigation (storage, export, curtailment).</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: predict surplus if gen&gt;demand
+bool willCurtail(int gen,int demand){ return gen&gt;demand; }
+</code>
+        </div>
+      </section>
+
+      <!-- 48 -->
+      <section class="card" data-title="Energy Market Arbitrage">
+        <h2>48. Energy Market Arbitrage</h2>
+        <div class="meta">Exploits price differences by charging/discharging storage.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Forecast prices.</li>
+            <li>Charge when low, discharge when high.</li>
+            <li>Respect battery constraints.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: simple arbitrage decision
+bool arbitrage(double priceNow,double priceFuture){ return priceFuture &gt; priceNow; }
+</code>
+        </div>
+      </section>
+
+      <!-- 49 -->
+      <section class="card" data-title="Hybrid Forecast Fusion">
+        <h2>49. Hybrid Forecast Fusion</h2>
+        <div class="meta">Combines multiple forecast models to improve renewable predictions.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Collect multiple model outputs.</li>
+            <li>Weight and combine forecasts.</li>
+            <li>Produce fused forecast with uncertainty.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: weighted average fusion
+double fuse(const vector&lt;double&gt;& preds,const vector&lt;double&gt;& w){ double s=0,ws=0; for(size_t i=0;i&lt;preds.size();++i){s+=preds[i]*w[i];ws+=w[i];} return s/ws;}
+</code>
+        </div>
+      </section>
+
+      <!-- 50 -->
+      <section class="card" data-title="Transmission Loss Estimator">
+        <h2>50. Transmission Loss Estimator</h2>
+        <div class="meta">Estimates losses on candidate transmission routes.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Use distance & resistance models.</li>
+            <li>Estimate losses per MW transported.</li>
+            <li>Inform routing and economics.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: simplistic loss estimate
+double loss(double power,double distance,double R){ return power*power*R*distance; }
+</code>
+        </div>
+      </section>
+
+      <!-- 51 -->
+      <section class="card" data-title="Customer Energy Insights">
+        <h2>51. Customer Energy Insights</h2>
+        <div class="meta">Provides personalized energy usage insights to customers to reduce consumption.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Analyze individual usage patterns.</li>
+            <li>Detect inefficient behaviors.</li>
+            <li>Recommend actionable changes.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: detect high-usage hours
+vector&lt;int&gt; peakHours(const vector&lt;int&gt;& usage,int th){ vector&lt;int&gt; r; for(size_t i=0;i&lt;usage.size();++i) if(usage[i]&gt;th) r.push_back(i); return r; }
+</code>
+        </div>
+      </section>
+
+      <!-- 52 -->
+      <section class="card" data-title="Tariff Impact Simulator">
+        <h2>52. Tariff Impact Simulator</h2>
+        <div class="meta">Simulates how tariff changes affect demand and revenue.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Model customer elasticity.</li>
+            <li>Simulate demand response to tariff shifts.</li>
+            <li>Estimate revenue & welfare impacts.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: elasticity model stub
+double demandAfter(double base,double price,double elas){ return base*pow(price,elas); }
+</code>
+        </div>
+      </section>
+
+      <!-- 53 -->
+      <section class="card" data-title="Microgrid Peer Coordination">
+        <h2>53. Microgrid Peer Coordination</h2>
+        <div class="meta">Coordinates multiple microgrids to share reserves and respond to disturbances.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Share status & capabilities.</li>
+            <li>Allocate support requests to peers.</li>
+            <li>Reconcile exchanges and meter energy.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: simple support allocation
+void allocateSupport(vector&lt;int&gt;& caps,int need){ for(auto &c:caps) if(need&gt;0){ int take=min(c,need); c-=take; need-=take; } }
+</code>
+        </div>
+      </section>
+
+      <!-- 54 -->
+      <section class="card" data-title="Weather-Adaptive Control">
+        <h2>54. Weather-Adaptive Control</h2>
+        <div class="meta">Adapts plant setpoints based on near-term weather forecasts.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Fetch short-term forecasts.</li>
+            <li>Adjust curtailment & dispatch preemptively.</li>
+            <li>Reduce ramping stress.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: adjust setting based on forecast
+double adjustSetpoint(double base,double forecastFactor){ return base*forecastFactor; }
+</code>
+        </div>
+      </section>
+
+      <!-- 55 -->
+      <section class="card" data-title="Transmission Outage Planner">
+        <h2>55. Transmission Outage Planner</h2>
+        <div class="meta">Plans outages to minimize customer impacts and ensure security.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Identify candidate maintenance windows.</li>
+            <li>Simulate impact under contingencies.</li>
+            <li>Select least-impact windows.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: evaluate impact of outage (pseudo)
+double impact(int customersAffected,double duration){ return customersAffected*duration; }
+</code>
+        </div>
+      </section>
+
+      <!-- 56 -->
+      <section class="card" data-title="Low-Inertia Grid Support">
+        <h2>56. Low-Inertia Grid Support</h2>
+        <div class="meta">Provides fast inverter-based support to maintain stability in low-inertia networks.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Detect high rate-of-change events.</li>
+            <li>Deploy synthetic inertia from inverters.</li>
+            <li>Monitor recovery.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: compute synthetic inertia injection
+double synthInertia(double RoCoF,double K){ return -K*RoCoF; }
+</code>
+        </div>
+      </section>
+
+      <!-- 57 -->
+      <section class="card" data-title="Harmonic Detector">
+        <h2>57. Harmonic Detector</h2>
+        <div class="meta">Detects harmonic distortions from converters and recommends mitigation.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Perform FFT on voltage/current samples.</li>
+            <li>Identify significant harmonic peaks.</li>
+            <li>Recommend filters or tuning.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: placeholder for FFT-based detection
+// Use an FFT library to compute harmonics and threshold
+</code>
+        </div>
+      </section>
+
+      <!-- 58 -->
+      <section class="card" data-title="Substation Asset Scheduler">
+        <h2>58. Substation Asset Scheduler</h2>
+        <div class="meta">Schedules maintenance of substation assets to minimize outage risk.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>List asset health and constraints.</li>
+            <li>Plan maintenance windows balancing risk.</li>
+            <li>Coordinate crews.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: pick next asset by highest risk
+int pickAsset(const vector&lt;int&gt;& risk){ int idx=0; for(size_t i=1;i&lt;risk.size();++i) if(risk[i]&gt;risk[idx]) idx=i; return idx;}
+</code>
+        </div>
+      </section>
+
+      <!-- 59 -->
+      <section class="card" data-title="Power Quality Monitor">
+        <h2>59. Power Quality Monitor</h2>
+        <div class="meta">Monitors sags, swells, flickers and transients to ensure customers see good quality.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Continuously sample voltage/current.</li>
+            <li>Detect events outside thresholds.</li>
+            <li>Log and alert operations.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: event detect
+bool isSag(double v,double th){ return v&lt;th; }
+</code>
+        </div>
+      </section>
+
+      <!-- 60 -->
+      <section class="card" data-title="Grid Carbon Minimizer">
+        <h2>60. Grid Carbon Minimizer</h2>
+        <div class="meta">Dispatches resources to meet demand while minimizing carbon emissions.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Assign emission rates to resources.</li>
+            <li>Solve dispatch minimizing emissions subject to constraints.</li>
+            <li>Implement low-emission dispatch where feasible.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: pick lowest emission units
+vector&lt;int&gt; pickLowEmission(const vector&lt;double&gt;& ef,int demand){
+  vector&lt;int&gt; res; // omitted selection logic for brevity
+  return res;
+}
+</code>
+        </div>
+      </section>
+
+      <!-- 61 -->
+      <section class="card" data-title="Battery Second-life Manager">
+        <h2>61. Battery Second-life Manager</h2>
+        <div class="meta">Decides when to repurpose EV batteries for stationary storage based on SOH.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Monitor battery SOH.</li>
+            <li>When SOH falls below threshold, evaluate second-life suitability.</li>
+            <li>Redeploy or recycle accordingly.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: second-life decision
+bool secondLife(double soh){ return soh &gt; 60.0; }
+</code>
+        </div>
+      </section>
+
+      <!-- 62 -->
+      <section class="card" data-title="Aggregator Settlement Engine">
+        <h2>62. Aggregator Settlement Engine</h2>
+        <div class="meta">Calculates settlements/payments for aggregated DER participation.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Track energy exchanges.</li>
+            <li>Apply pricing rules and tariffs.</li>
+            <li>Produce settlements and invoices.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: simple settlement calc
+double settle(int kwh,double rate){ return kwh*rate; }
+</code>
+        </div>
+      </section>
+
+      <!-- 63 -->
+      <section class="card" data-title="Resilient Microgrid Topology">
+        <h2>63. Resilient Microgrid Topology</h2>
+        <div class="meta">Designs microgrid connections for resilience and redundancy.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Model connectivity & critical loads.</li>
+            <li>Choose topology maximizing connectivity under failures.</li>
+            <li>Evaluate cost vs resilience tradeoffs.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: connectivity score
+int connScore(const vector&lt;vector&lt;int&gt;&gt;& adj){ return 0; /* placeholder */ }
+</code>
+        </div>
+      </section>
+
+      <!-- 64 -->
+      <section class="card" data-title="Grid Restoration Optimizer">
+        <h2>64. Grid Restoration Optimizer</h2>
+        <div class="meta">Optimizes crew routing and restoration steps after major outages.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Model damage & critical priorities.</li>
+            <li>Assign crews to tasks minimizing restoration time.</li>
+            <li>Update plan dynamically as repairs complete.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: naive crew assignment
+void assignCrews(vector&lt;int&gt;& tasks,int crews){ /* assign greedily */ }
+</code>
+        </div>
+      </section>
+
+      <!-- 65 -->
+      <section class="card" data-title="Edge Device Health Aggregator">
+        <h2>65. Edge Device Health Aggregator</h2>
+        <div class="meta">Aggregates health metrics from edge devices and identifies anomalous units.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Collect heartbeat & metrics.</li>
+            <li>Compute rolling anomaly scores.</li>
+            <li>Flag devices needing attention.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: compute z-score
+double zscore(double x,double mu,double sigma){ return (x-mu)/sigma; }
+</code>
+        </div>
+      </section>
+
+      <!-- 66 -->
+      <section class="card" data-title="Geo-Fencing for DERs">
+        <h2>66. Geo-Fencing for DERs</h2>
+        <div class="meta">Applies location-based rules for DER operations (e.g., islanding in storms).</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Monitor weather geofences.</li>
+            <li>Preemptively adjust DERs entering risk zones.</li>
+            <li>Lock settings while in geofence.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: geofence check
+bool inFence(double lat,double lon,double fLat,double fLon,double r){ return hypot(lat-fLat,lon-fLon)&lt;r; }
+</code>
+        </div>
+      </section>
+
+      <!-- 67 -->
+      <section class="card" data-title="Adaptive Protection Schemes">
+        <h2>67. Adaptive Protection Schemes</h2>
+        <div class="meta">Adjusts protection relay settings based on topology and DER injection to avoid nuisance trips.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Evaluate present topology & fault levels.</li>
+            <li>Compute relay settings for selectivity.</li>
+            <li>Update relays securely.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: compute threshold
+double threshold(double base,double margin){ return base*(1+margin); }
+</code>
+        </div>
+      </section>
+
+      <!-- 68 -->
+      <section class="card" data-title="Demand Flexibility Marketplace">
+        <h2>68. Demand Flexibility Marketplace</h2>
+        <div class="meta">Matches flexibility providers (loads that can shift) with grid needs.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Collect bids for flexibility.</li>
+            <li>Clear market to meet demand at least cost.</li>
+            <li>Schedule accepted shifts.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: clear flexibility greedily
+void clearMarket(vector&lt;pair&lt;int,int&gt;&gt;& bids,int req){ sort(bids.begin(),bids.end()); for(auto &b:bids){ if(req&lt;=0) break; req-=b.first; } }
+</code>
+        </div>
+      </section>
+
+      <!-- 69 -->
+      <section class="card" data-title="Adaptive Island Size Control">
+        <h2>69. Adaptive Island Size Control</h2>
+        <div class="meta">Controls how large an islanded area should be to remain stable under local resources.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Estimate local generation vs demand.</li>
+            <li>Define island boundaries where supply meets demand.</li>
+            <li>Adjust dynamically with resources.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: decide island if supply&gt;demand
+bool canIsland(int supply,int demand){ return supply&gt;=demand; }
+</code>
+        </div>
+      </section>
+
+      <!-- 70 -->
+      <section class="card" data-title="Renewable Curtailment Marketplace">
+        <h2>70. Renewable Curtailment Marketplace</h2>
+        <div class="meta">Creates a market where producers can bid to avoid curtailment (pay others to absorb energy).</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Collect bids from buyers/sellers.</li>
+            <li>Match trades minimizing cost of absorbing surplus.</li>
+            <li>Settle and implement trades.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: match bids stub
+void matchBids(){ /* matching logic */ }
+</code>
+        </div>
+      </section>
+
+      <!-- 71 -->
+      <section class="card" data-title="Forecast Confidence Estimator">
+        <h2>71. Forecast Confidence Estimator</h2>
+        <div class="meta">Estimates confidence/uncertainty of renewable forecasts to aid dispatch decisions.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Compute ensemble spread or residual statistics.</li>
+            <li>Translate to confidence bands.</li>
+            <li>Use in probabilistic dispatch.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: compute std dev as confidence
+double stddev(const vector&lt;double&gt;& v){ double m=0; for(auto x:v)m+=x; m/=v.size(); double s=0; for(auto x:v)s+=(x-m)*(x-m); return sqrt(s/v.size()); }
+</code>
+        </div>
+      </section>
+
+      <!-- 72 -->
+      <section class="card" data-title="Real-time Congestion Pricing">
+        <h2>72. Real-time Congestion Pricing</h2>
+        <div class="meta">Sets local prices to reflect transmission congestion and incentivize local consumption/production.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Detect congested lines.</li>
+            <li>Compute local price adder proportional to congestion.</li>
+            <li>Publish prices to market participants.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: congestion adder
+double congestionAdder(double flow,double cap){ return max(0.0,(flow-cap)/cap*10); }
+</code>
+        </div>
+      </section>
+
+      <!-- 73 -->
+      <section class="card" data-title="Topology-Aware Pricing">
+        <h2>73. Topology-Aware Pricing</h2>
+        <div class="meta">Adjusts locational prices based on network topology and losses.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Compute marginal losses per node.</li>
+            <li>Adjust price to reflect marginal cost.</li>
+            <li>Update periodically with network changes.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: marginal loss adjust
+double locPrice(double base,double marginalLoss){ return base*(1+marginalLoss); }
+</code>
+        </div>
+      </section>
+
+      <!-- 74 -->
+      <section class="card" data-title="Smart Meter Anomaly Finder">
+        <h2>74. Smart Meter Anomaly Finder</h2>
+        <div class="meta">Finds anomalies in smart meter streams indicating tampering or faults.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Stream meter data.</li>
+            <li>Compute statistical anomalies.</li>
+            <li>Flag and escalate.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: simple threshold anomaly
+bool anomaly(double v,double mu,double sigma){ return fabs(v-mu)&gt;3*sigma; }
+</code>
+        </div>
+      </section>
+
+      <!-- 75 -->
+      <section class="card" data-title="Solar Soiling Estimator">
+        <h2>75. Solar Soiling Estimator</h2>
+        <div class="meta">Estimates soiling losses on panels to schedule cleaning efficiently.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Track performance decay between cleanings.</li>
+            <li>Model soiling rate by environment.</li>
+            <li>Schedule cleaning when net benefit positive.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: soiling rate calc
+double soilingRate(double loss,double days){ return loss/days; }
+</code>
+        </div>
+      </section>
+
+      <!-- 76 -->
+      <section class="card" data-title="Inverter Fleet Coordinator">
+        <h2>76. Inverter Fleet Coordinator</h2>
+        <div class="meta">Coordinates inverter setpoints across many units for grid services.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Broadcast target power/Q setpoints.</li>
+            <li>Compute allocations by capacity.</li>
+            <li>Monitor performance and adjust.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: allocate proportionally
+void allocateInv(vector&lt;int&gt;& caps,int target){ int sum=0; for(auto c:caps) sum+=c; for(auto &c:caps) c=target*c/sum; }
+</code>
+        </div>
+      </section>
+
+      <!-- 77 -->
+      <section class="card" data-title="Frequency Response Market">
+        <h2>77. Frequency Response Market</h2>
+        <div class="meta">Manages bids and activation for frequency response services.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Collect response capability bids.</li>
+            <li>Rank and procure required response volume.</li>
+            <li>Dispatch on frequency events.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: select responders until target met
+void procure(vector&lt;int&gt;& caps,int target){ sort(caps.begin(),caps.end()); int sum=0; for(auto c:caps) if(sum&lt;target) sum+=c; }
+</code>
+        </div>
+      </section>
+
+      <!-- 78 -->
+      <section class="card" data-title="Market Risk Analyzer">
+        <h2>78. Market Risk Analyzer</h2>
+        <div class="meta">Quantifies revenue exposure to price volatility for bidding strategies.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Compute historical price volatility.</li>
+            <li>Estimate value-at-risk for strategies.</li>
+            <li>Adjust bids to meet risk appetite.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: compute variance
+double variance(const vector&lt;double&gt;& v){ double m=0; for(auto x:v)m+=x; m/=v.size(); double s=0; for(auto x:v)s+=(x-m)*(x-m); return s/v.size(); }
+</code>
+        </div>
+      </section>
+
+      <!-- 79 -->
+      <section class="card" data-title="Energy Theft Hotspotter">
+        <h2>79. Energy Theft Hotspotter</h2>
+        <div class="meta">Identifies geographic clusters with high likelihood of theft.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Spatially aggregate discrepancy metrics.</li>
+            <li>Find clusters exceeding thresholds.</li>
+            <li>Prioritize inspections.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: cluster detection placeholder
+// Apply DBSCAN or grid-based clustering on discrepancy values
+</code>
+        </div>
+      </section>
+
+      <!-- 80 -->
+      <section class="card" data-title="Local Market Clearing">
+        <h2>80. Local Market Clearing</h2>
+        <div class="meta">Clears local energy markets to match local supply and demand efficiently.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Gather local bids/offers.</li>
+            <li>Sort and match supply-demand.</li>
+            <li>Set local clearing price.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: sort and match arrays
+// match buyers and sellers by price
+</code>
+        </div>
+      </section>
+
+      <!-- 81 -->
+      <section class="card" data-title="DER Fault Isolation">
+        <h2>81. DER Fault Isolation</h2>
+        <div class="meta">Isolates faulty DERs to prevent propagation of disturbances.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Detect abnormal behavior in DER outputs.</li>
+            <li>Isolate unit from network.</li>
+            <li>Log and notify operator.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: isolate unit
+void isolate(int id){ /* open switch to DER id */ }
+</code>
+        </div>
+      </section>
+
+      <!-- 82 -->
+      <section class="card" data-title="Distribution Automation Sequencer">
+        <h2>82. Distribution Automation Sequencer</h2>
+        <div class="meta">Automates switch operations for fault isolation and service restoration.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Detect fault location.</li>
+            <li>Sequence switch operations to isolate.</li>
+            <li>Re-route supply where possible.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: sequence operations list
+vector&lt;int&gt; seqOps(const vector&lt;int&gt;& ops){ return ops; }
+</code>
+        </div>
+      </section>
+
+      <!-- 83 -->
+      <section class="card" data-title="Grid Digital Twin Synchronizer">
+        <h2>83. Grid Digital Twin Synchronizer</h2>
+        <div class="meta">Keeps a real-time digital twin synchronized with physical grid state for simulation and planning.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Stream telemetry into twin.</li>
+            <li>Update models and parameters.</li>
+            <li>Run predictive simulations.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: apply update to state vector
+void updateState(vector&lt;double&gt;& state,const vector&lt;double&gt;& obs){ for(size_t i=0;i&lt;state.size();++i) state[i]=obs[i]; }
+</code>
+        </div>
+      </section>
+
+      <!-- 84 -->
+      <section class="card" data-title="Powerflow Sensitivity Analyzer">
+        <h2>84. Powerflow Sensitivity Analyzer</h2>
+        <div class="meta">Computes sensitivities of flows to injections for planning and control.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Linearize powerflow.</li>
+            <li>Compute sensitivity matrix (PTDF).</li>
+            <li>Use for congestion management.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: placeholder for sensitivity calc
+// Use powerflow solver to compute PTDF matrix
+</code>
+        </div>
+      </section>
+
+      <!-- 85 -->
+      <section class="card" data-title="Smart Islanding Thresholds">
+        <h2>85. Smart Islanding Thresholds</h2>
+        <div class="meta">Determines safe thresholds at which to island microgrids for stability.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Estimate local spinning reserve & inertia.</li>
+            <li>Compute safe island size.</li>
+            <li>Set thresholds for automatic islanding.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: threshold check
+bool safeToIsland(int reserve){ return reserve &gt;= 10; }
+</code>
+        </div>
+      </section>
+
+      <!-- 86 -->
+      <section class="card" data-title="DER Scheduling with Grid Constraints">
+        <h2>86. DER Scheduling with Grid Constraints</h2>
+        <div class="meta">Schedules DERs while respecting local network limits.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Forecast local loads & lines.</li>
+            <li>Schedule DER outputs constrained by lines.</li>
+            <li>Iterate to feasibility.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: check feasibility stub
+bool feasible(const vector&lt;int&gt;& schedule,const vector&lt;int&gt;& limits){ return true; }
+</code>
+        </div>
+      </section>
+
+      <!-- 87 -->
+      <section class="card" data-title="Customer Flex Offer Manager">
+        <h2>87. Customer Flex Offer Manager</h2>
+        <div class="meta">Manages offers from customers to provide flexibility to the grid.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Collect offers with constraints and prices.</li>
+            <li>Match offers to requests.</li>
+            <li>Notify customers of accepted offers.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: accept cheapest offers until target met
+void acceptOffers(vector&lt;pair&lt;int,double&gt;&gt;& offers,int req){ sort(offers.begin(),offers.end(),[](auto&a,auto&b){return a.second&lt;b.second;}); }
+</code>
+        </div>
+      </section>
+
+      <!-- 88 -->
+      <section class="card" data-title="Grid Cyber-Health Monitor">
+        <h2>88. Grid Cyber-Health Monitor</h2>
+        <div class="meta">Continuously evaluates cyber indicators across OT systems to detect intrusions.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Collect logs & telemetry.</li>
+            <li>Search for signatures or anomalies.</li>
+            <li>Trigger containment for confirmed incidents.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: anomaly placeholder
+bool detectIntrusion(int score,int th){ return score&gt;th; }
+</code>
+        </div>
+      </section>
+
+      <!-- 89 -->
+      <section class="card" data-title="Operational Risk Dashboard">
+        <h2>89. Operational Risk Dashboard</h2>
+        <div class="meta">Aggregates KPIs into a dashboard to support operations decision making.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Collect KPIs (voltages, reserves, line loads).</li>
+            <li>Compute risk indicators.</li>
+            <li>Visualize and alert when thresholds breached.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: compute risk index
+double riskIndex(const vector&lt;double&gt;& metrics){ double s=0; for(auto m:metrics) s+=m; return s/metrics.size(); }
+</code>
+        </div>
+      </section>
+
+      <!-- 90 -->
+      <section class="card" data-title="Local Energy Community Settlement">
+        <h2>90. Local Energy Community Settlement</h2>
+        <div class="meta">Manages billing and settlements within a local energy community (prosumers).</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Track energy flows between members.</li>
+            <li>Apply agreed tariffs/credit rules.</li>
+            <li>Produce statements and payments.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: compute member balance
+double balance(double produced,double consumed,double rate){ return produced*rate - consumed*rate; }
+</code>
+        </div>
+      </section>
+
+      <!-- 91 -->
+      <section class="card" data-title="Renewable Integration Impact Study">
+        <h2>91. Renewable Integration Impact Study</h2>
+        <div class="meta">Assesses impacts of high renewable penetration on operations and planning.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Model scenarios of penetration.</li>
+            <li>Simulate operations under scenarios.</li>
+            <li>Report constraints and upgrade needs.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: run scenario loop
+void runScenarios(int n){ for(int i=0;i&lt;n;i++){ /* simulate */ } }
+</code>
+        </div>
+      </section>
+
+      <!-- 92 -->
+      <section class="card" data-title="Load Profiling Service">
+        <h2>92. Load Profiling Service</h2>
+        <div class="meta">Generates standard load profiles for different customer classes to aid planning.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Cluster historical consumption.</li>
+            <li>Create canonical profiles per cluster.</li>
+            <li>Apply profiles to customers without detailed meters.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: simple clustering stub
+// Use k-means library or implement k-means on profiles
+</code>
+        </div>
+      </section>
+
+      <!-- 93 -->
+      <section class="card" data-title="PV Performance Benchmarking">
+        <h2>93. PV Performance Benchmarking</h2>
+        <div class="meta">Benchmarks PV plants against peers to spot underperformance.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Normalize outputs for irradiance/temperature.</li>
+            <li>Compare with peer statistical distributions.</li>
+            <li>Flag underperforming sites.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: normalized performance
+double normPerf(double output,double irradiance){ return output/irradiance; }
+</code>
+        </div>
+      </section>
+
+      <!-- 94 -->
+      <section class="card" data-title="Wind Plant Wake Optimization">
+        <h2>94. Wind Plant Wake Optimization</h2>
+        <div class="meta">Optimizes yaw/curtailment across turbines to minimize wake losses.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Model wake interactions.</li>
+            <li>Optimize yaw angles or curtailment to maximize plant output.</li>
+            <li>Iterate under wind conditions.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: yaw adjustment heuristic
+double yawAdjust(double dir,double opt){ return dir - opt; }
+</code>
+        </div>
+      </section>
+
+      <!-- 95 -->
+      <section class="card" data-title="Reactive Reserve Scheduler">
+        <h2>95. Reactive Reserve Scheduler</h2>
+        <div class="meta">Schedules reactive power reserves across devices for contingency responses.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Estimate reactive requirements under contingencies.</li>
+            <li>Reserve capacity across devices.</li>
+            <li>Deploy on events.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: reserve sum check
+bool enoughReactive(const vector&lt;int&gt;& reserves,int need){ int s=0; for(auto r:reserves) s+=r; return s&gt;=need; }
+</code>
+        </div>
+      </section>
+
+      <!-- 96 -->
+      <section class="card" data-title="DER Incentive Analyzer">
+        <h2>96. DER Incentive Analyzer</h2>
+        <div class="meta">Assesses cost-effectiveness of incentives to recruit DERs for services.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Estimate incremental participation vs incentive.</li>
+            <li>Compute cost per MW of flexibility gained.</li>
+            <li>Recommend incentive levels.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: compute cost per MW
+double costPerMW(double incentive,double mw){ return incentive/mw; }
+</code>
+        </div>
+      </section>
+
+      <!-- 97 -->
+      <section class="card" data-title="Net-zero Roadmap Planner">
+        <h2>97. Net-zero Roadmap Planner</h2>
+        <div class="meta">Plans investments and timelines to reach net-zero grid emissions.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Model decarbonization scenarios.</li>
+            <li>Prioritize investments by cost-effectiveness.</li>
+            <li>Produce timeline and milestones.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: simple project ranking by cost per ton
+double costPerTon(double cost,double reduction){ return cost/reduction; }
+</code>
+        </div>
+      </section>
+
+      <!-- 98 -->
+      <section class="card" data-title="Load Forecast Reconciliation">
+        <h2>98. Load Forecast Reconciliation</h2>
+        <div class="meta">Reconciles multiple forecasts into consensus for operations.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Collect multiple model outputs.</li>
+            <li>Compute weighted consensus based on past accuracy.</li>
+            <li>Use consensus for dispatch planning.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: weighted consensus
+double consensus(const vector&lt;double&gt;& preds,const vector&lt;double&gt;& weights){ double s=0,ws=0; for(size_t i=0;i&lt;preds.size();++i){s+=preds[i]*weights[i]; ws+=weights[i];} return s/ws;}
+</code>
+        </div>
+      </section>
+
+      <!-- 99 -->
+      <section class="card" data-title="Customer Tariff Optimizer">
+        <h2>99. Customer Tariff Optimizer</h2>
+        <div class="meta">Designs tariffs to incentivize desired load shapes while being fair.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Model customer response to tariff options.</li>
+            <li>Optimize tariffs for objectives (revenue, peak reduction).</li>
+            <li>Simulate impacts and iterate.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: evaluate revenue for a tariff
+double tariffRevenue(const vector&lt;int&gt;& usage,double rate){ double r=0; for(auto u:usage) r+=u*rate; return r; }
+</code>
+        </div>
+      </section>
+
+      <!-- 100 -->
+      <section class="card" data-title="Community Resilience Planner">
+        <h2>100. Community Resilience Planner</h2>
+        <div class="meta">Plans community-level energy resilience measures (local storage, microgrids).</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Assess critical loads and vulnerabilities.</li>
+            <li>Design local measures meeting resilience targets.</li>
+            <li>Estimate costs and prioritize.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: simple prioritization by criticality
+vector&lt;int&gt; prioritize(const vector&lt;int&gt;& critical){ return critical; }
+</code>
+        </div>
+      </section>
+
+      <!-- 101 -->
+      <section class="card" data-title="Dynamic Island Merge Manager">
+        <h2>101. Dynamic Island Merge Manager</h2>
+        <div class="meta">Manages dynamic merging of islanded areas safely as conditions improve.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Evaluate synchronization readiness.</li>
+            <li>Stepwise merge islands with checks.</li>
+            <li>Monitor stability and rollback if needed.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: merge check placeholder
+bool canMerge(double freqDiff,double Vdiff){ return fabs(freqDiff)&lt;0.1 && fabs(Vdiff)&lt;5; }
+</code>
+        </div>
+      </section>
+
+      <!-- 102 -->
+      <section class="card" data-title="DER Flexibility Valuator">
+        <h2>102. DER Flexibility Valuator</h2>
+        <div class="meta">Values flexibility offered by DERs for bidding and compensation.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Compute available shift/curtail amounts.</li>
+            <li>Estimate economic value given prices.</li>
+            <li>Report value and recommended bids.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: value calc
+double valueFlex(int kwh,double price){ return kwh*price; }
+</code>
+        </div>
+      </section>
+
+      <!-- 103 -->
+      <section class="card" data-title="Microgrid Peer Pricing">
+        <h2>103. Microgrid Peer Pricing</h2>
+        <div class="meta">Sets internal prices for energy exchanged between microgrid peers.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Determine marginal cost within microgrid.</li>
+            <li>Apply markup or social pricing rules.</li>
+            <li>Settle transactions accordingly.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: marginal cost placeholder
+double marginalCost(double genCost,double loss){ return genCost+loss; }
+</code>
+        </div>
+      </section>
+
+      <!-- 104 -->
+      <section class="card" data-title="Thermal Power Ramp Optimizer">
+        <h2>104. Thermal Power Ramp Optimizer</h2>
+        <div class="meta">Optimizes thermal unit ramps to accommodate variable renewables while minimizing wear.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Forecast net load ramping needs.</li>
+            <li>Satisfy ramp with least-cost ramping units respecting ramp limits.</li>
+            <li>Minimize start/stop cycles.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: check ramp feasibility
+bool canRamp(int availableRamp,int neededRamp){ return availableRamp&gt;=neededRamp; }
+</code>
+        </div>
+      </section>
+
+      <!-- 105 -->
+      <section class="card" data-title="Distribution Loss Reducer">
+        <h2>105. Distribution Loss Reducer</h2>
+        <div class="meta">Minimizes losses by optimizing tap settings and capacitor banks.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Measure losses under different tap/cap states.</li>
+            <li>Search configuration minimizing losses.</li>
+            <li>Apply improvements if safe.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: evaluate candidate configs
+double evaluateConfig(const vector&lt;int&gt;& config){ return 0.0; }
+</code>
+        </div>
+      </section>
+
+      <!-- 106 -->
+      <section class="card" data-title="Virtual Power Plant Manager">
+        <h2>106. Virtual Power Plant Manager</h2>
+        <div class="meta">Controls a portfolio of resources as a single flexible entity for operations and markets.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Aggregate resources and constraints.</li>
+            <li>Optimize dispatch to meet obligations.</li>
+            <li>Control units and report performance.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: aggregate and dispatch
+int vppDispatch(const vector&lt;int&gt;& caps,int req){ int s=0; for(auto c:caps) s+=c; return min(s,req); }
+</code>
+        </div>
+      </section>
+
+      <!-- 107 -->
+      <section class="card" data-title="Dispatcher Training Simulator">
+        <h2>107. Dispatcher Training Simulator</h2>
+        <div class="meta">Simulates grid events for operator training in restoration and emergencies.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Simulate plausible disturbance scenarios.</li>
+            <li>Provide interactive control tools to trainee.</li>
+            <li>Score performance and give feedback.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: scenario play stub
+void runScenario(int id){ /* run pre-canned scenario */ }
+</code>
+        </div>
+      </section>
+
+      <!-- 108 -->
+      <section class="card" data-title="Grid Emissions Reporting">
+        <h2>108. Grid Emissions Reporting</h2>
+        <div class="meta">Automates regulatory emissions reporting using measured dispatch data.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Collect dispatch records and emission factors.</li>
+            <li>Compute period emissions.</li>
+            <li>Format reports per regulation.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: sum emissions over hours
+double sumEmissions(const vector&lt;double&gt;& emissions){ double s=0; for(auto e:emissions) s+=e; return s; }
+</code>
+        </div>
+      </section>
+
+      <!-- 109 -->
+      <section class="card" data-title="Node Importance Ranker">
+        <h2>109. Node Importance Ranker</h2>
+        <div class="meta">Ranks nodes by importance (load served, criticality) for planning & protection.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Compute metrics for each node.</li>
+            <li>Aggregate into an importance score.</li>
+            <li>Rank nodes for prioritization.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: rank nodes by score
+vector&lt;int&gt; rankNodes(const vector&lt;double&gt;& score){ return vector&lt;int&gt;(); }
+</code>
+        </div>
+      </section>
+
+      <!-- 110 -->
+      <section class="card" data-title="Wholesale-Retail Coordination">
+        <h2>110. Wholesale-Retail Coordination</h2>
+        <div class="meta">Coordinates scheduling and settlements between wholesale markets and retail aggregators.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Align wholesale schedules with retail commitments.</li>
+            <li>Resolve mismatches via intra-day trades or local balancing.</li>
+            <li>Settle financial differences.</li>
+          </ol>
+        </div>
+        <div class="btn-row"><button class="btn" onclick="toggleCode(this)">View Code</button></div>
+        <div class="code-panel">
+<code>// C++: reconcile schedules (simplified)
+void reconcile(int wholesale,int retail){ int diff = wholesale - retail; /* adjust via local actions */ }
+</code>
+        </div>
+      </section>
 
     </div>
 
-    <footer>© 2025 AI Powerhouse — All Rights Reserved</footer>
+    <footer>
+      Powered by POWERHOUSE &amp; RENEWABLE ENERGY SYSTEM — 110 Ideas (C++ snippets hidden by default).
+    </footer>
   </div>
 
-  <!-- JAVASCRIPT -->
   <script>
-    // Toggle code panel
-    function toggleCode(btn) {
-      const panel = btn.parentElement.nextElementSibling;
-      panel.classList.toggle("show");
-      btn.textContent = panel.classList.contains('show') ? "Hide Code" : "View Code";
+    // Toggle code panel visibility
+    function toggleCode(btn){
+      const card = btn.closest('.card');
+      const panel = card.querySelector('.code-panel');
+      if(!panel) return;
+      panel.classList.toggle('show');
+      btn.innerText = panel.classList.contains('show') ? 'Hide Code' : 'View Code';
     }
 
-    // Copy snippet
-    function copySnippet(btn) {
-      const code = btn.parentElement.nextElementSibling.querySelector("code").innerText;
-      navigator.clipboard.writeText(code);
-      btn.textContent = "Copied!";
-      setTimeout(()=>btn.textContent="Copy Snippet",1200);
-    }
-
-    // Search filter
-    document.getElementById("search").addEventListener("input", function () {
-      const q = this.value.toLowerCase();
-      document.querySelectorAll(".card").forEach(card=>{
-        const title = card.getAttribute("data-title").toLowerCase();
-        card.style.display = title.includes(q) ? "block" : "none";
+    // Search/filter by data-title (case-insensitive)
+    document.getElementById('search').addEventListener('input', function(e){
+      const q = e.target.value.toLowerCase();
+      document.querySelectorAll('#grid .card').forEach(card=>{
+        const title = (card.getAttribute('data-title')||'').toLowerCase();
+        const text = card.innerText.toLowerCase();
+        if(title.includes(q) || text.includes(q)) card.style.display='';
+        else card.style.display='none';
       });
     });
   </script>
-
 </body>
 </html>
