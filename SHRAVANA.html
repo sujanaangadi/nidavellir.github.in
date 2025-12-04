@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI POWERHOUSE & RENEWABLE ENERGY — Ideas (HTML)</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#00c2a8;--muted:#94a3b8;--glass:rgba(255,255,255,0.03)}
+    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial}
+    body{background:linear-gradient(180deg,#071428 0%, #07192b 60%);color:#e6eef6;padding:28px}
+    .container{max-width:1100px;margin:0 auto}
+    header{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+    h1{font-size:20px;margin:0}
+    p.lead{margin:0;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:18px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03));border-radius:12px;padding:16px;box-shadow:0 6px 18px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+    .card h2{margin:0 0 8px 0;font-size:16px;color:var(--accent)}
+    .meta{color:var(--muted);font-size:13px;margin-bottom:10px}
+    pre{background:var(--glass);padding:12px;border-radius:8px;overflow:auto;color:#dffcf0;font-size:13px}
+    code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono',Courier New,monospace}
+    .alg{margin:8px 0 12px 0}
+    .btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 10px;border-radius:8px;color:var(--accent);cursor:pointer;font-weight:600}
+    .full{grid-column:1/ -1}
+    footer{margin-top:22px;color:var(--muted);font-size:13px}
+    @media (max-width:880px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>AI Powerhouse & Renewable Energy — Ideas</h1>
+        <p class="lead">Short descriptions, algorithms and Python-style code snippets for a solar + wind + powerhouse city.</p>
+      </div>
+    </header>
+
+    <div class="grid">
+      <!-- 1 -->
+      <section class="card">
+        <h2>1. AI Smart Power Distribution Controller</h2>
+        <div class="meta">Decides how much power to send to homes, factories & EV stations based on demand.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Collect demand from residential + industrial areas.</li>
+            <li>Check current solar + wind + powerhouse generation.</li>
+            <li>Distribute supply where demand &gt; priority.</li>
+            <li>Prevent overload using threshold control.</li>
+          </ol>
+        </div>
+        <pre><code># Sample Code
+total_energy = solar + wind + powerhouse
+if demand_homes + demand_industry <= total_energy:
+    supply("homes", demand_homes)
+    supply("industry", demand_industry)
+else:
+    supply("homes", demand_homes)
+    supply("industry", total_energy - demand_homes)
+</code></pre>
+        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
+      </section>
+
+      <!-- 2 -->
+      <section class="card">
+        <h2>2. Solar Panel Efficiency Analyzer</h2>
+        <div class="meta">AI analyzes solar panels on each house and predicts cleaning/repair dates.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Read solar output from each house daily.</li>
+            <li>Compare with expected output based on sunlight.</li>
+            <li>If efficiency drops → send alert to schedule maintenance.</li>
+          </ol>
+        </div>
+        <pre><code># Sample Code
+efficiency = actual_output / expected_output * 100
+if efficiency &lt; 75:
+    alert("Low Solar Efficiency — Cleaning Needed")
+</code></pre>
+        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
+      </section>
+
+      <!-- 3 -->
+      <section class="card">
+        <h2>3. Wind Turbine Smart RPM Controller</h2>
+        <div class="meta">Adjusts blade angle automatically to get maximum output from wind speed.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Read wind speed every second.</li>
+            <li>Predict best RPM using regression model.</li>
+            <li>Change blade angle to achieve predicted RPM.</li>
+          </ol>
+        </div>
+        <pre><code># Sample Code
+ideal_rpm = model.predict([[wind_speed]])
+set_blade_angle(ideal_rpm)
+</code></pre>
+        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
+      </section>
+
+      <!-- 4 -->
+      <section class="card">
+        <h2>4. AI-Based Battery Storage Optimization</h2>
+        <div class="meta">Stores extra solar/wind energy in batteries and uses it during peak hours.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Monitor grid load.</li>
+            <li>If generation &gt; demand → charge battery.</li>
+            <li>If demand &gt; generation → discharge battery.</li>
+          </ol>
+        </div>
+        <pre><code># Sample Code
+if generation &gt; demand:
+    battery.charge(generation - demand)
+else:
+    battery.discharge(demand - generation)
+</code></pre>
+        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
+      </section>
+
+      <!-- 5 -->
+      <section class="card">
+        <h2>5. Power Theft / Illegal Connection Detection</h2>
+        <div class="meta">Detects electricity theft using abnormal usage patterns.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Compare billed usage vs sensor usage.</li>
+            <li>Sudden spikes → mark suspicious.</li>
+            <li>Send report to grid admin.</li>
+          </ol>
+        </div>
+        <pre><code># Sample Code
+if sensor_units - billed_units &gt; 50:
+    report("Possible Power Theft at House", house_id)
+</code></pre>
+        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
+      </section>
+
+      <!-- 6 -->
+      <section class="card">
+        <h2>6. Energy Emergency Auto-Switching</h2>
+        <div class="meta">During storms or grid failure, system switches supply to stored battery energy.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Monitor grid voltage.</li>
+            <li>If voltage &lt; danger limit → disconnect grid.</li>
+            <li>Switch to local battery / backup storage.</li>
+          </ol>
+        </div>
+        <pre><code># Sample Code
+if voltage &lt; 200:
+    switch_to_battery()
+</code></pre>
+        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
+      </section>
+
+      <!-- 7 -->
+      <section class="card">
+        <h2>7. City-Wide Energy Demand Predictor</h2>
+        <div class="meta">Predicts next day’s power need based on weather + factory workload + temperature.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Take historical demand database.</li>
+            <li>Train time-series ML model.</li>
+            <li>Predict future peak load.</li>
+          </ol>
+        </div>
+        <pre><code># Sample Code
+predicted_load = model.forecast(24)
+print("Tomorrow Expected Demand:", predicted_load)
+</code></pre>
+        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
+      </section>
+
+      <!-- 8 -->
+      <section class="card">
+        <h2>8. Real-Time Electricity Price Optimizer</h2>
+        <div class="meta">AI adjusts electricity charges depending on peak and off-peak hours.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>If demand → high → price increases slightly.</li>
+            <li>If demand → low → reduced pricing.</li>
+            <li>Notify user via app.</li>
+          </ol>
+        </div>
+        <pre><code># Sample Code
+price = base_rate + (demand / max_capacity) * 2
+</code></pre>
+        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
+      </section>
+
+      <!-- 9 -->
+      <section class="card">
+        <h2>9. House-to-House Energy Sharing (Peer-to-Peer Grid)</h2>
+        <div class="meta">If one house produces more solar energy than needed, it transfers to neighbors.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Compare production vs consumption of each house.</li>
+            <li>Houses with surplus transfer to deficit houses.</li>
+            <li>Track credits digitally.</li>
+          </ol>
+        </div>
+        <pre><code># Sample Code
+surplus = production - consumption
+if surplus &gt; 0:
+    share_energy(neighbour_house_id, surplus)
+</code></pre>
+        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
+      </section>
+
+      <!-- 10 -->
+      <section class="card">
+        <h2>10. Smart Load Control Inside Homes & Factories</h2>
+        <div class="meta">Turns off low-priority devices automatically when city demand is high.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Monitor city peak load time.</li>
+            <li>Classify appliances: high priority / low priority.</li>
+            <li>Turn off low-priority loads during peak.</li>
+          </ol>
+        </div>
+        <pre><code># Sample Code
+if grid_load &gt; limit:
+    turn_off("heater")
+    turn_off("washing_machine")
+</code></pre>
+        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
+      </section>
+
+      <!-- 11 -->
+      <section class="card">
+        <h2>11. AI-Based Microgrid Islanding System</h2>
+        <div class="meta">Automatically separates a microgrid during faults, keeping power ON locally.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Monitor main grid stability (frequency + voltage).</li>
+            <li>Detect fault conditions or instability.</li>
+            <li>Automatically isolate microgrid using switches.</li>
+            <li>Use local solar + wind + battery to keep supply stable.</li>
+            <li>Reconnect when grid becomes stable.</li>
+          </ol>
+        </div>
+        <pre><code># Sample Code
+if grid_frequency &lt; 48 or voltage &lt; 190:
+    isolate_microgrid()
+else:
+    reconnect_to_main_grid()
+</code></pre>
+        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
+      </section>
+
+      <!-- 12 -->
+      <section class="card">
+        <h2>12. Predictive Maintenance for Transformers & Powerhouse Machines</h2>
+        <div class="meta">AI predicts failure of transformers, generators, and inverters.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Collect temperature, vibration, current readings.</li>
+            <li>Run anomaly detection model.</li>
+            <li>Predict failure probability.</li>
+            <li>Generate maintenance task if risk &gt; threshold.</li>
+          </ol>
+        </div>
+        <pre><code># Sample Code
+risk = model.predict([temp, vibration, load])
+if risk &gt; 0.80:
+    schedule_maintenance("Transformer")
+</code></pre>
+        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
+      </section>
+
+      <!-- 13 -->
+      <section class="card">
+        <h2>13. AI Dynamic Load Balancer for City Zones</h2>
+        <div class="meta">Balances power loads between city sectors to prevent blackouts.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Detect overloaded zones.</li>
+            <li>Check spare capacity in other zones.</li>
+            <li>Redirect energy using smart-switch routing.</li>
+          </ol>
+        </div>
+        <pre><code># Sample Code
+if load_zoneA &gt; limit:
+    transfer_power("ZoneB", "ZoneA", 200)
+</code></pre>
+        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
+      </section>
+
+      <!-- 14 -->
+      <section class="card">
+        <h2>14. Renewable Energy Forecasting System</h2>
+        <div class="meta">Predict next day’s solar + wind generation.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Collect weather forecast (sunlight, wind speed).</li>
+            <li>Use ML model to predict energy production.</li>
+            <li>Adjust powerhouse production accordingly.</li>
+          </ol>
+        </div>
+        <pre><code># Sample Code
+solar_prediction = solar_model.forecast(weather)
+wind_prediction = wind_model.forecast(wind_speed)
+</code></pre>
+        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
+      </section>
+
+      <!-- 15 -->
+      <section class="card">
+        <h2>15. AI-Controlled EV Charging Stations</h2>
+        <div class="meta">Controls EV charging speed to avoid overloading the grid.</div>
+        <div class="alg"><strong>Algorithm:</strong>
+          <ol>
+            <li>Get current grid load.</li>
+            <li>If peak load → slow charging.</li>
+            <li>Schedule charging during low-demand windows.</li>
+          </ol>
+        </div>
+        <pre><code># Sample Code
+if grid_load &gt; peak_limit:
+    set_charging_rate(ev_id, "slow")
+else:
+    set_charging_rate(ev_id, "fast")
+</code></pre>
+        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
+      </section>
+
+      <section class="card full">
+        <h2>How to use</h2>
+        <p class="meta">Each card contains a short description, an algorithm outline and a Python-style snippet. Use the copy buttons to copy the snippet into your editor. This file is standalone and easy to extend.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+          <button class="btn" onclick="expandAll()">Expand All (no-op here)</button>
+          <button class="btn" onclick="downloadHTML()">Download HTML</button>
+        </div>
+      </section>
+
+    </div>
+
+    <footer>
+      Generated: AI Powerhouse & Renewable Energy — ideas (HTML). Edit or ask for additional export formats (PDF, Markdown, React component).
+    </footer>
+  </div>
+
+  <script>
+    function copyCode(btn){
+      const pre = btn.closest('.card').querySelector('pre');
+      if(!pre) return;
+      const text = pre.innerText;
+      navigator.clipboard.writeText(text).then(()=>{
+        const old = btn.innerText;
+        btn.innerText = 'Copied ✓';
+        setTimeout(()=> btn.innerText = old, 1500);
+      });
+    }
+    function downloadHTML(){
+      const html = document.documentElement.outerHTML;
+      const blob = new Blob([html], {type: 'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'ai-powerhouse-ideas.html';
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+    }
+    function expandAll(){alert('All cards are already shown.');}
+  </script>
+</body>
+</html>
