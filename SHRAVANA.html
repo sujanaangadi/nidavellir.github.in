@@ -5,36 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>POWERHOUSE & RENEWABLE ENERGY SYSTEM</title>
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background: #f7f9fc;
-        padding: 40px;
-        line-height: 1.6;
-    }
-    h1 {
-        font-size: 32px;
-        margin-bottom: 20px;
-        color: #1a1a1a;
-    }
-    h2 {
-        margin-top: 30px;
-        color: #1a1a1a;
-    }
-    .tag {
-        display: inline-block;
-        padding: 4px 10px;
-        border-radius: 6px;
-        font-size: 14px;
-        margin-bottom: 6px;
-        color: #000;
-    }
-    .card {
-        background: white;
-        padding: 20px;
-        margin: 20px 0;
-        border-radius: 12px;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#00c2a8;--muted:#94a3b8;--glass:rgba(255,255,255,0.03)}
+    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial}
+    body{background:linear-gradient(180deg,#071428 0%, #07192b 60%);color:#e6eef6;padding:28px}
+    .container{max-width:1400px;margin:0 auto}
+    header{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+    h1{font-size:20px;margin:0}
+    p.lead{margin:0;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:18px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03));border-radius:12px;padding:16px;box-shadow:0 6px 18px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+    .card h2{margin:0 0 8px 0;font-size:16px;color:var(--accent);cursor:pointer}
+    .meta{color:var(--muted);font-size:13px;margin-bottom:10px}
+    .hidden-code{display:none;background:var(--glass);padding:12px;border-radius:8px;font-size:13px;color:#dffcf0;white-space:pre-wrap;margin-top:10px}
+    @media (max-width:880px){.grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -114,5 +97,11 @@
     <p>Analyzing peak electricity consumption periods and redistributing power intelligently across substations to prevent overload, maintain stability, and reduce blackout risks.</p>
 </div>
 
+<script>
+function toggleCode(id){
+  const el=document.getElementById(id);
+  el.style.display = el.style.display==='block' ? 'none':'block';
+}
+</script>
 </body>
 </html>
