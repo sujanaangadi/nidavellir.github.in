@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAXMI</title>
+
+    <style>
+        /* ---------- NAVIGATION BAR --------- */
+        .navbar {
+            width: 100%;
+            background: #8be0ff;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        .navbar .logo {
+            font-size: 28px;
+            font-weight: 700;
+            margin-right: 40px;
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* ---------- PAGE CONTENT STYLING --------- */
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .content {
+            width: 80%;
+            background: #001f4d; /* Dark blue background */
+            color: white; /* White text */
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 10px;
+            font-size: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        .content h2, .content h3, .content h4 {
+            color: #a0e1ff; /* Light blue headings for contrast */
+        }
+
+        .content ul, .content p {
+            line-height: 1.6;
+        }
+
+        .content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            color: white;
+        }
+
+        .content table th, .content table td {
+            padding: 10px;
+            border: 1px solid white;
+        }
+
+        .content table th {
+            background-color: #003366;
+        }
+
+        .title-box {
+            width: 80%;
+            background: black;
+            color: #3cb371;  
+            font-size: 40px;
+            font-weight: bold;
+            margin: 180px auto 40px auto;
+            text-align: center;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        /* Optional: make links inside content stand out */
+        .content a {
+            color: #ffcc00;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ------------------ NAVBAR ------------------ -->
+    <div class="navbar">
+        <div class="logo">CITY DESIGN</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="project.html">Project</a></li>
+            <li><a href="SHRAVANA.html">SHRAVANA</a></li>
+            <li><a href="SUJANA.html">SUJANA</a></li>
+            <li><a href="KHUSHI.html">KHUSHI</a></li>
+            <li><a href="LAXMI.html">LAXMI</a></li>
+            <li><a href="collabz.html">Collabz</a></li>
+        </ul>
+    </div>
+
+    <!-- MAIN TITLE -->
+    <div class="title-box">DESIGN & ANALYSIS OF ALGORITHMS</div>
+
+    <!-- ------------------ SECTION 1 ------------------ -->
+    <div class="content">
+        <h2>What is the course about?</h2>
+        <p>The Design and Analysis of Algorithms (DAA) course is about developing a deep understanding of how algorithms work, how they are designed, and how they can be optimized for efficiency.</p>
+        <ul>
+            <li>The systematic design of algorithms</li>
+            <li>Time & space complexity</li>
+            <li>Greedy, Divide-and-Conquer, Dynamic Programming</li>
+            <li>Graph algorithms</li>
+            <li>Optimization techniques</li>
+        </ul>
+    </div>
+
+    <!-- ------------------ SECTION 2 ------------------ -->
+    <div class="content">
+        <h3>Connection with the real world</h3>
+        <p><strong>What data structures and algorithms did I study?</strong></p>
+        <p>During the course I explored a variety of data structures and algorithms, including:</p>
+
+        <div style="display:flex;gap:40px;flex-wrap:wrap;">
+            <div style="min-width:240px">
+                <h4>Data Structures</h4>
+                <ul>
+                    <li>Arrays, Linked Lists</li>
+                    <li>Stacks, Queues</li>
+                    <li>Trees, Graphs</li>
+                    <li>Hash Tables</li>
+                </ul>
+            </div>
+
+            <div style="min-width:240px">
+                <h4>Algorithms</h4>
+                <ul>
+                    <li>Sorting: Merge Sort, Quick Sort</li>
+                    <li>Graph: Dijkstra’s, Kruskal’s</li>
+                    <li>String matching: Rabin–Karp, Boyer–Moore</li>
+                </ul>
+            </div>
+        </div>
+
+        <p>This course is an essential foundation for software engineering, competitive programming, and machine learning — it builds efficient problem-solving skills.</p>
+    </div>
+
+    <!-- ------------------ SECTION 3 ------------------ -->
+    <div class="content">
+        <h3>Course Reflections</h3>
+
+        <h4>1. Natural Problem Patterns</h4>
+        <p><strong>Iteration</strong></p>
+        <ul>
+            <li>Daily routine</li>
+            <li>Game turns</li>
+            <li>Practice loops</li>
+        </ul>
+
+        <p><strong>Recursion</strong></p>
+        <ul>
+            <li>Tree growth</li>
+            <li>Fractal patterns</li>
+            <li>Nested structures</li>
+        </ul>
+
+        <p><strong>Backtracking</strong></p>
+        <ul>
+            <li>Finding locations</li>
+            <li>Sudoku solving</li>
+            <li>Trying alternatives</li>
+        </ul>
+    </div>
+
+    <!-- ------------------ SECTION 4 ------------------ -->
+    <div class="content">
+        <h3>Time & Space Efficiency</h3>
+        <p>Algorithms are measured by how efficiently they use time and memory. Time complexity measures the number of operations, while space complexity measures memory usage.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Order</th>
+                    <th>Time Complexity</th>
+                    <th>Space Complexity</th>
+                    <th>Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>O(1)</td>
+                    <td>Constant</td>
+                    <td>Minimal</td>
+                    <td>Accessing array element</td>
+                </tr>
+                <tr>
+                    <td>O(log n)</td>
+                    <td>Logarithmic</td>
+                    <td>Low</td>
+                    <td>Binary search</td>
+                </tr>
+                <tr>
+                    <td>O(n)</td>
+                    <td>Linear</td>
+                    <td>Moderate</td>
+                    <td>Linear search</td>
+                </tr>
+                <tr>
+                    <td>O(n²)</td>
+                    <td>Quadratic</td>
+                    <td>High</td>
+                    <td>Bubble sort</td>
+                </tr>
+                <tr>
+                    <td>O(2ⁿ)</td>
+                    <td>Exponential</td>
+                    <td>Very High</td>
+                    <td>Brute-force TSP</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ------------------ SECTION 5 ------------------ -->
+    <div class="content">
+        <h3>Hierarchical Data & Tree Structures</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tree Type</th>
+                    <th>Best For</th>
+                    <th>Strength</th>
+                    <th>Limitation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>BST</td>
+                    <td>Sorted data, moderate updates</td>
+                    <td>Simple structure</td>
+                    <td>Can become unbalanced</td>
+                </tr>
+                <tr>
+                    <td>AVL Tree</td>
+                    <td>Frequent lookups</td>
+                    <td>Guaranteed balance</td>
+                    <td>Costly rotations</td>
+                </tr>
+                <tr>
+                    <td>2-3 Tree</td>
+                    <td>Predictable performance</td>
+                    <td>Consistent height</td>
+                    <td>Implementation complexity</td>
+                </tr>
+                <tr>
+                    <td>Red-Black Tree</td>
+                    <td>Dynamic datasets</td>
+                    <td>Fewer rotations</td>
+                    <td>Slightly less balanced</td>
+                </tr>
+                <tr>
+                    <td>Heap</td>
+                    <td>Priority-based operations</td>
+                    <td>Efficient min/max</td>
+                    <td>Not for general search</td>
+                </tr>
+                <tr>
+                    <td>Trie</td>
+                    <td>Strings & prefix searches</td>
+                    <td>Fast prefix search</td>
+                    <td>High memory usage</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ------------------ SECTION 6 ------------------ -->
+    <div class="content">
+        <h3>Array Query Algorithms</h3>
+        <p><strong>Principles:</strong> Divide and conquer, dynamic programming, optimization.</p>
+        <p><strong>Purpose:</strong> Efficiently retrieve, manipulate, or analyze large datasets.</p>
+        <ul>
+            <li>Binary Index Tree: O(log n), for sorted arrays.</li>
+            <li>Sliding Window: O(n), for overlapping subarray analysis.</li>
+            <li>Segment Tree: O(log n), for range queries.</li>
+        </ul>
+    </div>
+
+    <!-- ------------------ SECTION 7 ------------------ -->
+    <div class="content">
+        <h3>Trees and Graphs</h3>
+        <p><strong>Difference:</strong></p>
+        <ul>
+            <li>Tree: Hierarchical, no cycles. Example: File system.</li>
+            <li>Graph: Can have cycles, flexible connections. Example: City map.</li>
+        </ul>
+
+        <p><strong>Tree Traversals:</strong></p>
+        <ul>
+            <li>In-Order: Left → Node → Right (sorting)</li>
+            <li>Pre-Order: Node → Left → Right (copying)</li>
+            <li>Post-Order: Left → Right → Node (deletion)</li>
+            <li>Level-Order (BFS): Visit nodes level by level</li>
+        </ul>
+
+        <p><strong>Graph Traversals:</strong></p>
+        <ul>
+            <li>DFS: Go deep before backtracking (maze solving)</li>
+            <li>BFS: Explore level by level (shortest paths)</li>
+        </ul>
+
+        <p><strong>Applications:</strong></p>
+        <ul>
+            <li>Trees: File systems, decision trees, databases</li>
+            <li>Graphs: Social networks, GPS navigation, web crawlers</li>
+        </ul>
+    </div>
+
+    <!-- ------------------ SECTION 8 ------------------ -->
+    <div class="content">
+        <h3>Sorting & Searching Algorithms</h3>
+        <h4>Sorting</h4>
+        <ul>
+            <li>Bubble Sort: Swap adjacent items. Small datasets.</li>
+            <li>Selection Sort: Pick smallest each time. Minimizes swaps.</li>
+            <li>Insertion Sort: Insert items in correct position. Nearly sorted data.</li>
+            <li>Merge Sort: Divide and merge. Large datasets.</li>
+            <li>Quick Sort: Pivot-based divide. Fast for large data.</li>
+            <li>Heap Sort: Uses heap structure. Efficient for priority queues.</li>
+        </ul>
+        <h4>Searching</h4>
+        <ul>
+            <li>Linear Search: Check each item sequentially.</li>
+            <li>Binary Search: Divide and conquer on sorted data.</li>
+            <li>BFS/DFS: Shortest path or complete exploration in graphs.</li>
+        </ul>
+    </div>
+
+    <!-- ------------------ SECTION 9 ------------------ -->
+    <div class="content">
+        <h3>Graph Algorithms: Shortest Paths & Spanning Trees</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Algorithm</th>
+                    <th>Purpose</th>
+                    <th>Use Case</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Dijkstra</td>
+                    <td>Single-source shortest path</td>
+                    <td>Weighted graphs, navigation</td>
+                </tr>
+                <tr>
+                    <td>Floyd-Warshall</td>
+                    <td>All-pairs shortest paths</td>
+                    <td>Dense graphs</td>
+                </tr>
+                <tr>
+                    <td>Prim</td>
+                    <td>Minimum Spanning Tree</td>
+                    <td>Network design</td>
+                </tr>
+                <tr>
+                    <td>Kruskal</td>
+                    <td>Minimum Spanning Tree</td>
+                    <td>Cost optimization</td>
+                </tr>
+                <tr>
+                    <td>Bellman-Ford</td>
+                    <td>Shortest paths with negative weights</td>
+                    <td>Graphs with negative edges</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Algorithm Design Techniques</h3>
+        <ul>
+            <li>Brute Force: Try all solutions. Simple but slow.</li>
+            <li>Divide & Conquer: Split, solve, combine (Merge Sort, Quick Sort).</li>
+            <li>Decrease & Conquer: Solve smaller instance and build up (Insertion Sort).</li>
+            <li>Transform & Conquer: Simplify problem for efficiency (Binary Search).</li>
+            <li>Greedy Algorithm: Locally optimal choices for global optimum (Huffman Coding).</li>
+        </ul>
+
+        <h4>Special Algorithms</h4>
+        <ul>
+            <li>Boyer-Moore / Rabin-Karp: Efficient string searching.</li>
+            <li>Dijkstra / Floyd-Warshall: Shortest paths.</li>
+            <li>Kruskal / Prim: Minimum Spanning Tree.</li>
+            <li>Warshall: Transitive closure in graphs.</li>
+        </ul>
+    </div>
+
+</body>
+</html>
