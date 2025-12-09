@@ -13,43 +13,18 @@
         color: #2c2345;
     }
 
-    /* ---------- NAVBAR ---------- */
-    .navbar {
-        width: 100%;
-        background: #3b1c80; 
-        padding: 16px 40px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        color: #fff;
-        font-weight: bold;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.25);
-        letter-spacing: 1px;
-    }
-
-    .navbar a {
-        text-decoration: none;
-        color: #e5d8ff;
-        margin-left: 20px;
-        font-size: 17px;
-    }
-
-    .navbar a:hover {
-        color: #ffffff;
-    }
-
-    /* HEADER */
+    /* HEADER SECTION (no navbar now) */
     .header-section {
         width: 90%;
         margin: auto;
         margin-top: 25px;
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        gap: 20px;
     }
 
     .header-section img {
-        width: 260px;
+        width: 250px;
         border-radius: 12px;
     }
 
@@ -60,7 +35,7 @@
         letter-spacing: 1px;
     }
 
-    /* EXPLANATION */
+    /* EXPLANATION BOX */
     .explain {
         width: 90%;
         margin: auto;
@@ -73,24 +48,16 @@
         font-size: 16px;
     }
 
-    /* MAIN GRID */
-    .main {
+    /* GRID FOR IDEAS */
+    .container {
         width: 90%;
         margin: auto;
         margin-top: 25px;
         display: grid;
-        grid-template-columns: 2fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
         grid-gap: 25px;
     }
 
-    /* CARD GRID */
-    .container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        grid-gap: 25px;
-    }
-
-    /* CARD STYLE */
     .card {
         background: #ffffff;
         padding: 25px;
@@ -106,10 +73,9 @@
     }
 
     .card h3 {
-        margin: 0;
         color: #3b1c80;
-        margin-bottom: 10px;
         font-size: 20px;
+        margin-top: 0;
     }
 
     .algo-btn {
@@ -117,9 +83,9 @@
         background: #3b1c80;
         padding: 8px 16px;
         color: white;
-        font-weight: bold;
-        border-radius: 6px;
         display: inline-block;
+        border-radius: 6px;
+        font-weight: bold;
         cursor: pointer;
         font-size: 14px;
     }
@@ -133,269 +99,165 @@
         display: none;
         color: #3b1c80;
     }
-
 </style>
 
 <script>
 function toggleAlgo(id) {
     const box = document.getElementById(id);
-    box.style.display = box.style.display === "block" ? "none" : "block";
+    box.style.display = (box.style.display === "block") ? "none" : "block";
 }
 </script>
 
 </head>
 <body>
 
-<!-- NAVBAR -->
-<div class="navbar">
-    <div>INDUSTRY BUSINESS IDEAS</div>
-    <div>
-        <a href="#">Home</a>
-        <a href="#">Projects</a>
-        <a href="#">Industry</a>
-        <a href="#">Team</a>
-    </div>
-</div>
-
-<!-- HEADER WITH IMAGE -->
+<!-- HEADER SECTION -->
 <div class="header-section">
     <h2 class="title">Industry Business Ideas</h2>
 
-    <!-- FIXED IMAGE URL -->
-    <img src="https://cdn-icons-png.flaticon.com/512/9069/9069276.png">
+    <!-- Correct AI Industry Image -->
+    <img src="https://cdn-icons-png.flaticon.com/512/1048/1048953.png">
 </div>
 
 <!-- PROJECT EXPLANATION -->
 <div class="explain">
-This project presents 10 innovative industry automation ideas using simple algorithms and 
-C++ programs. Each idea demonstrates real-world applications of automation, monitoring, 
-safety, and optimization in modern industries.
+This project presents 10 innovative industry automation ideas using simple algorithms
+and C++ programs. The solutions demonstrate quality control, worker safety, predictive
+maintenance, sorting automation, smart inventory, pollution monitoring, delay prediction,
+and more. Each idea combines engineering concepts with algorithmic thinking.
 </div>
 
-<!-- MAIN GRID START -->
-<div class="main">
-
-<!-- LEFT SIDE — IDEAS START -->
+<!-- IDEAS GRID START -->
 <div class="container">
 
-<!-- IDEA 1 -->
-<div class="card">
-<h3>1) Smart Textile Quality Detector</h3>
-<p><b>Algorithm Used:</b> Threshold-Based Defect Detection</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Industry Business Ideas</title>
 
-<span class="algo-btn" onclick="toggleAlgo('alg1')">Show Algorithm</span>
-<pre id="alg1">
-for each sensor_value:
-    if |value - expected| > threshold:
-         mark defect
-</pre>
-
-<b>C++ Code:</b>
-<pre>
-#include <iostream>
-#include <cmath>
-using namespace std;
-
-int main() {
-    int expected = 100, threshold = 20;
-    int fabric[6] = {100, 102, 98, 150, 101, 99};
-
-    for(int i=0; i<6; i++){
-        if(abs(fabric[i] - expected) > threshold)
-            cout << "Defect at position " << i << endl;
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f2f2f7; 
+        color: #2c2345;
     }
+
+    /* HEADER SECTION (no navbar now) */
+    .header-section {
+        width: 90%;
+        margin: auto;
+        margin-top: 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header-section img {
+        width: 250px;
+        border-radius: 12px;
+    }
+
+    .title {
+        font-size: 38px;
+        font-weight: bold;
+        color: #3b1c80;
+        letter-spacing: 1px;
+    }
+
+    /* EXPLANATION BOX */
+    .explain {
+        width: 90%;
+        margin: auto;
+        margin-top: 10px;
+        background: #ede7ff;
+        padding: 18px;
+        border-left: 5px solid #3b1c80;
+        border-radius: 8px;
+        color: #2c2345;
+        font-size: 16px;
+    }
+
+    /* GRID FOR IDEAS */
+    .container {
+        width: 90%;
+        margin: auto;
+        margin-top: 25px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 25px;
+    }
+
+    .card {
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 12px;
+        border-left: 5px solid #3b1c80;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .card h3 {
+        color: #3b1c80;
+        font-size: 20px;
+        margin-top: 0;
+    }
+
+    .algo-btn {
+        margin-top: 12px;
+        background: #3b1c80;
+        padding: 8px 16px;
+        color: white;
+        display: inline-block;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    pre {
+        background: #f0f4ff;
+        padding: 12px;
+        border-radius: 8px;
+        margin-top: 10px;
+        overflow-x: auto;
+        display: none;
+        color: #3b1c80;
+    }
+</style>
+
+<script>
+function toggleAlgo(id) {
+    const box = document.getElementById(id);
+    box.style.display = (box.style.display === "block") ? "none" : "block";
 }
-</pre>
+</script>
+
+</head>
+<body>
+
+<!-- HEADER SECTION -->
+<div class="header-section">
+    <h2 class="title">Industry Business Ideas</h2>
+
+    <!-- Correct AI Industry Image -->
+    <img src="https://cdn-icons-png.flaticon.com/512/1048/1048953.png">
 </div>
 
-
-
-<!-- IDEA 2 -->
-<div class="card">
-<h3>2) AI Worker Safety Monitoring</h3>
-<p><b>Algorithm Used:</b> Acceleration Limit Check</p>
-
-<span class="algo-btn" onclick="toggleAlgo('alg2')">Show Algorithm</span>
-<pre id="alg2">
-if acceleration > safe_limit:
-    alert("Unsafe movement detected")
-</pre>
-
-<b>C++ Code:</b>
-<pre>
-#include <iostream>
-using namespace std;
-
-int main(){
-    float accel;
-    cout << "Enter worker acceleration: ";
-    cin >> accel;
-
-    if(accel > 15)
-        cout << "Unsafe Movement!";
-    else
-        cout << "Safe.";
-}
-</pre>
+<!-- PROJECT EXPLANATION -->
+<div class="explain">
+This project presents 10 innovative industry automation ideas using simple algorithms
+and C++ programs. The solutions demonstrate quality control, worker safety, predictive
+maintenance, sorting automation, smart inventory, pollution monitoring, delay prediction,
+and more. Each idea combines engineering concepts with algorithmic thinking.
 </div>
 
-
-
-<!-- IDEA 3 -->
-<div class="card">
-<h3>3) Predictive Machine Maintenance</h3>
-<p><b>Algorithm Used:</b> Vibration Anomaly Detection</p>
-
-<span class="algo-btn" onclick="toggleAlgo('alg3')">Show Algorithm</span>
-<pre id="alg3">
-if vibration > failure_threshold:
-    predict failure
-</pre>
-
-<b>C++ Code:</b>
-<pre>
-#include <iostream>
-using namespace std;
-
-int main(){
-    float vibration;
-    cout << "Enter vibration value: ";
-    cin >> vibration;
-
-    if(vibration > 80)
-        cout << "Failure Predicted!";
-    else
-        cout << "Machine Normal.";
-}
-</pre>
-</div>
-
-
-
-<!-- IDEA 4 -->
-<div class="card">
-<h3>4) Autonomous Material Sorting Robot</h3>
-<p><b>Algorithm Used:</b> Weight-Based Sorting</p>
-
-<span class="algo-btn" onclick="toggleAlgo('alg4')">Show Algorithm</span>
-<pre id="alg4">
-if weight < 1 → Bin A
-else if weight < 5 → Bin B
-else → Bin C
-</pre>
-
-<b>C++ Code:</b>
-<pre>
-#include <iostream>
-using namespace std;
-
-int main(){
-    float w;
-    cout << "Enter item weight: ";
-    cin >> w;
-
-    if(w < 1) cout << "Placed in Bin A";
-    else if(w < 5) cout << "Placed in Bin B";
-    else cout << "Placed in Bin C";
-}
-</pre>
-</div>
-
-
-
-<!-- IDEA 5 -->
-<div class="card">
-<h3>5) Smart Inventory Forecasting</h3>
-<p><b>Algorithm Used:</b> Moving Average Forecasting</p>
-
-<span class="algo-btn" onclick="toggleAlgo('alg5')">Show Algorithm</span>
-<pre id="alg5">
-forecast = (sum of previous N months) / N
-</pre>
-
-<b>C++ Code:</b>
-<pre>
-#include <iostream>
-using namespace std;
-
-int main(){
-    int data[6]={50,60,55,65,70,80};
-    int sum=0;
-
-    for(int i=0;i<6;i++)
-        sum += data[i];
-
-    cout << "Next month forecast = " << sum/6.0;
-}
-</pre>
-</div>
-
-
-
-<!-- IDEA 6 -->
-<div class="card">
-<h3>6) Waste-Heat Energy Recycling System</h3>
-<p><b>Algorithm Used:</b> Heat-to-Energy Conversion</p>
-
-<span class="algo-btn" onclick="toggleAlgo('alg6')">Show Algorithm</span>
-<pre id="alg6">
-energy = (temperature - base_temp) * factor
-</pre>
-
-<b>C++ Code:</b>
-<pre>
-#include <iostream>
-using namespace std;
-
-int main(){
-    float temp;
-    cout << "Enter heat temperature: ";
-    cin >> temp;
-
-    float energy = (temp - 40) * 0.5;
-    if(energy < 0) energy = 0;
-
-    cout << "Energy produced = " << energy << " kW";
-}
-</pre>
-</div>
-
-
-
-<!-- IDEA 7 -->
-<div class="card">
-<h3>7) AI Packaging Optimization</h3>
-<p><b>Algorithm Used:</b> Volume-Based Box Selection</p>
-
-<span class="algo-btn" onclick="toggleAlgo('alg7')">Show Algorithm</span>
-<pre id="alg7">
-if volume < 100 → Small box
-else if volume < 300 → Medium
-else → Large
-</pre>
-
-<b>C++ Code:</b>
-<pre>
-#include <iostream>
-using namespace std;
-
-int main(){
-    float v;
-    cout << "Enter product volume: ";
-    cin >> v;
-
-    if(v < 100) cout << "Use Small Box";
-    else if(v < 300) cout << "Use Medium Box";
-    else cout << "Use Large Box";
-}
-</pre>
-</div>
-
-
-
-<!-- IDEA 8 -->
-<div class="card">
-<h3>8) Auto-Reject Faulty Products</h3>
-<p><b>Algorithm Used:</b> Range Validation</p>
-
-<span class="algo-btn" onclick="toggle    
+<!-- IDEAS GRID START -->
+<div class="container">
