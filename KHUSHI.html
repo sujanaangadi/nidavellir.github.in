@@ -9,13 +9,13 @@
     body {
         margin: 0;
         font-family: Arial, sans-serif;
-        background: #eef2f7; /* Soft professional background */
-        color: #1f2d3d; 
+        background: #f2f5fa; /* clean white-blue professional */
+        color: #1e2a38;
     }
 
     /* HEADER */
     .header {
-        width: 90%;
+        width: 92%;
         margin: auto;
         margin-top: 25px;
         display: flex;
@@ -24,22 +24,22 @@
     }
 
     .title {
-        font-size: 40px;
+        font-size: 42px;
         font-weight: bold;
-        color: #16325c; /* Professional dark blue */
+        color: #0f1f44;
     }
 
     .header img {
-        width: 240px;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        width: 330px;
+        border-radius: 14px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.18);
     }
 
     /* GRID */
     .container {
-        width: 90%;
+        width: 92%;
         margin: auto;
-        margin-top: 25px;
+        margin-top: 30px;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 25px;
@@ -48,35 +48,43 @@
     /* CARD */
     .card {
         background: #ffffff;
-        padding: 20px;
+        padding: 22px;
         border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.12);
-        border-left: 5px solid #16325c; /* subtle professional color */
+        box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        border-left: 5px solid #0f1f44;
     }
 
     .card h3 {
-        color: #16325c;
+        color: #0f1f44;
         margin-top: 0;
+        font-size: 22px;
+    }
+
+    .algo-title {
+        font-weight: bold;
+        margin-top: 10px;
+        color: #112b54;
     }
 
     .algo-btn {
-        background: #16325c;
+        background: #0f1f44;
         padding: 8px 12px;
         border-radius: 6px;
         color: white;
         cursor: pointer;
         display: inline-block;
         font-size: 14px;
+        margin-top: 8px;
     }
 
     pre {
-        background: #f5f7fa;
-        padding: 10px;
+        background: #eef2f7;
+        padding: 12px;
         border-radius: 8px;
-        margin-top: 10px;
+        margin-top: 12px;
         display: none;
         white-space: pre-wrap;
-        border: 1px solid #d9e2ec;
+        border: 1px solid #d6dbe3;
     }
 </style>
 
@@ -94,181 +102,9 @@ function toggleAlgo(id) {
 <div class="header">
     <h2 class="title">Industry Business Ideas</h2>
 
-    <!-- Clean professional banner -->
-    <img src="https://img.freepik.com/free-vector/industry-4-0-smart-factory-automation-banner-with-icons_1017-45429.jpg" />
+    <!-- FUTURISTIC AI + INDUSTRY BANNER -->
+    <img src="https://img.freepik.com/premium-vector/futuristic-artificial-intelligence-concept-banner_1035-19159.jpg" />
 </div>
 
 <!-- IDEAS GRID -->
 <div class="container">
-
-<!-- CARD 1 -->
-<div class="card">
-<h3>1) Smart Textile Quality Detector</h3>
-
-<b>Algorithm Used:</b> Threshold-Based Defect Detection  
-<ul>
-    <li>Finds abnormalities in cloth texture.</li>
-    <li>Compares sensor reading with expected value.</li>
-    <li>Marks any reading beyond threshold as a defect.</li>
-</ul>
-
-<span class="algo-btn" onclick="toggleAlgo('alg1')">Show Code</span>
-<pre id="alg1">
-#include <iostream>
-#include <vector>
-#include <cmath>
-using namespace std;
-
-bool isDefective(int value, int expected, int threshold){
-    return abs(value - expected) > threshold;
-}
-
-int main(){
-    int n;
-    cin >> n;
-    vector<int> data(n);
-
-    for(int i=0;i<n;i++) cin >> data[i];
-
-    int expected, threshold;
-    cin >> expected >> threshold;
-
-    for(int i=0;i<n;i++){
-        if(isDefective(data[i], expected, threshold))
-            cout << "Defect at position " << i << "\n";
-    }
-}
-</pre>
-</div>
-
-<!-- CARD 2 -->
-<div class="card">
-<h3>2) AI Worker Safety Monitoring</h3>
-
-<b>Algorithm Used:</b> Acceleration Limit Check  
-<ul>
-    <li>Tracks worker movement safety.</li>
-    <li>Detects abnormal acceleration.</li>
-    <li>Alerts unsafe movements.</li>
-</ul>
-
-<span class="algo-btn" onclick="toggleAlgo('alg2')">Show Code</span>
-<pre id="alg2">
-#include <iostream>
-#include <vector>
-using namespace std;
-
-int main(){
-    int n; cin >> n;
-    vector<float> acc(n);
-
-    for(int i=0;i<n;i++) cin >> acc[i];
-
-    float limit; 
-    cin >> limit;
-
-    for(int i=0;i<n;i++){
-        if(acc[i] > limit) cout << "Unsafe\n";
-        else cout << "Safe\n";
-    }
-}
-</pre>
-</div>
-
-<!-- CARD 3 -->
-<div class="card">
-<h3>3) Predictive Machine Maintenance</h3>
-
-<b>Algorithm Used:</b> Vibration Anomaly Detection  
-<ul>
-    <li>Monitors vibration levels.</li>
-    <li>Detects Abnormal spikes.</li>
-    <li>Predicts machine failure.</li>
-</ul>
-
-<span class="algo-btn" onclick="toggleAlgo('alg3')">Show Code</span>
-<pre id="alg3">
-#include <iostream>
-#include <vector>
-using namespace std;
-
-int main(){
-    int n; cin >> n;
-    vector<float> vib(n);
-
-    for(int i=0;i<n;i++) cin >> vib[i];
-
-    float th; cin >> th;
-
-    for(int i=0;i<n;i++){
-        if(vib[i] > th) cout << "Failure predicted\n";
-        else cout << "Normal\n";
-    }
-}
-</pre>
-</div>
-
-<!-- CARD 4 -->
-<div class="card">
-<h3>4) Autonomous Material Sorting Robot</h3>
-
-<b>Algorithm Used:</b> Weight Classification  
-<ul>
-    <li>Sorts items into Light / Medium / Heavy.</li>
-</ul>
-
-<span class="algo-btn" onclick="toggleAlgo('alg4')">Show Code</span>
-<pre id="alg4">
-#include <iostream>
-using namespace std;
-
-string classify(float w){
-    if(w < 1) return "Light";
-    if(w < 5) return "Medium";
-    return "Heavy";
-}
-
-int main(){
-    int n; cin >> n;
-    float w;
-
-    while(n--){
-        cin >> w;
-        cout << classify(w) << "\n";
-    }
-}
-</pre>
-</div>
-
-<!-- CARD 5 -->
-<div class="card">
-<h3>5) Smart Inventory Forecasting</h3>
-
-<b>Algorithm Used:</b> Moving Average  
-<ul>
-    <li>Predicts next month's stock.</li>
-</ul>
-
-<span class="algo-btn" onclick="toggleAlgo('alg5')">Show Code</span>
-<pre id="alg5">
-#include <iostream>
-#include <vector>
-using namespace std;
-
-int main(){
-    int n; cin >> n;
-    vector<int> s(n);
-
-    for(int i=0;i<n;i++) cin >> s[i];
-
-    int sum=0;
-    for(int v:s) sum+=v;
-
-    cout << "Forecast: " << sum/n;
-}
-</pre>
-</div>
-
-</div>
-</body>
-</html>
