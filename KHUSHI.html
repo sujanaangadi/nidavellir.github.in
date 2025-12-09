@@ -3,128 +3,422 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Industry Solutions — Algorithms Project</title>
+<title>Industry Automation Using DAA</title>
 
 <style>
     body {
         margin: 0;
-        display: flex;
         font-family: Arial, sans-serif;
-        background: #f6f4fc;
+        background: #f4f1ff;
+        display: flex;
+        overflow-x: hidden;
+        animation: fadeIn 0.6s ease-in-out;
+    }
+
+    /* FADE-IN ANIMATION */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
     /* SIDEBAR */
     .sidebar {
-        width: 270px;
+        width: 260px;
+        background: #e7dbff;
         height: 100vh;
-        background: #ebe4ff;
         padding: 20px;
-        border-right: 2px solid #d4c8ff;
         position: fixed;
         overflow-y: auto;
+        border-right: 2px solid #d2c2ff;
+        animation: slideLeft 0.6s ease-in-out;
+    }
+
+    @keyframes slideLeft {
+        from { transform: translateX(-40px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
     }
 
     .sidebar h2 {
+        text-align: center;
         color: #5a23af;
         margin-bottom: 20px;
-        text-align: center;
     }
 
-    .menu-item {
+    /* SIDEBAR HOVER ANIMATION */
+    .nav-item {
         padding: 12px;
-        margin: 8px 0;
         background: white;
+        margin-bottom: 10px;
+        border-left: 4px solid #5a23af;
         border-radius: 8px;
         cursor: pointer;
-        border-left: 4px solid #5a23af;
-        transition: 0.2s;
+        transition: all .25s ease;
     }
 
-    .menu-item:hover {
-        background: #f2ebff;
-        transform: translateX(5px);
+    .nav-item:hover {
+        background: #f4ebff;
+        transform: translateX(8px);
+        box-shadow: 0 4px 12px rgba(90,35,175,0.3);
     }
 
-    /* CONTENT AREA */
+    /* MAIN CONTENT */
     .content {
         margin-left: 300px;
         padding: 30px;
         width: calc(100% - 300px);
     }
 
-    .title {
-        font-size: 32px;
-        font-weight: bold;
-        color: #5a23af;
-    }
-
-    .section {
-        background: white;
-        margin-top: 20px;
-        padding: 20px;
+    /* ANIMATED CARDS */
+    .card {
+        background: #ffffff;
+        padding: 25px;
+        margin-top: 25px;
         border-radius: 12px;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        border-left: 5px solid #5a23af;
+        animation: slideUp 0.5s ease-out;
     }
 
-    .section h3 {
+    @keyframes slideUp {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
         color: #5a23af;
-        margin-top: 0;
+        font-size: 32px;
+        animation: fadeIn 0.5s ease;
     }
 
-    /* TAGS */
-    .tag {
-        display: inline-block;
-        padding: 6px 12px;
-        background: #e7ddff;
+    .sub {
+        font-size: 20px;
         color: #5a23af;
-        border-radius: 20px;
-        margin: 4px;
-        font-size: 13px;
+        margin-bottom: 10px;
     }
 
-    /* CODE BUTTON */
-    .code-btn {
-        background: #5a23af;
-        color: white;
-        padding: 10px 16px;
-        border-radius: 6px;
-        display: inline-block;
-        margin-top: 10px;
-        cursor: pointer;
-    }
-
-    .code-btn:hover {
-        background: #7c3aed;
-    }
-
-    /* MODAL POPUP */
-    .modal {
-        display: none;
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: rgba(0,0,0,0.6);
-        justify-content: center;
-        align-items: center;
-    }
-
-    .modal-content {
-        width: 60%;
+    .code-box {
         background: #1e1e1e;
-        padding: 20px;
-        color: white;
+        color: #e2e2e2;
+        padding: 15px;
         border-radius: 10px;
-        max-height: 80vh;
-        overflow-y: auto;
-    }
-
-    .close {
-        color: white;
-        float: right;
-        font-size: 22px;
-        cursor: pointer;
+        white-space: pre-wrap;
+        overflow-x: auto;
+        margin-top: 12px;
+        font-size: 14px;
+        animation: fadeIn 0.4s ease;
     }
 </style>
+
+<script>
+function loadProblem(id) {
+    document.getElementById("content").innerHTML = problems[id];
+    window.scrollTo(0, 0); // auto scroll to top on click
+}
+
+const problems = {
+
+1: `
+<h1>1️⃣ Smart Textile Quality Detector</h1>
+<div class="card">
+<div class="sub">Problem Statement</div>
+Detect repeated weave defects using fast pattern detection.
+
+<div class="sub">Algorithm Candidates</div>
+• KMP<br>• Rabin–Karp<br>• DFS/BFS<br>• AVL Tree<br>
+
+<div class="sub">Most Accurate Algorithm</div>
+<b>KMP Algorithm</b>
+
+<div class="sub">Few Points About Code</div>
+• Uses LPS<br>
+• Prevents re-checking<br>
+• Runs in O(n)<br>
+
+<div class="sub">C++ Code</div>
+<div class="code-box">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+vector&lt;int&gt; buildLPS(vector&lt;int&gt;& pat){
+    vector&lt;int&gt; lps(pat.size(),0);
+    int len=0,i=1;
+    while(i&lt;pat.size()){
+        if(pat[i]==pat[len]){ len++; lps[i]=len; i++; }
+        else if(len!=0) len=lps[len-1];
+        else { lps[i]=0; i++; }
+    }
+    return lps;
+}
+
+bool KMPsearch(vector&lt;int&gt;& text, vector&lt;int&gt;& pat){
+    vector&lt;int&gt; lps = buildLPS(pat);
+    int i=0,j=0;
+    while(i&lt;text.size()){
+        if(text[i]==pat[j]){
+            i++; j++;
+            if(j==pat.size()) return true;
+        } else {
+            if(j!=0) j=lps[j-1];
+            else i++;
+        }
+    }
+    return false;
+}
+
+int main(){
+    vector&lt;int&gt; textile={3,4,4,7,4,4,7};
+    vector&lt;int&gt; defect={4,4,7};
+    cout &lt;&lt; (KMPsearch(textile,defect)? "Defect Found" : "No Defect");
+}
+</div>
+</div>
+`,
+
+2: `
+<h1>2️⃣ Worker Safety Monitoring</h1>
+<div class="card">
+<div class="sub">Most Accurate Algorithm</div>
+<b>AVL Threshold Lookup</b>
+
+<div class="sub">C++ Code</div>
+<div class="code-box">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main(){
+    int n; cin&gt;&gt;n;
+    vector&lt;float&gt; acc(n);
+    for(float &x:acc) cin&gt;&gt;x;
+
+    float limit; cin&gt;&gt;limit;
+
+    for(float x:acc)
+        cout&lt;&lt;(x&gt;limit?"Unsafe":"Safe")&lt;&lt;"\\n";
+}
+</div>
+</div>
+`,
+
+3: `
+<h1>3️⃣ Predictive Maintenance</h1>
+<div class="card">
+<div class="sub">Most Accurate Algorithm</div>
+<b>Segment Tree</b>
+
+<div class="sub">C++ Code</div>
+<div class="code-box">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main(){
+    int n; cin&gt;&gt;n;
+    vector&lt;float&gt; vib(n);
+
+    for(float &x:vib) cin&gt;&gt;x;
+
+    float th; cin&gt;&gt;th;
+
+    for(float x:vib)
+        cout&lt;&lt;(x&gt;th?"Failure predicted":"Normal")&lt;&lt;"\\n";
+}
+</div>
+</div>
+`,
+
+4: `
+<h1>4️⃣ Sorting Robot</h1>
+<div class="card">
+<div class="sub">Most Accurate Algorithm</div>
+<b>Quick Sort Classification</b>
+
+<div class="sub">C++ Code</div>
+<div class="code-box">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+string classify(float w){
+    if(w&lt;1) return "Light";
+    if(w&lt;5) return "Medium";
+    return "Heavy";
+}
+
+int main(){
+    int n; cin&gt;&gt;n;
+    while(n--){
+        float w; cin&gt;&gt;w;
+        cout&lt;&lt;classify(w)\\n;
+    }
+}
+</div>
+</div>
+`,
+
+5: `
+<h1>5️⃣ Inventory Forecasting</h1>
+<div class="card">
+<div class="sub">Most Accurate Algorithm</div>
+<b>Moving Average</b>
+
+<div class="sub">C++ Code</div>
+<div class="code-box">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main(){
+    int n; cin&gt;&gt;n;
+    vector&lt;int&gt; s(n);
+
+    for(int &x:s) cin&gt;&gt;x;
+
+    int sum=0;
+    for(int v:s) sum+=v;
+
+    cout&lt;&lt;"Forecast: "&lt;&lt;sum/n;
+}
+</div>
+</div>
+`,
+
+6: `
+<h1>6️⃣ Waste Heat Recycling</h1>
+<div class="card">
+<div class="sub">Most Accurate Algorithm</div>
+<b>Max Heap</b>
+
+<div class="sub">C++ Code</div>
+<div class="code-box">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+float convert(float t){
+    return max(0.0f,(t-40)*0.6f);
+}
+
+int main(){
+    int n; cin&gt;&gt;n;
+    float total=0,t;
+
+    while(n--){
+        cin&gt;&gt;t;
+        float e=convert(t);
+        total+=e;
+        cout&lt;&lt;"Converted: "&lt;&lt;e&lt;&lt;" kW\\n";
+    }
+
+    cout&lt;&lt;"Total: "&lt;&lt;total;
+}
+</div>
+</div>
+`,
+
+7: `
+<h1>7️⃣ Packaging Optimization</h1>
+<div class="card">
+<div class="sub">Most Accurate Algorithm</div>
+<b>Binary Search</b>
+
+<div class="sub">C++ Code</div>
+<div class="code-box">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+string box(float v){
+    if(v&lt;100) return "Small";
+    if(v&lt;300) return "Medium";
+    return "Large";
+}
+
+int main(){
+    int n; cin&gt;&gt;n;
+
+    while(n--){
+        float v; cin&gt;&gt;v;
+        cout&lt;&lt;box(v)\\n;
+    }
+}
+</div>
+</div>
+`,
+
+8: `
+<h1>8️⃣ Auto Reject Conveyor</h1>
+<div class="card">
+<div class="sub">Most Accurate Algorithm</div>
+<b>Binary Range Validation</b>
+
+<div class="sub">C++ Code</div>
+<div class="code-box">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+bool reject(float w){
+    return (w&lt;90 || w&gt;110);
+}
+
+int main(){
+    int n; cin&gt;&gt;n;
+
+    while(n--){
+        float w; cin&gt;&gt;w;
+        cout&lt;&lt;(reject(w)?"Rejected":"Accepted")&lt;&lt;"\\n";
+    }
+}
+</div>
+</div>
+`,
+
+9: `
+<h1>9️⃣ Pollution Monitoring</h1>
+<div class="card">
+<div class="sub">Most Accurate Algorithm</div>
+<b>Segment Tree</b>
+
+<div class="sub">C++ Code</div>
+<div class="code-box">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main(){
+    int n; cin&gt;&gt;n;
+    vector&lt;float&gt; c(n);
+
+    for(float &x:c) cin&gt;&gt;x;
+
+    for(float x:c)
+        cout&lt;&lt;(x&gt;900?"High Pollution":"Normal")&lt;&lt;"\\n";
+}
+</div>
+</div>
+`,
+
+10: `
+<h1>🔟 Supply Chain Delay Predictor</h1>
+<div class="card">
+<div class="sub">Most Accurate Algorithm</div>
+<b>Dijkstra Algorithm</b>
+
+<div class="sub">C++ Code</div>
+<div class="code-box">
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main(){
+    int n; cin&gt;&gt;n;
+    vector&lt;float&gt; exp(n), act(n);
+
+    for(float &x:exp) cin&gt;&gt;x;
+    for(float &x:act) cin&gt;&gt;x;
+
+    for(int i=0;i&lt;n;i++){
+        cout&lt;&lt;((act[i]-exp[i])>0?"Delayed":"On Time")<<endl;
+    }
+}
+</div>
+</div>
+`
+
+};
+</script>
 
 </head>
 <body>
@@ -132,338 +426,23 @@
 <!-- SIDEBAR -->
 <div class="sidebar">
     <h2>Industry Problems</h2>
-
-    <div class="menu-item" onclick="loadPage(1)">1. Textile Quality Detection</div>
-    <div class="menu-item" onclick="loadPage(2)">2. Worker Safety Monitoring</div>
-    <div class="menu-item" onclick="loadPage(3)">3. Predictive Maintenance</div>
-    <div class="menu-item" onclick="loadPage(4)">4. Sorting Robot</div>
-    <div class="menu-item" onclick="loadPage(5)">5. Inventory Forecasting</div>
-    <div class="menu-item" onclick="loadPage(6)">6. Waste Heat Recycling</div>
-    <div class="menu-item" onclick="loadPage(7)">7. Packaging Optimization</div>
-    <div class="menu-item" onclick="loadPage(8)">8. Auto-Reject Conveyor</div>
-    <div class="menu-item" onclick="loadPage(9)">9. Pollution Dashboard</div>
-    <div class="menu-item" onclick="loadPage(10)">10. Supply Chain Predictor</div>
+    <div class="nav-item" onclick="loadProblem(1)">Smart Textile Quality</div>
+    <div class="nav-item" onclick="loadProblem(2)">Worker Safety</div>
+    <div class="nav-item" onclick="loadProblem(3)">Predictive Maintenance</div>
+    <div class="nav-item" onclick="loadProblem(4)">Sorting Robot</div>
+    <div class="nav-item" onclick="loadProblem(5)">Inventory Forecasting</div>
+    <div class="nav-item" onclick="loadProblem(6)">Heat Recycling</div>
+    <div class="nav-item" onclick="loadProblem(7)">Packaging Optimization</div>
+    <div class="nav-item" onclick="loadProblem(8)">Auto Reject Conveyor</div>
+    <div class="nav-item" onclick="loadProblem(9)">Pollution Monitoring</div>
+    <div class="nav-item" onclick="loadProblem(10)">Delay Predictor</div>
 </div>
 
 <!-- CONTENT -->
 <div class="content" id="content">
-    <h1 class="title">Select a Problem from Sidebar</h1>
-    <p>Click any topic to view algorithms, explanation, and C++ implementation.</p>
+    <h1>Select a Problem From Sidebar</h1>
+    <p>This website displays 10 DAA-based industry problems with solutions + code.</p>
 </div>
-
-<!-- MODAL -->
-<div id="codeModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">×</span>
-        <pre id="codeHere"></pre>
-    </div>
-</div>
-
-<script>
-const problems = {
-1: {
-title: "Smart Textile Quality Detector",
-tags: ["KMP", "Rabin-Karp", "DFS", "BFS", "Merge Sort", "AVL Tree", "BST", "Heap"],
-problem: "Detect fabric defects using algorithmic pattern analysis and threshold-based scanning.",
-approach: `
-• KMP & Rabin-Karp → Detect repeating defect patterns  
-• DFS/BFS → Identify connected defect clusters  
-• Merge Sort → Rank defects by severity  
-• Trees → Fast threshold lookup  
-• Heap → Highest defect priority`,
-code: 
-`#include <iostream>
-#include <vector>
-#include <cmath>
-using namespace std;
-
-bool isDefective(int v, int e, int t){
-    return abs(v-e) > t;
-}
-
-int main(){
-    int n; cin >> n;
-    vector<int> a(n);
-    for(int i=0;i<n;i++) cin >> a[i];
-
-    int expected, th;
-    cin >> expected >> th;
-
-    for(int i=0;i<n;i++)
-        if(isDefective(a[i], expected, th))
-            cout << "Defect at " << i << "\\n";
-}`},
-
-
-2: {
-title: "AI Worker Safety Monitoring",
-tags: ["Binary Search", "AVL Tree", "Heap", "DFS", "BFS", "Dijkstra", "KMP"],
-problem: "Monitor worker motion and detect unsafe acceleration patterns.",
-approach: `
-• Heap → Highest danger alerts first  
-• BFS/Dijkstra → Safe evacuation route  
-• Binary Search/AVL → Threshold lookup  
-• KMP → Pattern match abnormal movement`,
-code:
-`#include <iostream>
-#include <vector>
-using namespace std;
-
-int main(){
-    int n; cin >> n;
-    vector<float> acc(n);
-
-    for(float &x : acc) cin >> x;
-    float limit; cin >> limit;
-
-    for(float x : acc)
-        cout << (x > limit ? "Unsafe\\n" : "Safe\\n");
-}`},
-
-
-3: {
-title: "Predictive Machine Maintenance",
-tags: ["Heap", "Segment Tree", "DFS", "BFS", "Dijkstra", "Merge Sort"],
-problem: "Predict failures using vibration pattern deviation.",
-approach: `
-• Segment tree → Range vibration query  
-• Heap → Top risky machines  
-• DFS/BFS → Failure propagation  
-• Merge Sort → Clean vibration ordering`,
-code:
-`#include <iostream>
-#include <vector>
-using namespace std;
-
-int main(){
-    int n; cin >> n;
-    vector<float> vib(n);
-    for(float &x : vib) cin >> x;
-
-    float th; cin >> th;
-
-    for(float x : vib)
-        cout << (x > th ? "Failure predicted\\n" : "Normal\\n");
-}`},
-
-
-4: {
-title: "Autonomous Material Sorting Robot",
-tags: ["Quick Sort", "Merge Sort", "Heap Sort", "AVL Tree", "Dijkstra", "BFS"],
-problem: "Sort materials into categories based on weight.",
-approach: `
-• Sorting algorithms → Categorization  
-• Dijkstra → Optimal navigation  
-• AVL → Quick rule lookup`,
-code:
-`#include <iostream>
-using namespace std;
-
-string classify(float w){
-    if(w < 1) return "Light";
-    if(w < 5) return "Medium";
-    return "Heavy";
-}
-
-int main(){
-    int n; cin >> n;
-    while(n--){
-        float w; cin >> w;
-        cout << classify(w) << "\\n";
-    }
-}`},
-
-
-5: {
-title: "Smart Inventory Forecasting",
-tags: ["Moving Average", "Segment Tree", "AVL Tree", "Heap", "Binary Search"],
-problem: "Predict future stock using recent sales patterns.",
-approach: `
-• Moving Average → Smooth forecasting  
-• Segment Tree → Fast range queries  
-• Heap → High-demand item detection`,
-code:
-`#include <iostream>
-#include <vector>
-using namespace std;
-
-int main(){
-    int n; cin >> n;
-    vector<int> s(n);
-    for(int &x : s) cin >> x;
-
-    int sum=0;
-    for(int v : s) sum+=v;
-
-    cout << "Forecast: " << sum/n;
-}`},
-
-
-6: {
-title: "Waste-Heat Energy Recycling",
-tags: ["Heap", "Segment Tree", "Binary Search", "DFS", "Dijkstra"],
-problem: "Convert excess heat into usable energy.",
-approach: `
-• Heap → Prioritize hottest sources  
-• Binary Search → Locate thresholds  
-• Dijkstra → Best heat-flow path`,
-code:
-`#include <iostream>
-using namespace std;
-
-float convertEnergy(float t){
-    float base=40, f=0.6;
-    return max(0.0f, (t-base)*f);
-}
-
-int main(){
-    int n; cin >> n;
-    float total=0;
-    while(n--){
-        float x; cin >> x;
-        float e = convertEnergy(x);
-        total += e;
-        cout << "Converted: " << e << " kW\\n";
-    }
-    cout << "Total: " << total << " kW";
-}`},
-
-
-7: {
-title: "Packaging Optimization",
-tags: ["Binary Search", "Quick Sort", "Heap", "KMP", "DP"],
-problem: "Find minimum-cost packaging for products.",
-approach: `
-• Binary Search → Best-fit box  
-• DP → Cost optimization  
-• KMP → Detect packaging structure issues`,
-code:
-`#include <iostream>
-using namespace std;
-
-string box(float v){
-    if(v<100) return "Small";
-    if(v<300) return "Medium";
-    return "Large";
-}
-
-int main(){
-    int n; cin >> n;
-    while(n--){
-        float v; cin >> v;
-        cout << box(v) << "\\n";
-    }
-}`},
-
-
-8: {
-title: "Faulty Product Auto-Reject System",
-tags: ["Binary Search", "Heap", "AVL Tree", "DFS", "Merge Sort"],
-problem: "Automatically remove defective items based on weight.",
-approach: `
-• Binary Search → Range checking  
-• Heap → Worst defects first  
-• DFS → Pattern detection`,
-code:
-`#include <iostream>
-using namespace std;
-
-bool reject(float w){
-    return (w<90 || w>110);
-}
-
-int main(){
-    int n; cin >> n;
-    while(n--){
-        float w; cin >> w;
-        cout << (reject(w)?"Rejected":"Accepted") << "\\n";
-    }
-}`},
-
-
-9: {
-title: "Factory Pollution Dashboard",
-tags: ["Segment Tree", "Heap", "DFS", "BFS", "Dijkstra"],
-problem: "Monitor CO₂ levels and compute safety alerts.",
-approach: `
-• Segment Tree → Pollution intervals  
-• Heap → Peak pollution  
-• BFS/DFS → Spread mapping`,
-code:
-`#include <iostream>
-#include <vector>
-using namespace std;
-
-int main(){
-    int n; cin >> n;
-    vector<float> v(n);
-    for(float &x: v) cin >> x;
-
-    for(float x : v)
-        cout << (x>900?"High Pollution!":"Normal") << "\\n";
-}`},
-
-
-10: {
-title: "Supply Chain Delay Predictor",
-tags: ["Dijkstra", "Bellman-Ford", "Floyd-Warshall", "Merge Sort"],
-problem: "Predict delivery delays and compute optimal routes.",
-approach: `
-• Dijkstra → Fastest route  
-• Bellman-Ford → Negative delays  
-• Merge Sort → Sort delays`,
-code:
-`#include <iostream>
-#include <vector>
-using namespace std;
-
-int main(){
-    int n; cin >> n;
-    vector<float> e(n), a(n);
-    for(float &x: e) cin >> x;
-    for(float &x: a) cin >> x;
-
-    for(int i=0;i<n;i++){
-        float d = a[i]-e[i];
-        cout << (d>0 ? "Delayed":"On Time") << "\\n";
-    }
-}`}
-};
-
-// LOAD PAGE FUNCTION
-function loadPage(id){
-    const p = problems[id];
-    document.getElementById("content").innerHTML = `
-        <h1 class="title">${p.title}</h1>
-
-        <div class="section">
-            <h3>Problem</h3>
-            <p>${p.problem}</p>
-        </div>
-
-        <div class="section">
-            <h3>Algorithms Used</h3>
-            ${p.tags.map(t => <span class='tag'>${t}</span>).join("")}
-        </div>
-
-        <div class="section">
-            <h3>Solution Approach</h3>
-            <p>${p.approach.replace(/\n/g,"<br>")}</p>
-        </div>
-
-        <div class="code-btn" onclick="showCode(\${p.code}\)">View Code</div>
-    `;
-}
-
-// MODAL FUNCTIONS
-function showCode(c){
-    document.getElementById("codeHere").textContent = c;
-    document.getElementById("codeModal").style.display = "flex";
-}
-function closeModal(){
-    document.getElementById("codeModal").style.display = "none";
-}
-</script>
 
 </body>
 </html>
