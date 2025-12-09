@@ -1,1 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technology Business Ideas</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #160b2d; /* DARK PURPLE FUTURISTIC */
+        color: #e6e6ff;
+    }
+
+    .header {
+        width: 90%;
+        margin: auto;
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header img {
+        width: 240px;
+    }
+
+    .title {
+        font-size: 40px;
+        font-weight: bold;
+        color: #7a5cff;
+    }
+
+    .explain {
+        width: 90%;
+        margin: auto;
+        margin-top: 10px;
+        background: #1e123d;
+        padding: 15px;
+        border-radius: 10px;
+        border-left: 6px solid #7a5cff;
+        font-size: 16px;
+    }
+
+    .container {
+        width: 90%;
+        margin: auto;
+        margin-top: 25px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .card {
+        background: #241447;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
+
+    .card h3 {
+        color: #9d85ff;
+        margin-top: 0;
+    }
+
+    .algo-btn {
+        background: #7a5cff;
+        padding: 8px 12px;
+        border-radius: 6px;
+        color: white;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 14px;
+    }
+
+    pre {
+        background: #120a26;
+        padding: 10px;
+        border-radius: 8px;
+        margin-top: 10px;
+        display: none;
+        white-space: pre-wrap;
+        color: #9d8fff;
+    }
+</style>
+
+<script>
+function toggleAlgo(id){
+    const box = document.getElementById(id);
+    box.style.display = box.style.display === "block" ? "none" : "block";
+}
+</script>
+
+</head>
+<body>
+
+<div class="header">
+    <h2 class="title">Technology Business Ideas</h2>
+    <img src="https://cdn-icons-png.flaticon.com/512/9771/9771372.png">
+</div>
+
+<div class="explain">
+This project presents 10 Smart City and Technology automation ideas. Each idea includes 
+the algorithm used, a brief explanation, and a full C++ implementation. These solutions 
+focus on traffic automation, energy efficiency, public transport, digital billing, 
+waste management, and smart governance.
+</div>
+
+<div class="container">
+#include <iostream>
+using namespace std;
+
+int main(){
+    int low, medium, high;
+    cout << "Enter low, medium, high traffic limits: ";
+    cin >> low >> medium >> high;
+
+    int traffic;
+    cout << "Enter current traffic density: ";
+    cin >> traffic;
+
+    if(traffic < low)
+        cout << "Green for 10 seconds\n";
+    else if(traffic < medium)
+        cout << "Green for 20 seconds\n";
+    else if(traffic < high)
+        cout << "Green for 30 seconds\n";
+    else
+        cout << "Green for 45 seconds\n";
+
+    return 0;
+}
 
