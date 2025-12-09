@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Technology Business Ideas</title>
+<title>Industry Business Ideas</title>
 
 <style>
     body {
         margin: 0;
         font-family: Arial, sans-serif;
-        background: #eef2f3; /* Light professional tech background */
+        background: #d9dee2; /* Industrial light grey */
         color: #222;
     }
 
     /* ---------- NAVBAR ---------- */
     .navbar {
         width: 100%;
-        background: #005792; 
+        background: #2c3e50; 
         padding: 16px 40px;
         display: flex;
         justify-content: space-between;
@@ -24,11 +24,12 @@
         color: #fff;
         font-weight: bold;
         box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        letter-spacing: 1px;
     }
 
     .navbar a {
         text-decoration: none;
-        color: #bdefff;
+        color: #c9e3ff;
         margin-left: 20px;
         font-size: 17px;
     }
@@ -43,7 +44,7 @@
         font-size: 34px;
         font-weight: bold;
         margin-top: 25px;
-        color: #005792;
+        color: #2c3e50;
         letter-spacing: 1px;
     }
 
@@ -85,7 +86,7 @@
         background: #ffffff;
         padding: 25px;
         border-radius: 12px;
-        border-left: 5px solid #00bbf0;
+        border-left: 5px solid #34495e;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         transition: 0.3s;
     }
@@ -97,6 +98,279 @@
 
     .card h3 {
         margin: 0;
-        color: #005792;
+        color: #2c3e50;
         margin-bottom: 10px;
-        font-size:
+        font-size: 20px;
+    }
+
+    .algo-btn {
+        margin-top: 12px;
+        background: #34495e;
+        padding: 8px 16px;
+        color: white;
+        font-weight: bold;
+        border-radius: 6px;
+        display: inline-block;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    pre {
+        background: #f0f4f7;
+        padding: 12px;
+        border-radius: 8px;
+        margin-top: 10px;
+        overflow-x: auto;
+        display: none;
+        color: #003855;
+    }
+</style>
+
+<script>
+function toggleAlgo(id) {
+    const box = document.getElementById(id);
+    box.style.display = box.style.display === "block" ? "none" : "block";
+}
+</script>
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div>INDUSTRY BUSINESS IDEAS</div>
+    <div>
+        <a href="#">Home</a>
+        <a href="#">Projects</a>
+        <a href="#">Industry</a>
+        <a href="#">Team</a>
+    </div>
+</div>
+
+<h2 class="title">Industry Business Ideas</h2>
+
+<div class="main">
+
+<!-- LEFT SIDE CARDS -->
+<div class="container">
+
+    <!-- 1 -->
+    <div class="card">
+        <h3>1) Smart Textile Quality Detector</h3>
+        <p><b>Purpose:</b> Detects defects in fabric using sensor values.</p>
+        <span class="algo-btn" onclick="toggleAlgo('i1')">Show C++ Code</span>
+        <pre id="i1">
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+int main() {
+    vector<int> fabric = {100,102,98,150,101,99};
+    int expected = 100, threshold = 20;
+
+    for(int i=0;i&lt;fabric.size();i++){
+        if(abs(fabric[i]-expected) &gt; threshold)
+            cout&lt;&lt;"Defect at position " &lt;&lt;i&lt;&lt;"\n";
+    }
+}
+        </pre>
+    </div>
+
+    <!-- 2 -->
+    <div class="card">
+        <h3>2) AI-Based Worker Safety Monitoring</h3>
+        <p><b>Purpose:</b> Detect unsafe movements in factories.</p>
+        <span class="algo-btn" onclick="toggleAlgo('i2')">Show C++ Code</span>
+        <pre id="i2">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main(){
+    float accel;
+    cin >> accel;
+
+    if(accel > 15)
+        cout << "Unsafe Movement!";
+    else
+        cout << "Safe.";
+}
+        </pre>
+    </div>
+
+    <!-- 3 -->
+    <div class="card">
+        <h3>3) Predictive Maintenance for Machines</h3>
+        <p><b>Purpose:</b> Predict machine failure using vibration data.</p>
+        <span class="algo-btn" onclick="toggleAlgo('i3')">Show C++ Code</span>
+        <pre id="i3">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main(){
+    float vibration;
+    cin >> vibration;
+
+    if(vibration > 80)
+        cout << "Failure Predicted";
+    else
+        cout << "Machine Normal";
+}
+        </pre>
+    </div>
+
+    <!-- 4 -->
+    <div class="card">
+        <h3>4) Autonomous Material Sorting Robot</h3>
+        <p><b>Purpose:</b> Sort items by weight automatically.</p>
+        <span class="algo-btn" onclick="toggleAlgo('i4')">Show C++ Code</span>
+        <pre id="i4">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main(){
+    float weight;
+    cin >> weight;
+
+    if(weight < 1) cout << "Bin A";
+    else if(weight < 5) cout << "Bin B";
+    else cout << "Bin C";
+}
+        </pre>
+    </div>
+
+    <!-- 5 -->
+    <div class="card">
+        <h3>5) Smart Inventory Forecasting System</h3>
+        <p><b>Purpose:</b> Predict next month's stock demand.</p>
+        <span class="algo-btn" onclick="toggleAlgo('i5')">Show C++ Code</span>
+        <pre id="i5">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main(){
+    int data[6]={50,60,55,65,70,80};
+    int sum=0;
+    for(int i=0;i<6;i++) sum+=data[i];
+
+    cout << "Forecast=" << sum/6.0;
+}
+        </pre>
+    </div>
+
+    <!-- 6 -->
+    <div class="card">
+        <h3>6) Waste-Heat Energy Recycling System</h3>
+        <p><b>Purpose:</b> Convert heat into usable energy.</p>
+        <span class="algo-btn" onclick="toggleAlgo('i6')">Show C++ Code</span>
+        <pre id="i6">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main(){
+    float temp;
+    cin >> temp;
+
+    float energy = (temp - 40) * 0.5;
+    if(energy < 0) energy = 0;
+
+    cout << energy << " kW";
+}
+        </pre>
+    </div>
+
+    <!-- 7 -->
+    <div class="card">
+        <h3>7) AI Packaging Optimization</h3>
+        <p><b>Purpose:</b> Choose best packaging box for product size.</p>
+        <span class="algo-btn" onclick="toggleAlgo('i7')">Show C++ Code</span>
+        <pre id="i7">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main(){
+    float volume;
+    cin >> volume;
+
+    if(volume < 100) cout << "Small Box";
+    else if(volume < 300) cout << "Medium Box";
+    else cout << "Large Box";
+}
+        </pre>
+    </div>
+
+    <!-- 8 -->
+    <div class="card">
+        <h3>8) Auto-Reject Faulty Products (Conveyor)</h3>
+        <p><b>Purpose:</b> Reject items with abnormal weight.</p>
+        <span class="algo-btn" onclick="toggleAlgo('i8')">Show C++ Code</span>
+        <pre id="i8">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main(){
+    float w;
+    cin >> w;
+
+    if(w < 90 || w > 110)
+        cout << "Rejected";
+    else
+        cout << "Accepted";
+}
+        </pre>
+    </div>
+
+    <!-- 9 -->
+    <div class="card">
+        <h3>9) Factory Pollution Monitoring System</h3>
+        <p><b>Purpose:</b> Detect dangerous CO₂ levels.</p>
+        <span class="algo-btn" onclick="toggleAlgo('i9')">Show C++ Code</span>
+        <pre id="i9">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main(){
+    float co2;
+    cin >> co2;
+
+    if(co2 > 900)
+        cout << "High Pollution!";
+    else
+        cout << "Normal";
+}
+        </pre>
+    </div>
+
+    <!-- 10 -->
+    <div class="card">
+        <h3>10) AI Supply Chain Delay Predictor</h3>
+        <p><b>Purpose:</b> Predict shipment delays.</p>
+        <span class="algo-btn" onclick="toggleAlgo('i10')">Show C++ Code</span>
+        <pre id="i10">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main(){
+    float expected, actual;
+    cin >> expected >> actual;
+
+    float delay = actual - expected;
+
+    if(delay > 0)
+        cout << "Delay = " << delay << " hrs";
+    else
+        cout << "On-Time Delivery";
+}
+        </pre>
+    </div>
+
+</div>
+
+<!-- RIGHT SIDE IMAGE -->
+<div class="image-box">
+    <img src="https://cdn-icons-png.flaticon.com/512/2920/2920277.png" alt="Industry Image">
+</div>
+
+</div>
+
+</body>
+</html>
