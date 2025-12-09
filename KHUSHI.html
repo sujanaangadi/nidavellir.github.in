@@ -9,40 +9,30 @@
     body {
         margin: 0;
         font-family: Arial, sans-serif;
-        background: #f4f4fc;
-        color: #2c2345;
+        background: #eef2f7; /* Soft professional background */
+        color: #1f2d3d; 
     }
 
     /* HEADER */
     .header {
         width: 90%;
         margin: auto;
-        margin-top: 20px;
+        margin-top: 25px;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
-    .header img {
-        width: 240px;
-    }
-
     .title {
         font-size: 40px;
         font-weight: bold;
-        color: #3b1c80;
+        color: #16325c; /* Professional dark blue */
     }
 
-    /* EXPLANATION */
-    .explain {
-        width: 90%;
-        margin: auto;
-        margin-top: 10px;
-        background: #e6ddff;
-        padding: 15px;
-        border-radius: 10px;
-        border-left: 6px solid #3b1c80;
-        font-size: 16px;
+    .header img {
+        width: 240px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
     /* GRID */
@@ -60,30 +50,33 @@
         background: #ffffff;
         padding: 20px;
         border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+        border-left: 5px solid #16325c; /* subtle professional color */
     }
 
     .card h3 {
-        color: #3b1c80;
+        color: #16325c;
         margin-top: 0;
     }
 
     .algo-btn {
-        background: #3b1c80;
+        background: #16325c;
         padding: 8px 12px;
         border-radius: 6px;
         color: white;
         cursor: pointer;
         display: inline-block;
+        font-size: 14px;
     }
 
     pre {
-        background: #f0f2ff;
+        background: #f5f7fa;
         padding: 10px;
         border-radius: 8px;
         margin-top: 10px;
         display: none;
         white-space: pre-wrap;
+        border: 1px solid #d9e2ec;
     }
 </style>
 
@@ -97,20 +90,18 @@ function toggleAlgo(id) {
 </head>
 <body>
 
+<!-- HEADER -->
 <div class="header">
     <h2 class="title">Industry Business Ideas</h2>
-    <img src="https://cdn-icons-png.flaticon.com/512/1048/1048953.png">
-</div>
 
-<div class="explain">
-This project presents 10 innovative industry automation ideas using algorithms
-and C++ programs. These solutions demonstrate real-world applications including 
-quality inspection, worker safety monitoring, predictive maintenance, sorting, 
-pollution control, inventory forecasting and supply chain optimization.
+    <!-- Clean professional banner -->
+    <img src="https://img.freepik.com/free-vector/industry-4-0-smart-factory-automation-banner-with-icons_1017-45429.jpg" />
 </div>
 
 <!-- IDEAS GRID -->
 <div class="container">
+
+<!-- CARD 1 -->
 <div class="card">
 <h3>1) Smart Textile Quality Detector</h3>
 
@@ -149,6 +140,8 @@ int main(){
 }
 </pre>
 </div>
+
+<!-- CARD 2 -->
 <div class="card">
 <h3>2) AI Worker Safety Monitoring</h3>
 
@@ -156,7 +149,7 @@ int main(){
 <ul>
     <li>Tracks worker movement safety.</li>
     <li>Detects abnormal acceleration.</li>
-    <li>Alerts if movement is unsafe.</li>
+    <li>Alerts unsafe movements.</li>
 </ul>
 
 <span class="algo-btn" onclick="toggleAlgo('alg2')">Show Code</span>
@@ -181,14 +174,16 @@ int main(){
 }
 </pre>
 </div>
+
+<!-- CARD 3 -->
 <div class="card">
 <h3>3) Predictive Machine Maintenance</h3>
 
 <b>Algorithm Used:</b> Vibration Anomaly Detection  
 <ul>
     <li>Monitors vibration levels.</li>
-    <li>Detects abnormal readings.</li>
-    <li>Predicts machine failure early.</li>
+    <li>Detects Abnormal spikes.</li>
+    <li>Predicts machine failure.</li>
 </ul>
 
 <span class="algo-btn" onclick="toggleAlgo('alg3')">Show Code</span>
@@ -212,14 +207,14 @@ int main(){
 }
 </pre>
 </div>
+
+<!-- CARD 4 -->
 <div class="card">
 <h3>4) Autonomous Material Sorting Robot</h3>
 
-<b>Algorithm Used:</b> Weight-Based Classification  
+<b>Algorithm Used:</b> Weight Classification  
 <ul>
-    <li>Sorts items based on weight.</li>
-    <li>3 categories: Light, Medium, Heavy.</li>
-    <li>Used in packaging & industry lines.</li>
+    <li>Sorts items into Light / Medium / Heavy.</li>
 </ul>
 
 <span class="algo-btn" onclick="toggleAlgo('alg4')">Show Code</span>
@@ -244,14 +239,14 @@ int main(){
 }
 </pre>
 </div>
+
+<!-- CARD 5 -->
 <div class="card">
 <h3>5) Smart Inventory Forecasting</h3>
 
-<b>Algorithm Used:</b> Moving Average Forecasting  
+<b>Algorithm Used:</b> Moving Average  
 <ul>
     <li>Predicts next month's stock.</li>
-    <li>Uses recent sales data.</li>
-    <li>Helps avoid stock shortage.</li>
 </ul>
 
 <span class="algo-btn" onclick="toggleAlgo('alg5')">Show Code</span>
@@ -273,176 +268,7 @@ int main(){
 }
 </pre>
 </div>
-<div class="card">
-<h3>6) Waste-Heat Energy Recycling System</h3>
 
-<b>Algorithm Used:</b> Heat-to-Energy Conversion  
-<ul>
-    <li>Converts excess heat into usable energy.</li>
-    <li>Improves factory energy efficiency.</li>
-    <li>Reduces wastage and operational cost.</li>
-</ul>
-
-<span class="algo-btn" onclick="toggleAlgo('alg6')">Show Code</span>
-<pre id="alg6">
-#include <iostream>
-using namespace std;
-
-float convertEnergy(float temp) {
-    float base = 40, factor = 0.6;
-    float energy = (temp - base) * factor;
-    return (energy < 0) ? 0 : energy;
-}
-
-int main() {
-    int n;
-    cin >> n;
-
-    float total = 0, temp;
-
-    for(int i=0;i<n;i++){
-        cin >> temp;
-        float e = convertEnergy(temp);
-        total += e;
-        cout << "Converted: " << e << " kW\n";
-    }
-
-    cout << "Total Energy: " << total << " kW";
-}
-</pre>
 </div>
-<div class="card">
-<h3>7) AI Packaging Optimization</h3>
-
-<b>Algorithm Used:</b> Volume-Based Box Selection  
-<ul>
-    <li>Chooses best box size based on product volume.</li>
-    <li>Reduces packaging cost.</li>
-    <li>Prevents material wastage.</li>
-</ul>
-
-<span class="algo-btn" onclick="toggleAlgo('alg7')">Show Code</span>
-<pre id="alg7">
-#include <iostream>
-#include <vector>
-using namespace std;
-
-string selectBox(float v){
-    if(v < 100) return "Small Box";
-    if(v < 300) return "Medium Box";
-    return "Large Box";
-}
-
-int main() {
-    int n;
-    cin >> n;
-
-    vector<float> vol(n);
-    for(int i=0;i<n;i++) cin >> vol[i];
-
-    for(int i=0;i<n;i++)
-        cout << selectBox(vol[i]) << "\n";
-}
-</pre>
-</div>
-<div class="card">
-<h3>8) Auto-Reject Faulty Products</h3>
-
-<b>Algorithm Used:</b> Weight Range Validation  
-<ul>
-    <li>Checks product weight accuracy.</li>
-    <li>Rejects defective items automatically.</li>
-    <li>Improves quality control.</li>
-</ul>
-
-<span class="algo-btn" onclick="toggleAlgo('alg8')">Show Code</span>
-<pre id="alg8">
-#include <iostream>
-#include <vector>
-using namespace std;
-
-bool reject(float w){
-    return (w < 90 || w > 110);
-}
-
-int main(){
-    int n; cin >> n;
-    vector<float> w(n);
-
-    for(int i=0;i<n;i++) cin >> w[i];
-
-    for(int i=0;i<n;i++){
-        if(reject(w[i])) cout << "Rejected\n";
-        else cout << "Accepted\n";
-    }
-}
-</pre>
-</div>
-<div class="card">
-<h3>9) Factory Pollution Monitoring</h3>
-
-<b>Algorithm Used:</b> CO₂ Threshold Detection  
-<ul>
-    <li>Monitors toxic CO₂ levels.</li>
-    <li>Sends alert when levels exceed safety.</li>
-    <li>Helps prevent environmental hazards.</li>
-</ul>
-
-<span class="algo-btn" onclick="toggleAlgo('alg9')">Show Code</span>
-<pre id="alg9">
-#include <iostream>
-#include <vector>
-using namespace std;
-
-int main(){
-    int n;
-    cin >> n;
-
-    vector<float> co2(n);
-    for(int i=0;i<n;i++) cin >> co2[i];
-
-    for(int i=0;i<n;i++){
-        if(co2[i] > 900) cout << "High Pollution!\n";
-        else cout << "Normal\n";
-    }
-}
-</pre>
-</div>
-<div class="card">
-<h3>10) Supply Chain Delay Predictor</h3>
-
-<b>Algorithm Used:</b> Delay Difference Calculation  
-<ul>
-    <li>Compares expected vs actual delivery time.</li>
-    <li>Shows how much delay occurred.</li>
-    <li>Helps improve logistics planning.</li>
-</ul>
-
-<span class="algo-btn" onclick="toggleAlgo('alg10')">Show Code</span>
-<pre id="alg10">
-#include <iostream>
-#include <vector>
-using namespace std;
-
-int main(){
-    int n;
-    cin >> n;
-
-    vector<float> expected(n), actual(n);
-
-    for(int i=0;i<n;i++) cin >> expected[i];
-    for(int i=0;i<n;i++) cin >> actual[i];
-
-    for(int i=0;i<n;i++){
-        float delay = actual[i] - expected[i];
-        if(delay > 0)
-            cout << "Delayed by " << delay << " hours\n";
-        else
-            cout << "On Time\n";
-    }
-}
-</pre>
-</div>
-</div> <!-- End of Container -->
 </body>
-</html>                
+</html>
