@@ -15,6 +15,28 @@
         animation: fadeIn 0.6s ease-in-out;
     }
 
+    /* HEADER BANNER */
+    .banner {
+        position: fixed;
+        top: 0;
+        left: 260px;
+        width: calc(100% - 260px);
+        padding: 20px;
+        background: linear-gradient(90deg, #5a23af, #9b59ff);
+        color: white;
+        font-size: 26px;
+        font-weight: bold;
+        text-align: center;
+        z-index: 10;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .subbanner {
+        font-size: 16px;
+        opacity: 0.9;
+        margin-top: 4px;
+        font-weight: normal;
+    }
+
     /* FADE-IN ANIMATION */
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(10px); }
@@ -27,6 +49,7 @@
         background: #e7dbff;
         height: 100vh;
         padding: 20px;
+        padding-top: 40px;
         position: fixed;
         overflow-y: auto;
         border-right: 2px solid #d2c2ff;
@@ -44,7 +67,7 @@
         margin-bottom: 20px;
     }
 
-    /* SIDEBAR HOVER ANIMATION */
+    /* SIDEBAR ITEMS */
     .nav-item {
         padding: 12px;
         background: white;
@@ -65,10 +88,11 @@
     .content {
         margin-left: 300px;
         padding: 30px;
+        margin-top: 120px;
         width: calc(100% - 300px);
     }
 
-    /* ANIMATED CARDS */
+    /* ANIMATED CARD */
     .card {
         background: #ffffff;
         padding: 25px;
@@ -112,37 +136,29 @@
 <script>
 function loadProblem(id) {
     document.getElementById("content").innerHTML = problems[id];
-    window.scrollTo(0, 0); // auto scroll to top on click
+    window.scrollTo(0, 0);
 }
 
 const problems = {
 
-1: `
+1: String.raw`
 <h1>1️⃣ Smart Textile Quality Detector</h1>
 <div class="card">
 <div class="sub">Problem Statement</div>
-Detect repeated weave defects using fast pattern detection.
-
-<div class="sub">Algorithm Candidates</div>
-• KMP<br>• Rabin–Karp<br>• DFS/BFS<br>• AVL Tree<br>
+Detect repeated weave defects using fast pattern matching.
 
 <div class="sub">Most Accurate Algorithm</div>
 <b>KMP Algorithm</b>
 
-<div class="sub">Few Points About Code</div>
-• Uses LPS<br>
-• Prevents re-checking<br>
-• Runs in O(n)<br>
-
 <div class="sub">C++ Code</div>
 <div class="code-box">
-#include &lt;bits/stdc++.h&gt;
+#include <bits/stdc++.h>
 using namespace std;
 
-vector&lt;int&gt; buildLPS(vector&lt;int&gt;& pat){
-    vector&lt;int&gt; lps(pat.size(),0);
+vector<int> buildLPS(vector<int>& pat){
+    vector<int> lps(pat.size(),0);
     int len=0,i=1;
-    while(i&lt;pat.size()){
+    while(i<pat.size()){
         if(pat[i]==pat[len]){ len++; lps[i]=len; i++; }
         else if(len!=0) len=lps[len-1];
         else { lps[i]=0; i++; }
@@ -150,10 +166,10 @@ vector&lt;int&gt; buildLPS(vector&lt;int&gt;& pat){
     return lps;
 }
 
-bool KMPsearch(vector&lt;int&gt;& text, vector&lt;int&gt;& pat){
-    vector&lt;int&gt; lps = buildLPS(pat);
+bool KMPsearch(vector<int>& text, vector<int>& pat){
+    vector<int> lps = buildLPS(pat);
     int i=0,j=0;
-    while(i&lt;text.size()){
+    while(i<text.size()){
         if(text[i]==pat[j]){
             i++; j++;
             if(j==pat.size()) return true;
@@ -166,128 +182,131 @@ bool KMPsearch(vector&lt;int&gt;& text, vector&lt;int&gt;& pat){
 }
 
 int main(){
-    vector&lt;int&gt; textile={3,4,4,7,4,4,7};
-    vector&lt;int&gt; defect={4,4,7};
-    cout &lt;&lt; (KMPsearch(textile,defect)? "Defect Found" : "No Defect");
+    vector<int> textile={3,4,4,7,4,4,7};
+    vector<int> defect={4,4,7};
+    cout << (KMPsearch(textile,defect)? "Defect Found" : "No Defect");
 }
-</div>
-</div>
+</div></div>
 `,
 
-2: `
+2: String.raw`
 <h1>2️⃣ Worker Safety Monitoring</h1>
 <div class="card">
+
 <div class="sub">Most Accurate Algorithm</div>
 <b>AVL Threshold Lookup</b>
 
 <div class="sub">C++ Code</div>
 <div class="code-box">
-#include &lt;bits/stdc++.h&gt;
+#include <bits/stdc++.h>
 using namespace std;
 
 int main(){
-    int n; cin&gt;&gt;n;
-    vector&lt;float&gt; acc(n);
-    for(float &x:acc) cin&gt;&gt;x;
+    int n; cin >> n;
+    vector<float> acc(n);
+    for(float &x:acc) cin >> x;
 
-    float limit; cin&gt;&gt;limit;
+    float limit; cin >> limit;
 
     for(float x:acc)
-        cout&lt;&lt;(x&gt;limit?"Unsafe":"Safe")&lt;&lt;"\\n";
+        cout << (x>limit?"Unsafe":"Safe") << endl;
 }
-</div>
-</div>
+</div></div>
 `,
 
-3: `
+3: String.raw`
 <h1>3️⃣ Predictive Maintenance</h1>
 <div class="card">
+
 <div class="sub">Most Accurate Algorithm</div>
 <b>Segment Tree</b>
 
 <div class="sub">C++ Code</div>
 <div class="code-box">
-#include &lt;bits/stdc++.h&gt;
+#include <bits/stdc++.h>
 using namespace std;
 
 int main(){
-    int n; cin&gt;&gt;n;
-    vector&lt;float&gt; vib(n);
+    int n; cin >> n;
+    vector<float> vib(n);
 
-    for(float &x:vib) cin&gt;&gt;x;
+    for(float &x:vib) cin >> x;
 
-    float th; cin&gt;&gt;th;
+    float th; cin >> th;
 
     for(float x:vib)
-        cout&lt;&lt;(x&gt;th?"Failure predicted":"Normal")&lt;&lt;"\\n";
+        cout << (x>th?"Failure predicted":"Normal") << endl;
 }
 </div>
 </div>
 `,
 
-4: `
+4: String.raw`
 <h1>4️⃣ Sorting Robot</h1>
 <div class="card">
+
 <div class="sub">Most Accurate Algorithm</div>
 <b>Quick Sort Classification</b>
 
 <div class="sub">C++ Code</div>
 <div class="code-box">
-#include &lt;bits/stdc++.h&gt;
+#include <bits/stdc++.h>
 using namespace std;
 
 string classify(float w){
-    if(w&lt;1) return "Light";
-    if(w&lt;5) return "Medium";
+    if(w<1) return "Light";
+    if(w<5) return "Medium";
     return "Heavy";
 }
 
 int main(){
-    int n; cin&gt;&gt;n;
+    int n; cin >> n;
     while(n--){
-        float w; cin&gt;&gt;w;
-        cout&lt;&lt;classify(w)\\n;
+        float w; cin >> w;
+        cout << classify(w) << endl;
     }
 }
 </div>
 </div>
 `,
 
-5: `
+5: String.raw`
 <h1>5️⃣ Inventory Forecasting</h1>
 <div class="card">
+
 <div class="sub">Most Accurate Algorithm</div>
 <b>Moving Average</b>
 
 <div class="sub">C++ Code</div>
 <div class="code-box">
-#include &lt;bits/stdc++.h&gt;
+#include <bits/stdc++.h>
 using namespace std;
 
 int main(){
-    int n; cin&gt;&gt;n;
-    vector&lt;int&gt; s(n);
+    int n; cin >> n;
+    vector<int> s(n);
 
-    for(int &x:s) cin&gt;&gt;x;
+    for(int &x:s) cin >> x;
 
     int sum=0;
     for(int v:s) sum+=v;
 
-    cout&lt;&lt;"Forecast: "&lt;&lt;sum/n;
+    cout << "Forecast: " << sum/n;
 }
 </div>
 </div>
 `,
 
-6: `
+6: String.raw`
 <h1>6️⃣ Waste Heat Recycling</h1>
 <div class="card">
+
 <div class="sub">Most Accurate Algorithm</div>
 <b>Max Heap</b>
 
 <div class="sub">C++ Code</div>
 <div class="code-box">
-#include &lt;bits/stdc++.h&gt;
+#include <bits/stdc++.h>
 using namespace std;
 
 float convert(float t){
@@ -295,122 +314,126 @@ float convert(float t){
 }
 
 int main(){
-    int n; cin&gt;&gt;n;
+    int n; cin >> n;
     float total=0,t;
 
     while(n--){
-        cin&gt;&gt;t;
+        cin >> t;
         float e=convert(t);
         total+=e;
-        cout&lt;&lt;"Converted: "&lt;&lt;e&lt;&lt;" kW\\n";
+        cout << "Converted: " << e << " kW" << endl;
     }
 
-    cout&lt;&lt;"Total: "&lt;&lt;total;
+    cout << "Total: " << total;
 }
 </div>
 </div>
 `,
 
-7: `
+7: String.raw`
 <h1>7️⃣ Packaging Optimization</h1>
 <div class="card">
+
 <div class="sub">Most Accurate Algorithm</div>
 <b>Binary Search</b>
 
 <div class="sub">C++ Code</div>
 <div class="code-box">
-#include &lt;bits/stdc++.h&gt;
+#include <bits/stdc++.h>
 using namespace std;
 
 string box(float v){
-    if(v&lt;100) return "Small";
-    if(v&lt;300) return "Medium";
+    if(v<100) return "Small";
+    if(v<300) return "Medium";
     return "Large";
 }
 
 int main(){
-    int n; cin&gt;&gt;n;
+    int n; cin >> n;
 
     while(n--){
-        float v; cin&gt;&gt;v;
-        cout&lt;&lt;box(v)\\n;
+        float v; cin >> v;
+        cout << box(v) << endl;
     }
 }
 </div>
 </div>
 `,
 
-8: `
+8: String.raw`
 <h1>8️⃣ Auto Reject Conveyor</h1>
 <div class="card">
+
 <div class="sub">Most Accurate Algorithm</div>
-<b>Binary Range Validation</b>
+<b>Binary Range Check</b>
 
 <div class="sub">C++ Code</div>
 <div class="code-box">
-#include &lt;bits/stdc++.h&gt;
+#include <bits/stdc++.h>
 using namespace std;
 
 bool reject(float w){
-    return (w&lt;90 || w&gt;110);
+    return (w<90 || w>110);
 }
 
 int main(){
-    int n; cin&gt;&gt;n;
+    int n; cin >> n;
 
     while(n--){
-        float w; cin&gt;&gt;w;
-        cout&lt;&lt;(reject(w)?"Rejected":"Accepted")&lt;&lt;"\\n";
+        float w; cin >> w;
+        cout << (reject(w)?"Rejected":"Accepted") << endl;
     }
 }
 </div>
 </div>
 `,
 
-9: `
+9: String.raw`
 <h1>9️⃣ Pollution Monitoring</h1>
 <div class="card">
+
 <div class="sub">Most Accurate Algorithm</div>
 <b>Segment Tree</b>
 
 <div class="sub">C++ Code</div>
 <div class="code-box">
-#include &lt;bits/stdc++.h&gt;
+#include <bits/stdc++.h>
 using namespace std;
 
 int main(){
-    int n; cin&gt;&gt;n;
-    vector&lt;float&gt; c(n);
+    int n; cin >> n;
+    vector<float> c(n);
 
-    for(float &x:c) cin&gt;&gt;x;
+    for(float &x:c) cin >> x;
 
     for(float x:c)
-        cout&lt;&lt;(x&gt;900?"High Pollution":"Normal")&lt;&lt;"\\n";
+        cout << (x>900?"High Pollution":"Normal") << endl;
 }
 </div>
 </div>
 `,
 
-10: `
+10: String.raw`
 <h1>🔟 Supply Chain Delay Predictor</h1>
 <div class="card">
+
 <div class="sub">Most Accurate Algorithm</div>
-<b>Dijkstra Algorithm</b>
+<b>Dijkstra Model</b>
 
 <div class="sub">C++ Code</div>
 <div class="code-box">
-#include &lt;bits/stdc++.h&gt;
+#include <bits/stdc++.h>
 using namespace std;
 
 int main(){
-    int n; cin&gt;&gt;n;
-    vector&lt;float&gt; exp(n), act(n);
+    int n; cin >> n;
+    vector<float> exp(n), act(n);
 
-    for(float &x:exp) cin&gt;&gt;x;
-    for(float &x:act) cin&gt;&gt;x;
+    for(float &x:exp) cin >> x;
+    for(float &x:act) cin >> x;
 
-    for(int i=0;i&lt;n;i++){
-        cout&lt;&lt;((act[i]-exp[i])>0?"Delayed":"On Time")<<endl;
+    for(int i=0;i<n;i++){
+        cout << ((act[i]-exp[i])>0?"Delayed":"On Time") << endl;
     }
 }
 </div>
@@ -426,22 +449,28 @@ int main(){
 <!-- SIDEBAR -->
 <div class="sidebar">
     <h2>Industry Problems</h2>
-    <div class="nav-item" onclick="loadProblem(1)">Smart Textile Quality</div>
+    <div class="nav-item" onclick="loadProblem(1)">Textile Quality</div>
     <div class="nav-item" onclick="loadProblem(2)">Worker Safety</div>
     <div class="nav-item" onclick="loadProblem(3)">Predictive Maintenance</div>
     <div class="nav-item" onclick="loadProblem(4)">Sorting Robot</div>
-    <div class="nav-item" onclick="loadProblem(5)">Inventory Forecasting</div>
+    <div class="nav-item" onclick="loadProblem(5)">Inventory Forecast</div>
     <div class="nav-item" onclick="loadProblem(6)">Heat Recycling</div>
     <div class="nav-item" onclick="loadProblem(7)">Packaging Optimization</div>
     <div class="nav-item" onclick="loadProblem(8)">Auto Reject Conveyor</div>
-    <div class="nav-item" onclick="loadProblem(9)">Pollution Monitoring</div>
+    <div class="nav-item" onclick="loadProblem(9)">Pollution Dashboard</div>
     <div class="nav-item" onclick="loadProblem(10)">Delay Predictor</div>
+</div>
+
+<!-- HEADER BANNER -->
+<div class="banner">
+    INDUSTRY AUTOMATION USING DAA
+    <div class="subbanner">Smart Solutions | Algorithms | C++ Implementations</div>
 </div>
 
 <!-- CONTENT -->
 <div class="content" id="content">
     <h1>Select a Problem From Sidebar</h1>
-    <p>This website displays 10 DAA-based industry problems with solutions + code.</p>
+    <p>This website displays 10 DAA-based industry problems with solutions and C++ implementations.</p>
 </div>
 
 </body>
