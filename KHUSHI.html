@@ -9,14 +9,14 @@
     body {
         margin: 0;
         font-family: Arial, sans-serif;
-        background: #eef1f5; /* Soft industrial blue-grey */
-        color: #1f2a36;
+        background: #f2f2f7; 
+        color: #2c2345;
     }
 
     /* ---------- NAVBAR ---------- */
     .navbar {
         width: 100%;
-        background: #1f2a36; 
+        background: #3b1c80; 
         padding: 16px 40px;
         display: flex;
         justify-content: space-between;
@@ -29,7 +29,7 @@
 
     .navbar a {
         text-decoration: none;
-        color: #c3e4ff;
+        color: #e5d8ff;
         margin-left: 20px;
         font-size: 17px;
     }
@@ -38,14 +38,39 @@
         color: #ffffff;
     }
 
-    /* ---------- PAGE HEADING ---------- */
-    .title {
-        text-align: center;
-        font-size: 34px;
-        font-weight: bold;
+    /* ---------- HEADING SECTION ---------- */
+    .header-section {
+        width: 90%;
+        margin: auto;
         margin-top: 25px;
-        color: #1f2a36;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .header-section img {
+        width: 260px;
+        border-radius: 12px;
+    }
+
+    .title {
+        font-size: 38px;
+        font-weight: bold;
+        color: #3b1c80;
         letter-spacing: 1px;
+    }
+
+    /* ---------- PROJECT EXPLANATION ---------- */
+    .explain {
+        width: 90%;
+        margin: auto;
+        margin-top: 10px;
+        background: #ede7ff;
+        padding: 18px;
+        border-left: 5px solid #3b1c80;
+        border-radius: 8px;
+        color: #2c2345;
+        font-size: 16px;
     }
 
     /* ---------- MAIN GRID ---------- */
@@ -85,7 +110,7 @@
         background: #ffffff;
         padding: 25px;
         border-radius: 12px;
-        border-left: 5px solid #1f2a36;
+        border-left: 5px solid #3b1c80;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         transition: 0.3s;
     }
@@ -97,20 +122,14 @@
 
     .card h3 {
         margin: 0;
-        color: #1f2a36;
+        color: #3b1c80;
         margin-bottom: 10px;
         font-size: 20px;
     }
 
-    .algo-heading {
-        color: #004d73;
-        font-weight: bold;
-        margin-top: 10px;
-    }
-
     .algo-btn {
         margin-top: 12px;
-        background: #1f2a36;
+        background: #3b1c80;
         padding: 8px 16px;
         color: white;
         font-weight: bold;
@@ -121,13 +140,13 @@
     }
 
     pre {
-        background: #f0f4f7;
+        background: #f0f4ff;
         padding: 12px;
         border-radius: 8px;
         margin-top: 10px;
         overflow-x: auto;
         display: none;
-        color: #003049;
+        color: #3b1c80;
     }
 </style>
 
@@ -152,134 +171,12 @@ function toggleAlgo(id) {
     </div>
 </div>
 
-<h2 class="title">Industry Business Ideas</h2>
-
-<div class="main">
-
-<!-- LEFT CARDS -->
-<div class="container">
-
-    <!-- 1 -->
-    <div class="card">
-        <h3>1) Smart Textile Quality Detector</h3>
-        <p><b>Algorithm Used:</b> Threshold-Based Defect Detection</p>
-        <span class="algo-btn" onclick="toggleAlgo('i1')">Show Algorithm</span>
-        <pre id="i1">
-for each sensor_value:
-    if |value - expected| > threshold:
-         mark defect
-        </pre>
-    </div>
-
-    <!-- 2 -->
-    <div class="card">
-        <h3>2) AI Worker Safety Monitoring</h3>
-        <p><b>Algorithm Used:</b> Acceleration Limit Check</p>
-        <span class="algo-btn" onclick="toggleAlgo('i2')">Show Algorithm</span>
-        <pre id="i2">
-read acceleration;
-if acceleration > max_safe_limit:
-    alert("Unsafe Movement");
-        </pre>
-    </div>
-
-    <!-- 3 -->
-    <div class="card">
-        <h3>3) Predictive Machine Maintenance</h3>
-        <p><b>Algorithm Used:</b> Vibration Anomaly Detection</p>
-        <span class="algo-btn" onclick="toggleAlgo('i3')">Show Algorithm</span>
-        <pre id="i3">
-if vibration_value > failure_threshold:
-    warn("Failure Predicted");
-        </pre>
-    </div>
-
-    <!-- 4 -->
-    <div class="card">
-        <h3>4) Autonomous Material Sorting Robot</h3>
-        <p><b>Algorithm Used:</b> Weight-Based Classification</p>
-        <span class="algo-btn" onclick="toggleAlgo('i4')">Show Algorithm</span>
-        <pre id="i4">
-if w < 1kg → Bin A
-else if w < 5kg → Bin B
-else → Bin C
-        </pre>
-    </div>
-
-    <!-- 5 -->
-    <div class="card">
-        <h3>5) Smart Inventory Forecasting</h3>
-        <p><b>Algorithm Used:</b> Moving Average Forecasting</p>
-        <span class="algo-btn" onclick="toggleAlgo('i5')">Show Algorithm</span>
-        <pre id="i5">
-forecast = (sum of last N months) / N;
-        </pre>
-    </div>
-
-    <!-- 6 -->
-    <div class="card">
-        <h3>6) Waste-Heat Energy Recycling System</h3>
-        <p><b>Algorithm Used:</b> Heat-to-Energy Conversion Estimation</p>
-        <span class="algo-btn" onclick="toggleAlgo('i6')">Show Algorithm</span>
-        <pre id="i6">
-energy = (temperature - baseline) * factor;
-        </pre>
-    </div>
-
-    <!-- 7 -->
-    <div class="card">
-        <h3>7) AI Packaging Optimization</h3>
-        <p><b>Algorithm Used:</b> Volume-Based Box Selection</p>
-        <span class="algo-btn" onclick="toggleAlgo('i7')">Show Algorithm</span>
-        <pre id="i7">
-if volume < 100 → Small
-else if volume < 300 → Medium
-else → Large
-        </pre>
-    </div>
-
-    <!-- 8 -->
-    <div class="card">
-        <h3>8) Auto-Reject Faulty Products</h3>
-        <p><b>Algorithm Used:</b> Range Validation Check</p>
-        <span class="algo-btn" onclick="toggleAlgo('i8')">Show Algorithm</span>
-        <pre id="i8">
-if weight < min OR weight > max:
-    reject item
-        </pre>
-    </div>
-
-    <!-- 9 -->
-    <div class="card">
-        <h3>9) Factory Pollution Monitoring</h3>
-        <p><b>Algorithm Used:</b> CO₂ Threshold Detection</p>
-        <span class="algo-btn" onclick="toggleAlgo('i9')">Show Algorithm</span>
-        <pre id="i9">
-if CO2_level > danger_limit:
-    alert("High Pollution")
-        </pre>
-    </div>
-
-    <!-- 10 -->
-    <div class="card">
-        <h3>10) Supply Chain Delay Predictor</h3>
-        <p><b>Algorithm Used:</b> Delay Difference Analysis</p>
-        <span class="algo-btn" onclick="toggleAlgo('i10')">Show Algorithm</span>
-        <pre id="i10">
-delay = actual_time - expected_time
-if delay > 0:
-    show delay
-        </pre>
-    </div>
-
+<!-- HEADER WITH IMAGE -->
+<div class="header-section">
+    <h2 class="title">Industry Business Ideas</h2>
+    <img src="https://cdn-icons-png.flaticon.com/512/ 9069/9069276.png">
 </div>
 
-<!-- RIGHT IMAGE -->
-<div class="image-box">
-    <img src="https://cdn.pixabay.com/photo/2016/11/29/09/32/factory-1869801_1280.jpg">
-</div>
-
-</div>
-
-</body>
-</html>
+<!-- PROJECT EXPLANATION -->
+<div class="explain">
+This project
