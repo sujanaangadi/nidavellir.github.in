@@ -9,9 +9,13 @@
     body {
         margin: 0;
         font-family: Arial, sans-serif;
-        background: #0d1117;
-        color: #d0d7de;
+
+        /* NEW DARK TEAL THEME */
+        background: #003B46;
+        color: #E0F7FA;
     }
+
+    /* HEADER */
     .header {
         width: 92%;
         margin: auto;
@@ -23,13 +27,15 @@
     .title {
         font-size: 42px;
         font-weight: bold;
-        color: #58a6ff;
+        color: #C4F1F6;
     }
     .header img {
         width: 340px;
         border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
     }
+
+    /* GRID CONTAINER */
     .container {
         width: 92%;
         margin: auto;
@@ -38,36 +44,47 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 25px;
     }
+
+    /* CARD */
     .card {
-        background: #161b22;
+        background: #07575B;
         padding: 20px;
         border-radius: 12px;
-        border-left: 4px solid #58a6ff;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        border-left: 4px solid #66A5AD;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.35);
         transition: transform 0.25s ease, box-shadow 0.25s ease;
+        color: #E0F7FA;
     }
     .card:hover {
         transform: translateY(-8px);
-        box-shadow: 0 8px 25px rgba(56,139,253,0.6);
-        border-left-color: #1f6feb;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+        border-left-color: #C4F1F6;
     }
+
+    /* CODE BLOCK */
     pre {
-        background: #0d1117;
+        background: #022F35;
         padding: 12px;
         border-radius: 8px;
         display: none;
         white-space: pre-wrap;
-        border: 1px solid #30363d;
-        color: #c9d1d9;
+        border: 1px solid #66A5AD;
+        color: #E0F7FA;
     }
+
+    /* BUTTON */
     .algo-btn {
-        background: #1f6feb;
+        background: #66A5AD;
         padding: 8px 12px;
         border-radius: 6px;
         cursor: pointer;
         display: inline-block;
         margin-top: 10px;
-        color: white;
+        color: #003B46;
+        font-weight: bold;
+    }
+    .algo-btn:hover {
+        background: #C4F1F6;
     }
 </style>
 
@@ -88,7 +105,7 @@ function toggleAlgo(id) {
 
 <div class="container">
 
-<!-- ------------------------ 1. SMART TRAFFIC SIGNAL SYSTEM ---------------------- -->
+<!-- -------------------- 1. SMART TRAFFIC SIGNAL SYSTEM -------------------- -->
 <div class="card">
 <h3>1) Smart Traffic Signal System</h3>
 
@@ -128,7 +145,6 @@ struct Compare {
 
 int main() {
     int n;
-    cout << "Enter number of lanes: ";
     cin >> n;
 
     priority_queue<Lane, vector<Lane>, Compare> pq;
@@ -136,27 +152,19 @@ int main() {
     for (int i = 1; i <= n; i++) {
         int count;
         char emer;
-        cout << "Vehicle count for Lane " << i << ": ";
-        cin >> count;
-        cout << "Emergency? (y/n): ";
-        cin >> emer;
+        cin >> count >> emer;
 
         pq.push({i, count, emer=='y' || emer=='Y'});
     }
 
     Lane top = pq.top();
-
-    cout << "\nLane given GREEN: " << top.lane_no << endl;
-    cout << "Vehicles: " << top.vehicle_count << endl;
-    if (top.emergency) cout << "Emergency Detected!\n";
-
-    return 0;
+    cout << "Lane GREEN: " << top.lane_no;
 }
 </pre>
 </div>
 
 
-<!-- ------------------------ 2. SMART WASTE MANAGEMENT ---------------------- -->
+<!-- -------------------- 2. SMART WASTE MANAGEMENT -------------------- -->
 <div class="card">
 <h3>2) Smart Waste Management System</h3>
 
@@ -167,10 +175,8 @@ int main() {
 <li>String Matching → Pattern identification</li>
 </ul>
 
-<b>Efficiency Analysis:</b><br>
-Time Complexity: <b>O(1)</b><br>
-Space Complexity: <b>O(1)</b><br>
-SDGs mapped: <b>3, 11, 12, 13</b>
+<b>Efficiency:</b> O(1)  
+<b>SDG:</b> 3, 11, 12, 13
 
 <span class="algo-btn" onclick="toggleAlgo('c2')">Show Code</span>
 <pre id="c2">
@@ -196,16 +202,14 @@ int main() {
     getline(cin, w);
     int cat = classifyWaste(w);
 
-    if (cat == 0) cout << "Send to Manual Inspection";
+    if (cat == 0) cout << "Manual Inspection";
     else cout << "Assigned Bin: " << bins[cat];
-
-    return 0;
 }
 </pre>
 </div>
 
 
-<!-- ------------------------ 3. PUBLIC TRANSPORT TRACKING ---------------------- -->
+<!-- -------------------- 3. PUBLIC TRANSPORT TRACKING -------------------- -->
 <div class="card">
 <h3>3) Public Transport Tracking Simulator</h3>
 
@@ -236,13 +240,13 @@ int main() {
     for (auto &p : passengers)
         if (p.second > mx) { mx = p.second; best = p.first; }
 
-    cout << "Reroute bus to: " << best;
+    cout << "Reroute: " << best;
 }
 </pre>
 </div>
 
 
-<!-- ------------------------ 4. DIGITAL FOOD ORDERING ---------------------- -->
+<!-- -------------------- 4. DIGITAL FOOD ORDERING -------------------- -->
 <div class="card">
 <h3>4) Digital Food Ordering & Billing</h3>
 
@@ -291,8 +295,7 @@ int main() {
 </div>
 
 
-
-<!-- ------------------------ 5. SMART PARKING ---------------------- -->
+<!-- -------------------- 5. SMART PARKING -------------------- -->
 <div class="card">
 <h3>5) Smart Parking Management System</h3>
 
@@ -319,13 +322,12 @@ int main() {
     int c;
 
     while (true) {
-        cout << "1.Park 2.Remove 3.Show 4.Exit: ";
         cin >> c;
         if (c==1) {
             string v; cin >> v;
             bool done=false;
             for (int i=0;i<10;i++)
-                if (!p[i].occ) { p[i]={true,v}; cout<<"Parked at "<<i+1; done=true; break; }
+                if (!p[i].occ) { p[i]={true,v}; done=true; break; }
             if(!done) cout<<"Full!";
         }
         else if (c==4) break;
@@ -335,7 +337,7 @@ int main() {
 </div>
 
 
-<!-- ------------------------ 6. WATER & ELECTRICITY SUPPLY ---------------------- -->
+<!-- -------------------- 6. WATER & ELECTRICITY SUPPLY -------------------- -->
 <div class="card">
 <h3>6) City Water & Electricity Supply Monitoring</h3>
 
@@ -366,14 +368,14 @@ int main() {
     for(int x:w) sw+=x;
     for(int y:e) se+=y;
 
-    cout << "Water Tomorrow: " << (sw/d)*1.05;
-    cout << "\nElectricity Tomorrow: " << (se/d)*1.05;
+    cout << (sw/d)*1.05;
+    cout << (se/d)*1.05;
 }
 </pre>
 </div>
 
 
-<!-- ------------------------ 7. SMART CITY COMPLAINT SYSTEM ---------------------- -->
+<!-- -------------------- 7. SMART CITY COMPLAINT SYSTEM -------------------- -->
 <div class="card">
 <h3>7) Smart City Complaint Management</h3>
 
@@ -392,7 +394,6 @@ int main() {
 <pre id="c7">
 #include <iostream>
 #include <vector>
-#include <ctime>
 using namespace std;
 
 struct C { int id; string name,cat,desc,dept,status; };
@@ -424,7 +425,7 @@ int main(){
 </div>
 
 
-<!-- ------------------------ 8. AI DISASTER MANAGEMENT ---------------------- -->
+<!-- -------------------- 8. AI DISASTER MANAGEMENT -------------------- -->
 <div class="card">
 <h3>8) AI-Based Disaster Management System</h3>
 
@@ -465,7 +466,7 @@ int main(){
 </div>
 
 
-<!-- ------------------------ 9. EV CHARGING STATIONS ---------------------- -->
+<!-- -------------------- 9. EV CHARGING STATIONS -------------------- -->
 <div class="card">
 <h3>9) Smart EV Charging Station Routing</h3>
 
@@ -476,7 +477,7 @@ int main(){
 <li>Linear Max Search</li>
 </ul>
 
-<b>Efficiency:</b> O(n)<br>
+<b>Efficiency:</b> O(n)  
 <b>SDG:</b> 7, 11, 13
 
 <span class="algo-btn" onclick="toggleAlgo('c9')">Show Code</span>
@@ -496,7 +497,7 @@ int main(){
 </div>
 
 
-<!-- ------------------------ 10. CIVIC ISSUE AUTO DETECTION ---------------------- -->
+<!-- -------------------- 10. CIVIC ISSUE AUTO DETECTION -------------------- -->
 <div class="card">
 <h3>10) Civic Issue Auto-Detection System</h3>
 
@@ -507,7 +508,7 @@ int main(){
 <li>Lookup Table for Issue → Department mapping</li>
 </ul>
 
-<b>Efficiency:</b> O(1)<br>
+<b>Efficiency:</b> O(1)  
 <b>SDG:</b> 11, 16
 
 <span class="algo-btn" onclick="toggleAlgo('c10')">Show Code</span>
