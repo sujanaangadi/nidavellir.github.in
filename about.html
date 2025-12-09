@@ -3,252 +3,227 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Village Project</title>
+<title>City Design</title>
 
 <style>
-/* RESET */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #1e1e1e;
-    color: white;
-}
-/* NAVBAR */
+/* ---------- NAVIGATION BAR --------- */
 .navbar {
     width: 100%;
-    background: #8be0ff;
+    background: #0A1A3A;
     padding: 20px 40px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     position: fixed;
     top: 0;
+    left: 0;
     z-index: 10;
 }
+
+.navbar .logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+    margin-right: 40px;
+}
+
 .navbar ul {
-    list-style: none;
     display: flex;
+    list-style: none;
     gap: 25px;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar ul li a {
     text-decoration: none;
-    color: black;
+    color: #C8D6FF;
     font-size: 18px;
     font-weight: 600;
-}
-/* ------------------ INTRO SCREEN ------------------ */
-#introScreen {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    background: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    animation: fadeOut 1s ease-in-out 4s forwards;
+    transition: 0.3s;
 }
 
-#introScreen img {
-    width: 45%;
-    animation: zoomIn 2s ease-in-out;
+.navbar ul li a:hover {
+    color: #00E5A8;
 }
 
-#introScreen h1 {
-    margin-top: 20px;
-    font-size: 40px;
-    color: #00eaff;
-    text-shadow: 0 0 10px #00eaff;
-    animation: fadeInText 3s ease-in-out;
+/* ---------- BODY BACKGROUND ---------- */
+body {
+    margin: 0;
+    background: #E9EEF4;
+    font-family: Arial, sans-serif;
 }
 
-@keyframes zoomIn {
-    from { transform: scale(0.3); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-@keyframes fadeOut {
-    to { opacity: 0; visibility: hidden; }
-}
-
-@keyframes fadeInText {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* ------------------ MAIN PAGE ------------------ */
+/* ---------- MAIN WHITE BOX ---------- */
 .container {
-    display: flex;
-    justify-content: space-between;
+    width: 85%;
+    margin: 140px auto;
+    background: #F4F7FB;
     padding: 40px;
-    margin-top: 80px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.08);
 }
 
-/* LEFT BOX */
-.left-box {
-    width: 25%;
-    background: #000;
-    padding: 25px;
-    border-radius: 15px;
-    font-size: 28px;
-    font-weight: bold;
+/* ---------- INTRO HEADING BOX ---------- */
+.intro-box {
+    background: #FFFFFF;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.intro-box h1 {
     text-align: center;
-    box-shadow: 0 0 15px #00eaff55;
-    animation: slideLeft 1.5s ease-out;
+    font-size: 40px;
+    color: #0A1A3A;
+    margin: 0;
 }
 
-@keyframes slideLeft {
-    from { transform: translateX(-80px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-}
-
-/* MIDDLE IMAGE BOX */
-.middle-box {
-    width: 40%;
-    background: #111;
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 0 15px #00eaff55;
-    animation: fadeIn 2s ease-in-out;
-}
-
-.middle-box img {
-    width: 100%;
-    border-radius: 15px;
-    animation: fadeIn 3s ease-in-out infinite alternate;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0.3; }
-    to { opacity: 1; }
-}
-
-/* RIGHT BOX */
-.right-box {
-    width: 30%;
-    background: #000;
-    padding: 25px;
-    border-radius: 15px;
+/* ---------- INTRO TEXT ---------- */
+.info {
     font-size: 20px;
-    min-height: 300px;
-    line-height: 1.6;
-    box-shadow: 0 0 15px #00eaff55;
-    opacity: 1;
-    transition: opacity 1s ease-in-out;
+    line-height: 30px;
+    margin-bottom: 25px;
 }
 
-/* slide fade animation */
-.fade {
-    opacity: 0;
+/* ---------- TABLE ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #0A1A3A;
+    color: white;
+    padding: 12px;
+    font-size: 22px;
+}
+
+td {
+    padding: 15px;
+    text-align: center;
+    background: white;
+    font-size: 18px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* ---------- BUSINESS IDEA SECTIONS ---------- */
+.idea-section-title {
+    text-align: center;
+    font-size: 36px;
+    margin-top: 50px;
+    font-weight: 700;
+    color: #0A1A3A;
+}
+
+.idea-card {
+    background: #13265C;
+    color: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 80%;
+    margin: 30px auto;
+    box-shadow: 0 0 15px rgba(0,0,0,0.25);
+    border-left: 6px solid #00E5A8;
+}
+
+.idea-card h2 {
+    font-size: 28px;
+    text-align: center;
+    color: #FFD700;
+}
+
+.idea-card h3 {
+    text-align: center;
+    font-size: 22px;
+    color: #00E5A8;
+    margin-bottom: 15px;
+}
+
+.idea-card ul {
+    line-height: 32px;
+    font-size: 18px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- ------------------ INTRO PAGE ------------------ -->
-<!-- NAVBAR -->
+<!-- ---------- NAV BAR ---------- -->
 <div class="navbar">
     <div class="logo">CITY DESIGN</div>
 
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">about</a></li>
-      <li><a href="project.html">Project</a></li>
-      <li><a href="SHRAVANA.html">SHRAVANA</a></li>
-      <li><a href="SUJANA.html">SUJANA</a></li>
-      <li><a href="KHUSHI.html">KHUSHI</a></li>
-      <li><a href="LAXMI.html">LAXMI</a></li>
-      <li><a href="collabz.html">Collabz</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="project.html">Project</a></li>
+        <li><a href="SHRAVANA.html">SHRAVANA</a></li>
+        <li><a href="SUJANA.html">SUJANA</a></li>
+        <li><a href="KHUSHI.html">KHUSHI</a></li>
+        <li><a href="LAXMI.html">LAXMI</a></li>
+        <li><a href="collabz.html">Collabz</a></li>
     </ul>
 </div>
-<!-- ------------------ MAIN 3 COLUMN PAGE ------------------ -->
+
+<!-- ---------- MAIN CONTENT ---------- -->
 <div class="container">
 
-    <!-- LEFT -->
-    <div class="left-box">
-        I am  <br>
-        <span style="color:#00eaff;">NIDAVELLIR Village</span>
+    <!-- INTRO HEADING -->
+    <div class="intro-box">
+        <h1>Introduction</h1>
     </div>
 
-    <!-- MIDDLE -->
-   
-<div class="card">
-    <h2>MY IMAGE</h2>
-    <img src="Screenshot 2025-12-08 193217.png" alt="Village Project Image" 
-         style="width: 300px; margin-top: 20px; border-radius: 10px;">
-</div>
-
-
-    <!-- RIGHT -->
-    <div class="right-box" id="geoBox">
-        <!-- JS inserts data here -->
+<!-- INTRO TEXT -->
+    <div class="info">
+        Course: DAA<br>
+        Course Code: 24ECSC205<br>
+        Course Instructor: Prof. Prakash Hegade<br>
+        University: KLE Technological University<br>
+        Topic: City Design
     </div>
 
+    <!-- TABLE -->
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>USN</th>
+        </tr>
+        <tr>
+            <td>SHRAVANA .P.MADAKATTI</td>
+            <td>01fe24bcs204</td>
+        </tr>
+        <tr>
+            <td>SUJANA ANGADI</td>
+            <td>01fe24bcs205</td>
+        </tr>
+        <tr>
+            <td>KHUSHI S KAPALI</td>
+            <td>01fe24bcs023</td>
+        </tr>
+        <tr>
+            <td>LAXMI.BALAPPA.TALLIKERI</td>
+            <td>01fe24bcs136</td>
+        </tr>
+    </table>
+
 </div>
 
-<script>
-// ------------- GEOGRAPHY SLIDES -------------
-const slides = [
-    `<h2> Village Location</h2>
-     • Southern Rajasthan<br>
-     • Between Harji, Pasalia Jawal & Sumerpur<br>
-     • Near Aravalli Hills<br>
-     • Close to Jawai River`,
+<!-- -------------------------------------------- -->
+<!--           BUSINESS IDEA GENERATION           -->
+<!-- -------------------------------------------- -->
 
-    `<h2> Natural Features</h2>
-     • Aravalli Mountain Range<br>
-     • Jawai River<br>
-     • Forest patches<br>
-     • Granite rock hills`,
+<h1 class="idea-section-title"> Business Idea Generation</h1>
 
-    `<h2> Climate</h2>
-     • Semi–arid zone<br>
-     • Hot summers<br>
-     • Mild winters<br>
-     • Monsoon rainfall (moderate)`,
-
-    `<h2> Agriculture</h2>
-     • Wheat, Bajra, Mustard<br>
-     • Jawai river irrigation<br>
-     • Fertile soil patches<br>
-     • Dairy & livestock`,
-
-    `<h2> Nearby Towns</h2>
-     • Sumerpur (major town)<br>
-     • Harji village<br>
-     • Pasalia Jawal<br>
-     • Jawai Bandh railway`,
-
-    `<h2> Land Type</h2>
-     • Rocky slopes (Aravalli)<br>
-     • Sandy-loam soil<br>
-     • Plains + hills mixed<br>
-     • High mineral content`
-];
-
-let index = 0;
-const box = document.getElementById("geoBox");
-
-function showSlide() {
-    box.classList.add("fade");
-    setTimeout(() => {
-        box.innerHTML = slides[index];
-        box.classList.remove("fade");
-        index = (index + 1) % slides.length;
-    }, 1000);
-}
-
-// load first slide
-showSlide();
-
-// auto change every 10 sec
-setInterval(showSlide, 10000);
-
-</script>
-
-</body>
-</html>
+<!-- SHRAVANA -->
+<div class="idea-card">
+    <h2>SHRAVANA</h2>
+    <h3>POWERHOUSE & RENEWABLE ENERGY SYSTEM</h3>
+    <ul>
+        <li>1) AI Smart Power Distribution Controller</li>
+        <li>2) Solar Panel Efficiency Analyzer</li>
+        <li>3) Wind Turbine Smart RPM Controller</li>
+        <li>4) AI-Based Battery Storage Optimization</li>
+        <li>5) Power Theft / Illegal Connection Detection</li>
+        <li>6) Energy Emergency Auto-Switching</li>
+        <li>7) City-Wide Energy Demand Predictor</li>
+        <li>8) Real-Time Electricity Price Optimizer</li>
+        <li>9) House-to-House Energy Sharing (Peer-to-Peer Grid)</li>
