@@ -5,40 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LAXMI</title>
 
-    <style>
-        /* ---------- NAVIGATION BAR --------- */
-        .navbar {
-            width: 100%;
-            background: #8be0ff;
-            padding: 20px 40px;
-            display: flex;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 10;
-        }
+   <style>
+/* ---------- NAVIGATION BAR --------- */
+.navbar {
+    width: 100%;
+    background: #0A1A3A;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
 
-        .navbar .logo {
-            font-size: 28px;
-            font-weight: 700;
-            margin-right: 40px;
-        }
+.navbar .logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+    margin-right: 40px;
+}
 
-        .navbar ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-            margin: 0;
-            padding: 0;
-        }
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
 
-        .navbar ul li a {
-            text-decoration: none;
-            color: black;
-            font-size: 18px;
-            font-weight: 600;
-        }
+.navbar ul li a {
+    text-decoration: none;
+    color: #C8D6FF;
+    font-size: 18px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.navbar ul li a:hover {
+    color: #00E5A8;
+}
 
         /* ---------- PAGE CONTENT STYLING --------- */
         body {
@@ -292,20 +298,27 @@
         </div>
 
         <div id="algo1" class="algo">
-          <strong>Greedy Water Optimization (pseudocode)</strong>
+          <strong>Greedy Water Optimization </strong>
           <pre>
-Divide field into sections S1..Sn
-For each section compute moistureLevel[i]
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
 
-Sort sections by moistureLevel ascending (driest first)
-For each section in sorted order:
-  if moistureLevel[section] < thresholdLow:
-    applyCoir(section)
-    irrigateMinimal(section)
-  else
-    skip
+int main() {
+    vector<pair<int,double>> sections = {{1,15.2},{2,25.5},{3,10},{4,30.1},{5,8.5},{6,20}};
+    double threshold = 18.0;
 
-Loop: check moisture every 24 hours, repeat.
+    sort(sections.begin(), sections.end(), [](auto &a, auto &b){ return a.second < b.second; });
+
+    for(auto &s : sections) {
+        if(s.second < threshold) 
+            cout << "Section " << s.first << ": Apply coir & minimal irrigation\n";
+        else 
+            cout << "Section " << s.first << ": Skip\n";
+    }
+}
+
 </pre>
         </div>
       </article>
@@ -325,14 +338,42 @@ Loop: check moisture every 24 hours, repeat.
         </div>
 
         <div id="algo2" class="algo">
-          <strong>Dynamic Programming: Crop & Fertilizer Scheduling (pseudocode)</strong>
+          <strong>Dynamic Programming: Crop & Fertilizer Scheduling </strong>
           <pre>
-Let DP[d][c] = best expected yield up to day d if crop c planted
-For each day d:
-  For each crop option c:
-    DP[d][c] = max over previous states ( DP[d-1][x] + benefit(c,d) - cost(c,d) )
-Choose crop rotation that maximizes total DP at harvest time.
-</pre>
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int days=10, crops=3;
+    vector<double> DP(crops,0), prev(crops,0);
+    vector<int> choice(days*crops,-1);
+
+    auto benefit=[](int c,int d){ return 10+c*2-0.1*d; };
+    auto cost=[](int c,int d){ return 5+0.5*c; };
+
+    for(int d=1; d<=days; d++){
+        prev=DP;
+        for(int c=0; c<crops; c++){
+            double maxY=-1e9;
+            for(int p=0; p<crops; p++)
+                if(prev[p]+benefit(c,d)-cost(c,d)>maxY){
+                    maxY=prev[p]+benefit(c,d)-cost(c,d);
+                    choice[d*crops+c]=p;
+                }
+            DP[c]=maxY;
+        }
+    }
+
+    double maxTotal=-1e9; int last=-1;
+    for(int c=0;c<crops;c++) if(DP[c]>maxTotal){ maxTotal=DP[c]; last=c; }
+
+    vector<int> rotation(days);
+    for(int d=days; d>=1; d--){ rotation[d-1]=last; last=choice[d*crops+last]; }
+
+    cout<<"Max yield: "<<maxTotal<<"\nCrop rotation:\n";
+    for(int d=0;d<days;d++) cout<<"Day "<<d+1<<": Crop "<<rotation[d]<<"\n";
+}
+
         </div>
       </article>
 
@@ -351,17 +392,19 @@ Choose crop rotation that maximizes total DP at harvest time.
         </div>
 
         <div id="algo3" class="algo">
-          <strong>Kruskal-like Cost Minimization (pseudocode)</strong>
+          <strong>Kruskal-like Cost Minimization</strong>
           <pre>
-List required items with cost: items = [sheds, spawn, straw, humidifier, trays]
-Sort items by cost ascending
-selected = []
-for item in items:
-  if essential(selected + [item]) is true:
-    selected.append(item)
-  if selected covers minimal requirements:
-    break
-Budget-check & purchase selected list
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    double b=50000,c=0;
+    vector<pair<string,double>> it={{"shed",15000},{"spawn",5000},{"straw",3000},{"humidifier",7000},{"trays",4000}};
+    sort(it.begin(),it.end(),[](auto &a,auto &b){return a.second<b.second;});
+    vector<string> sel; set<string> e={"shed","spawn","straw"};
+    for(auto &i:it){ sel.push_back(i.first); c+=i.second; if(all_of(e.begin(),e.end(),[&](auto &x){return find(sel.begin(),sel.end(),x)!=sel.end();})) break;}
+    if(c<=b){ for(auto &s:sel) cout<<s<<" "; cout<<"\nTotal: "<<c; } else cout<<"Budget exceeded";
+}
+
 </pre>
         </div>
       </article>
@@ -381,21 +424,31 @@ Budget-check & purchase selected list
         </div>
 
         <div id="algo4" class="algo">
-          <strong>A* Nutrient Optimization (pseudocode)</strong>
+          <strong>Dynamic Programming</strong>
           <pre>
-Start = current nutrient state
-Goal = ideal nutrient target
-openSet = {Start}
-while openSet not empty:
-  node = pop node with lowest f = g + h
-  if node == Goal: reconstruct path and apply solution
-  for neighbor in neighborStates(node):
-    tentative_g = g(node) + costToChange(node,neighbor)
-    if tentative_g < g(neighbor):
-      cameFrom[neighbor] = node
-      g(neighbor) = tentative_g
-      f(neighbor) = g(neighbor) + heuristic(neighbor,Goal)
-      add neighbor to openSet
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    const int DAYS = 7, N = 101;
+    int DP[2][N] = {};
+    auto growth = [](int n){ return n*2; };
+
+    for(int n=0;n<N;n++) DP[0][n]=growth(n);
+
+    for(int day=1;day<=DAYS;day++){
+        for(int nut=0;nut<N;nut++){
+            int best=0;
+            for(int prev=max(0,nut-10);prev<=min(100,nut+10);prev++)
+                best=max(best,DP[(day-1)%2][prev]+growth(nut));
+            DP[day%2][nut]=best;
+        }
+    }
+
+    int res=0; for(int n=0;n<N;n++) res=max(res,DP[DAYS%2][n]);
+    cout<<"Max growth: "<<res<<"\n";
+}
+
 </pre>
         </div>
       </article>
@@ -417,15 +470,26 @@ while openSet not empty:
         <div id="algo5" class="algo">
           <strong>Max-Heap Priority Scheduling (pseudocode)</strong>
           <pre>
-Initialize max-heap H keyed by milkYield
-Every morning:
-  for each cow:
-    insert(H, cow with today's expected milk)
-  while H not empty:
-    cow = extractMax(H)
-    milkCow(cow)
-    update cow's expected milk and re-insert if still milking
-After milking: route dung to product unit
+#include <bits/stdc++.h>
+using namespace std;
+
+struct Cow {
+    int id, milkYield;
+    bool operator<(const Cow &c) const { return milkYield < c.milkYield; }
+};
+
+int main() {
+    vector<Cow> cows = {{1,8},{2,12},{3,10}}; // id, expected milk
+    priority_queue<Cow> H(cows.begin(), cows.end());
+
+    while(!H.empty()) {
+        Cow c = H.top(); H.pop();
+        cout << "Milking cow " << c.id << " with yield " << c.milkYield << endl;
+        c.milkYield = max(0, c.milkYield - 2); // update yield for next round
+        if(c.milkYield > 0) H.push(c);
+    }
+}
+
 </pre>
         </div>
       </article>
@@ -445,18 +509,23 @@ After milking: route dung to product unit
         </div>
 
         <div id="algo6" class="algo">
-          <strong>DFS For Hive Foraging Paths (pseudocode)</strong>
+          <strong>DFS For Hive Foraging Paths </strong>
           <pre>
-Represent fields/flowers as graph G(V,E)
-function DFS(node, visited):
-  mark node visited
-  for neighbor in neighbors(node):
-    if not visited[neighbor]:
-      visit neighbor (collect nectar)
-      DFS(neighbor, visited)
+#include <bits/stdc++.h>
+using namespace std;
 
-Start DFS from hive nodes each foraging day
-Mark visited flowers to avoid repeated short trips
+vector<int> G[5]; bool v[5];
+
+void DFS(int u){
+    v[u]=1; cout<<"Nectar at "<<u<<"\n";
+    for(int x:G[u]) if(!v[x]) DFS(x);
+}
+
+int main(){
+    G[0]={1,2}; G[1]={0,3}; G[2]={0,4}; G[3]={1}; G[4]={2};
+    DFS(0); // start from hive
+}
+
 </pre>
         </div>
       </article>
@@ -476,12 +545,24 @@ Mark visited flowers to avoid repeated short trips
         </div>
 
         <div id="algo7" class="algo">
-          <strong>Segment Tree for Fast Category Queries (concept)</strong>
+          <strong>Segment Tree for Fast Category Queries </strong>
           <pre>
-Build segment tree where leaf nodes = plant categories and counts
-Query(l, r): returns total plants in category range in O(log n)
-Update(index, delta): adjust counts when plants sold or grown
-Use to quickly answer stock & order queries
+#include <bits/stdc++.h>
+using namespace std;
+vector<int> seg; int n;
+
+void build(vector<int>& a){n=a.size(); seg.resize(2*n); for(int i=0;i<n;i++) seg[n+i]=a[i]; for(int i=n-1;i>0;i--) seg[i]=seg[i<<1]+seg[i<<1|1];}
+void update(int p,int val){for(seg[p+=n]=val;p>1;p>>=1) seg[p>>1]=seg[p]+seg[p^1];}
+int query(int l,int r){int res=0; for(l+=n,r+=n;l<r;l>>=1,r>>=1){if(l&1) res+=seg[l++]; if(r&1) res+=seg[--r];} return res;}
+
+int main(){
+    vector<int> plants={5,3,2,7,4};
+    build(plants);
+    cout<<"Plants 1-4: "<<query(1,4)<<"\n";
+    update(2,5);
+    cout<<"Plants 1-4: "<<query(1,4)<<"\n";
+}
+
 </pre>
         </div>
       </article>
@@ -501,12 +582,34 @@ Use to quickly answer stock & order queries
         </div>
 
         <div id="algo8" class="algo">
-          <strong>BST: Batch Tracking & Harvest Order (pseudocode)</strong>
+          <strong>BST: Batch Tracking & Harvest Order</strong>
           <pre>
-Insert(batch) keyed by plantingDate
-Inorder traversal -> batches in age order
-Harvest from rightmost nodes (oldest ready)
-After harvesting, remove node and insert new batch
+#include <bits/stdc++.h>
+using namespace std;
+
+struct Node{int date; Node *l,*r; Node(int d):date(d),l(0),r(0){};};
+Node* insert(Node* root,int d){ 
+    if(!root) return new Node(d);
+    if(d<root->date) root->l=insert(root->l,d);
+    else root->r=insert(root->r,d);
+    return root;
+}
+Node* removeMax(Node* root){ 
+    if(!root->r) return root->l;
+    root->r=removeMax(root->r); return root;
+}
+void inorder(Node* root){ 
+    if(!root) return; inorder(root->l); cout<<root->date<<" "; inorder(root->r);
+}
+
+int main(){
+    Node* root=0;
+    root=insert(root,5); root=insert(root,2); root=insert(root,8);
+    cout<<"Batches in age order: "; inorder(root); cout<<"\n";
+    root=removeMax(root); // harvest oldest
+    cout<<"After harvest: "; inorder(root);
+}
+
 </pre>
         </div>
       </article>
@@ -526,13 +629,35 @@ After harvesting, remove node and insert new batch
         </div>
 
         <div id="algo9" class="algo">
-          <strong>Prim's MST for Wiring & Layout (pseudocode)</strong>
+          <strong>Prim's MST for Wiring & Layout</strong>
           <pre>
-Nodes = solar panel positions
-Edges = wiring costs between nodes
-Start with any node; add cheapest connecting edge not forming cycle
-Repeat until all nodes connected
-Result = wiring layout with minimum total cost
+#include <bits/stdc++.h>
+using namespace std;
+const int INF=1e9;
+
+int main(){
+    int n=4; // panels
+    int cost[4][4]={
+        {0,2,3,INF},
+        {2,0,15,2},
+        {3,15,0,13},
+        {INF,2,13,0}
+    };
+    vector<int> key(n,INF), parent(n,-1);
+    vector<bool> inMST(n,false);
+    key[0]=0;
+
+    for(int i=0;i<n-1;i++){
+        int u=-1;
+        for(int v=0;v<n;v++) if(!inMST[v]&&(u==-1||key[v]<key[u])) u=v;
+        inMST[u]=true;
+        for(int v=0;v<n;v++) if(cost[u][v]<key[v]&&!inMST[v]) {key[v]=cost[u][v]; parent[v]=u;}
+    }
+
+    cout<<"Wiring layout:\n";
+    for(int i=1;i<n;i++) cout<<parent[i]<<" - "<<i<<" : "<<cost[i][parent[i]]<<"\n";
+}
+
 </pre>
         </div>
       </article>
@@ -552,18 +677,31 @@ Result = wiring layout with minimum total cost
         </div>
 
         <div id="algo10" class="algo">
-          <strong>Binary Search for Health Record Lookup (pseudocode)</strong>
+          <strong>Binary Search for Health Record Lookup </strong>
           <pre>
-Store healthRecords[] sorted by date
-function findRecord(date):
-  left=0; right=len-1
-  while left <= right:
-    mid=(left+right)//2
-    if healthRecords[mid].date == date: return healthRecords[mid]
-    if healthRecords[mid].date < date: left = mid+1
-    else: right = mid-1
-  return null (no record)
-Use lookup weekly to quickly find anomalies
+#include <bits/stdc++.h>
+using namespace std;
+
+struct Record{ int date; string info; };
+Record* findRecord(vector<Record>& recs, int d){
+    int l=0, r=recs.size()-1;
+    while(l<=r){
+        int m=(l+r)/2;
+        if(recs[m].date==d) return &recs[m];
+        else if(recs[m].date<d) l=m+1;
+        else r=m-1;
+    }
+    return nullptr;
+}
+
+int main(){
+    vector<Record> health={{20250101,"Vaccinated"},{"20250301","Dewormed"},{"20250401","Checkup"}};
+    int query=20250301;
+    Record* r=findRecord(health,query);
+    if(r) cout<<"Found: "<<r->info;
+    else cout<<"No record";
+}
+
 </pre>
         </div>
       </article>
