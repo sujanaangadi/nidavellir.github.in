@@ -38,7 +38,7 @@
         color: #ffffff;
     }
 
-    /* ---------- HEADING SECTION ---------- */
+    /* HEADER */
     .header-section {
         width: 90%;
         margin: auto;
@@ -60,7 +60,7 @@
         letter-spacing: 1px;
     }
 
-    /* ---------- PROJECT EXPLANATION ---------- */
+    /* EXPLANATION */
     .explain {
         width: 90%;
         margin: auto;
@@ -73,7 +73,7 @@
         font-size: 16px;
     }
 
-    /* ---------- MAIN GRID ---------- */
+    /* MAIN GRID */
     .main {
         width: 90%;
         margin: auto;
@@ -83,29 +83,14 @@
         grid-gap: 25px;
     }
 
-    /* ---------- IMAGE BOX ---------- */
-    .image-box {
-        background: white;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .image-box img {
-        width: 100%;
-        border-radius: 12px;
-    }
-
-    /* ---------- CARDS ---------- */
+    /* CARD GRID */
     .container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         grid-gap: 25px;
     }
 
+    /* CARD STYLE */
     .card {
         background: #ffffff;
         padding: 25px;
@@ -148,6 +133,7 @@
         display: none;
         color: #3b1c80;
     }
+
 </style>
 
 <script>
@@ -174,9 +160,242 @@ function toggleAlgo(id) {
 <!-- HEADER WITH IMAGE -->
 <div class="header-section">
     <h2 class="title">Industry Business Ideas</h2>
-    <img src="https://cdn-icons-png.flaticon.com/512/ 9069/9069276.png">
+
+    <!-- FIXED IMAGE URL -->
+    <img src="https://cdn-icons-png.flaticon.com/512/9069/9069276.png">
 </div>
 
 <!-- PROJECT EXPLANATION -->
 <div class="explain">
-This project
+This project presents 10 innovative industry automation ideas using simple algorithms and 
+C++ programs. Each idea demonstrates real-world applications of automation, monitoring, 
+safety, and optimization in modern industries.
+</div>
+
+<!-- MAIN GRID START -->
+<div class="main">
+
+<!-- LEFT SIDE — IDEAS START -->
+<div class="container">
+
+<!-- IDEA 1 -->
+<div class="card">
+<h3>1) Smart Textile Quality Detector</h3>
+<p><b>Algorithm Used:</b> Threshold-Based Defect Detection</p>
+
+<span class="algo-btn" onclick="toggleAlgo('alg1')">Show Algorithm</span>
+<pre id="alg1">
+for each sensor_value:
+    if |value - expected| > threshold:
+         mark defect
+</pre>
+
+<b>C++ Code:</b>
+<pre>
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    int expected = 100, threshold = 20;
+    int fabric[6] = {100, 102, 98, 150, 101, 99};
+
+    for(int i=0; i<6; i++){
+        if(abs(fabric[i] - expected) > threshold)
+            cout << "Defect at position " << i << endl;
+    }
+}
+</pre>
+</div>
+
+
+
+<!-- IDEA 2 -->
+<div class="card">
+<h3>2) AI Worker Safety Monitoring</h3>
+<p><b>Algorithm Used:</b> Acceleration Limit Check</p>
+
+<span class="algo-btn" onclick="toggleAlgo('alg2')">Show Algorithm</span>
+<pre id="alg2">
+if acceleration > safe_limit:
+    alert("Unsafe movement detected")
+</pre>
+
+<b>C++ Code:</b>
+<pre>
+#include <iostream>
+using namespace std;
+
+int main(){
+    float accel;
+    cout << "Enter worker acceleration: ";
+    cin >> accel;
+
+    if(accel > 15)
+        cout << "Unsafe Movement!";
+    else
+        cout << "Safe.";
+}
+</pre>
+</div>
+
+
+
+<!-- IDEA 3 -->
+<div class="card">
+<h3>3) Predictive Machine Maintenance</h3>
+<p><b>Algorithm Used:</b> Vibration Anomaly Detection</p>
+
+<span class="algo-btn" onclick="toggleAlgo('alg3')">Show Algorithm</span>
+<pre id="alg3">
+if vibration > failure_threshold:
+    predict failure
+</pre>
+
+<b>C++ Code:</b>
+<pre>
+#include <iostream>
+using namespace std;
+
+int main(){
+    float vibration;
+    cout << "Enter vibration value: ";
+    cin >> vibration;
+
+    if(vibration > 80)
+        cout << "Failure Predicted!";
+    else
+        cout << "Machine Normal.";
+}
+</pre>
+</div>
+
+
+
+<!-- IDEA 4 -->
+<div class="card">
+<h3>4) Autonomous Material Sorting Robot</h3>
+<p><b>Algorithm Used:</b> Weight-Based Sorting</p>
+
+<span class="algo-btn" onclick="toggleAlgo('alg4')">Show Algorithm</span>
+<pre id="alg4">
+if weight < 1 → Bin A
+else if weight < 5 → Bin B
+else → Bin C
+</pre>
+
+<b>C++ Code:</b>
+<pre>
+#include <iostream>
+using namespace std;
+
+int main(){
+    float w;
+    cout << "Enter item weight: ";
+    cin >> w;
+
+    if(w < 1) cout << "Placed in Bin A";
+    else if(w < 5) cout << "Placed in Bin B";
+    else cout << "Placed in Bin C";
+}
+</pre>
+</div>
+
+
+
+<!-- IDEA 5 -->
+<div class="card">
+<h3>5) Smart Inventory Forecasting</h3>
+<p><b>Algorithm Used:</b> Moving Average Forecasting</p>
+
+<span class="algo-btn" onclick="toggleAlgo('alg5')">Show Algorithm</span>
+<pre id="alg5">
+forecast = (sum of previous N months) / N
+</pre>
+
+<b>C++ Code:</b>
+<pre>
+#include <iostream>
+using namespace std;
+
+int main(){
+    int data[6]={50,60,55,65,70,80};
+    int sum=0;
+
+    for(int i=0;i<6;i++)
+        sum += data[i];
+
+    cout << "Next month forecast = " << sum/6.0;
+}
+</pre>
+</div>
+
+
+
+<!-- IDEA 6 -->
+<div class="card">
+<h3>6) Waste-Heat Energy Recycling System</h3>
+<p><b>Algorithm Used:</b> Heat-to-Energy Conversion</p>
+
+<span class="algo-btn" onclick="toggleAlgo('alg6')">Show Algorithm</span>
+<pre id="alg6">
+energy = (temperature - base_temp) * factor
+</pre>
+
+<b>C++ Code:</b>
+<pre>
+#include <iostream>
+using namespace std;
+
+int main(){
+    float temp;
+    cout << "Enter heat temperature: ";
+    cin >> temp;
+
+    float energy = (temp - 40) * 0.5;
+    if(energy < 0) energy = 0;
+
+    cout << "Energy produced = " << energy << " kW";
+}
+</pre>
+</div>
+
+
+
+<!-- IDEA 7 -->
+<div class="card">
+<h3>7) AI Packaging Optimization</h3>
+<p><b>Algorithm Used:</b> Volume-Based Box Selection</p>
+
+<span class="algo-btn" onclick="toggleAlgo('alg7')">Show Algorithm</span>
+<pre id="alg7">
+if volume < 100 → Small box
+else if volume < 300 → Medium
+else → Large
+</pre>
+
+<b>C++ Code:</b>
+<pre>
+#include <iostream>
+using namespace std;
+
+int main(){
+    float v;
+    cout << "Enter product volume: ";
+    cin >> v;
+
+    if(v < 100) cout << "Use Small Box";
+    else if(v < 300) cout << "Use Medium Box";
+    else cout << "Use Large Box";
+}
+</pre>
+</div>
+
+
+
+<!-- IDEA 8 -->
+<div class="card">
+<h3>8) Auto-Reject Faulty Products</h3>
+<p><b>Algorithm Used:</b> Range Validation</p>
+
+<span class="algo-btn" onclick="toggle    
