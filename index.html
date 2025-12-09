@@ -1,5 +1,3 @@
----
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +9,7 @@
 /* ---------- NAVIGATION BAR --------- */
 .navbar {
     width: 100%;
-    background: #8be0ff;
+    background: #0A1A3A;
     padding: 20px 40px;
     display: flex;
     align-items: center;
@@ -24,6 +22,7 @@
 .navbar .logo {
     font-size: 28px;
     font-weight: 700;
+    color: white;
     margin-right: 40px;
 }
 
@@ -37,15 +36,20 @@
 
 .navbar ul li a {
     text-decoration: none;
-    color: black;
+    color: #C8D6FF;
     font-size: 18px;
     font-weight: 600;
+    transition: 0.3s;
+}
+
+.navbar ul li a:hover {
+    color: #00E5A8;
 }
 
 /* ---------- BODY BACKGROUND ---------- */
 body {
     margin: 0;
-    background: #2f2f2f;
+    background: #E9EEF4;
     font-family: Arial, sans-serif;
 }
 
@@ -53,14 +57,15 @@ body {
 .container {
     width: 85%;
     margin: 140px auto;
-    background: white;
+    background: #F4F7FB;
     padding: 40px;
-    border-radius: 10px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.08);
 }
 
-/* ---------- INTRO HEADING BLACK BOX ---------- */
+/* ---------- INTRO HEADING BOX ---------- */
 .intro-box {
-    background: black;
+    background: #FFFFFF;
     padding: 15px;
     border-radius: 10px;
     margin-bottom: 30px;
@@ -69,7 +74,7 @@ body {
 .intro-box h1 {
     text-align: center;
     font-size: 40px;
-    color: white;
+    color: #0A1A3A;
     margin: 0;
 }
 
@@ -81,8 +86,14 @@ body {
 }
 
 /* ---------- TABLE ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
 th {
-    background: #f2f2f2;
+    background: #0A1A3A;
+    color: white;
     padding: 12px;
     font-size: 22px;
 }
@@ -90,6 +101,9 @@ th {
 td {
     padding: 15px;
     text-align: center;
+    background: white;
+    font-size: 18px;
+    border-bottom: 1px solid #ddd;
 }
 
 /* ---------- BUSINESS IDEA SECTIONS ---------- */
@@ -98,27 +112,30 @@ td {
     font-size: 36px;
     margin-top: 50px;
     font-weight: 700;
-    color: white;
+    color: #0A1A3A;
 }
 
 .idea-card {
-    background: #000;
+    background: #13265C;
     color: white;
     padding: 30px;
     border-radius: 20px;
     width: 80%;
     margin: 30px auto;
-    box-shadow: 0 0 15px rgba(255,255,255,0.1);
+    box-shadow: 0 0 15px rgba(0,0,0,0.25);
+    border-left: 6px solid #00E5A8;
 }
 
 .idea-card h2 {
     font-size: 28px;
     text-align: center;
+    color: #FFD700;
 }
 
 .idea-card h3 {
     text-align: center;
     font-size: 22px;
+    color: #00E5A8;
     margin-bottom: 15px;
 }
 
@@ -199,79 +216,74 @@ td {
 <!-- SHRAVANA -->
 <div class="idea-card">
     <h2>SHRAVANA</h2>
-    <h3> POWERHOUSE & RENEWABLE ENERGY SYSTEM</h3>
+    <h3>POWERHOUSE & RENEWABLE ENERGY SYSTEM</h3>
     <ul>
-        <li>1)AI Smart Power Distribution Controller</li>
-        <li>2)Solar Panel Efficiency Analyzer</li>
+        <li>1) AI Smart Power Distribution Controller</li>
+        <li>2) Solar Panel Efficiency Analyzer</li>
         <li>3) Wind Turbine Smart RPM Controller</li>
-        <li>4)AI-Based Battery Storage Optimization</li>
+        <li>4) AI-Based Battery Storage Optimization</li>
         <li>5) Power Theft / Illegal Connection Detection</li>
-        <li>6)Energy Emergency Auto-Switching</li>
+        <li>6) Energy Emergency Auto-Switching</li>
         <li>7) City-Wide Energy Demand Predictor</li>
-        <li>8)Real-Time Electricity Price Optimizer</li>
-        <li>9)House-to-House Energy Sharing (Peer-to-Peer Grid)</li>
+        <li>8) Real-Time Electricity Price Optimizer</li>
+        <li>9) House-to-House Energy Sharing (Peer-to-Peer Grid)</li>
         <li>10) Smart Load Control Inside Homes & Factories</li>
     </ul>
 </div>
 
-<!-- SUJANA ANGADI -->
+<!-- SUJANA -->
 <div class="idea-card">
     <h2>SUJANA ANGADI</h2>
-    <h3>Development of Commercial area using modern Technology Ideas</h3>
+    <h3>Development of Commercial Area Using Modern Technology</h3>
     <ul>
-        <li>1) smart traffic signal system</li>
-        <li>2) smart waste management system</li>
-        <li>3) public transport tracking stimulator</li>
-        <li>4) restaurant digital  food ordering and billing system</li>
-        <li>5)smart parking management system</li>
-        <li>6) city water and electricity supply monitoring system</li>
-        <li>7)Smart City complaint management system</li>
-        <li>8) local market digital billing and inventory system</li>
+        <li>1) Smart traffic signal system</li>
+        <li>2) Smart waste management system</li>
+        <li>3) Public transport tracking simulator</li>
+        <li>4) Digital food ordering & billing system</li>
+        <li>5) Smart parking management</li>
+        <li>6) Water & electricity supply monitoring</li>
+        <li>7) Smart City complaint management</li>
+        <li>8) Local market digital billing</li>
         <li>9) Smart EV charging stations</li>
-        <li>10) Civic issue auto detection</li>
+        <li>10) Civic issue auto-detection</li>
     </ul>
 </div>
 
-<!-- KHUSHI KAPALI -->
+<!-- KHUSHI -->
 <div class="idea-card">
     <h2>KHUSHI KAPALI</h2>
     <h3>Industrial Ideas</h3>
     <ul>
-        <li>1)AI-based personal tutoring app</li>
-        <li> 2)Cloud kitchen for healthy meals</li>
-        <li> 3)Thrift & preloved fashion marketplace</li>
-        <li>4)Farm-to-home organic vegetable delivery</li>
-        <li> 5)No-code website building service</li>
-        <li>6)Customized skincare product brand </li>
-        <li> 7)AI fitness trainer app </li>
-        <li>8) Co-living/PG spaces for students </li>
-        <li>9) Micro event management for colleges </li>
-        <li>10)Subscription-based daily snack/juice box service </li>
+        <li>1) AI-based personal tutoring app</li>
+        <li>2) Cloud kitchen for healthy meals</li>
+        <li>3) Thrift & preloved fashion marketplace</li>
+        <li>4) Farm-to-home organic vegetable delivery</li>
+        <li>5) No-code website builder service</li>
+        <li>6) Customized skincare products</li>
+        <li>7) AI fitness trainer app</li>
+        <li>8) Co-living/PG student spaces</li>
+        <li>9) College micro event management</li>
+        <li>10) Subscription daily snack/juice box</li>
     </ul>
 </div>
 
-<!-- LAXMI BALAPPA TALLIKERI -->
+<!-- LAXMI -->
 <div class="idea-card">
     <h2>LAXMI BALAPPA TALLIKERI</h2>
-    <h3> AGRICULTURE IDEAS</h3>
+    <h3>Agriculture Ideas</h3>
     <ul>
-        
-        <li>1)Coconut Husk Water-Reservation System</li>
-        <li>2)Organic Vegetable Farming</li>
-        <li>3)Mushroom Cultivation</li>
-        <li>4)Hydropobic Farming</li>
-        <li>5)Dairy-Cow Dung Product</li>
-        <li>6)Beekeeping</li>
-        <li>7)Nursery Business</li>
-        <li>8)Medical Plant Farming</li>
-        <li>9)Solar Framing</li>
-        <li>10)Smart Goat Farming UNIT</li>
-
+        <li>1) Coconut Husk Water-Reservation System</li>
+        <li>2) Organic Vegetable Farming</li>
+        <li>3) Mushroom Cultivation</li>
+        <li>4) Hydroponic Farming</li>
+        <li>5) Cow-Dung Based Products</li>
+        <li>6) Beekeeping</li>
+        <li>7) Nursery Business</li>
+        <li>8) Medicinal Plant Farming</li>
+        <li>9) Solar Farming</li>
+        <li>10) Smart Goat Farming Unit</li>
     </ul>
 </div>
 
 </body>
 </html>
-
-
---
