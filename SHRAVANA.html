@@ -3,364 +3,495 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>AI POWERHOUSE & RENEWABLE ENERGY — Ideas (HTML)</title>
+  <title>SHRAVANA — Powerhouse & Renewable Energy</title>
   <style>
-    :root{--bg:#0f1724;--card:#0b1220;--accent:#00c2a8;--muted:#94a3b8;--glass:rgba(255,255,255,0.03)}
-    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial}
-    body{background:linear-gradient(180deg,#071428 0%, #07192b 60%);color:#e6eef6;padding:28px}
+    :root{
+      --bg:#0b2340;
+      --card:#071428;
+      --accent:#00c2a8;
+      --muted:#9fb2c9;
+      --code-bg: rgba(255,255,255,0.03);
+    }
+    html,body{height:100%;margin:0;font-family:Inter, ui-sans-serif, system-ui}
+    body{
+      background: linear-gradient(180deg, #071428 0%, #07192b 60%);
+      color:#e6eef6;
+      padding:28px;
+    }
     .container{max-width:1100px;margin:0 auto}
-    header{display:flex;align-items:center;gap:16px;margin-bottom:20px}
-    h1{font-size:20px;margin:0}
-    p.lead{margin:0;color:var(--muted)}
-    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:18px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03));border-radius:12px;padding:16px;box-shadow:0 6px 18px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
-    .card h2{margin:0 0 8px 0;font-size:16px;color:var(--accent)}
+    header{display:flex;align-items:center;margin-bottom:18px}
+    h1{font-size:28px;margin:0;color:#ffd400;text-align:center;width:100%}
+    p.lead{margin:0;color:var(--muted);text-align:center}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:16px;
+      margin-top:22px
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03));
+      border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,0.04);
+      box-shadow: 0 8px 24px rgba(2,6,23,0.6);
+    }
+    .card h2{margin:0 0 6px 0;font-size:18px;color:#ffd400}
+    .subtitle{color:var(--accent);font-weight:700;margin-bottom:8px}
     .meta{color:var(--muted);font-size:13px;margin-bottom:10px}
-    pre{background:var(--glass);padding:12px;border-radius:8px;overflow:auto;color:#dffcf0;font-size:13px}
-    code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono',Courier New,monospace}
-    .alg{margin:8px 0 12px 0}
-    .btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-    .btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 10px;border-radius:8px;color:var(--accent);cursor:pointer;font-weight:600}
-    .full{grid-column:1/ -1}
-    footer{margin-top:22px;color:var(--muted);font-size:13px}
-    @media (max-width:880px){.grid{grid-template-columns:1fr}}
+    pre{
+      background:var(--code-bg);padding:12px;border-radius:8px;overflow:auto;color:#dffcf0;font-size:13px;
+      border:1px solid rgba(255,255,255,0.03);
+      white-space:pre-wrap;
+    }
+    .btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .btn{
+      background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 10px;border-radius:8px;color:var(--accent);
+      cursor:pointer;font-weight:700;
+    }
+    .algo-panel{display:none;margin-top:10px;background: rgba(0,0,0,0.2); padding:10px;border-radius:8px}
+    .algo-name{font-weight:800;color:#ffd400;margin-bottom:6px}
+    footer{text-align:center;color:var(--muted);margin-top:18px;font-size:13px}
+
+    @media(max-width:880px){
+      .grid{grid-template-columns:1fr}
+    }
   </style>
 </head>
+
 <body>
   <div class="container">
     <header>
-      <div>
-        <h1>AI Powerhouse & Renewable Energy — Ideas</h1>
-        <p class="lead">Short descriptions, algorithms and Python-style code snippets for a solar + wind + powerhouse city.</p>
-      </div>
+      <h1>SHRAVANA</h1>
     </header>
 
+    <p class="lead">POWERHOUSE & RENEWABLE ENERGY SYSTEM — 10 Ideas with Algorithms & C++ code</p>
+
     <div class="grid">
-      <!-- 1 -->
+
+      <!-- ======================================================
+          IDEA 1
+      ====================================================== -->
       <section class="card">
-        <h2>1. AI Smart Power Distribution Controller</h2>
-        <div class="meta">Decides how much power to send to homes, factories & EV stations based on demand.</div>
-        <div class="alg"><strong>Algorithm:</strong>
-          <ol>
-            <li>Collect demand from residential + industrial areas.</li>
-            <li>Check current solar + wind + powerhouse generation.</li>
-            <li>Distribute supply where demand &gt; priority.</li>
-            <li>Prevent overload using threshold control.</li>
-          </ol>
+        <h2>1) AI Smart Power Distribution Controller</h2>
+        <div class="subtitle">Greedy Load Allocation</div>
+        <div class="meta">Algorithm used: Greedy — satisfy homes first, then industry with remaining energy.</div>
+
+        <div class="btn-row">
+          <button class="btn" data-toggle="algo1">Show Algorithm</button>
         </div>
-        <pre><code># Sample Code
-total_energy = solar + wind + powerhouse
-if demand_homes + demand_industry <= total_energy:
-    supply("homes", demand_homes)
-    supply("industry", demand_industry)
-else:
-    supply("homes", demand_homes)
-    supply("industry", total_energy - demand_homes)
-</code></pre>
-        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
+
+        <div id="algo1" class="algo-panel">
+          <div class="algo-name">C++ Code — Greedy Load Allocation</div>
+          <pre>
+#include &lt;bits/stdc++.h>
+using namespace std;
+
+int main(){
+    double solar = 300.0, wind = 200.0, powerhouse = 250.0;
+    double totalEnergy = solar + wind + powerhouse;
+    double demandHomes = 500.0, demandIndustry = 400.0;
+
+    cout << "Total energy: " << totalEnergy << "\n";
+
+    double supplyHomes = min(totalEnergy, demandHomes);
+    totalEnergy -= supplyHomes;
+    double supplyIndustry = min(totalEnergy, demandIndustry);
+
+    cout << "Supplied to homes: " << supplyHomes << "\n";
+    cout << "Supplied to industry: " << supplyIndustry << "\n";
+    cout << "Unserved demand: "
+         << (demandHomes + demandIndustry - (supplyHomes + supplyIndustry)) << "\n";
+    return 0;
+}
+          </pre>
+        </div>
       </section>
 
-      <!-- 2 -->
+      <!-- ======================================================
+          IDEA 2
+      ====================================================== -->
       <section class="card">
-        <h2>2. Solar Panel Efficiency Analyzer</h2>
-        <div class="meta">AI analyzes solar panels on each house and predicts cleaning/repair dates.</div>
-        <div class="alg"><strong>Algorithm:</strong>
-          <ol>
-            <li>Read solar output from each house daily.</li>
-            <li>Compare with expected output based on sunlight.</li>
-            <li>If efficiency drops → send alert to schedule maintenance.</li>
-          </ol>
+        <h2>2) Solar Panel Efficiency Analyzer</h2>
+        <div class="subtitle">Sliding Window (Moving Average)</div>
+        <div class="meta">Detect drop in efficiency using moving average.</div>
+
+        <div class="btn-row">
+          <button class="btn" data-toggle="algo2">Show Algorithm</button>
         </div>
-        <pre><code># Sample Code
-efficiency = actual_output / expected_output * 100
-if efficiency &lt; 75:
-    alert("Low Solar Efficiency — Cleaning Needed")
-</code></pre>
-        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
+
+        <div id="algo2" class="algo-panel">
+          <div class="algo-name">C++ Code — Sliding Window</div>
+          <pre>
+#include &lt;bits/stdc++.h>
+using namespace std;
+
+int main(){
+    vector<double> dailyEfficiency = {95,94,93,78,76,75,74,92,93};
+    int window = 3;
+    double threshold = 80.0;
+    deque<double> dq;
+    double sum = 0;
+
+    for(size_t i=0;i<dailyEfficiency.size();++i){
+        dq.push_back(dailyEfficiency[i]);
+        sum += dailyEfficiency[i];
+
+        if(dq.size() > window){
+            sum -= dq.front();
+            dq.pop_front();
+        }
+
+        if(dq.size() == window){
+            double avg = sum / window;
+            cout << "Day " << i+1 << " moving avg: " << avg << "%";
+            if(avg < threshold) cout << "  <-- ALERT: Cleaning needed";
+            cout << "\n";
+        }
+    }
+    return 0;
+}
+          </pre>
+        </div>
       </section>
 
-      <!-- 3 -->
+      <!-- ======================================================
+          IDEA 3
+      ====================================================== -->
       <section class="card">
-        <h2>3. Wind Turbine Smart RPM Controller</h2>
-        <div class="meta">Adjusts blade angle automatically to get maximum output from wind speed.</div>
-        <div class="alg"><strong>Algorithm:</strong>
-          <ol>
-            <li>Read wind speed every second.</li>
-            <li>Predict best RPM using regression model.</li>
-            <li>Change blade angle to achieve predicted RPM.</li>
-          </ol>
+        <h2>3) Wind Turbine RPM Controller</h2>
+        <div class="subtitle">Binary Search</div>
+
+        <div class="btn-row">
+          <button class="btn" data-toggle="algo3">Show Algorithm</button>
         </div>
-        <pre><code># Sample Code
-ideal_rpm = model.predict([[wind_speed]])
-set_blade_angle(ideal_rpm)
-</code></pre>
-        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
+
+        <div id="algo3" class="algo-panel">
+          <div class="algo-name">C++ Code — Binary Search</div>
+          <pre>
+#include &lt;bits/stdc++.h>
+using namespace std;
+
+double rpm_at_angle(double angle, double wind_speed){
+    return wind_speed * (100.0 * cos(angle * M_PI / 180.0)) - 0.5*angle;
+}
+
+int main(){
+    double wind = 8.0;
+    double target = 450.0;
+    double lo = 0, hi = 60;
+
+    for(int i=0;i<40;i++){
+        double mid = (lo+hi)/2;
+        double r = rpm_at_angle(mid, wind);
+        if(r >= target) lo = mid;
+        else hi = mid;
+    }
+
+    cout << "Angle: " << (lo+hi)/2 << "\n";
+    cout << "RPM: " << rpm_at_angle((lo+hi)/2, wind) << "\n";
+}
+          </pre>
+        </div>
       </section>
 
-      <!-- 4 -->
+      <!-- ======================================================
+          IDEA 4
+      ====================================================== -->
       <section class="card">
-        <h2>4. AI-Based Battery Storage Optimization</h2>
-        <div class="meta">Stores extra solar/wind energy in batteries and uses it during peak hours.</div>
-        <div class="alg"><strong>Algorithm:</strong>
-          <ol>
-            <li>Monitor grid load.</li>
-            <li>If generation &gt; demand → charge battery.</li>
-            <li>If demand &gt; generation → discharge battery.</li>
-          </ol>
+        <h2>4) Battery Storage Optimization</h2>
+        <div class="subtitle">0/1 Knapsack (DP)</div>
+
+        <div class="btn-row">
+          <button class="btn" data-toggle="algo4">Show Algorithm</button>
         </div>
-        <pre><code># Sample Code
-if generation &gt; demand:
-    battery.charge(generation - demand)
-else:
-    battery.discharge(demand - generation)
-</code></pre>
-        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
+
+        <div id="algo4" class="algo-panel">
+          <div class="algo-name">C++ Code — 0/1 Knapsack</div>
+          <pre>
+#include &lt;bits/stdc++.h>
+using namespace std;
+
+int main(){
+    vector<int> value = {10,40,30,50,35};
+    vector<int> cost  = {1,3,2,4,2};
+    int cap = 6;
+
+    vector<int> dp(cap+1,0);
+
+    for(int i=0;i<value.size();i++){
+        for(int w=cap; w>=cost[i]; --w){
+            dp[w] = max(dp[w], dp[w-cost[i]] + value[i]);
+        }
+    }
+
+    cout << "Max benefit: " << dp[cap];
+}
+          </pre>
+        </div>
       </section>
 
-      <!-- 5 -->
+      <!-- ======================================================
+          IDEA 5
+      ====================================================== -->
       <section class="card">
-        <h2>5. Power Theft / Illegal Connection Detection</h2>
-        <div class="meta">Detects electricity theft using abnormal usage patterns.</div>
-        <div class="alg"><strong>Algorithm:</strong>
-          <ol>
-            <li>Compare billed usage vs sensor usage.</li>
-            <li>Sudden spikes → mark suspicious.</li>
-            <li>Send report to grid admin.</li>
-          </ol>
+        <h2>5) Power Theft Detection</h2>
+        <div class="subtitle">Prefix Scan / Sliding Window</div>
+
+        <div class="btn-row">
+          <button class="btn" data-toggle="algo5">Show Algorithm</button>
         </div>
-        <pre><code># Sample Code
-if sensor_units - billed_units &gt; 50:
-    report("Possible Power Theft at House", house_id)
-</code></pre>
-        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
+
+        <div id="algo5" class="algo-panel">
+          <div class="algo-name">C++ Code — Prefix Scan</div>
+          <pre>
+#include &lt;bits/stdc++.h>
+using namespace std;
+
+int main(){
+    vector<int> sensor = {100,110,105,500,120,115};
+    vector<int> billed = {98,109,103,120,119,116};
+    int n = sensor.size();
+
+    vector<int> diff(n);
+    for(int i=0;i<n;i++) diff[i] = sensor[i] - billed[i];
+
+    int window = 3;
+
+    for(int i=0;i+window-1<n;i++){
+        int s = 0;
+        for(int j=0;j<window;j++) s += diff[i+j];
+        if(s > 200) cout << "Suspicious days " << i+1 << " to " << i+window << "\n";
+    }
+
+    for(int i=0;i<n;i++)
+        if(diff[i] > 50) cout << "Day " << i+1 << " theft alert\n";
+}
+          </pre>
+        </div>
       </section>
 
-      <!-- 6 -->
+      <!-- ======================================================
+          IDEA 6
+      ====================================================== -->
       <section class="card">
-        <h2>6. Energy Emergency Auto-Switching</h2>
-        <div class="meta">During storms or grid failure, system switches supply to stored battery energy.</div>
-        <div class="alg"><strong>Algorithm:</strong>
-          <ol>
-            <li>Monitor grid voltage.</li>
-            <li>If voltage &lt; danger limit → disconnect grid.</li>
-            <li>Switch to local battery / backup storage.</li>
-          </ol>
+        <h2>6) Energy Emergency Auto-Switching</h2>
+        <div class="subtitle">Max-Heap</div>
+
+        <div class="btn-row">
+          <button class="btn" data-toggle="algo6">Show Algorithm</button>
         </div>
-        <pre><code># Sample Code
-if voltage &lt; 200:
-    switch_to_battery()
-</code></pre>
-        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
+
+        <div id="algo6" class="algo-panel">
+          <div class="algo-name">C++ Code — Max-Heap</div>
+          <pre>
+#include &lt;bits/stdc++.h>
+using namespace std;
+
+int main(){
+    vector<pair<int,string>> b = {
+        {50,"BatteryA"}, {120,"BatteryB"},
+        {30,"Diesel1"}, {80,"BatteryC"}
+    };
+
+    priority_queue<pair<int,string>> pq;
+    for(auto &x:b) pq.push(x);
+
+    int req = 180;
+
+    while(req > 0 && !pq.empty()){
+        auto t = pq.top(); pq.pop();
+        int give = min(req, t.first);
+        cout << "Using " << t.second << " = " << give << " kWh\n";
+        req -= give;
+    }
+
+    if(req > 0) cout << "Shortfall: " << req;
+    else cout << "All covered";
+}
+          </pre>
+        </div>
       </section>
 
-      <!-- 7 -->
+      <!-- ======================================================
+          IDEA 7
+      ====================================================== -->
       <section class="card">
-        <h2>7. City-Wide Energy Demand Predictor</h2>
-        <div class="meta">Predicts next day’s power need based on weather + factory workload + temperature.</div>
-        <div class="alg"><strong>Algorithm:</strong>
-          <ol>
-            <li>Take historical demand database.</li>
-            <li>Train time-series ML model.</li>
-            <li>Predict future peak load.</li>
-          </ol>
+        <h2>7) City Demand Predictor</h2>
+        <div class="subtitle">Moving Average</div>
+
+        <div class="btn-row">
+          <button class="btn" data-toggle="algo7">Show Algorithm</button>
         </div>
-        <pre><code># Sample Code
-predicted_load = model.forecast(24)
-print("Tomorrow Expected Demand:", predicted_load)
-</code></pre>
-        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
+
+        <div id="algo7" class="algo-panel">
+          <div class="algo-name">C++ Code — Moving Average</div>
+          <pre>
+#include &lt;bits/stdc++.h>
+using namespace std;
+
+int main(){
+    vector<double> h = {1200,1250,1300,1280,1350,1400,1380};
+    int w = 3;
+
+    double s = 0;
+    for(int i=h.size()-w;i<h.size();i++) s += h[i];
+
+    cout << "Next-day prediction: " << s/w;
+}
+          </pre>
+        </div>
       </section>
 
-      <!-- 8 -->
+      <!-- ======================================================
+          IDEA 8
+      ====================================================== -->
       <section class="card">
-        <h2>8. Real-Time Electricity Price Optimizer</h2>
-        <div class="meta">AI adjusts electricity charges depending on peak and off-peak hours.</div>
-        <div class="alg"><strong>Algorithm:</strong>
-          <ol>
-            <li>If demand → high → price increases slightly.</li>
-            <li>If demand → low → reduced pricing.</li>
-            <li>Notify user via app.</li>
-          </ol>
+        <h2>8) Electricity Price Optimizer</h2>
+        <div class="subtitle">Binary Search</div>
+
+        <div class="btn-row">
+          <button class="btn" data-toggle="algo8">Show Algorithm</button>
         </div>
-        <pre><code># Sample Code
-price = base_rate + (demand / max_capacity) * 2
-</code></pre>
-        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
+
+        <div id="algo8" class="algo-panel">
+          <div class="algo-name">C++ Code — Binary Search Price</div>
+          <pre>
+#include &lt;bits/stdc++.h>
+using namespace std;
+
+double demand(double p){
+    return max(0.0, 1000.0 - 15.0*p);
+}
+
+int main(){
+    double safe = 700;
+    double lo=0, hi=10;
+
+    for(int i=0;i<50;i++){
+        double mid = (lo+hi)/2;
+        if(demand(mid) > safe) lo = mid;
+        else hi = mid;
+    }
+
+    cout << "Price: " << (lo+hi)/2 << "\n";
+    cout << "Demand: " << demand((lo+hi)/2);
+}
+          </pre>
+        </div>
       </section>
 
-      <!-- 9 -->
+      <!-- ======================================================
+          IDEA 9
+      ====================================================== -->
       <section class="card">
-        <h2>9. House-to-House Energy Sharing (Peer-to-Peer Grid)</h2>
-        <div class="meta">If one house produces more solar energy than needed, it transfers to neighbors.</div>
-        <div class="alg"><strong>Algorithm:</strong>
-          <ol>
-            <li>Compare production vs consumption of each house.</li>
-            <li>Houses with surplus transfer to deficit houses.</li>
-            <li>Track credits digitally.</li>
-          </ol>
+        <h2>9) House-to-House Energy Sharing</h2>
+        <div class="subtitle">Greedy Matching</div>
+
+        <div class="btn-row">
+          <button class="btn" data-toggle="algo9">Show Algorithm</button>
         </div>
-        <pre><code># Sample Code
-surplus = production - consumption
-if surplus &gt; 0:
-    share_energy(neighbour_house_id, surplus)
-</code></pre>
-        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
+
+        <div id="algo9" class="algo-panel">
+          <div class="algo-name">C++ Code — Greedy Matching</div>
+          <pre>
+#include &lt;bits/stdc++.h>
+using namespace std;
+
+int main(){
+    vector<pair<int,int>> h = {{1,50},{2,-30},{3,-40},{4,20},{5,-10}};
+    vector<pair<int,int>> sur, def;
+
+    for(auto &x:h){
+        if(x.second > 0) sur.push_back(x);
+        else def.push_back({x.first, -x.second});
+    }
+
+    sort(sur.begin(), sur.end(), [](auto &a, auto &b){return a.second > b.second;});
+    sort(def.begin(), def.end(), [](auto &a, auto &b){return a.second > b.second;});
+
+    int i=0,j=0;
+    while(i<sur.size() && j<def.size()){
+        int give = min(sur[i].second, def[j].second);
+        cout << "Transfer " << give << " from H" << sur[i].first << " to H" << def[j].first << "\n";
+        sur[i].second -= give;
+        def[j].second -= give;
+
+        if(sur[i].second==0) i++;
+        if(def[j].second==0) j++;
+    }
+}
+          </pre>
+        </div>
       </section>
 
-      <!-- 10 -->
+      <!-- ======================================================
+          IDEA 10
+      ====================================================== -->
       <section class="card">
-        <h2>10. Smart Load Control Inside Homes & Factories</h2>
-        <div class="meta">Turns off low-priority devices automatically when city demand is high.</div>
-        <div class="alg"><strong>Algorithm:</strong>
-          <ol>
-            <li>Monitor city peak load time.</li>
-            <li>Classify appliances: high priority / low priority.</li>
-            <li>Turn off low-priority loads during peak.</li>
-          </ol>
-        </div>
-        <pre><code># Sample Code
-if grid_load &gt; limit:
-    turn_off("heater")
-    turn_off("washing_machine")
-</code></pre>
-        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
-      </section>
+        <h2>10) Smart Load Control</h2>
+        <div class="subtitle">Priority Queue</div>
 
-      <!-- 11 -->
-      <section class="card">
-        <h2>11. AI-Based Microgrid Islanding System</h2>
-        <div class="meta">Automatically separates a microgrid during faults, keeping power ON locally.</div>
-        <div class="alg"><strong>Algorithm:</strong>
-          <ol>
-            <li>Monitor main grid stability (frequency + voltage).</li>
-            <li>Detect fault conditions or instability.</li>
-            <li>Automatically isolate microgrid using switches.</li>
-            <li>Use local solar + wind + battery to keep supply stable.</li>
-            <li>Reconnect when grid becomes stable.</li>
-          </ol>
+        <div class="btn-row">
+          <button class="btn" data-toggle="algo10">Show Algorithm</button>
         </div>
-        <pre><code># Sample Code
-if grid_frequency &lt; 48 or voltage &lt; 190:
-    isolate_microgrid()
-else:
-    reconnect_to_main_grid()
-</code></pre>
-        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
-      </section>
 
-      <!-- 12 -->
-      <section class="card">
-        <h2>12. Predictive Maintenance for Transformers & Powerhouse Machines</h2>
-        <div class="meta">AI predicts failure of transformers, generators, and inverters.</div>
-        <div class="alg"><strong>Algorithm:</strong>
-          <ol>
-            <li>Collect temperature, vibration, current readings.</li>
-            <li>Run anomaly detection model.</li>
-            <li>Predict failure probability.</li>
-            <li>Generate maintenance task if risk &gt; threshold.</li>
-          </ol>
-        </div>
-        <pre><code># Sample Code
-risk = model.predict([temp, vibration, load])
-if risk &gt; 0.80:
-    schedule_maintenance("Transformer")
-</code></pre>
-        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
-      </section>
+        <div id="algo10" class="algo-panel">
+          <div class="algo-name">C++ Code — Priority Queue</div>
+          <pre>
+#include &lt;bits/stdc++.h>
+using namespace std;
 
-      <!-- 13 -->
-      <section class="card">
-        <h2>13. AI Dynamic Load Balancer for City Zones</h2>
-        <div class="meta">Balances power loads between city sectors to prevent blackouts.</div>
-        <div class="alg"><strong>Algorithm:</strong>
-          <ol>
-            <li>Detect overloaded zones.</li>
-            <li>Check spare capacity in other zones.</li>
-            <li>Redirect energy using smart-switch routing.</li>
-          </ol>
-        </div>
-        <pre><code># Sample Code
-if load_zoneA &gt; limit:
-    transfer_power("ZoneB", "ZoneA", 200)
-</code></pre>
-        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
-      </section>
+struct Device {
+    string name;
+    int priority;
+    int power;
+};
 
-      <!-- 14 -->
-      <section class="card">
-        <h2>14. Renewable Energy Forecasting System</h2>
-        <div class="meta">Predict next day’s solar + wind generation.</div>
-        <div class="alg"><strong>Algorithm:</strong>
-          <ol>
-            <li>Collect weather forecast (sunlight, wind speed).</li>
-            <li>Use ML model to predict energy production.</li>
-            <li>Adjust powerhouse production accordingly.</li>
-          </ol>
-        </div>
-        <pre><code># Sample Code
-solar_prediction = solar_model.forecast(weather)
-wind_prediction = wind_model.forecast(wind_speed)
-</code></pre>
-        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
-      </section>
+int main(){
+    vector<Device> d = {
+        {"Heater",8,2000},{"Fridge",1,150},{"Washer",7,1000},
+        {"Lights",3,200},{"AC",9,2500},{"Computer",4,300}
+    };
 
-      <!-- 15 -->
-      <section class="card">
-        <h2>15. AI-Controlled EV Charging Stations</h2>
-        <div class="meta">Controls EV charging speed to avoid overloading the grid.</div>
-        <div class="alg"><strong>Algorithm:</strong>
-          <ol>
-            <li>Get current grid load.</li>
-            <li>If peak load → slow charging.</li>
-            <li>Schedule charging during low-demand windows.</li>
-          </ol>
-        </div>
-        <pre><code># Sample Code
-if grid_load &gt; peak_limit:
-    set_charging_rate(ev_id, "slow")
-else:
-    set_charging_rate(ev_id, "fast")
-</code></pre>
-        <div class="btn-row"><button class="btn" onclick="copyCode(this)">Copy code</button></div>
-      </section>
+    int limit = 3000;
+    int load = 0;
+    for(auto &x:d) load += x.power;
 
-      <section class="card full">
-        <h2>How to use</h2>
-        <p class="meta">Each card contains a short description, an algorithm outline and a Python-style snippet. Use the copy buttons to copy the snippet into your editor. This file is standalone and easy to extend.</p>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
-          <button class="btn" onclick="expandAll()">Expand All (no-op here)</button>
-          <button class="btn" onclick="downloadHTML()">Download HTML</button>
+    priority_queue<pair<int,int>> pq;
+    for(int i=0;i<d.size();i++){
+        int benefit = d[i].power * d[i].priority;
+        pq.push({benefit,i});
+    }
+
+    vector<string> off;
+    while(load > limit && !pq.empty()){
+        auto t = pq.top(); pq.pop();
+        int id = t.second;
+        load -= d[id].power;
+        off.push_back(d[id].name);
+    }
+
+    cout << "Final load: " << load << "\n";
+    for(string s:off) cout << "Turned off: " << s << "\n";
+}
+          </pre>
         </div>
       </section>
 
     </div>
 
-    <footer>
-      Generated: AI Powerhouse & Renewable Energy — ideas (HTML). Edit or ask for additional export formats (PDF, Markdown, React component).
-    </footer>
+    <footer>© SHRAVANA Renewable Energy Project</footer>
   </div>
 
+  <!-- JavaScript: ONLY show/hide logic -->
   <script>
-    function copyCode(btn){
-      const pre = btn.closest('.card').querySelector('pre');
-      if(!pre) return;
-      const text = pre.innerText;
-      navigator.clipboard.writeText(text).then(()=>{
-        const old = btn.innerText;
-        btn.innerText = 'Copied ✓';
-        setTimeout(()=> btn.innerText = old, 1500);
-      });
-    }
-    function downloadHTML(){
-      const html = document.documentElement.outerHTML;
-      const blob = new Blob([html], {type: 'text/html'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = 'ai-powerhouse-ideas.html';
-      document.body.appendChild(a); a.click(); a.remove();
-      URL.revokeObjectURL(url);
-    }
-    function expandAll(){alert('All cards are already shown.');}
+    document.querySelectorAll("[data-toggle]").forEach(btn=>{
+        btn.addEventListener("click",()=>{
+            const id = btn.getAttribute("data-toggle");
+            const panel = document.getElementById(id);
+            panel.style.display = panel.style.display === "block" ? "none" : "block";
+            btn.textContent = panel.style.display === "block" ? "Hide Algorithm" : "Show Algorithm";
+        });
+    });
   </script>
+
 </body>
 </html>
