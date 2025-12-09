@@ -9,10 +9,11 @@
     body {
         margin: 0;
         font-family: Arial, sans-serif;
-        background: #f2f5fa;
-        color: #1e2a38;
+        background: #0d1117; /* GitHub Dark Mode */
+        color: #d0d7de;
     }
 
+    /* HEADER */
     .header {
         width: 92%;
         margin: auto;
@@ -25,15 +26,16 @@
     .title {
         font-size: 42px;
         font-weight: bold;
-        color: #0f1f44;
+        color: #58a6ff;
     }
 
     .header img {
         width: 340px;
         border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.18);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.6);
     }
 
+    /* GRID */
     .container {
         width: 92%;
         margin: auto;
@@ -43,44 +45,54 @@
         gap: 25px;
     }
 
+    /* CARD */
     .card {
-        background: #ffffff;
+        background: #161b22;
         padding: 20px;
         border-radius: 12px;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-        border-left: 5px solid #0f1f44;
+        border-left: 4px solid #58a6ff;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    /* HOVER ANIMATION */
+    .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 25px rgba(56,139,253,0.6);
+        border-left-color: #1f6feb;
     }
 
     .card h3 {
         margin-top: 0;
-        color: #0f1f44;
-    }
-
-    .algo-title {
-        font-weight: bold;
-        margin-top: 10px;
+        color: #79c0ff;
     }
 
     ul { margin-top: 5px; }
 
     .algo-btn {
-        background: #0f1f44;
+        background: #1f6feb;
         padding: 8px 12px;
         border-radius: 6px;
         color: white;
         cursor: pointer;
         display: inline-block;
         margin-top: 10px;
+        transition: background 0.2s ease;
+    }
+
+    .algo-btn:hover {
+        background: #58a6ff;
     }
 
     pre {
-        background: #eef2f7;
+        background: #0d1117;
         padding: 12px;
         border-radius: 8px;
         margin-top: 12px;
         display: none;
         white-space: pre-wrap;
-        border: 1px solid #d6dbe3;
+        border: 1px solid #30363d;
+        color: #c9d1d9;
     }
 </style>
 
@@ -97,28 +109,26 @@ function toggleAlgo(id) {
 <!-- HEADER -->
 <div class="header">
     <h2 class="title">Industry Business Ideas</h2>
+
+    <!-- INDUSTRY 4.0 IMAGE -->
     <img src="https://img.freepik.com/free-vector/industry-4-0-concept-illustration_114360-9928.jpg">
 </div>
 
-<!-- MAIN GRID -->
 <div class="container">
-
 
 <!-- 1. SMART TEXTILE QUALITY DETECTOR -->
 <div class="card">
 <h3>1) Smart Textile Quality Detector</h3>
-
-<b class="algo-title">Algorithms Used & Why:</b>
+<b>Algorithms Used:</b>
 <ul>
-<li><b>KMP Algorithm</b> → Pattern defect matching in cloth texture.</li>
-<li><b>Rabin-Karp</b> → Fast rolling hash for repeated defect patterns.</li>
-<li><b>DFS</b> → Cluster detection of connected defects.</li>
-<li><b>BFS</b> → Spread mapping of defects.</li>
-<li><b>Merge Sort</b> → Sort & rank defects by severity.</li>
-<li><b>Binary Search Tree</b> → Quick lookup for defect thresholds.</li>
-<li><b>AVL Tree</b> → Balanced search for real-time detection.</li>
-<li><b>Min Heap</b> → Find the smallest defect severity.</li>
-<li><b>Max Heap</b> → Identify the largest defect severity.</li>
+<li>KMP → Pattern match in textile texture.</li>
+<li>Rabin-Karp → Fast rolling defect scanning.</li>
+<li>DFS → Clustered defect region detection.</li>
+<li>BFS → Neighbor spread mapping.</li>
+<li>Merge Sort → Sorting defects by severity.</li>
+<li>AVL Tree → Balanced texture index lookup.</li>
+<li>BST → Fast defect threshold search.</li>
+<li>Min/Max Heap → Find smallest/largest defect.</li>
 </ul>
 
 <span class="algo-btn" onclick="toggleAlgo('c1')">Show Code</span>
@@ -150,20 +160,19 @@ int main(){
 
 
 
-<!-- 2. AI WORKER SAFETY MONITORING -->
+<!-- 2. WORKER SAFETY -->
 <div class="card">
-<h3>2) AI-Based Worker Safety Monitoring</h3>
-
-<b class="algo-title">Algorithms Used & Why:</b>
+<h3>2) AI Worker Safety Monitoring</h3>
+<b>Algorithms Used:</b>
 <ul>
-<li><b>Binary Search</b> → Fast lookup of safety limits.</li>
-<li><b>AVL Tree</b> → Stable threshold checking.</li>
-<li><b>Heap</b> → Prioritize highest-risk alerts.</li>
-<li><b>DFS</b> → Detect risk paths in movement graph.</li>
-<li><b>BFS</b> → Shortest safe route calculation.</li>
-<li><b>Dijkstra</b> → Safe evacuation planning.</li>
-<li><b>KMP</b> → Match abnormal movement patterns.</li>
-<li><b>Lookup Table</b> → Instant hazard classification.</li>
+<li>Binary Search → Safety threshold lookup.</li>
+<li>AVL Tree → Stable risk-level search.</li>
+<li>Heap → Highest danger alert prioritization.</li>
+<li>DFS → Detect dangerous movement paths.</li>
+<li>BFS → Shortest safe route planning.</li>
+<li>Dijkstra → Evacuation optimization.</li>
+<li>KMP → Detect repetitive abnormal movements.</li>
+<li>Lookup Table → Instant hazard tag lookup.</li>
 </ul>
 
 <span class="algo-btn" onclick="toggleAlgo('c2')">Show Code</span>
@@ -190,18 +199,17 @@ int main(){
 
 <!-- 3. PREDICTIVE MAINTENANCE -->
 <div class="card">
-<h3>3) Predictive Maintenance for Industrial Machines</h3>
-
-<b class="algo-title">Algorithms Used & Why:</b>
+<h3>3) Predictive Maintenance for Machines</h3>
+<b>Algorithms Used:</b>
 <ul>
-<li><b>Heap</b> → Find top failure risks.</li>
-<li><b>Segment Tree</b> → Range vibration queries.</li>
-<li><b>Binary Search Tree</b> → Quick log lookup.</li>
-<li><b>DFS</b> → Explore fault propagation path.</li>
-<li><b>BFS</b> → Detect immediate neighbors at risk.</li>
-<li><b>Dijkstra</b> → Predict shortest failure path.</li>
-<li><b>Merge Sort</b> → Sort sensor readings.</li>
-<li><b>KMP</b> → Detect repeated abnormal patterns.</li>
+<li>Heap → Top risky machine detection.</li>
+<li>Segment Tree → Range vibration analysis.</li>
+<li>AVL Tree → Sorted failure logs.</li>
+<li>DFS → Fault propagation tracing.</li>
+<li>BFS → Machine network scanning.</li>
+<li>Dijkstra → Fastest failure propagation path.</li>
+<li>Merge Sort → Sorting time-series data.</li>
+<li>KMP → Detect repeated vibration anomalies.</li>
 </ul>
 
 <span class="algo-btn" onclick="toggleAlgo('c3')">Show Code</span>
@@ -229,16 +237,15 @@ int main(){
 <!-- 4. SORTING ROBOT -->
 <div class="card">
 <h3>4) Autonomous Material Sorting Robot</h3>
-
-<b class="algo-title">Algorithms Used & Why:</b>
+<b>Algorithms Used:</b>
 <ul>
-<li><b>Quick Sort</b> → Fast item sorting.</li>
-<li><b>Merge Sort</b> → Stable categorization.</li>
-<li><b>Heap Sort</b> → Priority-based sorting.</li>
-<li><b>Binary Search Tree</b> → Class lookup.</li>
-<li><b>AVL Tree</b> → Balanced decision tree.</li>
-<li><b>BFS / DFS</b> → Navigation inside warehouse.</li>
-<li><b>Dijkstra</b> → Shortest path movement.</li>
+<li>Quick Sort → Fast sorting of items.</li>
+<li>Merge Sort → Stable category ordering.</li>
+<li>Heap Sort → Prioritized item sorting.</li>
+<li>AVL Tree → Real-time decision tree.</li>
+<li>BFS → Warehouse shortest navigation.</li>
+<li>DFS → Full-area scanning.</li>
+<li>Dijkstra → Optimal movement path.</li>
 </ul>
 
 <span class="algo-btn" onclick="toggleAlgo('c4')">Show Code</span>
@@ -268,16 +275,15 @@ int main(){
 <!-- 5. INVENTORY FORECASTING -->
 <div class="card">
 <h3>5) Smart Inventory Forecasting System</h3>
-
-<b class="algo-title">Algorithms Used & Why:</b>
+<b>Algorithms Used:</b>
 <ul>
-<li><b>Moving Average</b> → Smooth prediction.</li>
-<li><b>Merge Sort</b> → Sort demand patterns.</li>
-<li><b>Binary Search</b> → Locate reorder points.</li>
-<li><b>AVL Tree</b> → Balanced stock lookup.</li>
-<li><b>Segment Tree</b> → Range-based demand queries.</li>
-<li><b>Hash Table</b> → Product frequency mapping.</li>
-<li><b>Heap</b> → Identify fast-moving items.</li>
+<li>Moving Average → Forecast smoothing.</li>
+<li>Segment Tree → Range demand queries.</li>
+<li>Heap → Fast-moving product identification.</li>
+<li>Binary Search → Locate reorder points.</li>
+<li>AVL Tree → Balanced stock history search.</li>
+<li>Hash Table → Fast product lookup.</li>
+<li>Merge Sort → Sort monthly sales.</li>
 </ul>
 
 <span class="algo-btn" onclick="toggleAlgo('c5')">Show Code</span>
@@ -301,18 +307,17 @@ int main(){
 
 
 
-<!-- 6. WASTE HEAT RECYCLING -->
+<!-- 6. WASTE HEAT -->
 <div class="card">
 <h3>6) Waste-Heat Energy Recycling System</h3>
-
-<b class="algo-title">Algorithms Used & Why:</b>
+<b>Algorithms Used:</b>
 <ul>
-<li><b>Heap</b> → Prioritize high-heat sources.</li>
-<li><b>Segment Tree</b> → Query heat ranges.</li>
-<li><b>Binary Search</b> → Locate energy thresholds.</li>
-<li><b>DFS</b> → Explore heat flow paths.</li>
-<li><b>Dijkstra</b> → Shortest energy transfer route.</li>
-<li><b>Lookup Table</b> → Convert heat to energy instantly.</li>
+<li>Heap → Highest heat source detection.</li>
+<li>Segment Tree → Temperature range queries.</li>
+<li>Binary Search → Heat thresholds.</li>
+<li>DFS → Heat flow mapping.</li>
+<li>Dijkstra → Optimal heat transfer route.</li>
+<li>Lookup Table → Heat → energy conversion.</li>
 </ul>
 
 <span class="algo-btn" onclick="toggleAlgo('c6')">Show Code</span>
@@ -344,159 +349,4 @@ int main(){
 
 
 
-<!-- 7. PACKAGING OPTIMIZATION -->
-<div class="card">
-<h3>7) AI-Based Product Packaging Optimization</h3>
-
-<b class="algo-title">Algorithms Used & Why:</b>
-<ul>
-<li><b>Quick Sort</b> → Rank box sizes.</li>
-<li><b>Binary Search</b> → Find best-fit box.</li>
-<li><b>AVL Tree</b> → Fast packaging lookup.</li>
-<li><b>KMP</b> → Pattern match packaging defects.</li>
-<li><b>Rabin-Karp</b> → Compare shapes & contours.</li>
-<li><b>Heap</b> → Prioritize smallest box possible.</li>
-<li><b>Dynamic Programming</b> → Optimize packing cost.</li>
-</ul>
-
-<span class="algo-btn" onclick="toggleAlgo('c7')">Show Code</span>
-<pre id="c7">
-#include <iostream>
-#include <vector>
-using namespace std;
-
-string box(float v){
-    if(v<100) return "Small";
-    if(v<300) return "Medium";
-    return "Large";
-}
-
-int main(){
-    int n; cin >> n;
-    vector<float> vol(n);
-
-    for(int i=0;i<n;i++) cin >> vol[i];
-    for(float x : vol) cout << box(x) << "\n";
-}
-</pre>
-</div>
-
-
-
-<!-- 8. AUTO-REJECT SYSTEM -->
-<div class="card">
-<h3>8) Faulty Product Auto-Reject Conveyor System</h3>
-
-<b class="algo-title">Algorithms Used & Why:</b>
-<ul>
-<li><b>Heap</b> → Track worst defects.</li>
-<li><b>Binary Search</b> → Check weight range.</li>
-<li><b>AVL Tree</b> → Product quality lookup.</li>
-<li><b>DFS</b> → Defect region detection.</li>
-<li><b>Merge Sort</b> → Sort defect scores.</li>
-<li><b>Lookup Table</b> → Instant accept/reject check.</li>
-</ul>
-
-<span class="algo-btn" onclick="toggleAlgo('c8')">Show Code</span>
-<pre id="c8">
-#include <iostream>
-#include <vector>
-using namespace std;
-
-bool reject(float w){
-    return (w<90 || w>110);
-}
-
-int main(){
-    int n; cin >> n;
-    vector<float> w(n);
-
-    for(int i=0;i<n;i++) cin >> w[i];
-
-    for(float x : w)
-        cout << (reject(x) ? "Rejected\n" : "Accepted\n");
-}
-</pre>
-</div>
-
-
-
-<!-- 9. POLLUTION MONITORING -->
-<div class="card">
-<h3>9) Factory Pollution Monitoring & Control Dashboard</h3>
-
-<b class="algo-title">Algorithms Used & Why:</b>
-<ul>
-<li><b>Segment Tree</b> → Range pollution analysis.</li>
-<li><b>AVL Tree</b> → Sorted pollution logs.</li>
-<li><b>Heap</b> → Find highest pollutant spike.</li>
-<li><b>DFS</b> → Explore source relationships.</li>
-<li><b>BFS</b> → Spread mapping of pollutants.</li>
-<li><b>Dijkstra</b> → Best ventilation routes.</li>
-</ul>
-
-<span class="algo-btn" onclick="toggleAlgo('c9')">Show Code</span>
-<pre id="c9">
-#include <iostream>
-#include <vector>
-using namespace std;
-
-int main(){
-    int n; cin >> n;
-    vector<float> co2(n);
-
-    for(int i=0;i<n;i++) cin >> co2[i];
-
-    for(float c : co2)
-        cout << (c>900 ? "High Pollution!\n" : "Normal\n");
-}
-</pre>
-</div>
-
-
-
-<!-- 10. SUPPLY CHAIN DELAY PREDICTOR -->
-<div class="card">
-<h3>10) AI-Powered Supply Chain Delay Predictor</h3>
-
-<b class="algo-title">Algorithms Used & Why:</b>
-<ul>
-<li><b>Dijkstra</b> → Shortest delivery routes.</li>
-<li><b>Bellman-Ford</b> → Negative delay detection.</li>
-<li><b>Floyd-Warshall</b> → All-pairs route times.</li>
-<li><b>Merge Sort</b> → Sort delays.</li>
-<li><b>Binary Search</b> → Find delay thresholds.</li>
-<li><b>AVL Tree</b> → Balanced delay logs.</li>
-<li><b>Hash Table</b> → Fast delivery lookup.</li>
-</ul>
-
-<span class="algo-btn" onclick="toggleAlgo('c10')">Show Code</span>
-<pre id="c10">
-#include <iostream>
-#include <vector>
-using namespace std;
-
-int main(){
-    int n; cin >> n;
-    vector<float> exp(n), act(n);
-
-    for(int i=0;i<n;i++) cin >> exp[i];
-    for(int i=0;i<n;i++) cin >> act[i];
-
-    for(int i=0;i<n;i++){
-        float d = act[i] - exp[i];
-        if(d>0)
-            cout << "Delayed by " << d << " hours\n";
-        else
-            cout << "On Time\n";
-    }
-}
-</pre>
-</div>
-
-
-
-</div><!-- END GRID -->
-
-</body>
-</html>
+<!--
