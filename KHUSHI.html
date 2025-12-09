@@ -1,232 +1,280 @@
-<!-- ================= NEW BUSINESS IDEAS ================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Ideas</title>
 
-<!-- 1 -->
-<article class="card">
-  <h2>1) AI-Based Personal Tutoring App</h2>
-  <div class="subtitle">Personalized learning for students</div>
-  <div class="meta">
-    <strong>How it works:</strong> AI chatbot teaches subjects based on student's pace.<br>
-    <strong>Benefits:</strong> 24/7 doubt solving, personalized quizzes.<br>
-    <strong>Investment:</strong> ₹20k–₹50k (basic app).<br>
-    <strong>Profit:</strong> Subscription ₹99–₹299/month/student.
-  </div>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f6f9; /* Professional light-grey background */
+        color: #333;
+    }
 
-  <button class="btn" data-algo="ai1">Show Algorithm</button>
-  <div id="ai1" class="algo">
-    <strong>Recommendation Algorithm</strong>
-    <pre>
+    /* ---------- NAVBAR ---------- */
+    .navbar {
+        width: 100%;
+        background: #0b8457;       /* professional green */
+        padding: 18px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #fff;
+        font-weight: bold;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .navbar a {
+        text-decoration: none;
+        color: white;
+        margin-left: 20px;
+        font-size: 17px;
+    }
+
+    .navbar a:hover {
+        text-decoration: underline;
+    }
+
+    /* ---------- PAGE HEADING ---------- */
+    .title {
+        text-align: center;
+        font-size: 32px;
+        font-weight: bold;
+        margin-top: 25px;
+        color: #0b8457;
+    }
+
+    /* ---------- CARDS GRID ---------- */
+    .container {
+        width: 90%;
+        margin: auto;
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+        grid-gap: 25px;
+    }
+
+    /* ---------- INDIVIDUAL CARD ---------- */
+    .card {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card h3 {
+        margin: 0;
+        color: #0b8457;
+        margin-bottom: 10px;
+    }
+
+    .algo-btn {
+        margin-top: 12px;
+        background: #0b8457;
+        padding: 8px 16px;
+        color: white;
+        border-radius: 6px;
+        display: inline-block;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    pre {
+        background: #e8f5e9;
+        padding: 12px;
+        border-radius: 8px;
+        margin-top: 10px;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        display: none;
+    }
+</style>
+
+<script>
+function toggleAlgo(id) {
+    const box = document.getElementById(id);
+    box.style.display = box.style.display === "block" ? "none" : "block";
+}
+</script>
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div>BUSINESS IDEAS</div>
+    <div>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Projects</a>
+        <a href="#">Team</a>
+    </div>
+</div>
+
+<h2 class="title">Top 10 Modern Business Ideas</h2>
+
+<div class="container">
+
+    <!-- CARD 1 -->
+    <div class="card">
+        <h3>1) AI-Based Personal Tutoring App</h3>
+        <p><b>How it works:</b> AI chatbot teaches subjects as per student speed.</p>
+        <p><b>Investment:</b> ₹20k–₹50k</p>
+        <p><b>Profit:</b> ₹99–₹299/month per student</p>
+        <span class="algo-btn" onclick="toggleAlgo('algo1')">Show Algorithm</span>
+        <pre id="algo1">
 For each student:
-  collect performance scores
-  identify weak topics
-  generate quiz from weak areas using ML model
-Repeat weekly and update difficulty level
-    </pre>
-  </div>
-</article>
+    collect performance scores
+    identify weak topics
+    generate quiz using ML model
+Repeat weekly and adjust difficulty
+        </pre>
+    </div>
 
-<!-- 2 -->
-<article class="card">
-  <h2>2) Cloud Kitchen for Healthy Meals</h2>
-  <div class="subtitle">Online-only food delivery kitchen</div>
-  <div class="meta">
-    <strong>How it works:</strong> Prepare meals in a small kitchen; sell via Swiggy/Zomato.<br>
-    <strong>Benefits:</strong> No dine-in cost, high demand for healthy food.<br>
-    <strong>Investment:</strong> ₹30k–₹70k.<br>
-    <strong>Profit:</strong> ₹40k–₹1L/month.
-  </div>
-
-  <button class="btn" data-algo="ai2">Show Algorithm</button>
-  <div id="ai2" class="algo">
-    <strong>Order Routing Algorithm</strong>
-    <pre>
+    <!-- CARD 2 -->
+    <div class="card">
+        <h3>2) Cloud Kitchen for Healthy Meals</h3>
+        <p><b>How it works:</b> Prepare meals and sell via Swiggy/Zomato.</p>
+        <p><b>Investment:</b> ₹30k–₹70k</p>
+        <p><b>Profit:</b> ₹40k–₹1L/month</p>
+        <span class="algo-btn" onclick="toggleAlgo('algo2')">Show Algorithm</span>
+        <pre id="algo2">
 Receive order → check inventory
 If ingredients available:
-  assign to nearest chef slot
+    assign to chef
 Else:
-  trigger auto-stock alert
-    </pre>
-  </div>
-</article>
+    auto-stock alert
+        </pre>
+    </div>
 
-<!-- 3 -->
-<article class="card">
-  <h2>3) Thrift & Preloved Fashion Marketplace</h2>
-  <div class="subtitle">Buy/sell second-hand clothes</div>
-  <div class="meta">
-    <strong>How it works:</strong> Users upload clothes; you verify & resell.<br>
-    <strong>Benefits:</strong> High-margin, trending among youth.<br>
-    <strong>Investment:</strong> ₹10k (website + storage).<br>
-    <strong>Profit:</strong> 20–40% commission per item.
-  </div>
+    <!-- CARD 3 -->
+    <div class="card">
+        <h3>3) Thrift & Preloved Fashion Marketplace</h3>
+        <p><b>How it works:</b> Users upload clothes → you verify & resell.</p>
+        <p><b>Investment:</b> ₹10k</p>
+        <p><b>Profit:</b> 20–40% commission</p>
+        <span class="algo-btn" onclick="toggleAlgo('algo3')">Show Algorithm</span>
+        <pre id="algo3">
+For each product:
+    extract tags
+On search:
+    compute similarity score
+Return top matches
+        </pre>
+    </div>
 
-  <button class="btn" data-algo="ai3">Show Algorithm</button>
-  <div id="ai3" class="algo">
-    <strong>Item Matching Algorithm</strong>
-    <pre>
-For each listed product:
-  extract tags (brand, color, size)
-When user searches:
-  compute similarity score
-Return top K matching items
-    </pre>
-  </div>
-</article>
-
-<!-- 4 -->
-<article class="card">
-  <h2>4) Farm-to-Home Organic Vegetable Delivery</h2>
-  <div class="subtitle">Daily fresh veggies delivered</div>
-  <div class="meta">
-    <strong>How it works:</strong> Partner with farmers; deliver fresh produce.<br>
-    <strong>Benefits:</strong> 100% fresh, subscription-based income.<br>
-    <strong>Investment:</strong> ₹15k–₹30k.<br>
-    <strong>Profit:</strong> ₹20k–₹60k/month.
-  </div>
-
-  <button class="btn" data-algo="ai4">Show Algorithm</button>
-  <div id="ai4" class="algo">
-    <strong>Delivery Route Optimization (Dijkstra)</strong>
-    <pre>
-Represent houses as nodes
+    <!-- CARD 4 -->
+    <div class="card">
+        <h3>4) Farm-to-Home Organic Vegetable Delivery</h3>
+        <p><b>How it works:</b> Partner with farmers; deliver fresh veggies.</p>
+        <p><b>Investment:</b> ₹15k–₹30k</p>
+        <p><b>Profit:</b> ₹20k–₹60k/month</p>
+        <span class="algo-btn" onclick="toggleAlgo('algo4')">Show Algorithm</span>
+        <pre id="algo4">
+Nodes = houses
 Edges = travel time
-Use Dijkstra to find shortest delivery route
-Update daily based on orders
-    </pre>
-  </div>
-</article>
+Use Dijkstra for shortest route
+Update daily
+        </pre>
+    </div>
 
-<!-- 5 -->
-<article class="card">
-  <h2>5) No-Code Website Building Service</h2>
-  <div class="subtitle">Build websites for local businesses</div>
-  <div class="meta">
-    <strong>How it works:</strong> Use tools like Wix, Canva, WordPress.<br>
-    <strong>Benefits:</strong> Quick delivery, high demand.<br>
-    <strong>Investment:</strong> Almost ₹0.<br>
-    <strong>Profit:</strong> ₹2k–₹10k per website.
-  </div>
-
-  <button class="btn" data-algo="ai5">Show Algorithm</button>
-  <div id="ai5" class="algo">
-    <strong>Template Selection Algorithm</strong>
-    <pre>
-Input: client industry
+    <!-- CARD 5 -->
+    <div class="card">
+        <h3>5) No-Code Website Building Service</h3>
+        <p><b>How it works:</b> Build websites using Wix/WordPress.</p>
+        <p><b>Investment:</b> ₹0</p>
+        <p><b>Profit:</b> ₹2k–₹10k per website</p>
+        <span class="algo-btn" onclick="toggleAlgo('algo5')">Show Algorithm</span>
+        <pre id="algo5">
+Input: Client industry
 Search template database
-Filter by style, color, features
+Filter by style & color
 Return best 3 templates
-    </pre>
-  </div>
-</article>
+        </pre>
+    </div>
 
-<!-- 6 -->
-<article class="card">
-  <h2>6) Customized Skincare Product Brand</h2>
-  <div class="subtitle">Skin-type based creams & serums</div>
-  <div class="meta">
-    <strong>How it works:</strong> Customers fill skin questionnaire; product is customized.<br>
-    <strong>Benefits:</strong> Huge demand, great margins.<br>
-    <strong>Investment:</strong> ₹20k–₹50k.<br>
-    <strong>Profit:</strong> 40–70% margin.
-  </div>
-
-  <button class="btn" data-algo="ai6">Show Algorithm</button>
-  <div id="ai6" class="algo">
-    <strong>Skin Type Classification</strong>
-    <pre>
-Input: user answers
+    <!-- CARD 6 -->
+    <div class="card">
+        <h3>6) Customized Skincare Product Brand</h3>
+        <p><b>How it works:</b> Products based on customer skin type.</p>
+        <p><b>Investment:</b> ₹20k–₹50k</p>
+        <p><b>Profit:</b> 40–70% margin</p>
+        <span class="algo-btn" onclick="toggleAlgo('algo6')">Show Algorithm</span>
+        <pre id="algo6">
+Input: questionnaire
 Score dryness, oiliness, sensitivity
-Label = category with max score
-Recommend matching product formula
-    </pre>
-  </div>
-</article>
+Label = highest score
+Suggest product formula
+        </pre>
+    </div>
 
-<!-- 7 -->
-<article class="card">
-  <h2>7) AI Fitness Trainer App</h2>
-  <div class="subtitle">Workout plans based on user physique</div>
-  <div class="meta">
-    <strong>How it works:</strong> AI analyzes body type, gives workouts & diet.<br>
-    <strong>Benefits:</strong> Monthly subscription income.<br>
-    <strong>Investment:</strong> ₹15k–₹30k.<br>
-    <strong>Profit:</strong> ₹30k–₹1L/month.
-  </div>
-
-  <button class="btn" data-algo="ai7">Show Algorithm</button>
-  <div id="ai7" class="algo">
-    <strong>Workout Recommendation Algorithm</strong>
-    <pre>
+    <!-- CARD 7 -->
+    <div class="card">
+        <h3>7) AI Fitness Trainer App</h3>
+        <p><b>How it works:</b> Workout & diet based on body type.</p>
+        <p><b>Investment:</b> ₹15k–₹30k</p>
+        <p><b>Profit:</b> ₹30k–₹1L/month</p>
+        <span class="algo-btn" onclick="toggleAlgo('algo7')">Show Algorithm</span>
+        <pre id="algo7">
 Collect: age, weight, goal
-If goal = weight loss → cardio-heavy plan
-If goal = muscle gain → strength-heavy plan
-Adjust plan every week using progress data
-    </pre>
-  </div>
-</article>
+If weight loss → cardio plan
+If muscle gain → strength plan
+Update weekly
+        </pre>
+    </div>
 
-<!-- 8 -->
-<article class="card">
-  <h2>8) Co-Living/PG Spaces for Students</h2>
-  <div class="subtitle">Fully-managed PG accommodations</div>
-  <div class="meta">
-    <strong>How it works:</strong> Rent building → furnish → rent beds.<br>
-    <strong>Benefits:</strong> High monthly income.<br>
-    <strong>Investment:</strong> ₹1–2 lakh (setup).<br>
-    <strong>Profit:</strong> ₹50k–₹2L/month.
-  </div>
-
-  <button class="btn" data-algo="ai8">Show Algorithm</button>
-  <div id="ai8" class="algo">
-    <strong>Room Allocation Algorithm</strong>
-    <pre>
+    <!-- CARD 8 -->
+    <div class="card">
+        <h3>8) Co-Living/PG for Students</h3>
+        <p><b>How it works:</b> Rent building → furnish → rent beds.</p>
+        <p><b>Investment:</b> ₹1–2 lakh</p>
+        <p><b>Profit:</b> ₹50k–₹2L/month</p>
+        <span class="algo-btn" onclick="toggleAlgo('algo8')">Show Algorithm</span>
+        <pre id="algo8">
 Sort rooms by availability
-Sort students by preferences
-Assign nearest match using greedy approach
-    </pre>
-  </div>
-</article>
+Sort students by preference
+Assign best match using greedy method
+        </pre>
+    </div>
 
-<!-- 9 -->
-<article class="card">
-  <h2>9) Micro Event Management for Colleges</h2>
-  <div class="subtitle">Small fests, DJ nights, competitions</div>
-  <div class="meta">
-    <strong>How it works:</strong> Handle decor, music, promotion.<br>
-    <strong>Benefits:</strong> High demand in colleges.<br>
-    <strong>Investment:</strong> ₹5k–₹10k.<br>
-    <strong>Profit:</strong> ₹15k–₹40k/event.
-  </div>
+    <!-- CARD 9 -->
+    <div class="card">
+        <h3>9) Micro Event Management for Colleges</h3>
+        <p><b>How it works:</b> Handle decor, music & stage setup.</p>
+        <p><b>Investment:</b> ₹5k–₹10k</p>
+        <p><b>Profit:</b> ₹15k–₹40k/event</p>
+        <span class="algo-btn" onclick="toggleAlgo('algo9')">Show Algorithm</span>
+        <pre id="algo9">
+Create task list
+Sort by priority/deadline
+Assign team members
+        </pre>
+    </div>
 
-  <button class="btn" data-algo="ai9">Show Algorithm</button>
-  <div id="ai9" class="algo">
-    <strong>Task Scheduling Algorithm</strong>
-    <pre>
-Create list: stage, sound, lights, catering
-Sort tasks by priority (deadline first)
-Allocate team members accordingly
-    </pre>
-  </div>
-</article>
-
-<!-- 10 -->
-<article class="card">
-  <h2>10) Subscription-Based Daily Snack/Juice Box</h2>
-  <div class="subtitle">Healthy tiffin delivered daily</div>
-  <div class="meta">
-    <strong>How it works:</strong> Customers subscribe weekly/monthly.<br>
-    <strong>Benefits:</strong> Guaranteed recurring income.<br>
-    <strong>Investment:</strong> ₹5k–₹20k.<br>
-    <strong>Profit:</strong> ₹20k–₹60k/month.
-  </div>
-
-  <button class="btn" data-algo="ai10">Show Algorithm</button>
-  <div id="ai10" class="algo">
-    <strong>Subscription Reminder Algorithm</strong>
-    <pre>
+    <!-- CARD 10 -->
+    <div class="card">
+        <h3>10) Subscription Snack/Juice Box</h3>
+        <p><b>How it works:</b> Deliver healthy snacks daily.</p>
+        <p><b>Investment:</b> ₹5k–₹20k</p>
+        <p><b>Profit:</b> ₹20k–₹60k/month</p>
+        <span class="algo-btn" onclick="toggleAlgo('algo10')">Show Algorithm</span>
+        <pre id="algo10">
 For each customer:
-  if subscription_end_date < 3 days:
-    send reminder notification
-Every morning: generate delivery list automatically
-    </pre>
-  </div>
-</article>
+    if subscription ending < 3 days:
+         send reminder
+Every morning:
+    create delivery list
+        </pre>
+    </div>
+
+</div>
+
+</body>
+</html>
