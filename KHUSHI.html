@@ -9,11 +9,10 @@
     body {
         margin: 0;
         font-family: Arial, sans-serif;
-        background: #f2f5fa; /* clean white-blue professional */
+        background: #f2f5fa;
         color: #1e2a38;
     }
 
-    /* HEADER */
     .header {
         width: 92%;
         margin: auto;
@@ -30,41 +29,39 @@
     }
 
     .header img {
-        width: 330px;
-        border-radius: 14px;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+        width: 340px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.18);
     }
 
-    /* GRID */
     .container {
         width: 92%;
         margin: auto;
-        margin-top: 30px;
+        margin-top: 25px;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 25px;
     }
 
-    /* CARD */
     .card {
         background: #ffffff;
-        padding: 22px;
+        padding: 20px;
         border-radius: 12px;
         box-shadow: 0 4px 16px rgba(0,0,0,0.12);
         border-left: 5px solid #0f1f44;
     }
 
     .card h3 {
-        color: #0f1f44;
         margin-top: 0;
-        font-size: 22px;
+        color: #0f1f44;
     }
 
     .algo-title {
         font-weight: bold;
         margin-top: 10px;
-        color: #112b54;
     }
+
+    ul { margin-top: 5px; }
 
     .algo-btn {
         background: #0f1f44;
@@ -73,8 +70,7 @@
         color: white;
         cursor: pointer;
         display: inline-block;
-        font-size: 14px;
-        margin-top: 8px;
+        margin-top: 10px;
     }
 
     pre {
@@ -90,8 +86,8 @@
 
 <script>
 function toggleAlgo(id) {
-    const box = document.getElementById(id);
-    box.style.display = box.style.display === "block" ? "none" : "block";
+    const x = document.getElementById(id);
+    x.style.display = (x.style.display === "block") ? "none" : "block";
 }
 </script>
 
@@ -101,10 +97,406 @@ function toggleAlgo(id) {
 <!-- HEADER -->
 <div class="header">
     <h2 class="title">Industry Business Ideas</h2>
-
-    <!-- FUTURISTIC AI + INDUSTRY BANNER -->
-    <img src="https://img.freepik.com/premium-vector/futuristic-artificial-intelligence-concept-banner_1035-19159.jpg" />
+    <img src="https://img.freepik.com/free-vector/industry-4-0-concept-illustration_114360-9928.jpg">
 </div>
 
-<!-- IDEAS GRID -->
+<!-- MAIN GRID -->
 <div class="container">
+
+
+<!-- 1. SMART TEXTILE QUALITY DETECTOR -->
+<div class="card">
+<h3>1) Smart Textile Quality Detector</h3>
+
+<b class="algo-title">Algorithms Used & Why:</b>
+<ul>
+<li><b>KMP Algorithm</b> → Pattern defect matching in cloth texture.</li>
+<li><b>Rabin-Karp</b> → Fast rolling hash for repeated defect patterns.</li>
+<li><b>DFS</b> → Cluster detection of connected defects.</li>
+<li><b>BFS</b> → Spread mapping of defects.</li>
+<li><b>Merge Sort</b> → Sort & rank defects by severity.</li>
+<li><b>Binary Search Tree</b> → Quick lookup for defect thresholds.</li>
+<li><b>AVL Tree</b> → Balanced search for real-time detection.</li>
+<li><b>Min Heap</b> → Find the smallest defect severity.</li>
+<li><b>Max Heap</b> → Identify the largest defect severity.</li>
+</ul>
+
+<span class="algo-btn" onclick="toggleAlgo('c1')">Show Code</span>
+<pre id="c1">
+#include <iostream>
+#include <vector>
+#include <cmath>
+using namespace std;
+
+bool isDefective(int v, int e, int t){
+    return abs(v-e) > t;
+}
+
+int main(){
+    int n; cin >> n;
+    vector<int> a(n);
+
+    for(int i=0;i<n;i++) cin >> a[i];
+
+    int expected, th;
+    cin >> expected >> th;
+
+    for(int i=0;i<n;i++)
+        if(isDefective(a[i], expected, th))
+            cout << "Defect at position " << i << "\n";
+}
+</pre>
+</div>
+
+
+
+<!-- 2. AI WORKER SAFETY MONITORING -->
+<div class="card">
+<h3>2) AI-Based Worker Safety Monitoring</h3>
+
+<b class="algo-title">Algorithms Used & Why:</b>
+<ul>
+<li><b>Binary Search</b> → Fast lookup of safety limits.</li>
+<li><b>AVL Tree</b> → Stable threshold checking.</li>
+<li><b>Heap</b> → Prioritize highest-risk alerts.</li>
+<li><b>DFS</b> → Detect risk paths in movement graph.</li>
+<li><b>BFS</b> → Shortest safe route calculation.</li>
+<li><b>Dijkstra</b> → Safe evacuation planning.</li>
+<li><b>KMP</b> → Match abnormal movement patterns.</li>
+<li><b>Lookup Table</b> → Instant hazard classification.</li>
+</ul>
+
+<span class="algo-btn" onclick="toggleAlgo('c2')">Show Code</span>
+<pre id="c2">
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main(){
+    int n; cin >> n;
+    vector<float> acc(n);
+
+    for(int i=0;i<n;i++) cin >> acc[i];
+
+    float limit; cin >> limit;
+
+    for(float x : acc)
+        cout << (x > limit ? "Unsafe\n" : "Safe\n");
+}
+</pre>
+</div>
+
+
+
+<!-- 3. PREDICTIVE MAINTENANCE -->
+<div class="card">
+<h3>3) Predictive Maintenance for Industrial Machines</h3>
+
+<b class="algo-title">Algorithms Used & Why:</b>
+<ul>
+<li><b>Heap</b> → Find top failure risks.</li>
+<li><b>Segment Tree</b> → Range vibration queries.</li>
+<li><b>Binary Search Tree</b> → Quick log lookup.</li>
+<li><b>DFS</b> → Explore fault propagation path.</li>
+<li><b>BFS</b> → Detect immediate neighbors at risk.</li>
+<li><b>Dijkstra</b> → Predict shortest failure path.</li>
+<li><b>Merge Sort</b> → Sort sensor readings.</li>
+<li><b>KMP</b> → Detect repeated abnormal patterns.</li>
+</ul>
+
+<span class="algo-btn" onclick="toggleAlgo('c3')">Show Code</span>
+<pre id="c3">
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main(){
+    int n; cin >> n;
+    vector<float> vib(n);
+
+    for(int i=0;i<n;i++) cin >> vib[i];
+
+    float th; cin >> th;
+
+    for(float x : vib)
+        cout << (x > th ? "Failure predicted\n" : "Normal\n");
+}
+</pre>
+</div>
+
+
+
+<!-- 4. SORTING ROBOT -->
+<div class="card">
+<h3>4) Autonomous Material Sorting Robot</h3>
+
+<b class="algo-title">Algorithms Used & Why:</b>
+<ul>
+<li><b>Quick Sort</b> → Fast item sorting.</li>
+<li><b>Merge Sort</b> → Stable categorization.</li>
+<li><b>Heap Sort</b> → Priority-based sorting.</li>
+<li><b>Binary Search Tree</b> → Class lookup.</li>
+<li><b>AVL Tree</b> → Balanced decision tree.</li>
+<li><b>BFS / DFS</b> → Navigation inside warehouse.</li>
+<li><b>Dijkstra</b> → Shortest path movement.</li>
+</ul>
+
+<span class="algo-btn" onclick="toggleAlgo('c4')">Show Code</span>
+<pre id="c4">
+#include <iostream>
+using namespace std;
+
+string classify(float w){
+    if(w < 1) return "Light";
+    if(w < 5) return "Medium";
+    return "Heavy";
+}
+
+int main(){
+    int n; cin >> n;
+    while(n--){
+        float w;
+        cin >> w;
+        cout << classify(w) << "\n";
+    }
+}
+</pre>
+</div>
+
+
+
+<!-- 5. INVENTORY FORECASTING -->
+<div class="card">
+<h3>5) Smart Inventory Forecasting System</h3>
+
+<b class="algo-title">Algorithms Used & Why:</b>
+<ul>
+<li><b>Moving Average</b> → Smooth prediction.</li>
+<li><b>Merge Sort</b> → Sort demand patterns.</li>
+<li><b>Binary Search</b> → Locate reorder points.</li>
+<li><b>AVL Tree</b> → Balanced stock lookup.</li>
+<li><b>Segment Tree</b> → Range-based demand queries.</li>
+<li><b>Hash Table</b> → Product frequency mapping.</li>
+<li><b>Heap</b> → Identify fast-moving items.</li>
+</ul>
+
+<span class="algo-btn" onclick="toggleAlgo('c5')">Show Code</span>
+<pre id="c5">
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main(){
+    int n; cin >> n;
+    vector<int> s(n);
+    for(int i=0;i<n;i++) cin >> s[i];
+
+    int sum=0;
+    for(int x : s) sum+=x;
+
+    cout << "Forecast: " << sum/n;
+}
+</pre>
+</div>
+
+
+
+<!-- 6. WASTE HEAT RECYCLING -->
+<div class="card">
+<h3>6) Waste-Heat Energy Recycling System</h3>
+
+<b class="algo-title">Algorithms Used & Why:</b>
+<ul>
+<li><b>Heap</b> → Prioritize high-heat sources.</li>
+<li><b>Segment Tree</b> → Query heat ranges.</li>
+<li><b>Binary Search</b> → Locate energy thresholds.</li>
+<li><b>DFS</b> → Explore heat flow paths.</li>
+<li><b>Dijkstra</b> → Shortest energy transfer route.</li>
+<li><b>Lookup Table</b> → Convert heat to energy instantly.</li>
+</ul>
+
+<span class="algo-btn" onclick="toggleAlgo('c6')">Show Code</span>
+<pre id="c6">
+#include <iostream>
+using namespace std;
+
+float convertEnergy(float t){
+    float base=40, f=0.6;
+    float e=(t-base)*f;
+    return (e<0)?0:e;
+}
+
+int main(){
+    int n; cin >> n;
+    float total=0;
+
+    while(n--){
+        float x; cin >> x;
+        float e = convertEnergy(x);
+        total += e;
+        cout << "Converted: " << e << " kW\n";
+    }
+
+    cout << "Total Energy: " << total << " kW";
+}
+</pre>
+</div>
+
+
+
+<!-- 7. PACKAGING OPTIMIZATION -->
+<div class="card">
+<h3>7) AI-Based Product Packaging Optimization</h3>
+
+<b class="algo-title">Algorithms Used & Why:</b>
+<ul>
+<li><b>Quick Sort</b> → Rank box sizes.</li>
+<li><b>Binary Search</b> → Find best-fit box.</li>
+<li><b>AVL Tree</b> → Fast packaging lookup.</li>
+<li><b>KMP</b> → Pattern match packaging defects.</li>
+<li><b>Rabin-Karp</b> → Compare shapes & contours.</li>
+<li><b>Heap</b> → Prioritize smallest box possible.</li>
+<li><b>Dynamic Programming</b> → Optimize packing cost.</li>
+</ul>
+
+<span class="algo-btn" onclick="toggleAlgo('c7')">Show Code</span>
+<pre id="c7">
+#include <iostream>
+#include <vector>
+using namespace std;
+
+string box(float v){
+    if(v<100) return "Small";
+    if(v<300) return "Medium";
+    return "Large";
+}
+
+int main(){
+    int n; cin >> n;
+    vector<float> vol(n);
+
+    for(int i=0;i<n;i++) cin >> vol[i];
+    for(float x : vol) cout << box(x) << "\n";
+}
+</pre>
+</div>
+
+
+
+<!-- 8. AUTO-REJECT SYSTEM -->
+<div class="card">
+<h3>8) Faulty Product Auto-Reject Conveyor System</h3>
+
+<b class="algo-title">Algorithms Used & Why:</b>
+<ul>
+<li><b>Heap</b> → Track worst defects.</li>
+<li><b>Binary Search</b> → Check weight range.</li>
+<li><b>AVL Tree</b> → Product quality lookup.</li>
+<li><b>DFS</b> → Defect region detection.</li>
+<li><b>Merge Sort</b> → Sort defect scores.</li>
+<li><b>Lookup Table</b> → Instant accept/reject check.</li>
+</ul>
+
+<span class="algo-btn" onclick="toggleAlgo('c8')">Show Code</span>
+<pre id="c8">
+#include <iostream>
+#include <vector>
+using namespace std;
+
+bool reject(float w){
+    return (w<90 || w>110);
+}
+
+int main(){
+    int n; cin >> n;
+    vector<float> w(n);
+
+    for(int i=0;i<n;i++) cin >> w[i];
+
+    for(float x : w)
+        cout << (reject(x) ? "Rejected\n" : "Accepted\n");
+}
+</pre>
+</div>
+
+
+
+<!-- 9. POLLUTION MONITORING -->
+<div class="card">
+<h3>9) Factory Pollution Monitoring & Control Dashboard</h3>
+
+<b class="algo-title">Algorithms Used & Why:</b>
+<ul>
+<li><b>Segment Tree</b> → Range pollution analysis.</li>
+<li><b>AVL Tree</b> → Sorted pollution logs.</li>
+<li><b>Heap</b> → Find highest pollutant spike.</li>
+<li><b>DFS</b> → Explore source relationships.</li>
+<li><b>BFS</b> → Spread mapping of pollutants.</li>
+<li><b>Dijkstra</b> → Best ventilation routes.</li>
+</ul>
+
+<span class="algo-btn" onclick="toggleAlgo('c9')">Show Code</span>
+<pre id="c9">
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main(){
+    int n; cin >> n;
+    vector<float> co2(n);
+
+    for(int i=0;i<n;i++) cin >> co2[i];
+
+    for(float c : co2)
+        cout << (c>900 ? "High Pollution!\n" : "Normal\n");
+}
+</pre>
+</div>
+
+
+
+<!-- 10. SUPPLY CHAIN DELAY PREDICTOR -->
+<div class="card">
+<h3>10) AI-Powered Supply Chain Delay Predictor</h3>
+
+<b class="algo-title">Algorithms Used & Why:</b>
+<ul>
+<li><b>Dijkstra</b> → Shortest delivery routes.</li>
+<li><b>Bellman-Ford</b> → Negative delay detection.</li>
+<li><b>Floyd-Warshall</b> → All-pairs route times.</li>
+<li><b>Merge Sort</b> → Sort delays.</li>
+<li><b>Binary Search</b> → Find delay thresholds.</li>
+<li><b>AVL Tree</b> → Balanced delay logs.</li>
+<li><b>Hash Table</b> → Fast delivery lookup.</li>
+</ul>
+
+<span class="algo-btn" onclick="toggleAlgo('c10')">Show Code</span>
+<pre id="c10">
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main(){
+    int n; cin >> n;
+    vector<float> exp(n), act(n);
+
+    for(int i=0;i<n;i++) cin >> exp[i];
+    for(int i=0;i<n;i++) cin >> act[i];
+
+    for(int i=0;i<n;i++){
+        float d = act[i] - exp[i];
+        if(d>0)
+            cout << "Delayed by " << d << " hours\n";
+        else
+            cout << "On Time\n";
+    }
+}
+</pre>
+</div>
+
+
+
+</div><!-- END GRID -->
+
+</body>
+</html>
