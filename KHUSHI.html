@@ -9,33 +9,33 @@
     body {
         margin: 0;
         font-family: Arial, sans-serif;
-        background: #d9dee2; /* Industrial light grey */
-        color: #222;
+        background: #eef1f5; /* Soft industrial blue-grey */
+        color: #1f2a36;
     }
 
     /* ---------- NAVBAR ---------- */
     .navbar {
         width: 100%;
-        background: #2c3e50; 
+        background: #1f2a36; 
         padding: 16px 40px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         color: #fff;
         font-weight: bold;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.25);
         letter-spacing: 1px;
     }
 
     .navbar a {
         text-decoration: none;
-        color: #c9e3ff;
+        color: #c3e4ff;
         margin-left: 20px;
         font-size: 17px;
     }
 
     .navbar a:hover {
-        color: #fff;
+        color: #ffffff;
     }
 
     /* ---------- PAGE HEADING ---------- */
@@ -44,11 +44,11 @@
         font-size: 34px;
         font-weight: bold;
         margin-top: 25px;
-        color: #2c3e50;
+        color: #1f2a36;
         letter-spacing: 1px;
     }
 
-    /* ---------- MAIN GRID (LEFT CARDS + RIGHT IMAGE) ---------- */
+    /* ---------- MAIN GRID ---------- */
     .main {
         width: 90%;
         margin: auto;
@@ -74,19 +74,18 @@
         border-radius: 12px;
     }
 
-    /* ---------- CARDS GRID ---------- */
+    /* ---------- CARDS ---------- */
     .container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         grid-gap: 25px;
     }
 
-    /* ---------- CARD STYLE ---------- */
     .card {
         background: #ffffff;
         padding: 25px;
         border-radius: 12px;
-        border-left: 5px solid #34495e;
+        border-left: 5px solid #1f2a36;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         transition: 0.3s;
     }
@@ -98,14 +97,20 @@
 
     .card h3 {
         margin: 0;
-        color: #2c3e50;
+        color: #1f2a36;
         margin-bottom: 10px;
         font-size: 20px;
     }
 
+    .algo-heading {
+        color: #004d73;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
     .algo-btn {
         margin-top: 12px;
-        background: #34495e;
+        background: #1f2a36;
         padding: 8px 16px;
         color: white;
         font-weight: bold;
@@ -122,7 +127,7 @@
         margin-top: 10px;
         overflow-x: auto;
         display: none;
-        color: #003855;
+        color: #003049;
     }
 </style>
 
@@ -151,226 +156,131 @@ function toggleAlgo(id) {
 
 <div class="main">
 
-<!-- LEFT SIDE CARDS -->
+<!-- LEFT CARDS -->
 <div class="container">
 
     <!-- 1 -->
     <div class="card">
         <h3>1) Smart Textile Quality Detector</h3>
-        <p><b>Purpose:</b> Detects defects in fabric using sensor values.</p>
-        <span class="algo-btn" onclick="toggleAlgo('i1')">Show C++ Code</span>
+        <p><b>Algorithm Used:</b> Threshold-Based Defect Detection</p>
+        <span class="algo-btn" onclick="toggleAlgo('i1')">Show Algorithm</span>
         <pre id="i1">
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
-using namespace std;
-
-int main() {
-    vector<int> fabric = {100,102,98,150,101,99};
-    int expected = 100, threshold = 20;
-
-    for(int i=0;i&lt;fabric.size();i++){
-        if(abs(fabric[i]-expected) &gt; threshold)
-            cout&lt;&lt;"Defect at position " &lt;&lt;i&lt;&lt;"\n";
-    }
-}
+for each sensor_value:
+    if |value - expected| > threshold:
+         mark defect
         </pre>
     </div>
 
     <!-- 2 -->
     <div class="card">
-        <h3>2) AI-Based Worker Safety Monitoring</h3>
-        <p><b>Purpose:</b> Detect unsafe movements in factories.</p>
-        <span class="algo-btn" onclick="toggleAlgo('i2')">Show C++ Code</span>
+        <h3>2) AI Worker Safety Monitoring</h3>
+        <p><b>Algorithm Used:</b> Acceleration Limit Check</p>
+        <span class="algo-btn" onclick="toggleAlgo('i2')">Show Algorithm</span>
         <pre id="i2">
-#include &lt;iostream&gt;
-using namespace std;
-
-int main(){
-    float accel;
-    cin >> accel;
-
-    if(accel > 15)
-        cout << "Unsafe Movement!";
-    else
-        cout << "Safe.";
-}
+read acceleration;
+if acceleration > max_safe_limit:
+    alert("Unsafe Movement");
         </pre>
     </div>
 
     <!-- 3 -->
     <div class="card">
-        <h3>3) Predictive Maintenance for Machines</h3>
-        <p><b>Purpose:</b> Predict machine failure using vibration data.</p>
-        <span class="algo-btn" onclick="toggleAlgo('i3')">Show C++ Code</span>
+        <h3>3) Predictive Machine Maintenance</h3>
+        <p><b>Algorithm Used:</b> Vibration Anomaly Detection</p>
+        <span class="algo-btn" onclick="toggleAlgo('i3')">Show Algorithm</span>
         <pre id="i3">
-#include &lt;iostream&gt;
-using namespace std;
-
-int main(){
-    float vibration;
-    cin >> vibration;
-
-    if(vibration > 80)
-        cout << "Failure Predicted";
-    else
-        cout << "Machine Normal";
-}
+if vibration_value > failure_threshold:
+    warn("Failure Predicted");
         </pre>
     </div>
 
     <!-- 4 -->
     <div class="card">
         <h3>4) Autonomous Material Sorting Robot</h3>
-        <p><b>Purpose:</b> Sort items by weight automatically.</p>
-        <span class="algo-btn" onclick="toggleAlgo('i4')">Show C++ Code</span>
+        <p><b>Algorithm Used:</b> Weight-Based Classification</p>
+        <span class="algo-btn" onclick="toggleAlgo('i4')">Show Algorithm</span>
         <pre id="i4">
-#include &lt;iostream&gt;
-using namespace std;
-
-int main(){
-    float weight;
-    cin >> weight;
-
-    if(weight < 1) cout << "Bin A";
-    else if(weight < 5) cout << "Bin B";
-    else cout << "Bin C";
-}
+if w < 1kg → Bin A
+else if w < 5kg → Bin B
+else → Bin C
         </pre>
     </div>
 
     <!-- 5 -->
     <div class="card">
-        <h3>5) Smart Inventory Forecasting System</h3>
-        <p><b>Purpose:</b> Predict next month's stock demand.</p>
-        <span class="algo-btn" onclick="toggleAlgo('i5')">Show C++ Code</span>
+        <h3>5) Smart Inventory Forecasting</h3>
+        <p><b>Algorithm Used:</b> Moving Average Forecasting</p>
+        <span class="algo-btn" onclick="toggleAlgo('i5')">Show Algorithm</span>
         <pre id="i5">
-#include &lt;iostream&gt;
-using namespace std;
-
-int main(){
-    int data[6]={50,60,55,65,70,80};
-    int sum=0;
-    for(int i=0;i<6;i++) sum+=data[i];
-
-    cout << "Forecast=" << sum/6.0;
-}
+forecast = (sum of last N months) / N;
         </pre>
     </div>
 
     <!-- 6 -->
     <div class="card">
         <h3>6) Waste-Heat Energy Recycling System</h3>
-        <p><b>Purpose:</b> Convert heat into usable energy.</p>
-        <span class="algo-btn" onclick="toggleAlgo('i6')">Show C++ Code</span>
+        <p><b>Algorithm Used:</b> Heat-to-Energy Conversion Estimation</p>
+        <span class="algo-btn" onclick="toggleAlgo('i6')">Show Algorithm</span>
         <pre id="i6">
-#include &lt;iostream&gt;
-using namespace std;
-
-int main(){
-    float temp;
-    cin >> temp;
-
-    float energy = (temp - 40) * 0.5;
-    if(energy < 0) energy = 0;
-
-    cout << energy << " kW";
-}
+energy = (temperature - baseline) * factor;
         </pre>
     </div>
 
     <!-- 7 -->
     <div class="card">
         <h3>7) AI Packaging Optimization</h3>
-        <p><b>Purpose:</b> Choose best packaging box for product size.</p>
-        <span class="algo-btn" onclick="toggleAlgo('i7')">Show C++ Code</span>
+        <p><b>Algorithm Used:</b> Volume-Based Box Selection</p>
+        <span class="algo-btn" onclick="toggleAlgo('i7')">Show Algorithm</span>
         <pre id="i7">
-#include &lt;iostream&gt;
-using namespace std;
-
-int main(){
-    float volume;
-    cin >> volume;
-
-    if(volume < 100) cout << "Small Box";
-    else if(volume < 300) cout << "Medium Box";
-    else cout << "Large Box";
-}
+if volume < 100 → Small
+else if volume < 300 → Medium
+else → Large
         </pre>
     </div>
 
     <!-- 8 -->
     <div class="card">
-        <h3>8) Auto-Reject Faulty Products (Conveyor)</h3>
-        <p><b>Purpose:</b> Reject items with abnormal weight.</p>
-        <span class="algo-btn" onclick="toggleAlgo('i8')">Show C++ Code</span>
+        <h3>8) Auto-Reject Faulty Products</h3>
+        <p><b>Algorithm Used:</b> Range Validation Check</p>
+        <span class="algo-btn" onclick="toggleAlgo('i8')">Show Algorithm</span>
         <pre id="i8">
-#include &lt;iostream&gt;
-using namespace std;
-
-int main(){
-    float w;
-    cin >> w;
-
-    if(w < 90 || w > 110)
-        cout << "Rejected";
-    else
-        cout << "Accepted";
-}
+if weight < min OR weight > max:
+    reject item
         </pre>
     </div>
 
     <!-- 9 -->
     <div class="card">
-        <h3>9) Factory Pollution Monitoring System</h3>
-        <p><b>Purpose:</b> Detect dangerous CO₂ levels.</p>
-        <span class="algo-btn" onclick="toggleAlgo('i9')">Show C++ Code</span>
+        <h3>9) Factory Pollution Monitoring</h3>
+        <p><b>Algorithm Used:</b> CO₂ Threshold Detection</p>
+        <span class="algo-btn" onclick="toggleAlgo('i9')">Show Algorithm</span>
         <pre id="i9">
-#include &lt;iostream&gt;
-using namespace std;
-
-int main(){
-    float co2;
-    cin >> co2;
-
-    if(co2 > 900)
-        cout << "High Pollution!";
-    else
-        cout << "Normal";
-}
+if CO2_level > danger_limit:
+    alert("High Pollution")
         </pre>
     </div>
 
     <!-- 10 -->
     <div class="card">
-        <h3>10) AI Supply Chain Delay Predictor</h3>
-        <p><b>Purpose:</b> Predict shipment delays.</p>
-        <span class="algo-btn" onclick="toggleAlgo('i10')">Show C++ Code</span>
+        <h3>10) Supply Chain Delay Predictor</h3>
+        <p><b>Algorithm Used:</b> Delay Difference Analysis</p>
+        <span class="algo-btn" onclick="toggleAlgo('i10')">Show Algorithm</span>
         <pre id="i10">
-#include &lt;iostream&gt;
-using namespace std;
-
-int main(){
-    float expected, actual;
-    cin >> expected >> actual;
-
-    float delay = actual - expected;
-
-    if(delay > 0)
-        cout << "Delay = " << delay << " hrs";
-    else
-        cout << "On-Time Delivery";
-}
+delay = actual_time - expected_time
+if delay > 0:
+    show delay
         </pre>
     </div>
 
 </div>
 
-<!-- RIGHT SIDE IMAGE -->
+<!-- RIGHT IMAGE -->
 <div class="image-box">
-    <img src="https://cdn-icons-png.flaticon.com/512/2920/2920277.png" alt="Industry Image">
+    <img src="https://cdn.pixabay.com/photo/2016/11/29/09/32/factory-1869801_1280.jpg">
 </div>
 
 </div>
 
 </body>
 </html>
+    
