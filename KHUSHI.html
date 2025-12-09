@@ -9,7 +9,7 @@
     body {
         margin: 0;
         font-family: Arial, sans-serif;
-        background: #0d1117; /* GitHub Dark */
+        background: #0d1117; /* GitHub Dark Theme */
         color: #d0d7de;
     }
 
@@ -111,97 +111,99 @@ function toggleAlgo(id) {
     <img src="https://img.freepik.com/free-vector/industry-4-0-concept-illustration_114360-9928.jpg">
 </div>
 
-<!-- GRID START -->
+<!-- GRID -->
 <div class="container">
 
-<!-- 1 -->
+<!-- 1. SMART TEXTILE -->
 <div class="card">
 <h3>1) Smart Textile Quality Detector</h3>
 
 <b>Algorithms Used:</b>
 <ul>
-<li>KMP → Pattern matching</li>
-<li>Rabin–Karp → Rolling hash detection</li>
-<li>DFS/BFS → Defect spread mapping</li>
-<li>Merge Sort → Sort severity</li>
-<li>AVL/BST → Defect threshold lookup</li>
-<li>Min/Max Heap → Extremes identification</li>
+<li>KMP – Pattern Matching</li>
+<li>Rabin-Karp – Rolling Hash</li>
+<li>DFS/BFS – Defect Region Spread</li>
+<li>Merge Sort – Defect Sorting</li>
+<li>AVL Tree – Balanced Lookup</li>
 </ul>
 
 <b>Most Accurate Algorithm:</b> KMP Pattern Matching
 
 <span class="algo-btn" onclick="toggleAlgo('c1')">Show Code</span>
 <pre id="c1">
-#include <bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
-vector<int> buildLPS(vector<int>& pat){
-    vector<int> lps(pat.size(),0);
+vector&lt;int&gt; buildLPS(vector&lt;int&gt;& pat){
+    vector&lt;int&gt; lps(pat.size(),0);
     int len=0,i=1;
-    while(i<pat.size()){
+    while(i&lt;pat.size()){
         if(pat[i]==pat[len]){ len++; lps[i]=len; i++; }
         else if(len!=0) len=lps[len-1];
-        else{ lps[i]=0; i++; }
+        else { lps[i]=0; i++; }
     }
     return lps;
 }
 
-bool KMPsearch(vector<int>& text, vector<int>& pat){
-    vector<int> lps = buildLPS(pat);
+bool KMPsearch(vector&lt;int&gt;& text, vector&lt;int&gt;& pat){
+    vector&lt;int&gt; lps = buildLPS(pat);
     int i=0,j=0;
-    while(i<text.size()){
+    while(i&lt;text.size()){
         if(text[i]==pat[j]){
             i++; j++;
             if(j==pat.size()) return true;
-        } else j = (j!=0 ? lps[j-1] : j+1, i++);
+        } else j = (j!=0 ? lps[j-1] : 0), i += (j==0);
     }
     return false;
 }
 
 int main(){
-    vector<int> textile={3,4,4,7,4,4,7};
-    vector<int> defect={4,4,7};
-    cout << (KMPsearch(textile,defect) ? "Defect Found" : "No Defect");
+    vector&lt;int&gt; textile={3,4,4,7,4,4,7};
+    vector&lt;int&gt; defect={4,4,7};
+    cout &lt;&lt; (KMPsearch(textile,defect)? "Defect Found":"No Defect");
 }
 </pre>
 </div>
 
-<!-- 2 -->
+
+<!-- 2. WORKER SAFETY -->
 <div class="card">
 <h3>2) AI Worker Safety Monitoring</h3>
 
 <b>Algorithms Used:</b>
 <ul>
-<li>Binary Search → Threshold lookup</li>
-<li>AVL Tree → Balanced monitoring</li>
-<li>Heap → Danger priority</li>
-<li>DFS/BFS → Danger region mapping</li>
-<li>Dijkstra → Safest path (most accurate)</li>
-<li>KMP → Repetitive unsafe movement</li>
-<li>Lookup Table → Instant hazard tag</li>
+<li>Binary Search – Threshold Lookup</li>
+<li>AVL Tree – Worker Event Logs</li>
+<li>Heap – Danger Priority</li>
+<li>DFS/BFS – Danger Zone Scan</li>
+<li>Dijkstra – Safest Escape Path</li>
 </ul>
 
 <b>Most Accurate Algorithm:</b> Dijkstra Algorithm
 
 <span class="algo-btn" onclick="toggleAlgo('c2')">Show Code</span>
 <pre id="c2">
-#include <bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
-vector<int> dijkstra(int n, int src, vector<vector<pair<int,int>>>& adj){
-    vector<int> dist(n, INT_MAX);
-    priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;
+vector&lt;int&gt; dijkstra(int n, int src, vector&lt;vector&lt;pair&lt;int,int&gt;&gt;&gt;& adj){
+    vector&lt;int&gt; dist(n, INT_MAX);
+    priority_queue&lt;pair&lt;int,int&gt;, vector&lt;pair&lt;int,int&gt;&gt;, greater&lt;pair&lt;int,int&gt;&gt;&gt; pq;
 
-    dist[src]=0;
-    pq.push({0,src});
+    dist[src] = 0;
+    pq.push({0, src});
 
     while(!pq.empty()){
-        auto [d,u] = pq.top(); pq.pop();
-        if(d>dist[u]) continue;
+        auto [currDist, u] = pq.top();
+        pq.pop();
 
-        for(auto &p : adj[u]){
-            int v = p.first, w = p.second;
-            if(dist[u] + w < dist[v]){
+        if(currDist &gt; dist[u]) continue;
+
+        for(auto &edge : adj[u]){
+            int v = edge.first;
+            int w = edge.second;
+
+            if(dist[u] + w &lt; dist[v]){
                 dist[v] = dist[u] + w;
                 pq.push({dist[v], v});
             }
@@ -211,8 +213,8 @@ vector<int> dijkstra(int n, int src, vector<vector<pair<int,int>>>& adj){
 }
 
 int main(){
-    int n=5;
-    vector<vector<pair<int,int>>> adj(n);
+    int n = 5;
+    vector&lt;vector&lt;pair&lt;int,int&gt;&gt;&gt; adj(n);
 
     adj[0].push_back({1,3});
     adj[0].push_back({2,1});
@@ -220,299 +222,340 @@ int main(){
     adj[2].push_back({3,2});
     adj[3].push_back({4,1});
 
-    vector<int> path = dijkstra(n,0,adj);
+    vector&lt;int&gt; safeDist = dijkstra(n, 0, adj);
 
-    for(int d : path) cout << d << " ";
+    for(int d : safeDist)
+        cout &lt;&lt; d &lt;&lt; " ";
 }
 </pre>
 </div>
 
-<!-- 3 -->
+
+<!-- 3. PREDICTIVE MAINTENANCE -->
 <div class="card">
-<h3>3) Predictive Machine Maintenance</h3>
+<h3>3) Predictive Maintenance</h3>
 
 <b>Algorithms Used:</b>
 <ul>
-<li>Heap → Highest abnormality</li>
-<li>Segment Tree → Range vibration queries</li>
-<li>AVL Tree → Sorted logs</li>
-<li>DFS/BFS → Failure spread analysis</li>
-<li>Dijkstra → Risk path</li>
-<li>Merge Sort → Sort sensor logs</li>
-<li>KMP → Recurring anomaly detection</li>
+<li>Segment Tree – Range Vibration Query</li>
+<li>Heap – Highest Risk Levels</li>
+<li>DFS/BFS – Finding Fault Spread</li>
+<li>KMP – Repetitive Failure Pattern</li>
 </ul>
 
-<b>Most Accurate Algorithm:</b> Segment Tree
+<b>Most Accurate Algorithm:</b> Simplified Segment Tree (Range Max)
 
 <span class="algo-btn" onclick="toggleAlgo('c3')">Show Code</span>
 <pre id="c3">
-#include <bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
+int buildST(vector&lt;int&gt;& arr, vector&lt;int&gt;& st, int i, int l, int r){
+    if(l == r) return st[i] = arr[l];
+    int mid = (l+r)/2;
+    return st[i] = max(buildST(arr, st, 2*i+1, l, mid),
+                       buildST(arr, st, 2*i+2, mid+1, r));
+}
+
+int query(vector&lt;int&gt;& st, int i, int l, int r, int ql, int qr){
+    if(qr&lt;l || ql&gt;r) return -1;
+    if(ql&lt;=l && r&lt;=qr) return st[i];
+    int mid = (l+r)/2;
+    return max(query(st,2*i+1,l,mid,ql,qr),
+               query(st,2*i+2,mid+1,r,ql,qr));
+}
+
 int main(){
-    int n; cin >> n;
-    vector<float> vib(n);
+    int n; cin&gt;&gt;n;
+    vector&lt;int&gt; vib(n);
+    for(int &x:vib) cin&gt;&gt;x;
 
-    for(float &x : vib) cin >> x;
+    vector&lt;int&gt; st(4*n);
+    buildST(vib, st, 0, 0, n-1);
 
-    float th; cin >> th;
+    int L,R;
+    cin&gt;&gt;L&gt;&gt;R;
 
-    for(float x : vib)
-        cout << (x > th ? "Failure predicted\n" : "Normal\n");
+    int mx = query(st,0,0,n-1,L,R);
+    if(mx&gt;100) cout&lt;&lt;"Maintenance Needed";
+    else cout&lt;&lt;"Normal";
 }
 </pre>
 </div>
 
-<!-- 4 -->
+
+<!-- 4. SORTING ROBOT -->
 <div class="card">
 <h3>4) Autonomous Material Sorting Robot</h3>
 
 <b>Algorithms Used:</b>
 <ul>
-<li>Quick Sort → Fast sorting</li>
-<li>Merge Sort → Stable sort</li>
-<li>Heap Sort → Priority items</li>
-<li>AVL Tree → Decision lookup</li>
-<li>BFS/DFS → Navigation scanning</li>
-<li>Dijkstra → Optimal traversal</li>
+<li>Quick Sort – Sorting items</li>
+<li>Heap Sort – Priority picking</li>
+<li>Dijkstra – Optimal Path</li>
+<li>BFS – Navigation</li>
 </ul>
 
 <b>Most Accurate Algorithm:</b> Quick Sort Classification
 
 <span class="algo-btn" onclick="toggleAlgo('c4')">Show Code</span>
 <pre id="c4">
-#include <bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
 string classify(float w){
-    if(w<1) return "Light";
-    if(w<5) return "Medium";
+    if(w&lt;1) return "Light";
+    if(w&lt;5) return "Medium";
     return "Heavy";
 }
 
 int main(){
-    int n; cin >> n;
+    int n; cin&gt;&gt;n;
     while(n--){
-        float w; cin >> w;
-        cout << classify(w) << "\n";
+        float w; cin&gt;&gt;w;
+        cout&lt;&lt;classify(w)<<"\n";
     }
 }
 </pre>
 </div>
 
-<!-- 5 -->
+
+<!-- 5. INVENTORY FORECASTING -->
 <div class="card">
 <h3>5) Smart Inventory Forecasting System</h3>
 
 <b>Algorithms Used:</b>
 <ul>
-<li>Moving Average → Forecast</li>
-<li>Segment Tree → Sales queries</li>
-<li>Heap → Best selling ranking</li>
-<li>Binary Search → Reorder point</li>
-<li>AVL Tree → Stock lookup</li>
-<li>Hash Table → Product mapping</li>
-<li>Merge Sort → Sort data</li>
+<li>Moving Average – Forecasting</li>
+<li>Binary Search – Reorder Point</li>
+<li>Merge Sort – Sorting Sales Data</li>
 </ul>
 
 <b>Most Accurate Algorithm:</b> Moving Average
 
 <span class="algo-btn" onclick="toggleAlgo('c5')">Show Code</span>
 <pre id="c5">
-#include <bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
 int main(){
-    int n; cin >> n;
-    vector<int> s(n);
-    for(int &x : s) cin >> x;
+    int n; cin&gt;&gt;n;
+    vector&lt;int&gt; s(n);
+
+    for(int &x:s) cin&gt;&gt;x;
 
     int sum = accumulate(s.begin(), s.end(), 0);
-    cout << "Forecast: " << sum/n;
+
+    cout&lt;&lt;"Forecast: "&lt;&lt;sum/n;
 }
 </pre>
 </div>
 
-<!-- 6 -->
+
+<!-- 6. WASTE HEAT -->
 <div class="card">
 <h3>6) Waste-Heat Energy Recycling System</h3>
 
 <b>Algorithms Used:</b>
 <ul>
-<li>Max Heap → Hottest sources</li>
-<li>Segment Tree → Temperature ranges</li>
-<li>Binary Search → Threshold check</li>
-<li>DFS → Heat flow mapping</li>
-<li>Dijkstra → Energy routing</li>
-<li>Lookup Table → Conversion map</li>
+<li>Max Heap – Highest Temperatures First</li>
+<li>Binary Search – Threshold Detection</li>
+<li>DFS – Heat Flow Mapping</li>
 </ul>
 
 <b>Most Accurate Algorithm:</b> Max Heap
 
 <span class="algo-btn" onclick="toggleAlgo('c6')">Show Code</span>
 <pre id="c6">
-#include <bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
-float convertEnergy(float t){
-    float base = 40, f = 0.6;
-    float e = (t-base)*f;
-    return (e<0)?0:e;
-}
-
 int main(){
-    int n; cin >> n;
-    float total=0;
+    int n; 
+    cin&gt;&gt;n;
 
-    while(n--){
-        float x; cin >> x;
-        float e = convertEnergy(x);
-        total += e;
-        cout << "Converted: " << e << " kW\n";
+    priority_queue&lt;float&gt; pq;
+    for(int i=0;i&lt;n;i++){
+        float t;
+        cin&gt;&gt;t;
+        pq.push(t);
     }
-    cout << "Total Energy: " << total << " kW";
+
+    float total = 0;
+    while(!pq.empty()){
+        float t = pq.top(); pq.pop();
+        float e = max(0.0f, (t-40)*0.6f);
+        total += e;
+        cout&lt;&lt;"Converted: "&lt;&lt;e&lt;&lt;" kW\n";
+    }
+
+    cout&lt;&lt;"Total: "&lt;&lt;total;
 }
 </pre>
 </div>
 
-<!-- 7 -->
+
+<!-- 7. PACKAGING -->
 <div class="card">
-<h3>7) AI-Based Packaging Optimization</h3>
+<h3>7) AI-Based Product Packaging Optimization</h3>
 
 <b>Algorithms Used:</b>
 <ul>
-<li>Quick Sort → Rank boxes</li>
-<li>Binary Search → Best fit</li>
-<li>AVL Tree → Lookup sizes</li>
-<li>KMP/Rabin-Karp → Pattern detection</li>
-<li>Heap → Pick smallest usable box</li>
-<li>DP → Cost optimization</li>
+<li>Binary Search – Best-fit Box</li>
+<li>Quick Sort – Ranking Boxes</li>
+<li>DP – Cost Optimization</li>
 </ul>
 
 <b>Most Accurate Algorithm:</b> Binary Search
 
 <span class="algo-btn" onclick="toggleAlgo('c7')">Show Code</span>
 <pre id="c7">
-#include <bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
-string box(float v){
-    if(v<100) return "Small";
-    if(v<300) return "Medium";
-    return "Large";
+vector&lt;int&gt; boxes = {100, 300, 500};
+
+int findBox(int v){
+    int low=0, high=boxes.size()-1, ans=-1;
+    while(low&lt;=high){
+        int mid=(low+high)/2;
+        if(boxes[mid] &gt;= v){
+            ans=mid;
+            high = mid - 1;
+        } else low = mid + 1;
+    }
+    return ans;
 }
 
 int main(){
-    int n; cin >> n;
+    int n; cin&gt;&gt;n;
     while(n--){
-        float v;
-        cin >> v;
-        cout << box(v) << "\n";
+        int v;
+        cin&gt;&gt;v;
+        int idx = findBox(v);
+        if(idx==-1) cout&lt;&lt;"No Box\n";
+        else if(idx==0) cout&lt;&lt;"Small\n";
+        else if(idx==1) cout&lt;&lt;"Medium\n";
+        else cout&lt;&lt;"Large\n";
     }
 }
 </pre>
 </div>
 
-<!-- 8 -->
+
+<!-- 8. AUTO REJECT -->
 <div class="card">
 <h3>8) Faulty Product Auto-Reject System</h3>
 
 <b>Algorithms Used:</b>
 <ul>
-<li>Heap → Defect priority</li>
-<li>Binary Search → Weight range check</li>
-<li>AVL Tree → Quality lookup</li>
-<li>Merge Sort → Defect severity</li>
-<li>DFS → Shape defect search</li>
-<li>Lookup Table → Instant decision</li>
+<li>Range Check – Weight Filter</li>
+<li>Heap – Defective Priority</li>
+<li>Lookup Table – Fast Decision</li>
 </ul>
 
-<b>Most Accurate Algorithm:</b> Binary Range Check
+<b>Most Accurate Algorithm:</b> Range Check (Binary Logic)
 
 <span class="algo-btn" onclick="toggleAlgo('c8')">Show Code</span>
 <pre id="c8">
-#include <bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
 bool reject(float w){
-    return (w<90 || w>110);
+    return (w&lt;90 || w&gt;110);
 }
 
 int main(){
-    int n; cin >> n;
+    int n; cin&gt;&gt;n;
     while(n--){
-        float w; cin >> w;
-        cout << (reject(w) ? "Rejected\n" : "Accepted\n");
+        float w; cin&gt;&gt;w;
+        cout&lt;&lt;(reject(w)?"Rejected\n":"Accepted\n");
     }
 }
 </pre>
 </div>
 
-<!-- 9 -->
+
+<!-- 9. POLLUTION MONITORING -->
 <div class="card">
 <h3>9) Factory Pollution Monitoring Dashboard</h3>
 
 <b>Algorithms Used:</b>
 <ul>
-<li>Segment Tree → Pollution interval analysis</li>
-<li>AVL Tree → Sorted logs</li>
-<li>Heap → Extremes detection</li>
-<li>DFS → Trace pollution source</li>
-<li>BFS → Pollution spread</li>
-<li>Dijkstra → Ventilation routing</li>
+<li>Segment Tree – Pollution Range Check</li>
+<li>Heap – Max Spike Detection</li>
+<li>BFS – Pollution Spread</li>
 </ul>
 
-<b>Most Accurate Algorithm:</b> Segment Tree
+<b>Most Accurate Algorithm:</b> Simplified Segment Tree (Range Max)
 
 <span class="algo-btn" onclick="toggleAlgo('c9')">Show Code</span>
 <pre id="c9">
-#include <bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
+int buildST(vector&lt;int&gt;& arr, vector&lt;int&gt;& st, int i, int l, int r){
+    if(l==r) return st[i]=arr[l];
+    int mid=(l+r)/2;
+    return st[i]=max(buildST(arr,st,2*i+1,l,mid),
+                     buildST(arr,st,2*i+2,mid+1,r));
+}
+
+int query(vector&lt;int&gt;& st, int i, int l, int r, int ql, int qr){
+    if(qr&lt;l || ql&gt;r) return -1;
+    if(ql&lt;=l && r&lt;=qr) return st[i];
+    int mid=(l+r)/2;
+    return max(query(st,2*i+1,l,mid,ql,qr),
+               query(st,2*i+2,mid+1,r,ql,qr));
+}
+
 int main(){
-    int n; cin >> n;
-    vector<float> co2(n);
+    int n; cin&gt;&gt;n;
+    vector&lt;int&gt; arr(n);
+    for(int &x:arr) cin&gt;&gt;x;
 
-    for(float &x : co2) cin >> x;
+    vector&lt;int&gt; st(4*n);
+    buildST(arr,st,0,0,n-1);
 
-    for(float x : co2)
-        cout << (x>900 ? "High Pollution!\n" : "Normal\n");
+    int L,R; cin&gt;&gt;L&gt;&gt;R;
+
+    int mx = query(st,0,0,n-1,L,R);
+
+    if(mx&gt;900) cout&lt;&lt;"High Pollution\n";
+    else cout&lt;&lt;"Normal\n";
 }
 </pre>
 </div>
 
-<!-- 10 -->
+
+<!-- 10. SUPPLY CHAIN -->
 <div class="card">
-<h3>10) Supply Chain Delay Predictor</h3>
+<h3>10) AI-Powered Supply Chain Delay Predictor</h3>
 
 <b>Algorithms Used:</b>
 <ul>
-<li>Dijkstra → Shortest delivery path</li>
-<li>Bellman-Ford → Handles negative delays</li>
-<li>Floyd-Warshall → All-pairs routes</li>
-<li>Merge Sort → Sort delays</li>
-<li>Binary Search → Delay threshold</li>
-<li>AVL Tree → Delivery logs</li>
-<li>Hash Table → Shipment mapping</li>
+<li>Dijkstra – Shortest Delivery Path</li>
+<li>Bellman-Ford – Negative Delays</li>
+<li>Floyd-Warshall – All-Pairs Route</li>
 </ul>
 
 <b>Most Accurate Algorithm:</b> Dijkstra Model
 
 <span class="algo-btn" onclick="toggleAlgo('c10')">Show Code</span>
 <pre id="c10">
-#include <bits/stdc++.h>
+#include &lt;bits/stdc++.h&gt;
 using namespace std;
 
 int main(){
-    int n; cin >> n;
-    vector<float> exp(n), act(n);
+    int n; cin&gt;&gt;n;
+    vector&lt;float&gt; exp(n), act(n);
 
-    for(float &x : exp) cin >> x;
-    for(float &x : act) cin >> x;
+    for(float &x:exp) cin&gt;&gt;x;
+    for(float &x:act) cin&gt;&gt;x;
 
-    for(int i=0;i<n;i++){
+    for(int i=0;i&lt;n;i++){
         float d = act[i] - exp[i];
-        cout << (d>0 ? "Delayed\n" : "On Time\n");
+        cout&lt;&lt;(d&gt;0?"Delayed\n":"On Time\n");
     }
 }
 </pre>
