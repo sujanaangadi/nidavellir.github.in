@@ -3,47 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Business Ideas</title>
+<title>Technology Business Ideas</title>
 
 <style>
     body {
         margin: 0;
         font-family: Arial, sans-serif;
-        background: #f4f6f9; /* Professional light-grey background */
-        color: #333;
+        background: #0d1b2a; /* Professional dark tech background */
+        color: #e0e6ed;
     }
 
     /* ---------- NAVBAR ---------- */
     .navbar {
         width: 100%;
-        background: #0b8457;       /* professional green */
+        background: #1b263b; /* Navy tech color */
         padding: 18px 40px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         color: #fff;
         font-weight: bold;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.4);
     }
 
     .navbar a {
         text-decoration: none;
-        color: white;
+        color: #4dd0e1; /* Aqua tech accent */
         margin-left: 20px;
         font-size: 17px;
     }
 
     .navbar a:hover {
-        text-decoration: underline;
+        color: white;
     }
 
     /* ---------- PAGE HEADING ---------- */
     .title {
         text-align: center;
-        font-size: 32px;
+        font-size: 34px;
         font-weight: bold;
         margin-top: 25px;
-        color: #0b8457;
+        color: #4dd0e1; /* Tech cyan title */
+        letter-spacing: 1px;
     }
 
     /* ---------- CARDS GRID ---------- */
@@ -56,44 +57,54 @@
         grid-gap: 25px;
     }
 
-    /* ---------- INDIVIDUAL CARD ---------- */
+    /* ---------- CARD STYLE ---------- */
     .card {
-        background: white;
+        background: linear-gradient(145deg, #1b263b, #415a77);
         padding: 25px;
         border-radius: 12px;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.12);
-        transition: 0.3s;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+        transition: 0.3s ease-in-out;
+        color: #e0e6ed;
     }
 
     .card:hover {
-        transform: translateY(-5px);
+        transform: translateY(-6px);
+        box-shadow: 0 10px 25px rgba(0,255,255,0.3);
     }
 
     .card h3 {
         margin: 0;
-        color: #0b8457;
+        color: #4dd0e1; /* Cyan headings */
         margin-bottom: 10px;
+        font-size: 20px;
     }
 
     .algo-btn {
         margin-top: 12px;
-        background: #0b8457;
+        background: #4dd0e1;
         padding: 8px 16px;
-        color: white;
+        color: #0d1b2a;
+        font-weight: bold;
         border-radius: 6px;
         display: inline-block;
         cursor: pointer;
         font-size: 14px;
+        transition: 0.2s;
+    }
+
+    .algo-btn:hover {
+        background: #72e5f0;
     }
 
     pre {
-        background: #e8f5e9;
+        background: rgba(255, 255, 255, 0.08);
         padding: 12px;
         border-radius: 8px;
         margin-top: 10px;
         overflow-x: auto;
         white-space: pre-wrap;
         display: none;
+        color: #cde8ff;
     }
 </style>
 
@@ -109,7 +120,7 @@ function toggleAlgo(id) {
 
 <!-- NAVBAR -->
 <div class="navbar">
-    <div>BUSINESS IDEAS</div>
+    <div>TECH BUSINESS IDEAS</div>
     <div>
         <a href="#">Home</a>
         <a href="#">About</a>
@@ -118,7 +129,7 @@ function toggleAlgo(id) {
     </div>
 </div>
 
-<h2 class="title">Top 10 Modern Business Ideas</h2>
+<h2 class="title">Top 10 Technology Business Ideas</h2>
 
 <div class="container">
 
@@ -140,31 +151,31 @@ Repeat weekly and adjust difficulty
 
     <!-- CARD 2 -->
     <div class="card">
-        <h3>2) Cloud Kitchen for Healthy Meals</h3>
-        <p><b>How it works:</b> Prepare meals and sell via Swiggy/Zomato.</p>
+        <h3>2) Cloud Kitchen for Healthy Meals (Tech Managed)</h3>
+        <p><b>How it works:</b> Automated order routing + inventory alerts.</p>
         <p><b>Investment:</b> ₹30k–₹70k</p>
         <p><b>Profit:</b> ₹40k–₹1L/month</p>
         <span class="algo-btn" onclick="toggleAlgo('algo2')">Show Algorithm</span>
         <pre id="algo2">
 Receive order → check inventory
-If ingredients available:
-    assign to chef
+If items available:
+    auto-assign to chef
 Else:
-    auto-stock alert
+    send restock alert
         </pre>
     </div>
 
     <!-- CARD 3 -->
     <div class="card">
-        <h3>3) Thrift & Preloved Fashion Marketplace</h3>
-        <p><b>How it works:</b> Users upload clothes → you verify & resell.</p>
+        <h3>3) Thrift Fashion E-Marketplace</h3>
+        <p><b>How it works:</b> AI helps match buyers with uploaded clothes.</p>
         <p><b>Investment:</b> ₹10k</p>
         <p><b>Profit:</b> 20–40% commission</p>
         <span class="algo-btn" onclick="toggleAlgo('algo3')">Show Algorithm</span>
         <pre id="algo3">
 For each product:
     extract tags
-On search:
+User search →
     compute similarity score
 Return top matches
         </pre>
@@ -172,38 +183,38 @@ Return top matches
 
     <!-- CARD 4 -->
     <div class="card">
-        <h3>4) Farm-to-Home Organic Vegetable Delivery</h3>
-        <p><b>How it works:</b> Partner with farmers; deliver fresh veggies.</p>
+        <h3>4) Farm-to-Home Tech Delivery System</h3>
+        <p><b>How it works:</b> App connects farmers + optimized delivery.</p>
         <p><b>Investment:</b> ₹15k–₹30k</p>
         <p><b>Profit:</b> ₹20k–₹60k/month</p>
         <span class="algo-btn" onclick="toggleAlgo('algo4')">Show Algorithm</span>
         <pre id="algo4">
 Nodes = houses
 Edges = travel time
-Use Dijkstra for shortest route
-Update daily
+Apply Dijkstra → shortest path
+Update daily based on orders
         </pre>
     </div>
 
     <!-- CARD 5 -->
     <div class="card">
-        <h3>5) No-Code Website Building Service</h3>
+        <h3>5) No-Code Website Builder Service</h3>
         <p><b>How it works:</b> Build websites using Wix/WordPress.</p>
         <p><b>Investment:</b> ₹0</p>
         <p><b>Profit:</b> ₹2k–₹10k per website</p>
         <span class="algo-btn" onclick="toggleAlgo('algo5')">Show Algorithm</span>
         <pre id="algo5">
 Input: Client industry
-Search template database
-Filter by style & color
-Return best 3 templates
+Search templates
+Filter by style + features
+Return top 3 templates
         </pre>
     </div>
 
     <!-- CARD 6 -->
     <div class="card">
-        <h3>6) Customized Skincare Product Brand</h3>
-        <p><b>How it works:</b> Products based on customer skin type.</p>
+        <h3>6) AI-Based Skincare Recommendation</h3>
+        <p><b>How it works:</b> AI analyzes skin type → recommends product.</p>
         <p><b>Investment:</b> ₹20k–₹50k</p>
         <p><b>Profit:</b> 40–70% margin</p>
         <span class="algo-btn" onclick="toggleAlgo('algo6')">Show Algorithm</span>
@@ -211,66 +222,66 @@ Return best 3 templates
 Input: questionnaire
 Score dryness, oiliness, sensitivity
 Label = highest score
-Suggest product formula
+Suggest formula
         </pre>
     </div>
 
     <!-- CARD 7 -->
     <div class="card">
         <h3>7) AI Fitness Trainer App</h3>
-        <p><b>How it works:</b> Workout & diet based on body type.</p>
+        <p><b>How it works:</b> AI suggests workouts & diet.</p>
         <p><b>Investment:</b> ₹15k–₹30k</p>
         <p><b>Profit:</b> ₹30k–₹1L/month</p>
         <span class="algo-btn" onclick="toggleAlgo('algo7')">Show Algorithm</span>
         <pre id="algo7">
-Collect: age, weight, goal
-If weight loss → cardio plan
-If muscle gain → strength plan
+Input: age, weight, goal
+If goal = weight loss → cardio
+If goal = muscle gain → strength
 Update weekly
         </pre>
     </div>
 
     <!-- CARD 8 -->
     <div class="card">
-        <h3>8) Co-Living/PG for Students</h3>
-        <p><b>How it works:</b> Rent building → furnish → rent beds.</p>
+        <h3>8) App-Managed PG/Co-Living Spaces</h3>
+        <p><b>How it works:</b> Tech manages rooms, payments, bookings.</p>
         <p><b>Investment:</b> ₹1–2 lakh</p>
         <p><b>Profit:</b> ₹50k–₹2L/month</p>
         <span class="algo-btn" onclick="toggleAlgo('algo8')">Show Algorithm</span>
         <pre id="algo8">
-Sort rooms by availability
-Sort students by preference
-Assign best match using greedy method
+Sort rooms
+Sort student preferences
+Assign best match (greedy)
         </pre>
     </div>
 
     <!-- CARD 9 -->
     <div class="card">
-        <h3>9) Micro Event Management for Colleges</h3>
-        <p><b>How it works:</b> Handle decor, music & stage setup.</p>
+        <h3>9) Tech-Enabled College Event Management</h3>
+        <p><b>How it works:</b> App handles scheduling, tasks & teams.</p>
         <p><b>Investment:</b> ₹5k–₹10k</p>
         <p><b>Profit:</b> ₹15k–₹40k/event</p>
         <span class="algo-btn" onclick="toggleAlgo('algo9')">Show Algorithm</span>
         <pre id="algo9">
 Create task list
-Sort by priority/deadline
+Sort by priority
 Assign team members
         </pre>
     </div>
 
     <!-- CARD 10 -->
     <div class="card">
-        <h3>10) Subscription Snack/Juice Box</h3>
-        <p><b>How it works:</b> Deliver healthy snacks daily.</p>
+        <h3>10) Automated Snack/Juice Subscription System</h3>
+        <p><b>How it works:</b> Tech manages subscriptions & reminders.</p>
         <p><b>Investment:</b> ₹5k–₹20k</p>
         <p><b>Profit:</b> ₹20k–₹60k/month</p>
         <span class="algo-btn" onclick="toggleAlgo('algo10')">Show Algorithm</span>
         <pre id="algo10">
-For each customer:
-    if subscription ending < 3 days:
-         send reminder
+For each user:
+    if subscription < 3 days:
+        send reminder
 Every morning:
-    create delivery list
+    generate delivery list
         </pre>
     </div>
 
