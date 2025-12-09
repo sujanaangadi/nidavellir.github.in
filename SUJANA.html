@@ -3,92 +3,78 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Technology Business Ideas</title>
+<title>Industry Business Ideas</title>
 
 <style>
     body {
         margin: 0;
         font-family: Arial, sans-serif;
-        background: #160b2d; /* DARK PURPLE FUTURISTIC */
-        color: #e6e6ff;
+        background: #0d1117;
+        color: #d0d7de;
     }
-
     .header {
-        width: 90%;
+        width: 92%;
         margin: auto;
-        margin-top: 20px;
+        margin-top: 25px;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
-
-    .header img {
-        width: 240px;
-    }
-
     .title {
-        font-size: 40px;
+        font-size: 42px;
         font-weight: bold;
-        color: #7a5cff;
+        color: #58a6ff;
     }
-
-    .explain {
-        width: 90%;
-        margin: auto;
-        margin-top: 10px;
-        background: #1e123d;
-        padding: 15px;
-        border-radius: 10px;
-        border-left: 6px solid #7a5cff;
-        font-size: 16px;
+    .header img {
+        width: 340px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.6);
     }
-
     .container {
-        width: 90%;
+        width: 92%;
         margin: auto;
         margin-top: 25px;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 25px;
     }
-
     .card {
-        background: #241447;
+        background: #161b22;
         padding: 20px;
         border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        border-left: 4px solid #58a6ff;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
-
-    .card h3 {
-        color: #9d85ff;
-        margin-top: 0;
+    .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 25px rgba(56,139,253,0.6);
+        border-left-color: #1f6feb;
     }
-
-    .algo-btn {
-        background: #7a5cff;
-        padding: 8px 12px;
-        border-radius: 6px;
-        color: white;
-        cursor: pointer;
-        display: inline-block;
-        font-size: 14px;
-    }
-
     pre {
-        background: #120a26;
-        padding: 10px;
+        background: #0d1117;
+        padding: 12px;
         border-radius: 8px;
-        margin-top: 10px;
         display: none;
         white-space: pre-wrap;
-        color: #9d8fff;
+        border: 1px solid #30363d;
+        color: #c9d1d9;
+    }
+    .algo-btn {
+        background: #1f6feb;
+        padding: 8px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        display: inline-block;
+        margin-top: 10px;
+        color: white;
     }
 </style>
 
 <script>
-function toggleAlgo(id){
-    const box = document.getElementById(id);
-    box.style.display = box.style.display === "block" ? "none" : "block";
+function toggleAlgo(id) {
+    const x = document.getElementById(id);
+    x.style.display = x.style.display === "block" ? "none" : "block";
 }
 </script>
 
@@ -96,39 +82,454 @@ function toggleAlgo(id){
 <body>
 
 <div class="header">
-    <h2 class="title">Technology Business Ideas</h2>
-    <img src="https://cdn-icons-png.flaticon.com/512/9771/9771372.png">
-</div>
-
-<div class="explain">
-This project presents 10 Smart City and Technology automation ideas. Each idea includes 
-the algorithm used, a brief explanation, and a full C++ implementation. These solutions 
-focus on traffic automation, energy efficiency, public transport, digital billing, 
-waste management, and smart governance.
+    <h2 class="title">Industry Business Ideas</h2>
+    <img src="https://img.freepik.com/free-vector/industry-4-0-concept-illustration_114360-9928.jpg">
 </div>
 
 <div class="container">
+
+<!-- ------------------------ 1. SMART TRAFFIC SIGNAL SYSTEM ---------------------- -->
+<div class="card">
+<h3>1) Smart Traffic Signal System</h3>
+
+<b>Algorithms Used:</b>
+<ul>
+<li>Max-Heap → Selects lane with highest priority</li>
+<li>Greedy Decision → Emergency > High Traffic</li>
+<li>Dynamic Priority Rebalancing</li>
+<li>Lookup Table → Safety Minimum Wait</li>
+</ul>
+
+<b>Efficiency Analysis:</b><br>
+Time Complexity: <b>O(n)</b><br>
+Space Complexity: <b>O(n)</b><br>
+SDGs mapped: <b>3, 9, 11, 13</b>
+
+<span class="algo-btn" onclick="toggleAlgo('c1')">Show Code</span>
+<pre id="c1">
 #include <iostream>
+#include <queue>
+#include <vector>
 using namespace std;
 
-int main(){
-    int low, medium, high;
-    cout << "Enter low, medium, high traffic limits: ";
-    cin >> low >> medium >> high;
+struct Lane {
+    int lane_no;
+    int vehicle_count;
+    bool emergency;
+};
 
-    int traffic;
-    cout << "Enter current traffic density: ";
-    cin >> traffic;
+struct Compare {
+    bool operator()(Lane const &a, Lane const &b) {
+        if (a.emergency != b.emergency)
+            return b.emergency > a.emergency;
+        return a.vehicle_count < b.vehicle_count;
+    }
+};
 
-    if(traffic < low)
-        cout << "Green for 10 seconds\n";
-    else if(traffic < medium)
-        cout << "Green for 20 seconds\n";
-    else if(traffic < high)
-        cout << "Green for 30 seconds\n";
-    else
-        cout << "Green for 45 seconds\n";
+int main() {
+    int n;
+    cout << "Enter number of lanes: ";
+    cin >> n;
+
+    priority_queue<Lane, vector<Lane>, Compare> pq;
+
+    for (int i = 1; i <= n; i++) {
+        int count;
+        char emer;
+        cout << "Vehicle count for Lane " << i << ": ";
+        cin >> count;
+        cout << "Emergency? (y/n): ";
+        cin >> emer;
+
+        pq.push({i, count, emer=='y' || emer=='Y'});
+    }
+
+    Lane top = pq.top();
+
+    cout << "\nLane given GREEN: " << top.lane_no << endl;
+    cout << "Vehicles: " << top.vehicle_count << endl;
+    if (top.emergency) cout << "Emergency Detected!\n";
 
     return 0;
 }
+</pre>
+</div>
 
+
+<!-- ------------------------ 2. SMART WASTE MANAGEMENT ---------------------- -->
+<div class="card">
+<h3>2) Smart Waste Management System</h3>
+
+<b>Algorithms Used:</b>
+<ul>
+<li>Lookup Table → Direct waste → category mapping</li>
+<li>Decision Tree Classifier (simple rules)</li>
+<li>String Matching → Pattern identification</li>
+</ul>
+
+<b>Efficiency Analysis:</b><br>
+Time Complexity: <b>O(1)</b><br>
+Space Complexity: <b>O(1)</b><br>
+SDGs mapped: <b>3, 11, 12, 13</b>
+
+<span class="algo-btn" onclick="toggleAlgo('c2')">Show Code</span>
+<pre id="c2">
+#include <iostream>
+#include <unordered_map>
+using namespace std;
+
+int classifyWaste(string w) {
+    if (w=="plastic" || w=="polythene") return 1;
+    if (w=="organic" || w=="banana peel") return 2;
+    if (w=="paper" || w=="cardboard") return 3;
+    if (w=="metal" || w=="aluminium") return 4;
+    return 0;
+}
+
+int main() {
+    unordered_map<int,string> bins = {
+        {1,"Plastic Bin"}, {2,"Organic Bin"},
+        {3,"Paper Bin"}, {4,"Metal Bin"}
+    };
+
+    string w;
+    getline(cin, w);
+    int cat = classifyWaste(w);
+
+    if (cat == 0) cout << "Send to Manual Inspection";
+    else cout << "Assigned Bin: " << bins[cat];
+
+    return 0;
+}
+</pre>
+</div>
+
+
+<!-- ------------------------ 3. PUBLIC TRANSPORT TRACKING ---------------------- -->
+<div class="card">
+<h3>3) Public Transport Tracking Simulator</h3>
+
+<b>Algorithms Used:</b>
+<ul>
+<li>Map/Dictionary → Count tracking</li>
+<li>Greedy → Choose stop with highest load</li>
+<li>Linear Search → Max passenger point</li>
+</ul>
+
+<b>Efficiency:</b> O(n)  
+<b>SDG:</b> 9, 11
+
+<span class="algo-btn" onclick="toggleAlgo('c3')">Show Code</span>
+<pre id="c3">
+#include <iostream>
+#include <map>
+using namespace std;
+
+int main() {
+    map<string,int> passengers = {
+        {"StopA",22},{"StopB",48},
+        {"StopC",15},{"StopD",30}
+    };
+
+    string best;
+    int mx = -1;
+    for (auto &p : passengers)
+        if (p.second > mx) { mx = p.second; best = p.first; }
+
+    cout << "Reroute bus to: " << best;
+}
+</pre>
+</div>
+
+
+<!-- ------------------------ 4. DIGITAL FOOD ORDERING ---------------------- -->
+<div class="card">
+<h3>4) Digital Food Ordering & Billing</h3>
+
+<b>Algorithms Used:</b>
+<ul>
+<li>Lookup Table for Menu Items</li>
+<li>Greedy Billing (item × qty)</li>
+<li>Simple Accumulator</li>
+</ul>
+
+<b>Efficiency:</b> O(n)  
+<b>SDG:</b> 9
+
+<span class="algo-btn" onclick="toggleAlgo('c4')">Show Code</span>
+<pre id="c4">
+#include <iostream>
+#include <vector>
+using namespace std;
+
+struct Item {
+    int id;
+    string name;
+    double price;
+};
+
+int main() {
+    vector<Item> menu = {
+        {1,"Royal Thali",950},
+        {2,"Continental",1100},
+        {3,"Signature Menu",1600},
+        {4,"Mocktails",450},
+        {5,"Desserts",520}
+    };
+
+    vector<pair<int,int>> order = {{2,1},{4,2}};
+    double total = 0;
+
+    for (auto &o : order)
+        for (auto &m : menu)
+            if (m.id == o.first)
+                total += m.price * o.second;
+
+    cout << "Total Bill: " << total;
+}
+</pre>
+</div>
+
+
+
+<!-- ------------------------ 5. SMART PARKING ---------------------- -->
+<div class="card">
+<h3>5) Smart Parking Management System</h3>
+
+<b>Algorithms Used:</b>
+<ul>
+<li>Array for slot mapping</li>
+<li>Linear Search → First free slot</li>
+<li>Greedy Parking Allocation</li>
+</ul>
+
+<b>Efficiency:</b> O(n)  
+<b>SDG:</b> 9, 11
+
+<span class="algo-btn" onclick="toggleAlgo('c5')">Show Code</span>
+<pre id="c5">
+#include <iostream>
+#include <vector>
+using namespace std;
+
+struct Slot { bool occ; string num; };
+
+int main() {
+    vector<Slot> p(10,{false,""});
+    int c;
+
+    while (true) {
+        cout << "1.Park 2.Remove 3.Show 4.Exit: ";
+        cin >> c;
+        if (c==1) {
+            string v; cin >> v;
+            bool done=false;
+            for (int i=0;i<10;i++)
+                if (!p[i].occ) { p[i]={true,v}; cout<<"Parked at "<<i+1; done=true; break; }
+            if(!done) cout<<"Full!";
+        }
+        else if (c==4) break;
+    }
+}
+</pre>
+</div>
+
+
+<!-- ------------------------ 6. WATER & ELECTRICITY SUPPLY ---------------------- -->
+<div class="card">
+<h3>6) City Water & Electricity Supply Monitoring</h3>
+
+<b>Algorithms Used:</b>
+<ul>
+<li>Average Prediction Model</li>
+<li>Greedy Scaling +5%</li>
+<li>Simple Time-Series Summation</li>
+</ul>
+
+<b>Efficiency:</b> O(n)  
+<b>SDG:</b> 6, 7, 11
+
+<span class="algo-btn" onclick="toggleAlgo('c6')">Show Code</span>
+<pre id="c6">
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int d; cin >> d;
+    vector<int>w(d), e(d);
+
+    for(int i=0;i<d;i++) cin >> w[i];
+    for(int i=0;i<d;i++) cin >> e[i];
+
+    int sw=0,se=0;
+    for(int x:w) sw+=x;
+    for(int y:e) se+=y;
+
+    cout << "Water Tomorrow: " << (sw/d)*1.05;
+    cout << "\nElectricity Tomorrow: " << (se/d)*1.05;
+}
+</pre>
+</div>
+
+
+<!-- ------------------------ 7. SMART CITY COMPLAINT SYSTEM ---------------------- -->
+<div class="card">
+<h3>7) Smart City Complaint Management</h3>
+
+<b>Algorithms Used:</b>
+<ul>
+<li>Lookup Table → Department Routing</li>
+<li>Vector Database → Store complaints</li>
+<li>Linear Search → User retrieval</li>
+<li>History Tracking List</li>
+</ul>
+
+<b>Efficiency:</b> O(n)  
+<b>SDG:</b> 9, 11, 16
+
+<span class="algo-btn" onclick="toggleAlgo('c7')">Show Code</span>
+<pre id="c7">
+#include <iostream>
+#include <vector>
+#include <ctime>
+using namespace std;
+
+struct C { int id; string name,cat,desc,dept,status; };
+
+string deptMap(string c){
+    if(c=="Road") return "PWD";
+    if(c=="Water") return "Water Works";
+    if(c=="Electricity") return "Electricity Dept";
+    return "General";
+}
+
+int main(){
+    vector<C> v;
+    int ch,idc=0;
+
+    while(true){
+        cin>>ch;
+        if(ch==1){
+            C x; x.id=idc++;
+            cin>>x.name>>x.cat>>x.desc;
+            x.dept=deptMap(x.cat);
+            x.status="Pending";
+            v.push_back(x);
+        }
+        else if(ch==4) break;
+    }
+}
+</pre>
+</div>
+
+
+<!-- ------------------------ 8. AI DISASTER MANAGEMENT ---------------------- -->
+<div class="card">
+<h3>8) AI-Based Disaster Management System</h3>
+
+<b>Algorithms Used:</b>
+<ul>
+<li>Risk Score Calculation</li>
+<li>Greedy Priority Assignment</li>
+<li>Linear Search → Zone Display</li>
+</ul>
+
+<b>Efficiency:</b> O(n)  
+<b>SDG:</b> 11, 13
+
+<span class="algo-btn" onclick="toggleAlgo('c8')">Show Code</span>
+<pre id="c8">
+#include <iostream>
+#include <vector>
+using namespace std;
+
+struct Z { string name; int f,e,fi; string pr; };
+
+int main(){
+    int n; cin>>n;
+    vector<Z>a(n);
+
+    for(int i=0;i<n;i++){
+        cin>>a[i].name>>a[i].f>>a[i].e>>a[i].fi;
+        int s=a[i].f+a[i].e+a[i].fi;
+        if(s>=200) a[i].pr="High";
+        else if(s>=120) a[i].pr="Medium";
+        else a[i].pr="Low";
+    }
+
+    for(auto &x:a)
+        cout<<x.name<<" "<<x.pr<<"\n";
+}
+</pre>
+</div>
+
+
+<!-- ------------------------ 9. EV CHARGING STATIONS ---------------------- -->
+<div class="card">
+<h3>9) Smart EV Charging Station Routing</h3>
+
+<b>Algorithms Used:</b>
+<ul>
+<li>Greedy → Max free slots</li>
+<li>Map Lookup</li>
+<li>Linear Max Search</li>
+</ul>
+
+<b>Efficiency:</b> O(n)<br>
+<b>SDG:</b> 7, 11, 13
+
+<span class="algo-btn" onclick="toggleAlgo('c9')">Show Code</span>
+<pre id="c9">
+#include <iostream>
+#include <map>
+using namespace std;
+
+int main(){
+    map<string,int> s={{"A",2},{"B",0},{"C",5}};
+    string best; int mx=-1;
+    for(auto &p:s)
+        if(p.second>mx){ mx=p.second; best=p.first; }
+    cout<<"Go to Station: "<<best;
+}
+</pre>
+</div>
+
+
+<!-- ------------------------ 10. CIVIC ISSUE AUTO DETECTION ---------------------- -->
+<div class="card">
+<h3>10) Civic Issue Auto-Detection System</h3>
+
+<b>Algorithms Used:</b>
+<ul>
+<li>String Pattern Matching</li>
+<li>Rule-Based Classifier</li>
+<li>Lookup Table for Issue → Department mapping</li>
+</ul>
+
+<b>Efficiency:</b> O(1)<br>
+<b>SDG:</b> 11, 16
+
+<span class="algo-btn" onclick="toggleAlgo('c10')">Show Code</span>
+<pre id="c10">
+#include <iostream>
+#include <string>
+using namespace std;
+
+string detect(string t){
+    if(t=="pothole") return "Road Dept";
+    if(t=="leakage") return "Water Dept";
+    if(t=="streetlight") return "Electricity Dept";
+    return "General";
+}
+
+int main(){
+    string t; getline(cin,t);
+    cout<<"Assigned to: "<<detect(t);
+}
+</pre>
+</div>
+
+</div>
+</body>
+</html>
