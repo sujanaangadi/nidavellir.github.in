@@ -9,8 +9,10 @@
     body {
         margin: 0;
         font-family: Arial, sans-serif;
-        background: #003B46;
-        color: #E0F7FA;
+        
+        /* DARK BLUE CYBER THEME */
+        background: #0d131d;
+        color: #d9e5e7;
     }
 
     /* HEADER */
@@ -18,13 +20,13 @@
         width: 92%;
         margin: auto;
         margin-top: 25px;
-        padding-bottom: 10px;
+        text-align: center;
     }
     .title {
         font-size: 42px;
         font-weight: bold;
-        color: #C4F1F6;
-        text-align: center;
+        color: #22d3ee;
+        text-shadow: 0 0 12px #22d3ee;
     }
 
     /* GRID */
@@ -39,49 +41,50 @@
 
     /* CARD */
     .card {
-        background: #07575B;
+        background: #111a22;
         padding: 20px;
         border-radius: 12px;
-        border-left: 4px solid #66A5AD;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.35);
-        transition: 0.25s ease;
+        border-left: 4px solid #22d3ee;
+        box-shadow: 0 0 12px rgba(34,211,238,0.2);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
     .card:hover {
-        transform: translateY(-6px);
-        border-left-color: #C4F1F6;
+        transform: translateY(-8px);
+        border-left-color: #67e8f9;
+        box-shadow: 0 0 20px rgba(34,211,238,0.5);
     }
 
     /* CODE BLOCK */
     pre {
-        background: #022F35;
+        background: #0a0f17;
         padding: 12px;
         border-radius: 8px;
         display: none;
         white-space: pre-wrap;
-        border: 1px solid #66A5AD;
-        color: #E0F7FA;
+        border: 1px solid #1b2a35;
+        color: #e0f8ff;
     }
 
     /* BUTTON */
     .algo-btn {
-        background: #66A5AD;
+        background: #22d3ee;
         padding: 8px 12px;
         border-radius: 6px;
         cursor: pointer;
         display: inline-block;
         margin-top: 10px;
-        color: #003B46;
+        color: #0d131d;
         font-weight: bold;
     }
     .algo-btn:hover {
-        background: #C4F1F6;
+        background: #67e8f9;
     }
 </style>
 
 <script>
 function toggleAlgo(id) {
     const x = document.getElementById(id);
-    x.style.display = (x.style.display === "block") ? "none" : "block";
+    x.style.display = x.style.display === "block" ? "none" : "block";
 }
 </script>
 
@@ -94,21 +97,24 @@ function toggleAlgo(id) {
 
 <div class="container">
 
-<!-- ================= 1. SMART TEXTILE QUALITY DETECTOR ================= -->
+<!-- ========================================================= -->
+<!-- 1) SMART TEXTILE QUALITY DETECTOR -->
+<!-- ========================================================= -->
+
 <div class="card">
 <h3>1) Smart Textile Quality Detector</h3>
 
-<b>Algorithms Used:</b> KMP Pattern Matching, Rabin-Karp, DFS, Heap  
+<b>Algorithms Used:</b> KMP Pattern Matching, DFS, Heap  
 <ul>
 <b>How the Algorithm Works:</b>
-<li>Fabric texture is converted into a sequence pattern of numbers.</li>
-<li>KMP efficiently detects repeating defect patterns within the cloth stream.</li>
-<li>DFS identifies spread/cluster of defects to measure severity.</li>
-<li>Priority queue ranks defects based on intensity for quick action.</li>
+<li>Fabric texture is converted into numeric patterns representing weave quality.</li>
+<li>KMP detects repeated fault sequences efficiently using an LPS preprocessing table.</li>
+<li>DFS locates continuous defect regions to analyze severity.</li>
+<li>Heap prioritizes defect locations for immediate machine intervention.</li>
 </ul>
 
 <b>Time Complexity:</b> O(n + m)  
-<b>Space Complexity:</b> O(m)
+<b>DAA Justification:</b> KMP avoids redundant comparisons, ideal for fast-moving textile rolls.
 
 <span class="algo-btn" onclick="toggleAlgo('c1')">Show Code</span>
 <pre id="c1">
@@ -147,21 +153,24 @@ int main(){
 </div>
 
 
-<!-- ================= 2. WORKER SAFETY MONITORING ================= -->
+<!-- ========================================================= -->
+<!-- 2) AI-BASED WORKER SAFETY MONITORING -->
+<!-- ========================================================= -->
+
 <div class="card">
 <h3>2) AI-Based Worker Safety Monitoring</h3>
 
-<b>Algorithms Used:</b> Dijkstra, Heap, BFS, Binary Search  
+<b>Algorithms Used:</b> Dijkstra, Heap, BFS  
 <ul>
 <b>How the Algorithm Works:</b>
-<li>Factory zones are represented as nodes in a weighted graph.</li>
-<li>Dijkstra finds the safest evacuation path with minimum risk score.</li>
-<li>BFS monitors spreading hazards like fire/gas leaks.</li>
-<li>Heap prioritizes zones with highest danger for quick response.</li>
+<li>Factory layout is modeled as a graph where nodes = zones and edges = risk-weighted paths.</li>
+<li>Dijkstra computes the safest escape route with minimum cumulative hazard.</li>
+<li>BFS simulates hazard spread like gas or fire across adjacent areas.</li>
+<li>Priority queue ranks zones needing immediate evacuation.</li>
 </ul>
 
 <b>Time Complexity:</b> O((V+E) log V)  
-<b>Space Complexity:</b> O(V)
+<b>DAA Justification:</b> Dijkstra optimizes route selection in dynamic hazard environments.
 
 <span class="algo-btn" onclick="toggleAlgo('c2')">Show Code</span>
 <pre id="c2">
@@ -206,21 +215,24 @@ int main(){
 </div>
 
 
-<!-- ================= 3. PREDICTIVE MAINTENANCE ================= -->
+<!-- ========================================================= -->
+<!-- 3) PREDICTIVE MAINTENANCE -->
+<!-- ========================================================= -->
+
 <div class="card">
 <h3>3) Predictive Maintenance for Industrial Machines</h3>
 
-<b>Algorithms Used:</b> Segment Tree, Heap, DFS, Pattern Matching  
+<b>Algorithms Used:</b> Segment Tree, DFS, Heap  
 <ul>
 <b>How the Algorithm Works:</b>
-<li>Machine vibration readings are stored in a segment tree.</li>
-<li>Range max query quickly detects abnormal spikes.</li>
-<li>DFS explores failure propagation among connected parts.</li>
-<li>Heap ranks machines needing urgent service.</li>
+<li>Machine vibration data stored in a segment tree for range-maximum queries.</li>
+<li>Segment tree quickly detects abnormal spikes over time intervals.</li>
+<li>DFS analyzes mechanical dependency failure propagation.</li>
+<li>Heap ranks machines based on critical vibration levels.</li>
 </ul>
 
-<b>Time Complexity:</b> O(log n) per query  
-<b>Space Complexity:</b> O(n)
+<b>Time Complexity:</b> O(log n)  
+<b>DAA Justification:</b> Segment trees enable real-time monitoring for rapid maintenance decisions.
 
 <span class="algo-btn" onclick="toggleAlgo('c3')">Show Code</span>
 <pre id="c3">
@@ -258,21 +270,24 @@ int main(){
 </div>
 
 
-<!-- ================= 4. AUTONOMOUS SORTING ROBOT ================= -->
+<!-- ========================================================= -->
+<!-- 4) AUTONOMOUS MATERIAL SORTING ROBOT -->
+<!-- ========================================================= -->
+
 <div class="card">
 <h3>4) Autonomous Material Sorting Robot</h3>
 
-<b>Algorithms Used:</b> Quick Sort, Classification Rules, Heap  
+<b>Algorithms Used:</b> Quick Sort, Classification Rules  
 <ul>
 <b>How the Algorithm Works:</b>
-<li>Robot scans item weights and stores them in an array.</li>
-<li>Quick Sort arranges the items in increasing weight order.</li>
-<li>Each weight is then classified as Light / Medium / Heavy.</li>
-<li>Sorting improves picking efficiency and reduces cycle time.</li>
+<li>Sensors capture item weights which are stored in an array.</li>
+<li>Quick Sort arranges them in ascending order for efficient picking.</li>
+<li>Each item is classified into Light/Medium/Heavy categories.</li>
+<li>Sorting reduces robot arm movement and improves sorting throughput.</li>
 </ul>
 
 <b>Time Complexity:</b> O(n log n)  
-<b>Space Complexity:</b> O(log n)
+<b>DAA Justification:</b> Quick Sort provides fast in-place sorting ideal for continuous conveyor flow.
 
 <span class="algo-btn" onclick="toggleAlgo('c4')">Show Code</span>
 <pre id="c4">
@@ -322,21 +337,24 @@ int main(){
 </div>
 
 
-<!-- ================= 5. SMART INVENTORY FORECASTING ================= -->
+<!-- ========================================================= -->
+<!-- 5) SMART INVENTORY FORECASTING -->
+<!-- ========================================================= -->
+
 <div class="card">
 <h3>5) Smart Inventory Forecasting System</h3>
 
-<b>Algorithms Used:</b> Moving Average, Binary Search, Merge Sort  
+<b>Algorithms Used:</b> Moving Average, Merge Sort, Binary Search  
 <ul>
 <b>How the Algorithm Works:</b>
-<li>Daily sales data stored in arrays.</li>
-<li>Moving Average predicts next cycle demand.</li>
-<li>Sorting used for analyzing historical demand trends.</li>
-<li>Binary Search identifies reorder point thresholds.</li>
+<li>Historical sales stored in arrays for trend analysis.</li>
+<li>Moving average predicts future demand based on past patterns.</li>
+<li>Sorts help identify high-selling items over time.</li>
+<li>Binary search assists in detecting reorder points quickly.</li>
 </ul>
 
 <b>Time Complexity:</b> O(n)  
-<b>Space Complexity:</b> O(1)
+<b>DAA Justification:</b> Moving average smooths fluctuations, helping stable trend forecasting.
 
 <span class="algo-btn" onclick="toggleAlgo('c5')">Show Code</span>
 <pre id="c5">
@@ -355,21 +373,24 @@ int main(){
 </div>
 
 
-<!-- ================= 6. WASTE HEAT ENERGY RECYCLING ================= -->
+<!-- ========================================================= -->
+<!-- 6) WASTE HEAT ENERGY RECYCLING -->
+<!-- ========================================================= -->
+
 <div class="card">
 <h3>6) Waste-Heat Energy Recycling System</h3>
 
-<b>Algorithms Used:</b> Max Heap, Binary Threshold Search  
+<b>Algorithms Used:</b> Max Heap, Threshold Logic  
 <ul>
 <b>How the Algorithm Works:</b>
-<li>Industrial temperature readings pushed into a max-heap.</li>
-<li>Hottest source is always processed first for energy conversion.</li>
-<li>Threshold logic determines usable heat beyond 40°C.</li>
-<li>Total recoverable energy is computed cumulatively.</li>
+<li>Heat readings inserted into a max heap to access hottest source first.</li>
+<li>Energy is extracted from temperature above 40°C threshold.</li>
+<li>Total converted energy computed iteratively.</li>
+<li>Heap ensures efficient processing of variable heat sources.</li>
 </ul>
 
 <b>Time Complexity:</b> O(n log n)  
-<b>Space Complexity:</b> O(n)
+<b>DAA Justification:</b> Max heap ensures hottest waste heat is recycled first for maximum energy gain.
 
 <span class="algo-btn" onclick="toggleAlgo('c6')">Show Code</span>
 <pre id="c6">
@@ -398,21 +419,24 @@ int main(){
 </div>
 
 
-<!-- ================= 7. PACKAGING OPTIMIZATION ================= -->
+<!-- ========================================================= -->
+<!-- 7) AI-BASED PRODUCT PACKAGING OPTIMIZATION -->
+<!-- ========================================================= -->
+
 <div class="card">
 <h3>7) AI-Based Product Packaging Optimization</h3>
 
-<b>Algorithms Used:</b> Binary Search, Sorting, Dynamic Rules  
+<b>Algorithms Used:</b> Binary Search, Sorting  
 <ul>
 <b>How the Algorithm Works:</b>
-<li>Available box sizes stored in sorted order.</li>
-<li>Binary Search finds smallest box ≥ product volume.</li>
-<li>Sorting used for ranking boxes by efficiency.</li>
-<li>Decision rules reduce packing material waste.</li>
+<li>Box sizes stored in sorted order for efficient lookup.</li>
+<li>Binary search finds the smallest box that fits a product volume.</li>
+<li>Sorting helps prioritize cost-effective packaging.</li>
+<li>Reduces material waste and packaging time.</li>
 </ul>
 
 <b>Time Complexity:</b> O(log n)  
-<b>Space Complexity:</b> O(1)
+<b>DAA Justification:</b> Binary search guarantees optimal box selection with minimal comparisons.
 
 <span class="algo-btn" onclick="toggleAlgo('c7')">Show Code</span>
 <pre id="c7">
@@ -449,21 +473,24 @@ int main(){
 </div>
 
 
-<!-- ================= 8. AUTO REJECT CONVEYOR ================= -->
+<!-- ========================================================= -->
+<!-- 8) AUTO REJECT CONVEYOR -->
+<!-- ========================================================= -->
+
 <div class="card">
 <h3>8) Faulty Product Auto-Reject Conveyor System</h3>
 
-<b>Algorithms Used:</b> Range Checking, Priority Queue, Lookup Table  
+<b>Algorithms Used:</b> Range Checking, Lookup Table  
 <ul>
 <b>How the Algorithm Works:</b>
-<li>Each product weight is compared against tolerance (90–110g).</li>
-<li>Out-of-range items automatically flagged as defective.</li>
-<li>Heap can prioritize highly defective batches if needed.</li>
-<li>Lookup table used for fast bin assignment.</li>
+<li>Each product is weighed and compared against a 90–110g tolerance.</li>
+<li>Out-of-range items are immediately classified as defective.</li>
+<li>Lookup rules map rejection type to proper disposal bin.</li>
+<li>System ensures consistent quality control with simple logic.</li>
 </ul>
 
 <b>Time Complexity:</b> O(1)  
-<b>Space Complexity:</b> O(1)
+<b>DAA Justification:</b> Direct range checks guarantee constant-time evaluation for high-speed conveyors.
 
 <span class="algo-btn" onclick="toggleAlgo('c8')">Show Code</span>
 <pre id="c8">
@@ -486,21 +513,24 @@ int main(){
 </div>
 
 
-<!-- ================= 9. POLLUTION MONITORING ================= -->
+<!-- ========================================================= -->
+<!-- 9) POLLUTION MONITORING DASHBOARD -->
+<!-- ========================================================= -->
+
 <div class="card">
 <h3>9) Factory Pollution Monitoring & Control Dashboard</h3>
 
-<b>Algorithms Used:</b> Segment Tree, Heap, BFS  
+<b>Algorithms Used:</b> Segment Tree, BFS, Heap  
 <ul>
 <b>How the Algorithm Works:</b>
-<li>Pollution index values stored in segment tree.</li>
-<li>Range max query identifies sudden pollution spikes.</li>
-<li>BFS models spread of contamination across zones.</li>
-<li>Priority queue ranks zones needing immediate action.</li>
+<li>Pollution values are stored in a segment tree for fast max-range queries.</li>
+<li>Spike detection done using range queries over time intervals.</li>
+<li>BFS simulates pollution spread across factory sections.</li>
+<li>Priority queue identifies zones needing immediate control action.</li>
 </ul>
 
 <b>Time Complexity:</b> O(log n)  
-<b>Space Complexity:</b> O(n)
+<b>DAA Justification:</b> Segment tree ensures rapid detection of pollution surges.
 
 <span class="algo-btn" onclick="toggleAlgo('c9')">Show Code</span>
 <pre id="c9">
@@ -539,21 +569,24 @@ int main(){
 </div>
 
 
-<!-- ================= 10. SUPPLY CHAIN DELAY PREDICTOR ================= -->
+<!-- ========================================================= -->
+<!-- 10) SUPPLY CHAIN DELAY PREDICTOR -->
+<!-- ========================================================= -->
+
 <div class="card">
 <h3>10) AI-Powered Supply Chain Delay Predictor</h3>
 
-<b>Algorithms Used:</b> Dijkstra Model, Floyd-Warshall, Lookup Mapping  
+<b>Algorithms Used:</b> Lookup Mapping, Shortest Path Models  
 <ul>
 <b>How the Algorithm Works:</b>
-<li>Expected vs actual delivery times analyzed.</li>
-<li>Difference indicates delay magnitude.</li>
-<li>Graph-based models estimate future bottlenecks.</li>
-<li>Lookup table maps severity level for dashboard alerts.</li>
+<li>Expected vs actual delivery times compared to detect delays.</li>
+<li>Delay magnitude determines risk level for logistics planning.</li>
+<li>Graph-based models help predict bottlenecks across routes.</li>
+<li>Lookup tables generate instant dashboard alerts.</li>
 </ul>
 
 <b>Time Complexity:</b> O(n)  
-<b>Space Complexity:</b> O(n)
+<b>DAA Justification:</b> Direct difference computation ensures fast, real-time logistics analysis.
 
 <span class="algo-btn" onclick="toggleAlgo('c10')">Show Code</span>
 <pre id="c10">
@@ -575,6 +608,7 @@ int main(){
 }
 </pre>
 </div>
+
 
 </div>
 </body>
