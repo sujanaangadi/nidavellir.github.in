@@ -9,8 +9,7 @@
     body {
         margin: 0;
         font-family: Arial, sans-serif;
-
-        background: #0d131d; /* Dark Cyber Blue */
+        background: #0d131d; 
         color: #d9e5e7;
     }
 
@@ -59,6 +58,7 @@
         white-space: pre-wrap;
         border: 1px solid #1b2a35;
         color: #22d3ee;
+        font-size: 14px;
     }
 
     .algo-btn {
@@ -82,6 +82,7 @@ function toggleAlgo(id) {
     x.style.display = x.style.display === "block" ? "none" : "block";
 }
 </script>
+
 </head>
 
 <body>
@@ -92,19 +93,21 @@ function toggleAlgo(id) {
 
 <div class="container">
 
+<!-- ------------------------------------------------------- -->
 <!-- 1) Smart Textile Quality Detector -->
+<!-- ------------------------------------------------------- -->
 <div class="card">
 <h3>1) Smart Textile Quality Detector</h3>
 
-<b>Algorithms Used:</b> KMP Pattern Matching, DFS, Heap  
+<b>Algorithms Used:</b> KMP Pattern Matching, DFS, Max-Heap  
 <br><br>
 
 <b>Explanation:</b>
 <ul>
-<li>Converts fabric texture signals into numeric sequences for defect pattern search.</li>
-<li>KMP detects repeated fault signatures quickly without rechecking characters (O(n) time).</li>
-<li>DFS checks whether defects are connected and estimates defect spread area.</li>
-<li>Max-Heap ranks defects by severity for immediate operator alerts.</li>
+<li>Fabric texture is converted into numeric patterns for automated inspection.</li>
+<li>KMP finds repeated defect signatures efficiently without rechecking characters.</li>
+<li>DFS explores defect-connected regions to measure defect spread.</li>
+<li>Heap prioritizes severe defects so operators get urgent alerts.</li>
 </ul>
 
 <b>Time Complexity:</b> O(n)  
@@ -115,29 +118,25 @@ function toggleAlgo(id) {
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> buildLPS(vector<int>& pat){
-    vector<int> lps(pat.size(), 0);
-    int len=0, i=1;
-
-    while(i<pat.size()){
-        if(pat[i]==pat[len]){
-            len++; lps[i]=len; i++;
-        }
-        else if(len!=0) len=lps[len-1];
-        else i++;
+vector<int> buildLPS(vector<int> &p){
+    int n=p.size(), len=0; 
+    vector<int> lps(n);
+    for(int i=1;i<n;){
+        if(p[i]==p[len]) lps[i++]=++len;
+        else if(len) len=lps[len-1];
+        else lps[i++]=0;
     }
     return lps;
 }
 
-bool KMP(vector<int>& text, vector<int>& pat){
-    auto lps = buildLPS(pat);
-    int i=0, j=0;
-
-    while(i<text.size()){
-        if(text[i]==pat[j]){ i++; j++; }
-        else j = (j? lps[j-1] : 0), i += (j==0);
-
-        if(j==pat.size()) return true;
+bool KMP(vector<int> &t, vector<int> &p){
+    auto lps = buildLPS(p);
+    int i=0,j=0;
+    while(i<t.size()){
+        if(t[i]==p[j]) i++,j++;
+        else if(j) j=lps[j-1];
+        else i++;
+        if(j==p.size()) return true;
     }
     return false;
 }
@@ -145,25 +144,26 @@ bool KMP(vector<int>& text, vector<int>& pat){
 int main(){
     vector<int> cloth={3,4,4,7,4,4,7};
     vector<int> defect={4,4,7};
-
-    cout << (KMP(cloth,defect)? "Defect Found" : "No Defect");
+    cout << (KMP(cloth,defect) ? "Defect Found" : "No Defect");
 }
 </pre>
 </div>
 
+<!-- ------------------------------------------------------- -->
 <!-- 2) AI-Based Worker Safety Monitoring -->
+<!-- ------------------------------------------------------- -->
 <div class="card">
 <h3>2) AI-Based Worker Safety Monitoring</h3>
 
-<b>Algorithms Used:</b> Dijkstra, BFS, Heap  
+<b>Algorithms Used:</b> Dijkstra, BFS, Priority Queue  
 <br><br>
 
 <b>Explanation:</b>
 <ul>
-<li>Factory is modeled as a weighted graph where nodes = zones, edges = hazard levels.</li>
-<li>Dijkstra finds the safest escape route with minimum accumulated risk.</li>
-<li>BFS simulates hazard spreading such as smoke, gas, or fire expansion.</li>
-<li>A priority queue highlights zones requiring urgent alarms.</li>
+<li>Factory floor modeled as a weighted graph where edges represent hazard levels.</li>
+<li>Dijkstra computes safest evacuation route with minimum danger cost.</li>
+<li>BFS models real-time hazard spread (fire, smoke, gas leaks).</li>
+<li>Heap prioritizes critical danger zones for quicker alerts.</li>
 </ul>
 
 <b>Time Complexity:</b> O(E log V)  
@@ -174,46 +174,57 @@ int main(){
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> dijkstra(int n, int src, vector<vector<pair<int,int>>> &adj){
-    vector<int> dist(n, INT_MAX);
-    priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;
-
-    dist[src] = 0;
+vector<int> dijkstra(int n,int src,vector<vector<pair<int,int>>> &g){
+    vector<int> dist(n,INT_MAX);
+    priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> pq;
+    dist[src]=0; 
     pq.push({0,src});
 
     while(!pq.empty()){
-        auto [d,u] = pq.top(); pq.pop();
-        if(d > dist[u]) continue;
-
-        for(auto &e : adj[u]){
-            int v=e.first, w=e.second;
-            if(dist[u] + w < dist[v]){
-                dist[v] = dist[u] + w;
-                pq.push({dist[v], v});
+        auto [d,u]=pq.top(); pq.pop();
+        if(d>dist[u]) continue;
+        for(auto &p:g[u]){
+            int v=p.first, w=p.second;
+            if(dist[u]+w < dist[v]){
+                dist[v]=dist[u]+w;
+                pq.push({dist[v],v});
             }
         }
     }
     return dist;
 }
+
+int main(){
+    int n=5;
+    vector<vector<pair<int,int>>> g(n);
+    g[0]={{1,3},{2,1}};
+    g[1]={{3,4}};
+    g[2]={{3,2}};
+    g[3]={{4,1}};
+    auto res=dijkstra(n,0,g);
+    for(int d:res) cout<<d<<" ";
+}
 </pre>
 </div>
 
+<!-- ------------------------------------------------------- -->
 <!-- 3) Predictive Maintenance for Industrial Machines -->
+<!-- ------------------------------------------------------- -->
 <div class="card">
 <h3>3) Predictive Maintenance for Industrial Machines</h3>
 
-<b>Algorithms Used:</b> Segment Tree, Heap, DFS  
+<b>Algorithms Used:</b> Segment Tree, DFS, Heap  
 <br><br>
 
 <b>Explanation:</b>
 <ul>
-<li>Segment trees store machine vibration logs and allow fast maximum queries.</li>
-<li>A sudden spike in vibration signals potential mechanical failure.</li>
-<li>DFS maps dependency among machine components (which part affects which).</li>
-<li>Heap ranks machines by urgency for scheduled maintenance.</li>
+<li>Segment tree stores vibration data and detects sudden abnormal spikes.</li>
+<li>DFS identifies component dependency when a part begins failing.</li>
+<li>Heap ranks machines by risk score for scheduled maintenance.</li>
+<li>Helps prevent breakdown by early prediction of faults.</li>
 </ul>
 
-<b>Time Complexity:</b> O(log n) per query  
+<b>Time Complexity:</b> O(log n)  
 <br>
 
 <span class="algo-btn" onclick="toggleAlgo('c3')">Show Code</span>
@@ -221,16 +232,39 @@ vector<int> dijkstra(int n, int src, vector<vector<pair<int,int>>> &adj){
 #include <bits/stdc++.h>
 using namespace std;
 
-int build(vector<int>& a, vector<int>& st, int i, int l, int r){
+int build(vector<int> &a, vector<int> &st, int i,int l,int r){
     if(l==r) return st[i]=a[l];
     int m=(l+r)/2;
     return st[i]=max(build(a,st,2*i+1,l,m),
                      build(a,st,2*i+2,m+1,r));
 }
+
+int query(vector<int> &st,int i,int l,int r,int ql,int qr){
+    if(qr<l || ql>r) return -1;
+    if(ql<=l && r<=qr) return st[i];
+    int m=(l+r)/2;
+    return max(query(st,2*i+1,l,m,ql,qr),
+               query(st,2*i+2,m+1,r,ql,qr));
+}
+
+int main(){
+    int n; cin>>n;
+    vector<int> a(n);
+    for(int &x:a) cin>>x;
+
+    vector<int> st(4*n);
+    build(a,st,0,0,n-1);
+
+    int L,R; cin>>L>>R;
+    int mx=query(st,0,0,n-1,L,R);
+    cout << (mx>100 ? "Maintenance Needed" : "Normal");
+}
 </pre>
 </div>
 
+<!-- ------------------------------------------------------- -->
 <!-- 4) Autonomous Material Sorting Robot -->
+<!-- ------------------------------------------------------- -->
 <div class="card">
 <h3>4) Autonomous Material Sorting Robot</h3>
 
@@ -239,10 +273,10 @@ int build(vector<int>& a, vector<int>& st, int i, int l, int r){
 
 <b>Explanation:</b>
 <ul>
-<li>Items are sorted based on weight using Quick Sort for fast processing.</li>
-<li>Sorted items reduce robotic arm movement and improve throughput.</li>
-<li>Classification rules assign items into Light, Medium, or Heavy bins.</li>
-<li>Quick Sort is chosen because it is in-place and efficient for embedded robots.</li>
+<li>Robot sorts items based on weight using Quick Sort for fast ordering.</li>
+<li>Sorted items reduce arm movement and increase conveyor efficiency.</li>
+<li>Classification logic assigns Light, Medium, Heavy bins.</li>
+<li>In-place Quick Sort reduces memory, ideal for embedded robots.</li>
 </ul>
 
 <b>Time Complexity:</b> O(n log n)  
@@ -253,15 +287,43 @@ int build(vector<int>& a, vector<int>& st, int i, int l, int r){
 #include <bits/stdc++.h>
 using namespace std;
 
+int partition(vector<float> &a,int l,int r){
+    float p=a[r];
+    int i=l-1;
+    for(int j=l;j<r;j++)
+        if(a[j]<p) swap(a[++i],a[j]);
+    swap(a[i+1],a[r]);
+    return i+1;
+}
+
+void quickSort(vector<float> &a,int l,int r){
+    if(l<r){
+        int p=partition(a,l,r);
+        quickSort(a,l,p-1);
+        quickSort(a,p+1,r);
+    }
+}
+
 string classify(float w){
     if(w<1) return "Light";
     if(w<5) return "Medium";
     return "Heavy";
 }
+
+int main(){
+    int n; cin>>n;
+    vector<float> w(n);
+    for(float &x:w) cin>>x;
+
+    quickSort(w,0,n-1);
+    for(float x:w) cout<<x<<" -> "<<classify(x)<<"\n";
+}
 </pre>
 </div>
 
+<!-- ------------------------------------------------------- -->
 <!-- 5) Smart Inventory Forecasting System -->
+<!-- ------------------------------------------------------- -->
 <div class="card">
 <h3>5) Smart Inventory Forecasting System</h3>
 
@@ -270,10 +332,10 @@ string classify(float w){
 
 <b>Explanation:</b>
 <ul>
-<li>Moving average predicts upcoming stock requirement by smoothing fluctuations.</li>
-<li>Sorting helps identify top-selling and slow-moving inventory trends.</li>
-<li>Binary search quickly finds reorder points before stock-outs occur.</li>
-<li>Ensures balanced inventory storage, reducing cost and wastage.</li>
+<li>Moving average predicts future stock demand from past sales.</li>
+<li>Sorting helps identify fast-moving and slow-moving products.</li>
+<li>Binary search finds reorder threshold to avoid stockouts.</li>
+<li>Improves warehouse planning and reduces wastage.</li>
 </ul>
 
 <b>Time Complexity:</b> O(n)  
@@ -283,17 +345,31 @@ string classify(float w){
 <pre id="c5">
 #include <bits/stdc++.h>
 using namespace std;
+
 int main(){
     int n; cin>>n;
     vector<int> s(n);
     for(int &x:s) cin>>x;
-    int sum = accumulate(s.begin(), s.end(), 0);
-    cout << "Forecast: " << sum/n;
+
+    int sum=accumulate(s.begin(),s.end(),0);
+    float avg=sum/(float)n;
+
+    cout<<"Predicted Demand: "<<avg;
 }
 </pre>
 </div>
 
+</div>  <!-- End of container -->
+
+<!-- PART 2 WILL CONTINUE NEXT MESSAGE -->
+
+</body>
+</html>
+<div class="container">
+
+<!-- ------------------------------------------------------- -->
 <!-- 6) Waste-Heat Energy Recycling System -->
+<!-- ------------------------------------------------------- -->
 <div class="card">
 <h3>6) Waste-Heat Energy Recycling System</h3>
 
@@ -302,10 +378,10 @@ int main(){
 
 <b>Explanation:</b>
 <ul>
-<li>Factory heat sources are inserted into a max-heap to process hottest zones first.</li>
-<li>Any temperature above 40°C is converted into usable energy.</li>
-<li>Heap ensures real-time selection of highest heat, increasing efficiency.</li>
-<li>Supports renewable energy, reducing operational expenses.</li>
+<li>Heat readings from different industrial zones are stored in a max-heap.</li>
+<li>Highest heat source processed first to maximize energy conversion.</li>
+<li>Simple threshold logic converts heat above 40°C into usable energy.</li>
+<li>Improves factory energy efficiency and reduces power consumption.</li>
 </ul>
 
 <b>Time Complexity:</b> O(n log n)  
@@ -315,25 +391,52 @@ int main(){
 <pre id="c6">
 #include <bits/stdc++.h>
 using namespace std;
+
 int main(){
+    int n; 
+    cout<<"Enter number of heat sources: ";
+    cin>>n;
+
     priority_queue<float> pq;
+    cout<<"Enter temperatures: ";
+    for(int i=0;i<n;i++){
+        float t; cin>>t;
+        pq.push(t);
+    }
+
+    float total = 0;
+    cout<<"\nEnergy Conversion Report:\n";
+
+    while(!pq.empty()){
+        float t = pq.top(); 
+        pq.pop();
+
+        float energy = max(0.0f, (t - 40) * 0.6f);
+        cout<<"Temp "<<t<<"°C -> "<<energy<<" kW\n";
+        total += energy;
+    }
+
+    cout<<"\nTotal Energy Recycled = "<<total<<" kW\n";
 }
 </pre>
 </div>
 
+
+<!-- ------------------------------------------------------- -->
 <!-- 7) AI-Based Product Packaging Optimization -->
+<!-- ------------------------------------------------------- -->
 <div class="card">
 <h3>7) AI-Based Product Packaging Optimization</h3>
 
-<b>Algorithms Used:</b> Binary Search, Sorting, DP  
+<b>Algorithms Used:</b> Binary Search, Sorting  
 <br><br>
 
 <b>Explanation:</b>
 <ul>
-<li>Predefined box sizes are sorted once for efficient lookup.</li>
-<li>Binary search finds the smallest fitting box, reducing empty space.</li>
-<li>Decision logic ensures minimal material wastage and reduced shipping cost.</li>
-<li>Avoids manual selection delays in packaging lines.</li>
+<li>Predefined box sizes are sorted for efficient packing decision-making.</li>
+<li>Binary search quickly finds the smallest box that fits the product volume.</li>
+<li>Reduces wasted space and packaging material cost.</li>
+<li>Speeds up packaging line by avoiding manual size selection.</li>
 </ul>
 
 <b>Time Complexity:</b> O(log n)  
@@ -343,23 +446,55 @@ int main(){
 <pre id="c7">
 #include <bits/stdc++.h>
 using namespace std;
-vector<int> boxes = {100,300,500};
+
+vector<int> boxes = {100, 300, 500};
+
+int findBox(int v){
+    int low=0, high=boxes.size()-1, ans=-1;
+    while(low<=high){
+        int mid=(low+high)/2;
+        if(boxes[mid] >= v){
+            ans = mid;
+            high = mid - 1;
+        } else low = mid + 1;
+    }
+    return ans;
+}
+
+int main(){
+    int n; 
+    cout<<"Enter number of products: ";
+    cin>>n;
+
+    while(n--){
+        int v; 
+        cout<<"Enter product volume: ";
+        cin>>v;
+        
+        int idx = findBox(v);
+        if(idx==-1) cout<<"No suitable box found\n";
+        else cout<<"Use box size: "<<boxes[idx]<<" ml\n";
+    }
+}
 </pre>
 </div>
 
+
+<!-- ------------------------------------------------------- -->
 <!-- 8) Faulty Product Auto-Reject Conveyor System -->
+<!-- ------------------------------------------------------- -->
 <div class="card">
 <h3>8) Faulty Product Auto-Reject Conveyor System</h3>
 
-<b>Algorithms Used:</b> Range Check, Lookup Table  
+<b>Algorithms Used:</b> Range Checking, Decision Logic  
 <br><br>
 
 <b>Explanation:</b>
 <ul>
-<li>Every product weight is checked against tolerance (90–110g).</li>
-<li>Instant reject decision ensures high-quality production.</li>
-<li>Lookup table maps weight category to reject/accept bins.</li>
-<li>Used in high-speed automated conveyor lines.</li>
+<li>Each product weight is checked in real time on the conveyor belt.</li>
+<li>Valid range: 90g to 110g; out-of-range items are rejected instantly.</li>
+<li>Helps maintain strict quality standards automatically.</li>
+<li>Ensures fast decision-making for high-speed industrial lines.</li>
 </ul>
 
 <b>Time Complexity:</b> O(1)  
@@ -367,25 +502,44 @@ vector<int> boxes = {100,300,500};
 
 <span class="algo-btn" onclick="toggleAlgo('c8')">Show Code</span>
 <pre id="c8">
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
-bool reject(float w){ return (w<90 || w>110); }
+
+bool isFaulty(float w){
+    return (w < 90 || w > 110);
+}
+
+int main(){
+    int n; 
+    cout<<"Enter number of products: ";
+    cin>>n;
+
+    cout<<"Enter weights:\n";
+    while(n--){
+        float w; cin>>w;
+        if(isFaulty(w)) cout<<w<<"g -> Rejected\n";
+        else cout<<w<<"g -> Accepted\n";
+    }
+}
 </pre>
 </div>
 
+
+<!-- ------------------------------------------------------- -->
 <!-- 9) Factory Pollution Monitoring & Control Dashboard -->
+<!-- ------------------------------------------------------- -->
 <div class="card">
 <h3>9) Factory Pollution Monitoring & Control Dashboard</h3>
 
-<b>Algorithms Used:</b> Segment Tree, Heap, BFS  
+<b>Algorithms Used:</b> Segment Tree, BFS, Max Heap  
 <br><br>
 
 <b>Explanation:</b>
 <ul>
-<li>Pollution readings stored in a segment tree allow fast detection of spikes.</li>
-<li>BFS predicts how gas or smoke spreads across areas.</li>
-<li>A max-heap ranks zones with highest pollutant levels.</li>
-<li>Ensures timely alerts for ventilation or shutdown actions.</li>
+<li>Pollution readings stored in a segment tree for fast spike detection.</li>
+<li>BFS models pollutant spread across zones of the factory.</li>
+<li>Max-heap prioritizes most polluted areas for urgent control action.</li>
+<li>Helps prevent hazardous gas accumulation inside factory premises.</li>
 </ul>
 
 <b>Time Complexity:</b> O(log n)  
@@ -395,22 +549,63 @@ bool reject(float w){ return (w<90 || w>110); }
 <pre id="c9">
 #include <bits/stdc++.h>
 using namespace std;
+
+int build(vector<int>& a, vector<int>& st, int i, int l, int r){
+    if(l==r) return st[i]=a[l];
+    int m=(l+r)/2;
+    return st[i]=max(build(a,st,2*i+1,l,m),
+                     build(a,st,2*i+2,m+1,r));
+}
+
+int query(vector<int>& st, int i, int l, int r, int ql, int qr){
+    if(qr<l || ql>r) return -1;
+    if(ql<=l && r<=qr) return st[i];
+    int m=(l+r)/2;
+    return max(query(st,2*i+1,l,m,ql,qr),
+               query(st,2*i+2,m+1,r,ql,qr));
+}
+
+int main(){
+    int n;
+    cout<<"Enter number of readings: ";
+    cin>>n;
+
+    vector<int> a(n);
+    cout<<"Enter pollution values: ";
+    for(int &x:a) cin>>x;
+
+    vector<int> st(4*n);
+    build(a,st,0,0,n-1);
+
+    int L,R;
+    cout<<"Enter query L R: ";
+    cin>>L>>R;
+
+    int mx = query(st,0,0,n-1,L,R);
+
+    cout<<"Max Pollution = "<<mx<<"\n";
+    if(mx > 900) cout<<"Status: HIGH\n";
+    else cout<<"Status: NORMAL\n";
+}
 </pre>
 </div>
 
+
+<!-- ------------------------------------------------------- -->
 <!-- 10) AI-Powered Supply Chain Delay Predictor -->
+<!-- ------------------------------------------------------- -->
 <div class="card">
 <h3>10) AI-Powered Supply Chain Delay Predictor</h3>
 
-<b>Algorithms Used:</b> Delay Comparison, Lookup Table  
+<b>Algorithms Used:</b> Delay Comparison, Lookup Classification  
 <br><br>
 
 <b>Explanation:</b>
 <ul>
-<li>Expected vs actual delivery times are compared to compute delay.</li>
-<li>Simple decision logic classifies delay as On-time or Delayed.</li>
-<li>Delay info helps optimize routes and distribution planning.</li>
-<li>Prevents cascading delays and improves customer satisfaction.</li>
+<li>Expected vs actual delivery times compared for each shipment.</li>
+<li>Positive difference indicates delay; negative means early/on-time.</li>
+<li>Helps detect logistics bottlenecks in real-time.</li>
+<li>Decision rules simplify delay categorization for dashboards.</li>
 </ul>
 
 <b>Time Complexity:</b> O(n)  
@@ -418,11 +613,34 @@ using namespace std;
 
 <span class="algo-btn" onclick="toggleAlgo('c10')">Show Code</span>
 <pre id="c10">
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
+
+int main(){
+    int n;
+    cout<<"Enter number of deliveries: ";
+    cin>>n;
+
+    vector<float> exp(n), act(n);
+
+    cout<<"Enter expected times: ";
+    for(float &x: exp) cin>>x;
+
+    cout<<"Enter actual times: ";
+    for(float &x: act) cin>>x;
+
+    cout<<"\n--- Delivery Report ---\n";
+    for(int i=0;i<n;i++){
+        float d = act[i] - exp[i];
+        cout<<"Delivery "<<i+1<<": ";
+        if(d > 0) cout<<"Delayed by "<<d<<" hours\n";
+        else cout<<"On Time\n";
+    }
+}
 </pre>
 </div>
 
-</div>
+</div> <!-- End container -->
+
 </body>
 </html>
