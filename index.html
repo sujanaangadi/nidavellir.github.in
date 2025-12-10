@@ -3,113 +3,146 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>City Design - Industry Dashboard</title>
+<title>City Design – Holographic Dashboard</title>
 
 <style>
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #031128;
-    color: #DFF8FF;
+    font-family: "Segoe UI", sans-serif;
+    background: #000814;
+    overflow-x: hidden;
+    color: #dffeff;
 }
 
-/* NAVIGATION BAR */
+/* ------------------ AURORA + PARTICLE BACKGROUND ------------------ */
+
+#background {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: radial-gradient(circle at top, #003566, transparent 70%),
+                radial-gradient(circle at bottom, #001d3d, transparent 70%);
+    overflow: hidden;
+}
+
+/* Floating particle animation */
+.particle {
+    position: absolute;
+    background: rgba(0, 255, 255, 0.6);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    animation: floatUp 12s linear infinite;
+    filter: blur(2px);
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(100vh) scale(1); opacity: 0.5; }
+    100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+}
+
+/* ------------------ NAVBAR ------------------ */
+
 .navbar {
     width: 100%;
-    background: rgba(0, 180, 255, 0.15);
-    backdrop-filter: blur(12px);
     padding: 20px 40px;
     display: flex;
     align-items: center;
+    background: rgba(0, 40, 60, 0.35);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid cyan;
     position: fixed;
     top: 0;
-    left: 0;
-    border-bottom: 1px solid #00E5FF;
     z-index: 10;
 }
 
-.navbar .logo {
+.logo {
     font-size: 28px;
     font-weight: 700;
-    color: #00E5FF;
-    margin-right: 40px;
+    color: cyan;
+    margin-right: 50px;
 }
 
 .navbar ul {
-    display: flex;
     list-style: none;
+    display: flex;
     gap: 25px;
 }
 
 .navbar ul li a {
     text-decoration: none;
-    color: #C8EFFF;
+    color: #caffff;
     font-size: 18px;
     font-weight: 600;
     transition: 0.3s;
 }
 .navbar ul li a:hover {
-    color: #00FFE0;
+    color: cyan;
+    text-shadow: 0 0 10px cyan;
 }
 
-/* MAIN CONTAINER */
+/* ------------------ MAIN CONTENT ------------------ */
+
 .container {
     width: 85%;
-    margin: 140px auto 50px auto;
+    margin: 150px auto 40px auto;
 }
 
-/* INTRO BOX */
 .intro-box {
-    background: rgba(0, 80, 150, 0.25);
-    padding: 15px;
-    border-radius: 10px;
-    border: 1px solid #00CFFF;
-    box-shadow: 0 0 15px rgba(0,200,255,0.3);
+    background: rgba(200, 255, 255, 0.06);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid cyan;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 18px rgba(0, 255, 255, 0.25);
 }
 
 .intro-box h1 {
     text-align: center;
     font-size: 42px;
-    color: #86F2FF;
+    color: cyan;
 }
 
-/* INTRO TEXT */
-.info {
-    font-size: 20px;
-    line-height: 30px;
-    margin: 25px 0;
-}
+/* ------------------ TEAM TABLE ------------------ */
 
-/* TEAM TABLE */
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 25px;
 }
+
 th {
-    background: #002744;
-    color: white;
+    background: rgba(0, 200, 255, 0.25);
+    color: cyan;
     padding: 12px;
+    border: 1px solid cyan;
     font-size: 22px;
 }
+
 td {
     background: rgba(255,255,255,0.05);
-    padding: 15px;
+    padding: 14px;
+    border: 1px solid #0a3d62;
     font-size: 18px;
-    border-bottom: 1px solid #0A3D62;
     text-align: center;
 }
 
-/* SECTION TITLE */
+/* ------------------ SECTION TITLE ------------------ */
+
 .idea-section-title {
     text-align: center;
     font-size: 40px;
-    margin-top: 45px;
+    margin-top: 50px;
     font-weight: 700;
-    color: #79E8FF;
+    color: #8ffcff;
+    text-shadow: 0 0 8px cyan;
 }
 
-/* 2×2 GRID */
+/* ------------------ 2×2 GRID ------------------ */
+
 .grid {
     width: 90%;
     margin: 40px auto;
@@ -118,41 +151,43 @@ td {
     gap: 35px;
 }
 
-/* GLOWING CARDS (EQUAL HEIGHT) */
+/* ------------------ HOLOGRAPHIC GLASS CARDS ------------------ */
+
 .idea-card {
-    background: rgba(0, 60, 120, 0.35);
-    border: 1px solid #00DFFF;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 255, 0.4);
     border-radius: 18px;
     padding: 25px;
-    box-shadow: 0 0 18px rgba(0,200,255,0.25);
-    height: 380px; /* equal height */
-    overflow: auto;
-    transition: 0.3s;
+    height: 380px;
+    overflow-y: auto;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 0 25px rgba(0,255,255,0.25);
+    transition: 0.35s;
 }
+
 .idea-card:hover {
-    box-shadow: 0 0 25px rgba(0,255,255,0.6);
-    transform: translateY(-5px);
+    transform: translateY(-6px);
+    box-shadow: 0 0 35px rgba(0,255,255,0.6);
+    border-color: cyan;
 }
 
 .idea-card h2 {
     text-align: center;
     font-size: 26px;
-    color: #FFD56A;
-    margin-bottom: 10px;
+    color: #ffd86b;
 }
 
 .idea-card h3 {
     text-align: center;
     font-size: 20px;
-    color: #00F2FF;
+    color: cyan;
 }
 
-ul.no-bullets {
+.no-bullets {
     list-style: none;
     padding: 0;
-    margin: 10px 0;
-    font-size: 18px;
     line-height: 30px;
+    font-size: 18px;
 }
 
 </style>
@@ -160,7 +195,21 @@ ul.no-bullets {
 
 <body>
 
-<!-- NAVIGATION BAR -->
+<!-- BACKGROUND -->
+<div id="background"></div>
+
+<script>
+// Generate floating particles
+for (let i = 0; i < 35; i++) {
+    const p = document.createElement("div");
+    p.classList.add("particle");
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.animationDelay = Math.random() * 12 + "s";
+    document.getElementById("background").appendChild(p);
+}
+</script>
+
+<!-- NAVBAR -->
 <div class="navbar">
     <div class="logo">CITY DESIGN</div>
     <ul>
@@ -182,11 +231,11 @@ ul.no-bullets {
     </div>
 
     <div class="info">
-        Course: DAA<br>
+        <p>Course: DAA<br>
         Course Code: 24ECSC205<br>
         Instructor: Prof. Prakash Hegade<br>
         University: KLE Technological University<br>
-        Topic: City Design
+        Topic: City Design</p>
     </div>
 
     <table>
@@ -201,9 +250,7 @@ ul.no-bullets {
 
 <h1 class="idea-section-title">Business Idea Generation</h1>
 
-<!-- 2×2 GRID START -->
 <div class="grid">
-
     <!-- CARD 1 -->
     <div class="idea-card">
         <h2>SHRAVANA</h2>
@@ -228,17 +275,18 @@ ul.no-bullets {
         <h3>Modern Commercial Area Design</h3>
         <ul class="no-bullets">
             <li>1) Smart Traffic Signal System</li>
-            <li>2) Smart Waste Management</li>
-            <li>3) Public Transport Tracking</li>
-            <li>4) Digital Food Ordering & Billing</li>
+            <li>2) Smart Waste Management System</li>
+            <li>3) Public Transport Tracking Simulator</li>
+            <li>4) Digital Food Ordering & Billing System</li>
             <li>5) Smart Parking Management</li>
-            <li>6) Water & Electricity Monitoring</li>
-            <li>7) Smart City Complaint System</li>
-            <li>8) AI Disaster Management</li>
+            <li>6) Water & Electricity Supply Monitoring</li>
+            <li>7) Smart City Complaint Management</li>
+            <li>8) AI-Based Disaster Management System</li>
             <li>9) Smart EV Charging Stations</li>
-            <li>10) Civic Issue Auto-Detection</li>
+            <li>10) Civic Issue Auto-Detection System</li>
         </ul>
     </div>
+
     <!-- CARD 3 -->
     <div class="idea-card">
         <h2>KHUSHI</h2>
