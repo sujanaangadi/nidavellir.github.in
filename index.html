@@ -3,26 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>City Design</title>
+<title>City Design - Industry Dashboard</title>
 
 <style>
-/* ---------- NAVIGATION BAR --------- */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #031128;
+    color: #DFF8FF;
+}
+
+/* NAVIGATION BAR */
 .navbar {
     width: 100%;
-    background: #0A1A3A;
+    background: rgba(0, 180, 255, 0.15);
+    backdrop-filter: blur(12px);
     padding: 20px 40px;
     display: flex;
     align-items: center;
     position: fixed;
     top: 0;
     left: 0;
+    border-bottom: 1px solid #00E5FF;
     z-index: 10;
 }
 
 .navbar .logo {
     font-size: 28px;
     font-weight: 700;
-    color: white;
+    color: #00E5FF;
     margin-right: 40px;
 }
 
@@ -30,264 +40,242 @@
     display: flex;
     list-style: none;
     gap: 25px;
-    margin: 0;
-    padding: 0;
 }
 
 .navbar ul li a {
     text-decoration: none;
-    color: #C8D6FF;
+    color: #C8EFFF;
     font-size: 18px;
     font-weight: 600;
     transition: 0.3s;
 }
-
 .navbar ul li a:hover {
-    color: #00E5A8;
+    color: #00FFE0;
 }
 
-/* ---------- BODY BACKGROUND ---------- */
-body {
-    margin: 0;
-    background: #E9EEF4;
-    font-family: Arial, sans-serif;
-}
-
-/* ---------- MAIN WHITE BOX ---------- */
+/* MAIN CONTAINER */
 .container {
     width: 85%;
-    margin: 140px auto;
-    background: #F4F7FB;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.08);
+    margin: 140px auto 50px auto;
 }
 
-/* ---------- INTRO HEADING BOX ---------- */
+/* INTRO BOX */
 .intro-box {
-    background: #FFFFFF;
+    background: rgba(0, 80, 150, 0.25);
     padding: 15px;
     border-radius: 10px;
-    margin-bottom: 30px;
+    border: 1px solid #00CFFF;
+    box-shadow: 0 0 15px rgba(0,200,255,0.3);
 }
 
 .intro-box h1 {
     text-align: center;
-    font-size: 40px;
-    color: #0A1A3A;
-    margin: 0;
+    font-size: 42px;
+    color: #86F2FF;
 }
 
-/* ---------- INTRO TEXT ---------- */
+/* INTRO TEXT */
 .info {
     font-size: 20px;
     line-height: 30px;
-    margin-bottom: 25px;
+    margin: 25px 0;
 }
 
-/* ---------- TABLE ---------- */
+/* TEAM TABLE */
 table {
     width: 100%;
     border-collapse: collapse;
 }
-
 th {
-    background: #0A1A3A;
+    background: #002744;
     color: white;
     padding: 12px;
     font-size: 22px;
 }
-
 td {
+    background: rgba(255,255,255,0.05);
     padding: 15px;
-    text-align: center;
-    background: white;
     font-size: 18px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #0A3D62;
+    text-align: center;
 }
 
-/* ---------- BUSINESS IDEA SECTIONS ---------- */
+/* SECTION TITLE */
 .idea-section-title {
     text-align: center;
-    font-size: 36px;
-    margin-top: 50px;
+    font-size: 40px;
+    margin-top: 45px;
     font-weight: 700;
-    color: #0A1A3A;
+    color: #79E8FF;
 }
 
+/* 2×2 GRID */
+.grid {
+    width: 90%;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+}
+
+/* GLOWING CARDS (EQUAL HEIGHT) */
 .idea-card {
-    background: #13265C;
-    color: white;
-    padding: 30px;
-    border-radius: 20px;
-    width: 80%;
-    margin: 30px auto;
-    box-shadow: 0 0 15px rgba(0,0,0,0.25);
-    border-left: 6px solid #00E5A8;
+    background: rgba(0, 60, 120, 0.35);
+    border: 1px solid #00DFFF;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 0 18px rgba(0,200,255,0.25);
+    height: 380px; /* equal height */
+    overflow: auto;
+    transition: 0.3s;
+}
+.idea-card:hover {
+    box-shadow: 0 0 25px rgba(0,255,255,0.6);
+    transform: translateY(-5px);
 }
 
 .idea-card h2 {
-    font-size: 28px;
     text-align: center;
-    color: #FFD700;
+    font-size: 26px;
+    color: #FFD56A;
+    margin-bottom: 10px;
 }
 
 .idea-card h3 {
     text-align: center;
-    font-size: 22px;
-    color: #00E5A8;
-    margin-bottom: 15px;
+    font-size: 20px;
+    color: #00F2FF;
 }
 
-/* REMOVE BULLET POINTS FROM ALL NUMBERED LISTS */
 ul.no-bullets {
     list-style: none;
-    padding-left: 0;
-    margin-left: 0;
-    line-height: 32px;
+    padding: 0;
+    margin: 10px 0;
     font-size: 18px;
+    line-height: 30px;
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- ---------- NAV BAR ---------- -->
+<!-- NAVIGATION BAR -->
 <div class="navbar">
     <div class="logo">CITY DESIGN</div>
-
     <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="project.html">Project</a></li>
-        <li><a href="SHRAVANA.html">SHRAVANA</a></li>
-        <li><a href="SUJANA.html">SUJANA</a></li>
-        <li><a href="KHUSHI.html">KHUSHI</a></li>
-        <li><a href="LAXMI.html">LAXMI</a></li>
-        <li><a href="collabz.html">Collabz</a></li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Project</a></li>
+        <li><a href="#">Shravana</a></li>
+        <li><a href="#">Sujana</a></li>
+        <li><a href="#">Khushi</a></li>
+        <li><a href="#">Laxmi</a></li>
     </ul>
 </div>
 
-<!-- ---------- MAIN CONTENT ---------- -->
+<!-- MAIN CONTENT -->
 <div class="container">
 
-    <!-- INTRO HEADING -->
     <div class="intro-box">
         <h1>Introduction</h1>
     </div>
 
-<!-- INTRO TEXT -->
     <div class="info">
         Course: DAA<br>
         Course Code: 24ECSC205<br>
-        Course Instructor: Prof. Prakash Hegade<br>
+        Instructor: Prof. Prakash Hegade<br>
         University: KLE Technological University<br>
         Topic: City Design
     </div>
 
-    <!-- TABLE -->
     <table>
-        <tr>
-            <th>Name</th>
-            <th>USN</th>
-        </tr>
-        <tr>
-            <td>SHRAVANA P MADAKATTI</td>
-            <td>01fe24bcs204</td>
-        </tr>
-        <tr>
-            <td>SUJANA   A    ANGADI</td>
-            <td>01fe24bcs205</td>
-        </tr>
-        <tr>
-            <td>KHUSHI S KAPALI</td>
-            <td>01fe24bcs023</td>
-        </tr>
-        <tr>
-            <td>LAXMI B TALLIKERI</td>
-            <td>01fe24bcs136</td>
-        </tr>
+        <tr><th>Name</th><th>USN</th></tr>
+        <tr><td>SHRAVANA P MADAKATTI</td><td>01fe24bcs204</td></tr>
+        <tr><td>SUJANA A ANGADI</td><td>01fe24bcs205</td></tr>
+        <tr><td>KHUSHI S KAPALI</td><td>01fe24bcs023</td></tr>
+        <tr><td>LAXMI B TALLIKERI</td><td>01fe24bcs136</td></tr>
     </table>
 
 </div>
 
-<!-- -------------------------------------------- -->
-<!--           BUSINESS IDEA GENERATION           -->
-<!-- -------------------------------------------- -->
+<h1 class="idea-section-title">Business Idea Generation</h1>
 
-<h1 class="idea-section-title"> Business Idea Generation</h1>
+<!-- 2×2 GRID START -->
+<div class="grid">
 
-<!-- SHRAVANA -->
-<div class="idea-card">
-    <h2>SHRAVANA</h2>
-    <h3>POWERHOUSE & RENEWABLE ENERGY SYSTEM</h3>
-    <ul class="no-bullets">
-        <li>1) AI Smart Power Distribution Controller</li>
-        <li>2) Solar Panel Efficiency Analyzer</li>
-        <li>3) Wind Turbine Smart RPM Controller</li>
-        <li>4) AI-Based Battery Storage Optimization</li>
-        <li>5) Power Theft / Illegal Connection Detection</li>
-        <li>6) Energy Emergency Auto-Switching</li>
-        <li>7) City-Wide Energy Demand Predictor</li>
-        <li>8) Real-Time Electricity Price Optimizer</li>
-        <li>9) House-to-House Energy Sharing (Peer-to-Peer Grid)</li>
-        <li>10) Smart Load Control Inside Homes & Factories</li>
-    </ul>
-</div>
+    <!-- CARD 1 -->
+    <div class="idea-card">
+        <h2>SHRAVANA</h2>
+        <h3>Powerhouse & Renewable Energy Systems</h3>
+        <ul class="no-bullets">
+            <li>1) AI Smart Power Distribution Controller</li>
+            <li>2) Solar Panel Efficiency Analyzer</li>
+            <li>3) Wind Turbine Smart RPM Controller</li>
+            <li>4) AI-Based Battery Storage Optimization</li>
+            <li>5) Power Theft Detection System</li>
+            <li>6) Emergency Auto Grid Switching</li>
+            <li>7) City-Wide Energy Demand Predictor</li>
+            <li>8) Dynamic Electricity Price Optimizer</li>
+            <li>9) Peer-to-Peer Energy Sharing Grids</li>
+            <li>10) Smart Load Control for Homes & Factories</li>
+        </ul>
+    </div>
 
-<!-- SUJANA -->
-<div class="idea-card">
-    <h2>SUJANA</h2>
-    <h3>Development of Commercial Area Using Modern Technology</h3>
-    <ul class="no-bullets">
-        <li>1) Smart traffic signal system</li>
-        <li>2) Smart waste management system</li>
-        <li>3) Public transport tracking simulator</li>
-        <li>4) Digital food ordering & billing system</li>
-        <li>5) Smart parking management</li>
-        <li>6) Water & electricity supply monitoring</li>
-        <li>7) Smart City complaint management</li>
-        <li>8) AI based  disaster management system</li>
-        <li>9) Smart EV charging stations</li>
-        <li>10) Civic issue auto-detection</li>
-    </ul>
-</div>
+    <!-- CARD 2 -->
+    <div class="idea-card">
+        <h2>SUJANA</h2>
+        <h3>Modern Commercial Area Design</h3>
+        <ul class="no-bullets">
+            <li>1) Smart Traffic Signal System</li>
+            <li>2) Smart Waste Management</li>
+            <li>3) Public Transport Tracking</li>
+            <li>4) Digital Food Ordering & Billing</li>
+            <li>5) Smart Parking Management</li>
+            <li>6) Water & Electricity Monitoring</li>
+            <li>7) Smart City Complaint System</li>
+            <li>8) AI Disaster Management</li>
+            <li>9) Smart EV Charging Stations</li>
+            <li>10) Civic Issue Auto-Detection</li>
+        </ul>
+    </div>
+    <!-- CARD 3 -->
+    <div class="idea-card">
+        <h2>KHUSHI</h2>
+        <h3>Industrial Ideas</h3>
+        <ul class="no-bullets">
+            <li>1) Smart Textile Quality Detector</li>
+            <li>2) AI-Based Worker Safety Monitoring</li>
+            <li>3) Predictive Maintenance for Industrial Machines</li>
+            <li>4) Autonomous Material Sorting Robot</li>
+            <li>5) Smart Inventory Forecasting System</li>
+            <li>6) Waste-Heat Energy Recycling System</li>
+            <li>7) AI-Based Product Packaging Optimization</li>
+            <li>8) Faulty Product Auto-Reject Conveyor System</li>
+            <li>9) Factory Pollution Monitoring & Control Dashboard</li>
+            <li>10) AI-Powered Supply Chain Delay Predictor</li>
+        </ul>
+    </div>
 
-<!-- KHUSHI -->
-<div class="idea-card">
-    <h2>KHUSHI</h2>
-    <h3>Industrial Ideas</h3>
-    <ul class="no-bullets">
-        <li>1) Smart Textile Quality Detector</li>
-        <li>2) AI-Based Worker Safety Monitoring</li>
-        <li>3) Predictive Maintenance for Industrial Machines</li>
-        <li>4) Autonomous Material Sorting Robot</li>
-        <li>5) Smart Inventory Forecasting System</li>
-        <li>6) Waste-Heat Energy Recycling System</li>
-        <li>7) AI-Based Product Packaging Optimization</li>
-        <li>8) Faulty Product Auto-Reject Conveyor System</li>
-        <li>9) Factory Pollution Monitoring & Control Dashboard</li>
-        <li>10) AI-Powered Supply Chain Delay Predictor</li>
-    </ul>
-</div>
+    <!-- CARD 4 -->
+    <div class="idea-card">
+        <h2>LAXMI</h2>
+        <h3>Agriculture Ideas</h3>
+        <ul class="no-bullets">
+            <li>1) Coconut Husk Water-Reservation System</li>
+            <li>2) Organic Vegetable Farming</li>
+            <li>3) Mushroom Cultivation</li>
+            <li>4) Hydroponic Farming</li>
+            <li>5) Cow-Dung Based Products</li>
+            <li>6) Beekeeping</li>
+            <li>7) Nursery Business</li>
+            <li>8) Medicinal Plant Farming</li>
+            <li>9) Solar Farming</li>
+            <li>10) Smart Goat Farming Unit</li>
+        </ul>
+    </div>
 
-<!-- LAXMI -->
-<div class="idea-card">
-    <h2>LAXMI</h2>
-    <h3>Agriculture Ideas</h3>
-    <ul class="no-bullets">
-        <li>1) Coconut Husk Water-Reservation System</li>
-        <li>2) Organic Vegetable Farming</li>
-        <li>3) Mushroom Cultivation</li>
-        <li>4) Hydroponic Farming</li>
-        <li>5) Cow-Dung Based Products</li>
-        <li>6) Beekeeping</li>
-        <li>7) Nursery Business</li>
-        <li>8) Medicinal Plant Farming</li>
-        <li>9) Solar Farming</li>
-        <li>10) Smart Goat Farming Unit</li>
-    </ul>
-</div>
+</div> <!-- end grid -->
 
 </body>
 </html>
