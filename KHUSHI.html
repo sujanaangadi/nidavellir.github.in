@@ -6,138 +6,92 @@
 <title>Industry Automation Using DAA</title>
 
 <style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
 
-/* GLOBAL */
-body {
-    margin: 0;
-    font-family: "Segoe UI", sans-serif;
-    background: #0d131d;
-    color: #d9e5e7;
-}
+        /* ORIGINAL INDUSTRY THEME */
+        background: #0d131d;
+        color: #d9e5e7;
+    }
 
-/* HEADER */
-.header {
-    width: 90%;
-    margin: auto;
-    padding: 25px 0;
-    text-align: center;
-    border-bottom: 1px solid #1b2a35;
-}
+    /* HEADER */
+    .header {
+        width: 92%;
+        margin: auto;
+        margin-top: 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .title {
+        font-size: 42px;
+        font-weight: bold;
+        color: #22d3ee;
+        text-shadow: 0 0 10px #22d3ee;
+    }
+    .header img {
+        width: 340px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
 
-.header h1 {
-    font-size: 40px;
-    margin: 0;
-    color: #22d3ee;
-    text-shadow: 0 0 10px #22d3ee;
-}
+    /* GRID */
+    .container {
+        width: 92%;
+        margin: auto;
+        margin-top: 25px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
 
-.header p {
-    font-size: 16px;
-    margin-top: 8px;
-    color: #8ca3ad;
-}
+    /* CARD */
+    .card {
+        background: #111a22;
+        padding: 20px;
+        border-radius: 12px;
+        border-left: 4px solid #22d3ee;
+        box-shadow: 0 4px 12px rgba(34,211,238,0.25);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 25px rgba(34,211,238,0.4);
+        border-left-color: #67e8f9;
+    }
 
-/* WRAPPER */
-.wrapper {
-    display: flex;
-}
+    /* CODE BLOCK */
+    pre {
+        background: #0a0f17;
+        padding: 12px;
+        border-radius: 8px;
+        display: none;
+        white-space: pre-wrap;
+        border: 1px solid #1b2a35;
+        color: #d9e5e7;
+    }
 
-/* SIDEBAR */
-.sidebar {
-    width: 260px;
-    background: #111a22;
-    height: 100vh;
-    padding: 20px;
-    border-right: 1px solid #1b2a35;
-    position: fixed;
-    overflow-y: auto;
-}
-
-.sidebar h2 {
-    color: #22d3ee;
-    text-align: center;
-    font-size: 20px;
-    margin-bottom: 15px;
-}
-
-.nav-item {
-    background: #16232d;
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    color: #d9e5e7;
-    cursor: pointer;
-    border-left: 4px solid transparent;
-    transition: 0.25s;
-}
-
-.nav-item:hover {
-    background: #1a2c38;
-    border-left: 4px solid #22d3ee;
-    box-shadow: 0 0 10px rgba(34,211,238,0.4);
-}
-
-/* CONTENT */
-.content {
-    margin-left: 300px;
-    padding: 30px;
-    width: calc(100% - 300px);
-}
-
-/* CARD */
-.card {
-    background: #111a22;
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid #1b2a35;
-    margin-top: 20px;
-    box-shadow: 0 0 10px rgba(34,211,238,0.15);
-}
-
-.card h3 {
-    margin-top: 0;
-    color: #22d3ee;
-    font-size: 26px;
-}
-
-/* BUTTON */
-.btn {
-    background: #22d3ee;
-    padding: 8px 12px;
-    color: #0d131d;
-    font-weight: bold;
-    border-radius: 6px;
-    display: inline-block;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.btn:hover {
-    background: #67e8f9;
-}
-
-/* CODE BOX */
-.code-box {
-    background: #0a0f17;
-    padding: 15px;
-    border-radius: 10px;
-    border: 1px solid #1b2a35;
-    white-space: pre-wrap;
-    overflow-x: auto;
-    margin-top: 10px;
-    font-size: 14px;
-}
-
+    /* BUTTON */
+    .algo-btn {
+        background: #22d3ee;
+        padding: 8px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        display: inline-block;
+        margin-top: 10px;
+        color: #0d131d;
+        font-weight: bold;
+    }
+    .algo-btn:hover {
+        background: #67e8f9;
+    }
 </style>
 
 <script>
-function loadProblem(id) {
-    document.getElementById("content").innerHTML = problems[id];
-}
-
-function toggleCode(id) {
-    const box = document.getElementById(id);
-    box.style.display = (box.style.display === "block") ? "none" : "block";
+function toggleAlgo(id) {
+    const x = document.getElementById(id);
+    x.style.display = x.style.display === "block" ? "none" : "block";
 }
 </script>
 
@@ -145,68 +99,47 @@ function toggleCode(id) {
 <body>
 
 <div class="header">
-    <h1>Industry Automation Using DAA</h1>
-    <p>10 Industrial Problems Solved Using Algorithms & Data Structures</p>
+    <h2 class="title">Industry Automation Using DAA</h2>
+    <img src="https://img.freepik.com/free-vector/industry-4-0-concept-illustration_114360-9928.jpg">
 </div>
 
-<div class="wrapper">
+<div class="container">
 
-<!-- SIDEBAR -->
-<div class="sidebar">
-    <h2>Problem List</h2>
-
-    <div class="nav-item" onclick="loadProblem(1)">1. Smart Textile Quality Detector</div>
-    <div class="nav-item" onclick="loadProblem(2)">2. AI-Based Worker Safety Monitoring</div>
-    <div class="nav-item" onclick="loadProblem(3)">3. Predictive Machine Maintenance</div>
-    <div class="nav-item" onclick="loadProblem(4)">4. Autonomous Sorting Robot</div>
-    <div class="nav-item" onclick="loadProblem(5)">5. Smart Inventory Forecasting</div>
-    <div class="nav-item" onclick="loadProblem(6)">6. Waste-Heat Energy Recycling</div>
-    <div class="nav-item" onclick="loadProblem(7)">7. AI-Based Packaging Optimization</div>
-    <div class="nav-item" onclick="loadProblem(8)">8. Faulty Product Auto-Reject System</div>
-    <div class="nav-item" onclick="loadProblem(9)">9. Factory Pollution Monitoring Dashboard</div>
-    <div class="nav-item" onclick="loadProblem(10)">10. AI-Powered Supply Chain Delay Predictor</div>
-</div>
-
-<!-- CONTENT -->
-<div class="content" id="content">
-    <h2>Select a Problem From Sidebar</h2>
-    <p>This section will display algorithm explanation and C++ code.</p>
-</div>
-
-</div>
-
-<script>
-
-/* ------------------- PROBLEMS DATA ------------------- */
-
-const problems = {
-
-/* 1 -------------------------------------------------- */
-1: `
-<div class='card'>
-<h3>1. Smart Textile Quality Detector</h3>
+<!-- -------------------- 1. SMART TEXTILE QUALITY DETECTOR -------------------- -->
+<div class="card">
+<h3>1) Smart Textile Quality Detector</h3>
 
 <b>Algorithms Used:</b>
 <ul>
-<li>KMP – Pattern Matching</li>
-<li>Rabin–Karp – Fast Scan</li>
-<li>DFS/BFS – Defect Spread Mapping</li>
-<li>AVL Tree – Defect Lookup</li>
-<li>Heap – Severity Prioritization</li>
+<li>KMP Pattern Matching</li>
+<li>Rabin–Karp</li>
+<li>DFS/BFS Spread Mapping</li>
+<li>AVL Tree Lookup</li>
+<li>Heap-Based Severity Ranking</li>
 </ul>
 
-<b>Most Accurate Algorithm: KMP Pattern Search</b>
+<b>How the Algorithm Works:</b>
+<ol>
+<li>Fabric texture is converted into a numeric pattern sequence.</li>
+<li>KMP is used to efficiently check if a defect pattern exists in the cloth.</li>
+<li>DFS/BFS estimates how far the defect spreads through fabric layers.</li>
+<li>AVL Tree stores previously known defects for quick verification.</li>
+<li>A Max-Heap prioritizes severe defects first.</li>
+</ol>
 
-<div class='btn' onclick="toggleCode('p1')">Show Code</div>
-<div class='code-box' id='p1' style="display:none;">
-#include &lt;bits/stdc++.h&gt;
+<b>Efficiency Analysis:</b><br>
+Time Complexity: <b>O(n + m)</b> (KMP)<br>
+Space Complexity: <b>O(m)</b>
+
+<span class="algo-btn" onclick="toggleAlgo('c1')">Show Code</span>
+<pre id="c1">
+#include <bits/stdc++.h>
 using namespace std;
 
-vector&lt;int&gt; buildLPS(vector&lt;int&gt;& pat){
-    vector&lt;int&gt; lps(pat.size(), 0);
+vector<int> buildLPS(vector<int>& pat){
+    vector<int> lps(pat.size(), 0);
     int len=0, i=1;
-
-    while(i&lt;pat.size()){
+    while(i<pat.size()){
         if(pat[i]==pat[len]){
             len++; lps[i]=len; i++;
         }
@@ -216,65 +149,69 @@ vector&lt;int&gt; buildLPS(vector&lt;int&gt;& pat){
     return lps;
 }
 
-bool KMP(vector&lt;int&gt;& text, vector&lt;int&gt;& pat){
+bool KMP(vector<int>& text, vector<int>& pat){
     auto lps = buildLPS(pat);
     int i=0, j=0;
-
-    while(i&lt;text.size()){
+    while(i<text.size()){
         if(text[i]==pat[j]){ i++; j++; }
         else j = (j? lps[j-1] : 0), i += (j==0);
-
         if(j==pat.size()) return true;
     }
     return false;
 }
 
 int main(){
-    vector&lt;int&gt; cloth={3,4,4,7,4,4,7};
-    vector&lt;int&gt; defect={4,4,7};
-
-    cout &lt;&lt; (KMP(cloth,defect)? "Defect Found" : "No Defect");
+    vector<int> cloth={3,4,4,7,4,4,7};
+    vector<int> defect={4,4,7};
+    cout << (KMP(cloth,defect)? "Defect Found" : "No Defect");
 }
+</pre>
 </div>
-</div>
-`,
 
-
-/* 2 -------------------------------------------------- */
-2: `
-<div class='card'>
-<h3>2. AI-Based Worker Safety Monitoring</h3>
+<!-- -------------------- 2. WORKER SAFETY MONITORING -------------------- -->
+<div class="card">
+<h3>2) AI-Based Worker Safety Monitoring</h3>
 
 <b>Algorithms Used:</b>
 <ul>
-<li>Binary Search – Safety Threshold</li>
-<li>AVL Tree – Safety Events</li>
-<li>Heap – Danger Priority</li>
-<li>BFS/DFS – Hazard Spread</li>
-<li>Dijkstra – Safest Escape Route</li>
+<li>Dijkstra’s Shortest Path</li>
+<li>Binary Search (Safety Thresholds)</li>
+<li>Heap-Based Priority Ranking</li>
+<li>BFS/DFS Hazard Spread</li>
 </ul>
 
-<b>Most Accurate Algorithm: Dijkstra</b>
+<b>How the Algorithm Works:</b>
+<ol>
+<li>Factory layout is treated as a weighted graph.</li>
+<li>Dijkstra finds the safest escape route from the worker's location.</li>
+<li>Heap prioritizes hazardous zones that need urgent alerts.</li>
+<li>BFS/DFS simulate spread of fire or gas leakage.</li>
+<li>Binary Search checks if safety level exceeds allowed threshold.</li>
+</ol>
 
-<div class='btn' onclick="toggleCode('p2')">Show Code</div>
-<div class='code-box' id='p2' style="display:none;">
-#include &lt;bits/stdc++.h&gt;
+<b>Efficiency Analysis:</b><br>
+Time Complexity: <b>O((V + E) log V)</b> (Dijkstra)<br>
+Space Complexity: <b>O(V)</b>
+
+<span class="algo-btn" onclick="toggleAlgo('c2')">Show Code</span>
+<pre id="c2">
+#include <bits/stdc++.h>
 using namespace std;
 
-vector&lt;int&gt; dijkstra(int n, int src, vector&lt;vector&lt;pair&lt;int,int&gt;&gt;&gt; &adj){
-    vector&lt;int&gt; dist(n, INT_MAX);
-    priority_queue&lt;pair&lt;int,int&gt;, vector&lt;pair&lt;int,int&gt;&gt;, greater&lt;pair&lt;int,int&gt;&gt;&gt; pq;
+vector<int> dijkstra(int n, int src, vector<vector<pair<int,int>>> &adj){
+    vector<int> dist(n, INT_MAX);
+    priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;
 
     dist[src] = 0;
     pq.push({0,src});
 
     while(!pq.empty()){
         auto [d,u] = pq.top(); pq.pop();
-        if(d &gt; dist[u]) continue;
+        if(d > dist[u]) continue;
 
         for(auto &e : adj[u]){
             int v=e.first, w=e.second;
-            if(dist[u] + w &lt; dist[v]){
+            if(dist[u] + w < dist[v]){
                 dist[v] = dist[u] + w;
                 pq.push({dist[v], v});
             }
@@ -285,7 +222,7 @@ vector&lt;int&gt; dijkstra(int n, int src, vector&lt;vector&lt;pair&lt;int,int&g
 
 int main(){
     int n = 5;
-    vector&lt;vector&lt;pair&lt;int,int&gt;&gt;&gt; adj(n);
+    vector<vector<pair<int,int>>> adj(n);
 
     adj[0]={{1,3},{2,1}};
     adj[1]={{3,4}};
@@ -294,164 +231,186 @@ int main(){
 
     auto safe = dijkstra(n,0,adj);
 
-    for(int d:safe) cout &lt;&lt; d &lt;&lt; " ";
+    for(int d:safe) cout << d << " ";
 }
+</pre>
 </div>
-</div>
-`,
 
-
-/* 3 -------------------------------------------------- */
-3: `
-<div class='card'>
-<h3>3. Predictive Machine Maintenance</h3>
+<!-- -------------------- 3. PREDICTIVE MAINTENANCE -------------------- -->
+<div class="card">
+<h3>3) Predictive Machine Maintenance</h3>
 
 <b>Algorithms Used:</b>
 <ul>
-<li>Segment Tree – Range Vibration Query</li>
-<li>Heap – Highest Risk</li>
-<li>DFS/BFS – Failure Spread</li>
-<li>KMP – Repetitive Fault Pattern</li>
+<li>Segment Tree (Range Max Query)</li>
+<li>Heap (Risk Prioritization)</li>
+<li>KMP (Repeated Fault Pattern Detection)</li>
 </ul>
 
-<b>Most Accurate Algorithm: Segment Tree (Range Max Query)</b>
+<b>How the Algorithm Works:</b>
+<ol>
+<li>Machine vibration logs are stored in an array.</li>
+<li>A segment tree quickly finds maximum vibration in any time interval.</li>
+<li>If max vibration > threshold, maintenance alert is triggered.</li>
+<li>Heap ranks machines based on severity of vibration.</li>
+</ol>
 
-<div class='btn' onclick="toggleCode('p3')">Show Code</div>
-<div class='code-box' id='p3' style="display:none;">
-#include &lt;bits/stdc++.h&gt;
+<b>Efficiency Analysis:</b><br>
+Time Complexity: <b>O(log n)</b> (Segment Tree Query)<br>
+Space Complexity: <b>O(n)</b>
+
+<span class="algo-btn" onclick="toggleAlgo('c3')">Show Code</span>
+<pre id="c3">
+#include <bits/stdc++.h>
 using namespace std;
 
-int build(vector&lt;int&gt;& a, vector&lt;int&gt;& st, int i, int l, int r){
+int build(vector<int>& a, vector<int>& st, int i, int l, int r){
     if(l==r) return st[i]=a[l];
     int m=(l+r)/2;
     return st[i]=max(build(a,st,2*i+1,l,m),
                      build(a,st,2*i+2,m+1,r));
 }
 
-int query(vector&lt;int&gt;& st, int i, int l, int r, int ql, int qr){
-    if(qr&lt;l || ql&gt;r) return -1;
-    if(ql&lt;=l && r&lt;=qr) return st[i];
+int query(vector<int>& st, int i, int l, int r, int ql, int qr){
+    if(qr<l || ql>r) return -1;
+    if(ql<=l && r<=qr) return st[i];
     int m=(l+r)/2;
     return max(query(st,2*i+1,l,m,ql,qr),
                query(st,2*i+2,m+1,r,ql,qr));
 }
 
 int main(){
-    int n; cin&gt;&gt;n;
-    vector&lt;int&gt; vib(n);
-    for(int &x:vib) cin&gt;&gt;x;
+    int n; cin>>n;
+    vector<int> vib(n);
+    for(int &x:vib) cin>>x;
 
-    vector&lt;int&gt; st(4*n);
+    vector<int> st(4*n);
     build(vib,st,0,0,n-1);
 
-    int L,R; 
-    cin&gt;&gt;L&gt;&gt;R;
+    int L,R; cin>>L>>R;
 
     int mx=query(st,0,0,n-1,L,R);
 
-    cout &lt;&lt; (mx&gt;100? "Maintenance Needed":"Normal");
+    cout << (mx>100? "Maintenance Needed":"Normal");
 }
+</pre>
 </div>
-</div>
-`,
 
-
-/* 4 -------------------------------------------------- */
-4: `
-<div class='card'>
-<h3>4. Autonomous Material Sorting Robot</h3>
+<!-- -------------------- 4. SORTING ROBOT -------------------- -->
+<div class="card">
+<h3>4) Autonomous Sorting Robot</h3>
 
 <b>Algorithms Used:</b>
 <ul>
-<li>Quick Sort – Sorting Items</li>
-<li>Merge Sort – Stable Sort</li>
-<li>Heap Sort – Priority Picking</li>
+<li>Quick Sort</li>
+<li>Merge Sort</li>
+<li>Heap Sort</li>
 </ul>
 
-<b>Most Accurate Algorithm: Quick Sort Classification</b>
+<b>How the Algorithm Works:</b>
+<ol>
+<li>Robot reads item weight.</li>
+<li>Items are classified based on weight.</li>
+<li>Sorting algorithms help arrange items for packaging or transport.</li>
+</ol>
 
-<div class='btn' onclick="toggleCode('p4')">Show Code</div>
-<div class='code-box' id='p4' style="display:none;">
-#include &lt;bits/stdc++.h&gt;
+<b>Efficiency Analysis:</b><br>
+Time Complexity: <b>O(n log n)</b><br>
+Space Complexity: <b>O(log n)</b>
+
+<span class="algo-btn" onclick="toggleAlgo('c4')">Show Code</span>
+<pre id="c4">
+#include <bits/stdc++.h>
 using namespace std;
 
 string classify(float w){
-    if(w&lt;1) return "Light";
-    if(w&lt;5) return "Medium";
+    if(w<1) return "Light";
+    if(w<5) return "Medium";
     return "Heavy";
 }
 
 int main(){
-    int n; cin&gt;&gt;n;
+    int n; cin>>n;
     while(n--){
-        float w; cin&gt;&gt;w;
-        cout &lt;&lt; classify(w) &lt;&lt; "\\n";
+        float w; cin>>w;
+        cout << classify(w) << "\n";
     }
 }
+</pre>
 </div>
-</div>
-`,
 
-
-/* 5 -------------------------------------------------- */
-5: `
-<div class='card'>
-<h3>5. Smart Inventory Forecasting</h3>
+<!-- -------------------- 5. INVENTORY FORECASTING -------------------- -->
+<div class="card">
+<h3>5) Smart Inventory Forecasting</h3>
 
 <b>Algorithms Used:</b>
 <ul>
-<li>Moving Average – Trend Forecasting</li>
-<li>Binary Search – Reorder Point</li>
-<li>Merge Sort – Sorting Sales Data</li>
+<li>Moving Average</li>
+<li>Binary Search (Reorder Level)</li>
+<li>Merge Sort (Sales Sorting)</li>
 </ul>
 
-<b>Most Accurate Algorithm: Moving Average</b>
+<b>How the Algorithm Works:</b>
+<ol>
+<li>Daily sales values are stored in an array.</li>
+<li>Average is computed to predict future demand.</li>
+<li>Binary Search checks if stock is below reorder point.</li>
+</ol>
 
-<div class='btn' onclick="toggleCode('p5')">Show Code</div>
-<div class='code-box' id='p5' style="display:none;">
-#include &lt;bits/stdc++.h&gt;
+<b>Efficiency Analysis:</b><br>
+Time Complexity: <b>O(n)</b><br>
+Space Complexity: <b>O(1)</b>
+
+<span class="algo-btn" onclick="toggleAlgo('c5')">Show Code</span>
+<pre id="c5">
+#include <bits/stdc++.h>
 using namespace std;
 
 int main(){
-    int n; cin&gt;&gt;n;
-    vector&lt;int&gt; s(n);
-    for(int &x:s) cin&gt;&gt;x;
+    int n; cin>>n;
+    vector<int> s(n);
+    for(int &x:s) cin>>x;
 
     int sum = accumulate(s.begin(), s.end(), 0);
-
-    cout &lt;&lt; "Forecast: " &lt;&lt; sum/n;
+    cout << "Forecast: " << sum/n;
 }
+</pre>
 </div>
-</div>
-`,
 
-
-/* 6 -------------------------------------------------- */
-6: `
-<div class='card'>
-<h3>6. Waste-Heat Energy Recycling</h3>
+<!-- -------------------- 6. WASTE HEAT RECYCLING -------------------- -->
+<div class="card">
+<h3>6) Waste-Heat Energy Recycling</h3>
 
 <b>Algorithms Used:</b>
 <ul>
-<li>Max Heap – Highest Heat Source</li>
-<li>Binary Search – Threshold Check</li>
+<li>Max Heap</li>
+<li>Binary Search (Temperature Threshold)</li>
 </ul>
 
-<b>Most Accurate Algorithm: Max Heap</b>
+<b>How the Algorithm Works:</b>
+<ol>
+<li>Heat sources are pushed into a max heap.</li>
+<li>Highest temperature is processed first.</li>
+<li>If temperature > threshold, energy is converted.</li>
+</ol>
 
-<div class='btn' onclick="toggleCode('p6')">Show Code</div>
-<div class='code-box' id='p6' style="display:none;">
-#include &lt;bits/stdc++.h&gt;
+<b>Efficiency Analysis:</b><br>
+Time Complexity: <b>O(n log n)</b><br>
+Space Complexity: <b>O(n)</b>
+
+<span class="algo-btn" onclick="toggleAlgo('c6')">Show Code</span>
+<pre id="c6">
+#include <bits/stdc++.h>
 using namespace std;
 
 int main(){
     int n;
-    cin&gt;&gt;n;
+    cin>>n;
 
-    priority_queue&lt;float&gt; pq;
+    priority_queue<float> pq;
 
-    for(int i=0;i&lt;n;i++){
-        float t; cin&gt;&gt;t;
+    for(int i=0;i<n;i++){
+        float t; cin>>t;
         pq.push(t);
     }
 
@@ -460,195 +419,214 @@ int main(){
         float t=pq.top(); pq.pop();
         float e = max(0.0f, (t-40)*0.6f);
         total += e;
-        cout &lt;&lt; "Converted: " &lt;&lt; e &lt;&lt; " kW\\n";
+        cout<<"Converted: "<<e<<" kW\n";
     }
 
-    cout &lt;&lt; "Total Energy: " &lt;&lt; total;
+    cout<<"Total Energy: "<<total;
 }
+</pre>
 </div>
-</div>
-`,
 
-
-/* 7 -------------------------------------------------- */
-7: `
-<div class='card'>
-<h3>7. AI-Based Packaging Optimization</h3>
+<!-- -------------------- 7. PACKAGING OPTIMISATION -------------------- -->
+<div class="card">
+<h3>7) AI-Based Packaging Optimization</h3>
 
 <b>Algorithms Used:</b>
 <ul>
-<li>Binary Search – Best Fit Box</li>
-<li>Quick Sort – Rank Boxes</li>
-<li>DP – Cost Minimization</li>
+<li>Binary Search</li>
+<li>Quick Sort</li>
+<li>Dynamic Programming</li>
 </ul>
 
-<b>Most Accurate Algorithm: Binary Search</b>
+<b>How the Algorithm Works:</b>
+<ol>
+<li>Box volumes stored in sorted array.</li>
+<li>Binary Search finds best-fit box.</li>
+<li>DP minimizes packaging cost.</li>
+</ol>
 
-<div class='btn' onclick="toggleCode('p7')">Show Code</div>
-<div class='code-box' id='p7' style="display:none;">
-#include &lt;bits/stdc++.h&gt;
+<b>Efficiency Analysis:</b><br>
+Time Complexity: <b>O(log n)</b><br>
+Space Complexity: <b>O(1)</b>
+
+<span class="algo-btn" onclick="toggleAlgo('c7')">Show Code</span>
+<pre id="c7">
+#include <bits/stdc++.h>
 using namespace std;
 
-vector&lt;int&gt; boxes = {100, 300, 500};
+vector<int> boxes = {100, 300, 500};
 
 int findBox(int v){
     int low=0, high=boxes.size()-1, ans=-1;
-
-    while(low&lt;=high){
+    while(low<=high){
         int mid=(low+high)/2;
-        if(boxes[mid] &gt;= v){
-            ans=mid;
-            high = mid - 1;
-        } else low = mid + 1;
+        if(boxes[mid] >= v){
+            ans=mid; high = mid - 1;
+        }
+        else low = mid + 1;
     }
     return ans;
 }
 
 int main(){
-    int n; cin&gt;&gt;n;
+    int n; cin>>n;
     while(n--){
-        int v; cin&gt;&gt;v;
+        int v; cin>>v;
         int idx=findBox(v);
 
-        if(idx==-1) cout &lt;&lt; "No Box\\n";
-        else if(idx==0) cout &lt;&lt; "Small\\n";
-        else if(idx==1) cout &lt;&lt; "Medium\\n";
-        else cout &lt;&lt; "Large\\n";
+        if(idx==-1) cout<<"No Box\n";
+        else if(idx==0) cout<<"Small\n";
+        else if(idx==1) cout<<"Medium\n";
+        else cout<<"Large\n";
     }
 }
+</pre>
 </div>
-</div>
-`,
 
-
-/* 8 -------------------------------------------------- */
-8: `
-<div class='card'>
-<h3>8. Faulty Product Auto-Reject System</h3>
+<!-- -------------------- 8. FAULTY PRODUCT REJECTION -------------------- -->
+<div class="card">
+<h3>8) Faulty Product Auto-Reject System</h3>
 
 <b>Algorithms Used:</b>
 <ul>
-<li>Range Check – Weight Validation</li>
-<li>Heap – Prioritize Defects</li>
-<li>Lookup Table – Fast Reject</li>
+<li>Range Checking</li>
+<li>Heap (Defect Severity)</li>
+<li>Lookup Table</li>
 </ul>
 
-<b>Most Accurate Algorithm: Range Check</b>
+<b>How the Algorithm Works:</b>
+<ol>
+<li>Weight of each product is measured.</li>
+<li>If weight is outside range → product rejected.</li>
+<li>Heap sorts defects based on severity (optional).</li>
+</ol>
 
-<div class='btn' onclick="toggleCode('p8')">Show Code</div>
-<div class='code-box' id='p8' style="display:none;">
-#include &lt;bits/stdc++.h&gt;
+<b>Efficiency Analysis:</b><br>
+Time Complexity: <b>O(1)</b><br>
+Space Complexity: <b>O(1)</b>
+
+<span class="algo-btn" onclick="toggleAlgo('c8')">Show Code</span>
+<pre id="c8">
+#include <bits/stdc++.h>
 using namespace std;
 
 bool reject(float w){
-    return (w&lt;90 || w&gt;110);
+    return (w<90 || w>110);
 }
 
 int main(){
-    int n; cin&gt;&gt;n;
+    int n; cin>>n;
 
     while(n--){
-        float w; cin&gt;&gt;w;
-        cout &lt;&lt; (reject(w)? "Rejected\\n" : "Accepted\\n");
+        float w; cin>>w;
+        cout<<(reject(w)? "Rejected\n" : "Accepted\n");
     }
 }
+</pre>
 </div>
-</div>
-`,
 
-
-/* 9 -------------------------------------------------- */
-9: `
-<div class='card'>
-<h3>9. Factory Pollution Monitoring Dashboard</h3>
+<!-- -------------------- 9. POLLUTION MONITORING -------------------- -->
+<div class="card">
+<h3>9) Factory Pollution Monitoring</h3>
 
 <b>Algorithms Used:</b>
 <ul>
-<li>Segment Tree – Pollution Range</li>
-<li>Heap – Spike Detection</li>
-<li>BFS – Pollution Spread</li>
+<li>Segment Tree</li>
+<li>Heap Spike Detection</li>
+<li>BFS Spread Simulation</li>
 </ul>
 
-<b>Most Accurate Algorithm: Segment Tree</b>
+<b>How the Algorithm Works:</b>
+<ol>
+<li>Pollution values stored in array.</li>
+<li>Segment tree finds max pollution in any time range.</li>
+<li>If max > limit, alert is generated.</li>
+</ol>
 
-<div class='btn' onclick="toggleCode('p9')">Show Code</div>
-<div class='code-box' id='p9' style="display:none;">
-#include &lt;bits/stdc++.h&gt;
+<b>Efficiency Analysis:</b><br>
+Time Complexity: <b>O(log n)</b><br>
+Space Complexity: <b>O(n)</b>
+
+<span class="algo-btn" onclick="toggleAlgo('c9')">Show Code</span>
+<pre id="c9">
+#include <bits/stdc++.h>
 using namespace std;
 
-int build(vector&lt;int&gt;& a, vector&lt;int&gt;& st, int i, int l, int r){
+int build(vector<int>& a, vector<int>& st, int i, int l, int r){
     if(l==r) return st[i]=a[l];
     int m=(l+r)/2;
     return st[i]=max(build(a,st,2*i+1,l,m),
                      build(a,st,2*i+2,m+1,r));
 }
 
-int query(vector&lt;int&gt;& st, int i, int l, int r, int ql, int qr){
-    if(qr&lt;l || ql&gt;r) return -1;
-    if(ql&lt;=l && r&lt;=qr) return st[i];
+int query(vector<int>& st, int i, int l, int r, int ql, int qr){
+    if(qr<l || ql>r) return -1;
+    if(ql<=l && r<=qr) return st[i];
     int m=(l+r)/2;
     return max(query(st,2*i+1,l,m,ql,qr),
                query(st,2*i+2,m+1,r,ql,qr));
 }
 
 int main(){
-    int n; cin&gt;&gt;n;
-    vector&lt;int&gt; a(n);
-    for(int &x:a) cin&gt;&gt;x;
+    int n; cin>>n;
+    vector<int> a(n);
+    for(int &x:a) cin>>x;
 
-    vector&lt;int&gt; st(4*n);
+    vector<int> st(4*n);
     build(a,st,0,0,n-1);
 
-    int L,R; cin&gt;&gt;L&gt;&gt;R;
+    int L,R; cin>>L>>R;
 
     int mx=query(st,0,0,n-1,L,R);
 
-    cout &lt;&lt; (mx&gt;900? "High Pollution" : "Normal");
+    cout<<(mx>900? "High Pollution" : "Normal");
 }
+</pre>
 </div>
-</div>
-`,
 
-
-/* 10 -------------------------------------------------- */
-10: `
-<div class='card'>
-<h3>10. AI-Powered Supply Chain Delay Predictor</h3>
+<!-- -------------------- 10. SUPPLY CHAIN DELAY PREDICTOR -------------------- -->
+<div class="card">
+<h3>10) Supply Chain Delay Predictor</h3>
 
 <b>Algorithms Used:</b>
 <ul>
-<li>Dijkstra – Fastest Delivery Path</li>
-<li>Bellman–Ford – Negative Delays</li>
-<li>Floyd–Warshall – All-Pairs Shortest Path</li>
+<li>Dijkstra (Expected Delay Paths)</li>
+<li>Bellman-Ford (Handles Negative Delays)</li>
+<li>Floyd-Warshall (All-Pairs Delay Matrix)</li>
 </ul>
 
-<b>Most Accurate Algorithm: Dijkstra Shortest Path Model</b>
+<b>How the Algorithm Works:</b>
+<ol>
+<li>Expected and actual delivery times are compared.</li>
+<li>If actual > expected → delay reported.</li>
+<li>Dijkstra helps compute fastest predicted delivery path.</li>
+</ol>
 
-<div class='btn' onclick="toggleCode('p10')">Show Code</div>
-<div class='code-box' id='p10' style="display:none;">
-#include &lt;bits/stdc++.h&gt;
+<b>Efficiency Analysis:</b><br>
+Time Complexity: <b>O(n)</b><br>
+Space Complexity: <b>O(n)</b>
+
+<span class="algo-btn" onclick="toggleAlgo('c10')">Show Code</span>
+<pre id="c10">
+#include <bits/stdc++.h>
 using namespace std;
 
 int main(){
-    int n; cin&gt;&gt;n;
-    vector&lt;float&gt; expected(n), actual(n);
+    int n; cin>>n;
+    vector<float> expected(n), actual(n);
 
-    for(float &x:expected) cin&gt;&gt;x;
-    for(float &x:actual) cin&gt;&gt;x;
+    for(float &x:expected) cin>>x;
+    for(float &x:actual) cin>>x;
 
-    for(int i=0;i&lt;n;i++){
+    for(int i=0;i<n;i++){
         float d = actual[i] - expected[i];
-        if(d&gt;0) cout &lt;&lt; "Delayed by " &lt;&lt; d &lt;&lt; " hours\\n";
-        else cout &lt;&lt; "On Time\\n";
+        if(d>0) cout<<"Delayed by "<<d<<" hours\n";
+        else cout<<"On Time\n";
     }
 }
+</pre>
 </div>
+
 </div>
-`
-
-}; // END PROBLEMS
-
-</script>
-
 </body>
 </html>
