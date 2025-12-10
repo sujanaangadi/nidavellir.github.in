@@ -286,15 +286,16 @@
       <!-- 1 -->
       <article class="card">
         <h2>1) Coconut Husk Water-Reservation System</h2>
-        <div class="subtitle">Reduce irrigation, hold moisture</div>
+        <div class="subtitle">“Save 50% water using natural husk technology."</div>
         <div class="meta">
-          <strong>A system that uses coconut husk fibers to hold water in the soil.</strong>
-Coconut husk acts like a sponge → stores water
-Helps plants survive during dry seasons
-Low cost, eco-friendly.<br>
+          <strong>A system that uses coconut husk fibers to hold water in the soil.</strong>.<br>
+*Coconut husk acts like a sponge → stores water.<br>
+*Helps plants survive during dry seasons.<br>
+*Low cost, eco-friendly.<br>
           <strong>How to implement:</strong> Mix coconut husk (coir) with soil in beds or pits; use 20–30% coir ratio; mulch surface.<br>
-          <strong>Why / Benefits:</strong> Holds 8–10× water, reduces irrigation 40–60%, more yield.<br>
-          <strong>Investment:</strong> ₹7,000–₹10,000 per acre • <strong>Profit:</strong> ₹15k–₹25k/yr per acre.
+          <strong> Benefits:</strong> Holds 8–10× water, reduces irrigation 40–60%, more yield.<br>
+          <strong>Related SDGs:</strong>SDG 6,12,13.<br>
+          <strong>Used algorithm and why:</strong>"A Greedy Algorithm "makes the best possible choice at each step, aiming to maximize water storage and minimize wastage. When applied to a coconut-husk water reservation system, it becomes the most effective technique for water distribution and absorption.<br>
         </div>
 
         <div class="row">
@@ -330,11 +331,16 @@ int main() {
       <!-- 2 -->
       <article class="card">
         <h2>2) Organic Vegetable Farming</h2>
-        <div class="subtitle">Chemical-free vegetables for market</div>
+        <div class="subtitle">“Farm-to-family delivery within 3 hours.”</div>
         <div class="meta">
-          <strong>How to implement:</strong> Use compost / cow dung / neem; drip irrigation; polyhouse for high-value crops.<br>
-          <strong>Why / Benefits:</strong> Healthier produce & higher price (≈2×), local employment.<br>
-          <strong>Investment:</strong> ₹20,000 per acre • <strong>Profit:</strong> ₹60k–₹1,00k/yr per acre.
+          <strong>How to implement:</strong> *Sell vegetables directly to apartments, schools, gyms, hotels.<br>
+            <strong>why It Works:</strong>
+*People want chemical-free food.<br>
+*Tie-up with Swiggy/Zomato → guaranteed sales.<br>
+*Subscription model → monthly income.<br>
+          <strong>Benefits:</strong> Healthier produce & higher price (≈2×), local employment.<br>
+          <strong>Related SDGs:</strong>SDG 2,3,12 .<br>
+          <strong>Used algorithm and why</strong>"Dynamic Programming "(DP) is a technique for solving complex, multi-step agricultural decisions by breaking them into smaller optimized stages.<br>
         </div>
 
         <div class="row">
@@ -384,11 +390,16 @@ int main() {
       <!-- 3 -->
       <article class="card">
         <h2>3) Mushroom Cultivation</h2>
-        <div class="subtitle">High-yield small-space farming</div>
+        <div class="subtitle">“Protein Manufacturing in Small Spaces”</div>
         <div class="meta">
+           <strong> Convert a small room into a protein factory.</strong>
+
+<strong>Why It Works:</strong>
+*Mushrooms grow in 25 days → fast cash flow.<br>
+*Hotels, bakeries, hostels need mushrooms daily.<br>
+*Value-added products: mushroom pickle, powder.<br>
           <strong>How to implement:</strong> Build humid shed; use straw/waste + spawn; control humidity and harvesting cycles.<br>
           <strong>Benefits:</strong> Fast cycles (30–35 days), women-friendly, high margin.<br>
-          <strong>Investment:</strong> ₹25,000 setup • <strong>Profit:</strong> scalable monthly income.
         </div>
 
         <div class="row">
@@ -398,29 +409,48 @@ int main() {
         <div id="algo3" class="algo">
           <strong>Kruskal-like Cost Minimization</strong>
           <pre>
-#include <bits/stdc++.h>
+              #include <bits/stdc++.h>
 using namespace std;
-int main() {
-    double b=50000,c=0;
-    vector<pair<string,double>> it={{"shed",15000},{"spawn",5000},{"straw",3000},{"humidifier",7000},{"trays",4000}};
-    sort(it.begin(),it.end(),[](auto &a,auto &b){return a.second<b.second;});
-    vector<string> sel; set<string> e={"shed","spawn","straw"};
-    for(auto &i:it){ sel.push_back(i.first); c+=i.second; if(all_of(e.begin(),e.end(),[&](auto &x){return find(sel.begin(),sel.end(),x)!=sel.end();})) break;}
-    if(c<=b){ for(auto &s:sel) cout<<s<<" "; cout<<"\nTotal: "<<c; } else cout<<"Budget exceeded";
-}
 
+int main() {
+    double budget = 50000, cost = 0;
+    vector<string> need = {"shed","spawn","straw"}, pick;
+    vector<pair<string,int>> items = {
+        {"shed",15000},{"spawn",5000},{"straw",3000},{"humidifier",7000},{"trays",4000}
+    };
+
+    sort(items.begin(), items.end(), [](auto &a, auto &b){ return a.second < b.second; });
+
+    for (auto &x : items) {
+        pick.push_back(x.first); cost += x.second;
+        bool ok = true;
+        for (auto &n : need)
+            if (find(pick.begin(), pick.end(), n) == pick.end()) ok = false;
+        if (ok) break;
+    }
+
+    if (cost <= budget) {
+        cout << "Items:\n";
+        for (auto &x : pick) cout << x << "\n";
+        cout << "Cost = " << cost;
+    } else cout << "Budget exceeded!";
+}
 </pre>
         </div>
       </article>
-
       <!-- 4 -->
       <article class="card">
         <h2>4) Hydroponic Farming</h2>
-        <div class="subtitle">Soilless, water-efficient farming</div>
+        <div class="subtitle">“Cleanest vegetables in the city – guaranteed.”</div>
         <div class="meta">
-          <strong>How to implement:</strong> Use NFT/DWC systems, nutrient solution, pumps, and monitoring.<br>
+          <strong>How to implement:</strong> *Sell premium salad greens to urban customers at 3× price.<br>
+            *Metro cities love hydroponic food.<br>
+            *Zero pesticides → very high demand.<br>
+            *Can build rooftop farms on buildings, offices, restaurants.<br>
+            *Use NFT/DWC systems, nutrient solution, pumps, and monitoring.<br>
           <strong>Benefits:</strong> Faster growth, 80–90% less water, premium produce.<br>
-          <strong>Investment:</strong> ₹40,000 (small) – ₹1,00,000 (medium) • <strong>Profit:</strong> ₹30k–₹60k/month.
+         <strong>SDGs:</strong>SDG  2,6,9,11.<br>
+            <strong>Used algorithm and why</strong>"Dynamic Programming" ensures the most efficient nutrient, water, and growth-cycle scheduling in hydroponic farming for maximum yield with minimum cost.<br>
         </div>
 
         <div class="row">
@@ -460,11 +490,15 @@ int main() {
       <!-- 5 -->
       <article class="card">
         <h2>5) Dairy + Cow-Dung Products</h2>
-        <div class="subtitle">Milk supply + value-added dung goods</div>
+        <div class="subtitle">“Eco-friendly products from pure desi cow origin.”</div>
         <div class="meta">
-          <strong>How to implement:</strong> Collect milk; small chilling; convert dung to manure, diyas, incense.<br>
+          <strong>How to implement:</strong> *Rajasthan has huge cattle population.<br>
+                *Plenty of raw cow dung available for eco-products.<br>
+                *High demand during festivals and tourism markets.<br>
+               * Collect milk; small chilling; convert dung to manure, diyas, incense.<br>
           <strong>Benefits:</strong> Daily cashflow, zero waste, women-led units.<br>
-          <strong>Investment:</strong> ~₹80,000 per cow • <strong>Profit:</strong> ₹8k–₹12k per cow/month.
+         <strong>SDGs:</strong>SDG  7,12,8.<br>
+         <strong>Used algorithm and why</strong>"Max-Heap Priority Scheduling" ensures we always produce the highest-profit, highest-demand cow-dung products first, maximizing revenue and minimizing waste.<br>
         </div>
 
         <div class="row">
@@ -501,11 +535,15 @@ int main() {
       <!-- 6 -->
       <article class="card">
         <h2>6) Beekeeping (Honey Production)</h2>
-        <div class="subtitle">Honey, wax & better pollination</div>
+        <div class="subtitle">“A multi-product natural enterprise with strong global demand.”</div>
         <div class="meta">
-          <strong>How to implement:</strong> Install boxes in flowering areas; seasonal management & extraction.<br>
+          <strong>How to implement:</strong>*Aravalli hills support wild flora → ideal for natural honey.<br>
+                *Jawai region has Neem, Acacia, Ber, perfect for floral honey.<br>
+                *Resorts love local “forest honey” branding.<br>
+               * Install boxes in flowering areas; seasonal management & extraction.<br>
           <strong>Benefits:</strong> Good margins, crop pollination increase, low CAPEX.<br>
-          <strong>Investment:</strong> ₹5k per box (10 boxes ≈ ₹50k) • <strong>Profit:</strong> ₹40k–₹60k every quarter.
+            <strong>SDGs:</strong>SDG 15,8,2.<br>
+            <strong>Used algorithm and why</strong>"DFS" is ideal for beekeeping because it maps deep hive-to-flower foraging paths efficiently, helping identify the longest and most productive nectar routes.<br>
         </div>
 
         <div class="row">
@@ -537,11 +575,15 @@ int main(){
       <!-- 7 -->
       <article class="card">
         <h2>7) Nursery Business (Plants & Saplings)</h2>
-        <div class="subtitle">Sell saplings to farmers & towns</div>
+        <div class="subtitle">"Green gifts that stay alive.”</div>
         <div class="meta">
-          <strong>How to implement:</strong> Shade net area, seed trays, potting mix, drip watering, small staff.<br>
+          <strong>How to implement:</strong>* Hotels, resorts, farmhouses near Jawai safari demand landscaping.<br>
+                 *Government pushes plantation drives in Aravalli hills.<br>
+                 *Urban homes in Pali, Abu Road, Sumerpur want indoor plants.<br>
+                 *Shade net area, seed trays, potting mix, drip watering, small staff.<br>
           <strong>Benefits:</strong> Year-round revenue, supports reforestation & orchards.<br>
-          <strong>Investment:</strong> ₹30,000 initial • <strong>Profit:</strong> ₹15k–₹40k/month.
+          <strong>SDGs</strong>SDG 15,11,13.<br>
+            <strong>Used algorithm and why</strong>"Segment Tree "allows ultra-fast category-wise plant stock, price, and demand queries, making nursery business management efficient and scalable.<br>
         </div>
 
         <div class="row">
@@ -549,23 +591,42 @@ int main(){
         </div>
 
         <div id="algo7" class="algo">
-          <strong>Segment Tree for Fast Category Queries </strong>
+          <strong>Segment Tree  </strong>
           <pre>
 #include <bits/stdc++.h>
 using namespace std;
-vector<int> seg; int n;
 
-void build(vector<int>& a){n=a.size(); seg.resize(2*n); for(int i=0;i<n;i++) seg[n+i]=a[i]; for(int i=n-1;i>0;i--) seg[i]=seg[i<<1]+seg[i<<1|1];}
-void update(int p,int val){for(seg[p+=n]=val;p>1;p>>=1) seg[p>>1]=seg[p]+seg[p^1];}
-int query(int l,int r){int res=0; for(l+=n,r+=n;l<r;l>>=1,r>>=1){if(l&1) res+=seg[l++]; if(r&1) res+=seg[--r];} return res;}
+vector<int> seg;
+int n;
 
-int main(){
-    vector<int> plants={5,3,2,7,4};
-    build(plants);
-    cout<<"Plants 1-4: "<<query(1,4)<<"\n";
-    update(2,5);
-    cout<<"Plants 1-4: "<<query(1,4)<<"\n";
+void build(vector<int> &a) {
+    n = a.size();
+    seg.assign(4*n, 0);
+    function<void(int,int,int)> make = [&](int node, int l, int r){
+        if (l == r) { seg[node] = a[l]; return; }
+        int mid = (l+r)/2;
+        make(node*2, l, mid);
+        make(node*2+1, mid+1, r);
+        seg[node] = seg[node*2] + seg[node*2+1];
+    };
+    make(1, 0, n-1);
 }
+
+int query(int node, int l, int r, int ql, int qr) {
+    if (qr < l || ql > r) return 0;
+    if (ql <= l && r <= qr) return seg[node];
+    int mid = (l+r)/2;
+    return query(node*2, l, mid, ql, qr) +
+           query(node*2+1, mid+1, r, ql, qr);
+}
+
+int main() {
+    vector<int> plants = {5, 3, 2, 7, 4};
+    build(plants);
+    cout << "Stock (Category 1 to 4) = "
+         << query(1, 0, plants.size()-1, 1, 4);
+}
+
 
 </pre>
         </div>
@@ -574,11 +635,15 @@ int main(){
       <!-- 8 -->
       <article class="card">
         <h2>8) Medicinal Plant Farming</h2>
-        <div class="subtitle">Aloe, Tulsi, Ashwagandha — high value crops</div>
+        <div class="subtitle">“A secure contract-farming model supplying the booming global herbal market.”</div>
         <div class="meta">
-          <strong>How to implement:</strong> Select drought-tolerant species, prepare beds, minimal irrigation, harvest & dry.<br>
+          <strong>How to implement:</strong> *Guaranteed buy-back contracts from pharma companies.<br>
+                      *High-value crops like Ashwagandha, Giloy, Aloevera.<br>
+                     *Export potential for herbal raw materials.<br>
+                    *Select drought-tolerant species, prepare beds, minimal irrigation, harvest & dry.<br>
           <strong>Benefits:</strong> High demand from pharma & Ayurveda; low water need.<br>
-          <strong>Investment:</strong> ₹20,000 per acre • <strong>Profit:</strong> ₹80k–₹1.2L/acre/year.
+          <strong>SDGs:</strong> SDS 3,12,8.<br>
+          <strong>Used algorithm and why</strong>"BST "keeps medicinal plant batches sorted by harvest date, allowing fast insertion, search, and selection of the next batch to harvest<br>
         </div>
 
         <div class="row">
@@ -621,11 +686,15 @@ int main(){
       <!-- 9 -->
       <article class="card">
         <h2>9) Solar Farming</h2>
-        <div class="subtitle">Small solar plant on unused land</div>
+        <div class="subtitle">"Small solar plant on unused land"</div>
         <div class="meta">
-          <strong>How to implement:</strong> Install panels, inverter, net-metering or sell to nearby grid.<br>
+          <strong>How to implement:</strong> *Rent out land to solar companies → fixed income for 25–30 years.<br>
+            *Extremely low maintenance.<br>
+            *Strong government subsidies & green investment opportunities.<br>
+            * Install panels, inverter, net-metering or sell to nearby grid.<br>
           <strong>Benefits:</strong> Passive income, reduces electricity cost.<br>
-          <strong>Investment:</strong> ₹1,00,000 (small scale) • <strong>Profit:</strong> ₹7k–₹10k/month.
+          <strong>SDGs:</strong>SDG 7,13,9.<br>
+            <strong>Uesd algorithm and why</strong>"Prim’s MST "gives the minimum-cost wiring layout for solar panels, reducing cable length, power loss, and installation expenses.<br>
         </div>
 
         <div class="row">
@@ -669,11 +738,16 @@ int main(){
       <!-- 10 -->
       <article class="card">
         <h2>10) Smart Goat Farming Unit</h2>
-        <div class="subtitle">Sirohi goats — low water & high returns</div>
+        <div class="subtitle">“Tech-enabled goat farming with 40% higher profit.”</div>
         <div class="meta">
-          <strong>How to implement:</strong> Build ventilated shed, buy quality kids, vaccination & feeding schedule.<br>
+          <strong>How to implement:</strong> *Create a “Smart Goat Farm Model” and sell training + kids (baby goats).<br>
+               * Smart-fed goats grow faster → high-profit meat.<br>
+               *we can sell goat milk, manure, and goat kids.<br>
+                *Training makes extra income.<br>
+            *Build ventilated shed, buy quality kids, vaccination & feeding schedule.<br>
           <strong>Benefits:</strong> Quick breeding, small land, year-round income.<br>
-          <strong>Investment:</strong> 10 goats ≈ ₹60,000 • <strong>Profit:</strong> ₹1L–₹1.5L/yr.
+          <strong>SDGs:</strong>SDG 2,8,93.<br>
+            <strong>Used algorithm and why</strong>"Binary Search" enables instant retrieval of goat health records from sorted data, ensuring fast diagnosis and efficient farm management.<br>
         </div>
 
         <div class="row">
