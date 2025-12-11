@@ -5,14 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PHASE 1 : CITY MAP — Nidavellir</title>
 
-<!-- Google Fonts for creativity -->
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
 <style>
-    /* ---------- GLOBAL STYLES ---------- */
     body {
         margin: 0;
-        font-family: 'Poppins', Arial, sans-serif;
+        font-family: 'Poppins', sans-serif;
         background: linear-gradient(120deg, #f4f5f7, #e6f0ff);
         color: #1a1a1a;
         line-height: 1.6;
@@ -29,7 +31,7 @@
         text-align: center;
         font-size: 36px;
         color: #0b2340;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
         position: relative;
     }
 
@@ -43,14 +45,7 @@
         border-radius: 2px;
     }
 
-    .sub {
-        text-align: center;
-        color: #555;
-        margin-bottom: 30px;
-        font-size: 16px;
-    }
-
-    /* ---------- MAP BOX ---------- */
+    /* MAP BOX */
     .map-box {
         background: #ffffff;
         padding: 20px;
@@ -70,7 +65,7 @@
         border: 3px solid #c21f3a;
     }
 
-    /* ---------- CONTENT SECTIONS ---------- */
+    /* CONTENT SECTIONS WITH ICONS */
     .content-section {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -83,7 +78,7 @@
         padding: 20px;
         border-radius: 15px;
         box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-        transition: transform 0.3s, box-shadow 0.3s;
+        transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
         position: relative;
         overflow: hidden;
     }
@@ -91,12 +86,26 @@
     .card:hover {
         transform: translateY(-5px);
         box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+        background: #ffe6ea;
     }
 
     .card h2 {
         font-size: 20px;
         margin-bottom: 12px;
         color: #0b2340;
+        display: flex;
+        align-items: center;
+    }
+
+    .card h2 i {
+        color: #c21f3a;
+        margin-right: 10px;
+        font-size: 22px;
+        transition: transform 0.3s;
+    }
+
+    .card:hover h2 i {
+        transform: rotate(15deg);
     }
 
     .card p, .card ul {
@@ -118,7 +127,7 @@
         font-weight: bold;
     }
 
-    /* ---------- PHASE 2 BUSINESS BOXES ---------- */
+    /* PHASE 2 */
     .phase2-title {
         text-align: center;
         font-size: 32px;
@@ -171,13 +180,12 @@
         box-shadow: 0 12px 35px rgba(0,0,0,0.2);
     }
 
-    /* ---------- RESPONSIVE ---------- */
+    /* RESPONSIVE */
     @media(max-width: 768px){
         h1 { font-size: 28px; }
         .phase2-title { font-size: 26px; }
         .card h2 { font-size: 18px; }
     }
-
 </style>
 </head>
 <body>
@@ -191,52 +199,52 @@
         <img src="Screenshot 2025-12-08 193217.png" class="map-img" alt="City Map">
     </div>
 
-    <!-- CONTENT SECTIONS -->
+    <!-- CONTENT SECTIONS WITH ICONS -->
     <div class="content-section">
         <div class="card">
-            <h2>Location</h2>
+            <h2><i class="fas fa-map-marker-alt"></i>Location</h2>
             <p>Southwestern Rajasthan — between Harji, Posalia, Jawal, and Sumerpur near the Aravalli Hills and Jawai River.</p>
         </div>
         <div class="card">
-            <h2>Terrain</h2>
+            <h2><i class="fas fa-mountain"></i>Terrain</h2>
             <p>Hilly and rocky near the Aravalli range; flat fertile plains near the Jawai basin — ideal for farming and settlement.</p>
         </div>
         <div class="card">
-            <h2>Soil</h2>
+            <h2><i class="fas fa-leaf"></i>Soil</h2>
             <ul>
                 <li>Sandy-loam in plains — supports bajra, wheat, and pulses</li>
                 <li>Rocky soil in hill areas</li>
             </ul>
         </div>
         <div class="card">
-            <h2>Rivers</h2>
+            <h2><i class="fas fa-water"></i>Rivers</h2>
             <p>Jawai and Sukri — major water sources for agriculture and drinking.</p>
         </div>
         <div class="card">
-            <h2>Climate</h2>
+            <h2><i class="fas fa-sun"></i>Climate</h2>
             <p>Semi-arid climate with hot summers (up to 44°C), mild winters (10–25°C), and moderate monsoon (400–600 mm rainfall).</p>
         </div>
         <div class="card">
-            <h2>Vegetation</h2>
+            <h2><i class="fas fa-tree"></i>Vegetation</h2>
             <p>Dry deciduous and thorn forests — Khejri, Babool, Neem, and Ber trees commonly found.</p>
         </div>
         <div class="card">
-            <h2>Natural Resources</h2>
+            <h2><i class="fas fa-gem"></i>Natural Resources</h2>
             <ul>
                 <li>Granite, marble, limestone, sandstone</li>
                 <li>Medicinal plants and forest produce</li>
             </ul>
         </div>
         <div class="card">
-            <h2>Wildlife</h2>
+            <h2><i class="fas fa-paw"></i>Wildlife</h2>
             <p>Close to Jawai Leopard Hills Sanctuary — rich biodiversity, crocodiles, migratory birds, hyenas, and eco-tourism value.</p>
         </div>
         <div class="card">
-            <h2>Topography</h2>
+            <h2><i class="fas fa-mountain-sun"></i>Topography</h2>
             <p>Mixed landscape of hills, valleys, and river plains — allows natural drainage and scenic city development.</p>
         </div>
         <div class="card">
-            <h2>Suitability for City Development</h2>
+            <h2><i class="fas fa-city"></i>Suitability for City Development</h2>
             <ul>
                 <li>Reliable water supply from Jawai River</li>
                 <li>Stable land for housing & industries</li>
