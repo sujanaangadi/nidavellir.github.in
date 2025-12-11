@@ -667,3 +667,79 @@ int main(){
 </div>
 </body>
 </html>
+<h2>Total Investment: ₹10,080 crore</h2>
+
+<h2>Total Investment: ₹10,080 crore</h2>
+
+<table>
+    <tr>
+        <th>Idea</th>
+        <th>Investment (₹ Crore)</th>
+        <th>Profit (₹ Crore)</th>
+    </tr>
+
+    <tr><td>1) Smart Traffic Signal System</td><td>₹ 1,500</td><td>₹ 2,000</td></tr>
+    <tr><td>2) Smart Waste Management</td><td>₹ 1,550</td><td>₹ 2,050</td></tr>
+    <tr><td>3) Transport Tracking</td><td>₹ 1,600</td><td>₹ 2,100</td></tr>
+    <tr><td>4) Digital Food Ordering</td><td>₹ 1,650</td><td>₹ 2,150</td></tr>
+    <tr><td>5) Smart Parking</td><td>₹ 1,700</td><td>₹ 2,200</td></tr>
+    <tr><td>6) Water & Electricity Monitoring</td><td>₹ 1,750</td><td>₹ 2,250</td></tr>
+    <tr><td>7) Complaint System</td><td>₹ 1,800</td><td>₹ 2,300</td></tr>
+    <tr><td>8) AI Disaster Management</td><td>₹ 1,850</td><td>₹ 2,350</td></tr>
+    <tr><td>9) EV Charging Routing</td><td>₹ 1,900</td><td>₹ 2,400</td></tr>
+    <tr><td>10) Civic Issue Auto-Detection</td><td>₹ 1,950</td><td>₹ 2,450</td></tr>
+</table>
+
+<!-- ADD THIS (REQUIRED FOR GRAPH) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- ===================== PROFIT CHART BELOW TABLE ===================== -->
+<canvas id="profitChart" style="width:750px; height:350px; display:block; margin:auto;"></canvas>
+
+<script>
+const ctx = document.getElementById('profitChart').getContext('2d');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: [
+            "Idea 1","Idea 2","Idea 3","Idea 4","Idea 5",
+            "Idea 6","Idea 7","Idea 8","Idea 9","Idea 10"
+        ],
+        datasets: [{
+            label: "Profit (₹ Crore)",
+            backgroundColor: "#01f9c6",
+            data: [2000,2050,2100,2150,2200,2250,2300,2350,2400,2450]
+        }]
+    },
+    options: {
+        responsive: false,
+        scales: {
+            x: {
+                ticks: {
+                    color: "white"      // X-axis text color
+                },
+                grid: {
+                    color: "rgba(255,255,255,0.2)"   // Light white gridlines
+                }
+            },
+            y: {
+                ticks: {
+                    color: "white"      // Y-axis text color
+                },
+                grid: {
+                    color: "rgba(255,255,255,0.2)"   // Light white gridlines
+                },
+                beginAtZero: true
+            }
+        },
+        plugins: {
+            legend: {
+                labels: {
+                    color: "white"     // Legend text color
+                }
+            }
+        }
+    }
+});
+</script>
