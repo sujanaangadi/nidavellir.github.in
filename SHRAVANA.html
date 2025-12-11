@@ -687,52 +687,63 @@ int main(){
 
 
     <!-- ======================================================
-         ADDED: INVESTMENT & PROFIT TABLE (AFTER 10 IDEAS)
-    ====================================================== -->
-    <h2 style="color:#d85f00; margin-top:32px;">Investment & Profit Chart</h2>
+     INVESTMENT & PROFIT TABLE (Graph shows Profit only)
+====================================================== -->
+<section class="card">
+  <h2>Investment & Profit Allocation</h2>
+  <div class="explain-title">Total Investment: ₹10,080 crore</div>
 
-    <table class="invest-table">
+  <table>
+    <thead>
       <tr>
-        <th>Idea No.</th>
-        <th>Project Name</th>
-        <th>Estimated Investment (₹)</th>
-        <th>Expected Profit (₹)</th>
+        <th>Idea No</th>
+        <th>Idea Name</th>
+        <th>Investment (₹ Cr)</th>
+        <th>Estimated Profit (₹ Cr)</th>
       </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>AI Smart Power Distribution Controller</td><td>1,344</td><td>280</td></tr>
+      <tr><td>2</td><td>Solar Panel Efficiency Analyzer</td><td>882</td><td>150</td></tr>
+      <tr><td>3</td><td>Wind Turbine RPM Controller</td><td>1,344</td><td>290</td></tr>
+      <tr><td>4</td><td>Battery Storage Optimization</td><td>882</td><td>160</td></tr>
+      <tr><td>5</td><td>Power Theft Detection</td><td>840</td><td>140</td></tr>
+      <tr><td>6</td><td>Energy Emergency Auto-Switching</td><td>882</td><td>150</td></tr>
+      <tr><td>7</td><td>City Demand Predictor</td><td>840</td><td>140</td></tr>
+      <tr><td>8</td><td>Electricity Price Optimizer</td><td>882</td><td>160</td></tr>
+      <tr><td>9</td><td>House-to-House Energy Sharing</td><td>1,344</td><td>280</td></tr>
+      <tr><td>10</td><td>Smart Load Control</td><td>840</td><td>140</td></tr>
+    </tbody>
+  </table>
 
-      <tr><td>1</td><td>AI Smart Power Distribution</td><td>2,00,000</td><td>4,50,000</td></tr>
-      <tr><td>2</td><td>Solar Panel Efficiency Analyzer</td><td>1,20,000</td><td>3,00,000</td></tr>
-      <tr><td>3</td><td>Wind Turbine RPM Controller</td><td>3,50,000</td><td>6,50,000</td></tr>
-      <tr><td>4</td><td>Battery Storage Optimization</td><td>1,80,000</td><td>4,00,000</td></tr>
-      <tr><td>5</td><td>Power Theft Detection</td><td>90,000</td><td>2,20,000</td></tr>
-      <tr><td>6</td><td>Energy Auto-Switching</td><td>2,40,000</td><td>5,00,000</td></tr>
-      <tr><td>7</td><td>City Demand Predictor</td><td>70,000</td><td>1,80,000</td></tr>
-      <tr><td>8</td><td>Electricity Price Optimizer</td><td>1,10,000</td><td>3,10,000</td></tr>
-      <tr><td>9</td><td>Energy Sharing System</td><td>1,50,000</td><td>3,70,000</td></tr>
-      <tr><td>10</td><td>Smart Load Control</td><td>2,20,000</td><td>5,40,000</td></tr>
+  <canvas id="profitChart" width="800" height="300" style="margin-top:20px;"></canvas>
+</section>
 
-    </table>
-
-
-    <footer>© SHRAVANA Renewable Energy Project</footer>
-  </div>
-
-  <!-- JavaScript: ONLY show/hide logic -->
-  <script>
-    document.querySelectorAll("[data-toggle]").forEach(btn=>{
-        btn.addEventListener("click",()=>{
-            const id = btn.getAttribute("data-toggle");
-            const panel = document.getElementById(id);
-
-            panel.style.display = panel.style.display === "block"
-                                ? "none"
-                                : "block";
-
-            btn.textContent = panel.style.display === "block"
-                              ? "Hide Algorithm"
-                              : "Show Algorithm";
-        });
-    });
-  </script>
-
-</body>
-</html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Profit Only Bar Chart
+  const ctx = document.getElementById('profitChart').getContext('2d');
+  const profitChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: [
+            "Idea 1","Idea 2","Idea 3","Idea 4","Idea 5",
+            "Idea 6","Idea 7","Idea 8","Idea 9","Idea 10"
+          ],
+          datasets: [
+            {
+              label: 'Estimated Profit (₹ Cr)',
+              data: [280,150,290,160,140,150,140,160,280,140],
+              backgroundColor: '#4CAF50'
+            }
+          ]
+      },
+      options: {
+          responsive: true,
+          plugins: { legend: { display: true, position: 'top' } },
+          scales: {
+              y: { beginAtZero: true, title: { display: true, text: 'Profit (₹ Cr)' } }
+          }
+      }
+  });
+</script>
