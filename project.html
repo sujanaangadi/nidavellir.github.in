@@ -18,7 +18,7 @@
     body {
         margin: 0;
         font-family: 'Poppins', sans-serif;
-        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        background: #fdfdfd; /* clean white background */
         color: #333333;
         scroll-behavior: smooth;
     }
@@ -27,16 +27,13 @@
         width: 90%;
         max-width: 1200px;
         margin: 30px auto;
-        background: #ffffff;
-        border-radius: 25px;
         padding: 30px;
-        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
     }
 
     h1 {
         text-align: center;
         font-size: 36px;
-        color: #ff6f91;
+        color: #ff6f91; /* vibrant pink for headings */
         margin-bottom: 10px;
         position: relative;
     }
@@ -46,7 +43,7 @@
         display: block;
         width: 100px;
         height: 4px;
-        background: linear-gradient(to right, #ff6f91, #ff9a9e);
+        background: #6dd5ed; /* soft blue underline */
         margin: 10px auto 0;
         border-radius: 2px;
     }
@@ -55,9 +52,9 @@
         background: #ffffff;
         padding: 20px;
         border-radius: 20px;
-        box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         margin-bottom: 40px;
-        transition: transform 0.4s;
+        transition: transform 0.3s;
     }
 
     .map-box:hover {
@@ -67,7 +64,7 @@
     .map-img {
         width: 100%;
         border-radius: 15px;
-        border: 4px solid #ff6f91;
+        border: 3px solid #ff6f91;
     }
 
     .content-section {
@@ -81,15 +78,15 @@
         background: #ffffff;
         padding: 25px;
         border-radius: 20px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
         position: relative;
         overflow: hidden;
-        transition: transform 0.4s, background 0.4s;
+        transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .card:hover {
-        transform: translateY(-8px);
-        background: #fffaf0;
+        transform: translateY(-6px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.12);
     }
 
     .card h2 {
@@ -98,18 +95,17 @@
         color: #ff6f91;
         display: flex;
         align-items: center;
-        transition: all 0.3s ease;
     }
 
     .card h2 i {
         color: #6dd5ed;
         margin-right: 12px;
         font-size: 22px;
-        transition: transform 0.5s, color 0.5s;
+        transition: transform 0.3s, color 0.3s;
     }
 
     .card:hover h2 i {
-        transform: rotate(20deg) scale(1.2);
+        transform: rotate(15deg) scale(1.1);
         color: #2193b0;
     }
 
@@ -146,7 +142,7 @@
         display: block;
         width: 140px;
         height: 5px;
-        background: linear-gradient(to right, #ff6f91, #ff9a9e);
+        background: #6dd5ed;
         margin: 12px auto 0;
         border-radius: 3px;
     }
@@ -166,42 +162,26 @@
         font-size: 20px;
         font-weight: 700;
         text-align: center;
-        position: relative;
         cursor: pointer;
         overflow: hidden;
-        transition: all 0.4s ease;
-        border: 3px solid transparent;
-        background-clip: padding-box;
+        transition: all 0.3s ease;
+        border: 2px solid #ff6f91;
     }
 
-    .team-box::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: linear-gradient(45deg, #ff6f91, #ff9a9e, #6dd5ed, #2193b0);
-        z-index: -1;
-        transition: all 0.5s ease;
-        filter: blur(25px);
-        opacity: 0;
-    }
-
-    .team-box:hover::before {
-        opacity: 0.6;
+    .team-box:hover {
+        background: #6dd5ed;
+        border-color: #2193b0;
     }
 
     .team-box a {
         text-decoration: none;
         color: #ff6f91;
         display: block;
-        position: relative;
-        z-index: 1;
+        transition: color 0.3s;
     }
 
     .team-box:hover a {
-        color: #2193b0;
+        color: #ffffff;
     }
 
     @media(max-width: 768px){
