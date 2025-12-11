@@ -1,130 +1,147 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Powerhouse & Renewable Energy</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Powerhouse & Renewable Energy</title>
 
-  <style>
-    :root{
-      --bg:#ffecd9;          /* UPDATED peach background */
-      --card:#071428;
-      --accent:#00c2a8;
-      --muted:#4b4b4b;
-      --code-bg: rgba(0,0,0,0.05);
-    }
+<style>
 
-    html,body{
-      height:100%;
-      margin:0;
-      font-family:Inter, ui-sans-serif, system-ui;
-    }
+/* ---------- NAVBAR ---------- */
+.navbar {
+    width: 100%;
+    background: #0A1A3A;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
 
-    body{
-      background: var(--bg);     /* UPDATED */
-      color:#000;
-      padding:28px;
-    }
+.navbar .logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+    margin-right: 40px;
+}
 
-    .container{max-width:1100px;margin:0 auto}
-    header{display:flex;align-items:center;margin-bottom:18px}
-    h1{font-size:28px;margin:0;color:#d85f00;text-align:center;width:100%}
-    p.lead{margin:0;color:#4b4b4b;text-align:center;font-weight:600}
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
 
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:16px;
-      margin-top:22px;
-    }
+.navbar ul li a {
+    text-decoration: none;
+    color: #C8D6FF;
+    font-size: 18px;
+    font-weight: 600;
+    transition: 0.3s;
+}
 
-    .card{
-      background:white;
-      border-radius:12px;
-      padding:16px;
-      border:1px solid rgba(0,0,0,0.1);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-    }
+.navbar ul li a:hover {
+    color: #00E5A8;
+}
 
-    .card h2{margin:0 0 6px 0;font-size:18px;color:#d85f00}
-    .subtitle{color:var(--accent);font-weight:700;margin-bottom:8px}
-    .meta{color:#5b5b5b;font-size:13px;margin-bottom:10px}
+/* ---------- MAIN THEME ---------- */
+:root{
+  --bg:#ffecd9;
+  --accent:#00c2a8;
+}
 
-    pre{
-      background:var(--code-bg);
-      padding:12px;
-      border-radius:8px;
-      overflow:auto;
-      color:#000;
-      font-size:13px;
-      border:1px solid rgba(0,0,0,0.07);
-      white-space:pre-wrap;
-    }
+html,body{
+  height:100%;
+  margin:0;
+  font-family:Inter, sans-serif;
+  background:var(--bg);
+}
 
-    .btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-    .btn{
-      background:#fff4eb;
-      border:1px solid #ffb673;
-      padding:8px 10px;
-      border-radius:8px;
-      color:#b55a00;
-      cursor:pointer;
-      font-weight:700;
-    }
+.container{
+  max-width:1100px;
+  margin:0 auto;
+  padding-top:160px;   /* FIX: space after navbar */
+}
 
-    .algo-panel{display:none;margin-top:10px;background:#ffe9d2;padding:10px;border-radius:8px}
-    .algo-name{font-weight:800;color:#d85f00;margin-bottom:6px}
+/* ---------- GRID ---------- */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+  margin-bottom:50px;
+}
 
-    .explain-title{
-      font-weight:800;
-      margin-top:12px;
-      color:#b34700;
-    }
+.card{
+  background:white;
+  border-radius:12px;
+  padding:16px;
+  border:1px solid rgba(0,0,0,0.1);
+  box-shadow:0 8px 24px rgba(0,0,0,0.1);
+}
 
-    footer{text-align:center;color:#4b4b4b;margin-top:18px;font-size:13px}
+.card h2{
+  margin:0 0 6px 0;
+  font-size:18px;
+  color:#d85f00;
+}
 
-    /* -----------------------------
-       ADDED: Investment Table Style
-    ------------------------------*/
-    .invest-table{
-      width:100%;
-      border-collapse:collapse;
-      margin-top:28px;
-      background:white;
-      border-radius:12px;
-      overflow:hidden;
-      box-shadow:0 8px 24px rgba(0,0,0,0.1);
-    }
-    .invest-table th{
-      background:#d85f00;
-      color:white;
-      padding:12px;
-      font-size:16px;
-      text-align:left;
-    }
-    .invest-table td{
-      padding:12px;
-      border-bottom:1px solid #eee;
-      font-size:14px;
-    }
-    .invest-table tr:nth-child(even){
-      background:#fff4eb;
-    }
+.subtitle{ color:var(--accent); font-weight:700; }
+.meta{ color:#555; font-size:13px; margin-bottom:10px; }
 
-    @media(max-width:880px){
-      .grid{grid-template-columns:1fr}
-    }
-  </style>
+pre{
+  background:#fff3e6;
+  padding:12px;
+  border-radius:8px;
+  overflow:auto;
+}
+
+.algo-panel{
+  display:none;
+  background:#ffe9d2;
+  padding:10px;
+  margin-top:10px;
+  border-radius:8px;
+}
+
+.btn{
+  background:#fff4eb;
+  border:1px solid #ffb673;
+  padding:8px 10px;
+  border-radius:8px;
+  color:#b55a00;
+  font-weight:700;
+  cursor:pointer;
+}
+
+</style>
 </head>
 
 <body>
-  <div class="container">
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">CITY DESIGN</div>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="project.html">Project</a></li>
+        <li><a href="SHRAVANA.html">SHRAVANA</a></li>
+        <li><a href="SUJANA.html">SUJANA</a></li>
+        <li><a href="KHUSHI.html">KHUSHI</a></li>
+        <li><a href="LAXMI.html">LAXMI</a></li>
+        <li><a href="collabz.html">Collabz</a></li>
+    </ul>
+</div>
+
+<!-- PAGE CONTENT -->
+<div class="container">
     <p class="lead">POWERHOUSE & RENEWABLE ENERGY SYSTEM</p>
 
     <div class="grid">
-
-
-      <!-- IDEA 1 -->
+       <!-- IDEA 1 -->
       <section class="card">
         <h2>1) AI Smart Power Distribution Controller</h2>
         <div class="subtitle">Greedy Load Allocation</div>
