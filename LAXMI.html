@@ -832,76 +832,104 @@ int main(){
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="content">
-            <h2>Agriculture Business Ideas – Investment & Profit</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Idea</th>
-                        <th>Investment</th>
-                        <th>Profit/Year</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Coconut Husk Pits</td>
-                        <td>₹10k–15k</td>
-                        <td>₹15k–25k</td>
-                    </tr>
-                    <tr>
-                        <td>Organic Vegetables</td>
-                        <td>₹25k–40k</td>
-                        <td>₹1.5–2.5 lakh</td>
-                    </tr>
-                    <tr>
-                        <td>Mushroom Farming</td>
-                        <td>₹20k–40k</td>
-                        <td>₹80k–1.2 lakh</td>
-                    </tr>
-                    <tr>
-                        <td>Hydroponic</td>
-                        <td>₹70k–1 lakh</td>
-                        <td>₹1.5–2.4 lakh</td>
-                    </tr>
-                    <tr>
-                        <td>Dairy Farming</td>
-                        <td>₹1.3–1.5 lakh</td>
-                        <td>₹1–1.5 lakh</td>
-                    </tr>
-                    <tr>
-                        <td>Cow Dung Products</td>
-                        <td>₹25k–40k</td>
-                        <td>₹2–3 lakh</td>
-                    </tr>
-                    <tr>
-                        <td>Beekeeping</td>
-                        <td>₹30k</td>
-                        <td>₹60k–1 lakh</td>
-                    </tr>
-                    <tr>
-                        <td>Nursery</td>
-                        <td>₹20k–50k</td>
-                        <td>₹60k–1.5 lakh</td>
-                    </tr>
-                    <tr>
-                        <td>Medicinal Plants</td>
-                        <td>₹15k–25k</td>
-                        <td>₹80k–1.5 lakh</td>
-                    </tr>
-                    <tr>
-                        <td>Goat Farming</td>
-                        <td>₹80k</td>
-                        <td>₹40k–60k</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+
+<!-- Add this in your <head> or just before your script -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<main class="content">
+    <h2>Investment & Profit of 10 Business Ideas</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Business Idea</th>
+                <th>Investment (₹)</th>
+                <th>Expected Profit (₹)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Coconut Husk Water-Reservation</td><td>50,000</td><td>1,20,000</td></tr>
+            <tr><td>Organic Vegetable Farming</td><td>40,000</td><td>90,000</td></tr>
+            <tr><td>Mushroom Cultivation</td><td>60,000</td><td>1,50,000</td></tr>
+            <tr><td>Hydroponic Farming</td><td>80,000</td><td>2,00,000</td></tr>
+            <tr><td>Dairy + Cow-Dung Products</td><td>70,000</td><td>1,60,000</td></tr>
+            <tr><td>Beekeeping</td><td>30,000</td><td>80,000</td></tr>
+            <tr><td>Nursery Business</td><td>45,000</td><td>1,10,000</td></tr>
+            <tr><td>Medicinal Plant Farming</td><td>55,000</td><td>1,30,000</td></tr>
+            <tr><td>Solar Farming</td><td>1,50,000</td><td>3,50,000</td></tr>
+            <tr><td>Smart Goat Farming</td><td>90,000</td><td>2,20,000</td></tr>
+        </tbody>
+    </table>
+
+    <h3>Profit Bar Graph</h3>
+    <canvas id="profitChart"></canvas>
+
+    <script>
+        const ctx = document.getElementById('profitChart').getContext('2d');
+
+        const data = {
+            labels: [
+                "Coconut Husk Water",
+                "Organic Veg Farming",
+                "Mushroom Cultivation",
+                "Hydroponic Farming",
+                "Dairy + Cow-Dung",
+                "Beekeeping",
+                "Nursery",
+                "Medicinal Plants",
+                "Solar Farming",
+                "Smart Goat"
+            ],
+            datasets: [
+                {
+                    label: 'Profit (₹)',
+                    data: [120000, 90000, 150000, 200000, 160000, 80000, 110000, 130000, 350000, 220000],
+                    backgroundColor: 'rgba(0, 204, 102, 0.6)'
+                }
+            ]
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: 'Profit for 10 Agriculture Business Ideas',
+                        color: 'white',
+                        font: { size: 18 }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            drawTicks: true,
+                            drawOnChartArea: false, // removes inner vertical grid lines
+                            color: 'white'
+                        },
+                        ticks: { color: 'white' }
+                    },
+                    y: {
+                        grid: {
+                            drawTicks: true,
+                            drawOnChartArea: false, // removes inner horizontal grid lines
+                            color: 'white'
+                        },
+                        ticks: { color: 'white' },
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+
+        new Chart(ctx, config);
+    </script>
 </body>
 </html>
-
-    <!-- MAIN TITLE -->
+ 
+        <!-- MAIN TITLE -->
     <div class="title-box">DESIGN & ANALYSIS OF ALGORITHMS</div>
 
     <!-- ------------------ SECTION 1 ------------------ -->
@@ -1195,8 +1223,3 @@ int main(){
             <li>Warshall: Transitive closure in graphs.</li>
         </ul>
     </div>
-
-</body>
-</html>
-
-        
