@@ -5,75 +5,171 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Industry Business Ideas</title>
 
+<!-- NAVBAR STYLING -->
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #0d131d;
-        color: #d9e5e7;
-    }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0d131d;
+    color: #d9e5e7;
+}
 
-    .header {
-        width: 92%;
-        margin: auto;
-        margin-top: 25px;
-        text-align: center;
-    }
-    .title {
-        font-size: 40px;
-        font-weight: bold;
-        color: #22d3ee;
-        text-shadow: 0 0 10px #22d3ee;
-    }
+.navbar {
+    width: 100%;
+    background: #0A1A3A;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
 
-    .container {
-        width: 92%;
-        margin: auto;
-        margin-top: 25px;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 25px;
-    }
+.navbar .logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+    margin-right: 40px;
+}
 
-    .card {
-        background: #111a22;
-        padding: 20px;
-        border-radius: 12px;
-        border-left: 4px solid #22d3ee;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.35);
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 8px 25px rgba(34,211,238,0.4);
-        border-left-color: #67e8f9;
-    }
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
 
-    pre {
-        background: #0a0f17;
-        padding: 12px;
-        border-radius: 8px;
-        display: none;
-        white-space: pre-wrap;
-        border: 1px solid #1b2a35;
-        color: #22d3ee;
-    }
+.navbar ul li a {
+    text-decoration: none;
+    color: #C8D6FF;
+    font-size: 18px;
+    font-weight: 600;
+    transition: 0.3s;
+}
 
-    .algo-btn {
-        background: #22d3ee;
-        padding: 8px 12px;
-        border-radius: 6px;
-        cursor: pointer;
-        display: inline-block;
-        margin-top: 10px;
-        color: #0d131d;
-        font-weight: bold;
-    }
-    .algo-btn:hover {
-        background: #67e8f9;
-    }
+.navbar ul li a:hover {
+    color: #00E5A8;
+}
 </style>
 
+<!-- PAGE CONTENT STYLING -->
+<style>
+.header {
+    width: 92%;
+    margin: auto;
+    margin-top: 100px; /* adjusted for navbar */
+    text-align: center;
+}
+.title {
+    font-size: 40px;
+    font-weight: bold;
+    color: #22d3ee;
+    text-shadow: 0 0 10px #22d3ee;
+}
+
+.container {
+    width: 92%;
+    margin: auto;
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.card {
+    background: #111a22;
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid #22d3ee;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    color: white; /* ALL text white */
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(34,211,238,0.4);
+    border-left-color: #67e8f9;
+}
+
+.card h3 {
+    color: #ffffff; /* headings white */
+}
+
+.card b {
+    color: #ffffff; /* bold labels white */
+}
+
+.card ul li {
+    color: #ffffff; /* list items white */
+}
+
+pre {
+    background: #0a0f17;
+    padding: 12px;
+    border-radius: 8px;
+    display: none;
+    white-space: pre-wrap;
+    border: 1px solid #1b2a35;
+    color: #22d3ee;
+}
+
+.algo-btn {
+    background: #22d3ee;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 10px;
+    color: #0d131d;
+    font-weight: bold;
+}
+
+.algo-btn:hover {
+    background: #67e8f9;
+}
+
+/* TABLE & CHART STYLING */
+table {
+    width: 92%;
+    margin: 40px auto;
+    border-collapse: collapse;
+    background: #111a22;
+    color: #d9e5e7;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 16px;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #1e2a36;
+    text-align: center;
+}
+
+th {
+    background: #22d3ee;
+    color: black;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background: #0f171f;
+}
+
+.chart-box {
+    width: 92%;
+    margin: 40px auto;
+    background: #111a22;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.4);
+}
+</style>
+
+<!-- SCRIPT FOR TOGGLING CODE -->
 <script>
 function toggleAlgo(id) {
     const x = document.getElementById(id);
@@ -84,12 +180,26 @@ function toggleAlgo(id) {
 
 <body>
 
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">CITY DESIGN</div>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="project.html">Project</a></li>
+        <li><a href="SHRAVANA.html">SHRAVANA</a></li>
+        <li><a href="SUJANA.html">SUJANA</a></li>
+        <li><a href="KHUSHI.html">KHUSHI</a></li>
+        <li><a href="LAXMI.html">LAXMI</a></li>
+        <li><a href="collabz.html">Collabz</a></li>
+    </ul>
+</div>
+
 <div class="header">
     <h2 class="title">Industry Business Ideas</h2>
 </div>
 
 <div class="container">
-
 
 <!-- ------------------------------------------------------- -->
 <!-- 1) Smart Textile Quality Detector -->
@@ -617,90 +727,37 @@ int main(){
 </html>
 
 
-
-
-<!-- ======================= -->
-<!-- BUSINESS TABLE & CHART -->
-<!-- ======================= -->
-
-<style>
-    table {
-        width: 92%;
-        margin: 40px auto;
-        border-collapse: collapse;
-        background: #111a22;
-        color: #d9e5e7;
-        border-radius: 10px;
-        overflow: hidden;
-        font-size: 16px;
-    }
-
-    th, td {
-        padding: 12px;
-        border: 1px solid #1e2a36;
-        text-align: center;
-    }
-
-    th {
-        background: #22d3ee;
-        color: black;
-        font-weight: bold;
-    }
-
-    tr:nth-child(even) {
-        background: #0f171f;
-    }
-
-    .chart-box {
-        width: 92%;
-        margin: 40px auto;
-        background: #111a22;
-        padding: 25px;
-        border-radius: 12px;
-        box-shadow: 0 4px 18px rgba(0,0,0,0.4);
-    }
-</style>
+</div> <!-- container -->
 
 <!-- TABLE -->
 <table>
-    <tr>
-        <th>No.</th>
-        <th>Business Idea</th>
-        <th>Investment (₹)</th>
-        <th>Profit (₹)</th>
-    </tr>
-
-    <tr><td>1</td><td>Smart Textile Quality Detector</td><td>40,000</td><td>1,20,000</td></tr>
-    <tr><td>2</td><td>AI-Based Worker Safety Monitoring</td><td>50,000</td><td>1,80,000</td></tr>
-    <tr><td>3</td><td>Predictive Maintenance System</td><td>35,000</td><td>1,40,000</td></tr>
-    <tr><td>4</td><td>Material Sorting Robot</td><td>25,000</td><td>90,000</td></tr>
-    <tr><td>5</td><td>Smart Inventory Forecasting</td><td>20,000</td><td>75,000</td></tr>
-    <tr><td>6</td><td>Waste-Heat Energy Recycling</td><td>60,000</td><td>2,30,000</td></tr>
-    <tr><td>7</td><td>Packaging Optimization System</td><td>30,000</td><td>1,10,000</td></tr>
-    <tr><td>8</td><td>Auto-Reject Conveyor System</td><td>15,000</td><td>60,000</td></tr>
-    <tr><td>9</td><td>Pollution Monitoring Dashboard</td><td>45,000</td><td>1,50,000</td></tr>
-    <tr><td>10</td><td>Supply Chain Delay Predictor</td><td>55,000</td><td>2,00,000</td></tr>
+<tr>
+    <th>No.</th>
+    <th>Business Idea</th>
+    <th>Investment (₹)</th>
+    <th>Profit (₹)</th>
+</tr>
+<tr><td>1</td><td>Smart Textile Quality Detector</td><td>40,000</td><td>1,20,000</td></tr>
+<tr><td>2</td><td>AI-Based Worker Safety Monitoring</td><td>50,000</td><td>1,80,000</td></tr>
+<tr><td>3</td><td>Predictive Maintenance System</td><td>35,000</td><td>1,40,000</td></tr>
+<tr><td>4</td><td>Material Sorting Robot</td><td>25,000</td><td>90,000</td></tr>
+<tr><td>5</td><td>Smart Inventory Forecasting</td><td>20,000</td><td>75,000</td></tr>
+<tr><td>6</td><td>Waste-Heat Energy Recycling</td><td>60,000</td><td>2,30,000</td></tr>
+<tr><td>7</td><td>Packaging Optimization System</td><td>30,000</td><td>1,10,000</td></tr>
+<tr><td>8</td><td>Auto-Reject Conveyor System</td><td>15,000</td><td>60,000</td></tr>
+<tr><td>9</td><td>Pollution Monitoring Dashboard</td><td>45,000</td><td>1,50,000</td></tr>
+<tr><td>10</td><td>Supply Chain Delay Predictor</td><td>55,000</td><td>2,00,000</td></tr>
 </table>
 
-<!-- PROFIT CHART -->
+<!-- CHART -->
 <div class="chart-box">
     <canvas id="profitChart"></canvas>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <script>
-const labels = [
-    "Textile", "Safety", "Maintenance", "Sorting",
-    "Inventory", "Energy", "Packaging",
-    "Conveyor", "Pollution", "Supply Chain"
-];
-
-const profitData = [
-    120000, 180000, 140000, 90000, 75000,
-    230000, 110000, 60000, 150000, 200000
-];
-
+const labels = ["Textile","Safety","Maintenance","Sorting","Inventory","Energy","Packaging","Conveyor","Pollution","Supply Chain"];
+const profitData = [120000,180000,140000,90000,75000,230000,110000,60000,150000,200000];
 const ctx = document.getElementById('profitChart').getContext('2d');
 
 new Chart(ctx, {
@@ -719,15 +776,12 @@ new Chart(ctx, {
     options: {
         responsive: true,
         scales: {
-            x: {
-                ticks: { color: "#d9e5e7" },
-                grid: { display: false }
-            },
-            y: {
-                ticks: { color: "#d9e5e7" },
-                grid: { color: "#1e2a36" }
-            }
+            x: { ticks: { color: "#d9e5e7" }, grid: { display: false } },
+            y: { ticks: { color: "#d9e5e7" }, grid: { color: "#1e2a36" } }
         }
     }
 });
 </script>
+
+</body>
+</html>
