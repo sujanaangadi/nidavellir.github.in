@@ -617,4 +617,117 @@ int main(){
 </html>
 
 
-                
+
+
+<!-- ======================= -->
+<!-- BUSINESS TABLE & CHART -->
+<!-- ======================= -->
+
+<style>
+    table {
+        width: 92%;
+        margin: 40px auto;
+        border-collapse: collapse;
+        background: #111a22;
+        color: #d9e5e7;
+        border-radius: 10px;
+        overflow: hidden;
+        font-size: 16px;
+    }
+
+    th, td {
+        padding: 12px;
+        border: 1px solid #1e2a36;
+        text-align: center;
+    }
+
+    th {
+        background: #22d3ee;
+        color: black;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background: #0f171f;
+    }
+
+    .chart-box {
+        width: 92%;
+        margin: 40px auto;
+        background: #111a22;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.4);
+    }
+</style>
+
+<!-- TABLE -->
+<table>
+    <tr>
+        <th>No.</th>
+        <th>Business Idea</th>
+        <th>Investment (₹)</th>
+        <th>Profit (₹)</th>
+    </tr>
+
+    <tr><td>1</td><td>Smart Textile Quality Detector</td><td>40,000</td><td>1,20,000</td></tr>
+    <tr><td>2</td><td>AI-Based Worker Safety Monitoring</td><td>50,000</td><td>1,80,000</td></tr>
+    <tr><td>3</td><td>Predictive Maintenance System</td><td>35,000</td><td>1,40,000</td></tr>
+    <tr><td>4</td><td>Material Sorting Robot</td><td>25,000</td><td>90,000</td></tr>
+    <tr><td>5</td><td>Smart Inventory Forecasting</td><td>20,000</td><td>75,000</td></tr>
+    <tr><td>6</td><td>Waste-Heat Energy Recycling</td><td>60,000</td><td>2,30,000</td></tr>
+    <tr><td>7</td><td>Packaging Optimization System</td><td>30,000</td><td>1,10,000</td></tr>
+    <tr><td>8</td><td>Auto-Reject Conveyor System</td><td>15,000</td><td>60,000</td></tr>
+    <tr><td>9</td><td>Pollution Monitoring Dashboard</td><td>45,000</td><td>1,50,000</td></tr>
+    <tr><td>10</td><td>Supply Chain Delay Predictor</td><td>55,000</td><td>2,00,000</td></tr>
+</table>
+
+<!-- PROFIT CHART -->
+<div class="chart-box">
+    <canvas id="profitChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const labels = [
+    "Textile", "Safety", "Maintenance", "Sorting",
+    "Inventory", "Energy", "Packaging",
+    "Conveyor", "Pollution", "Supply Chain"
+];
+
+const profitData = [
+    120000, 180000, 140000, 90000, 75000,
+    230000, 110000, 60000, 150000, 200000
+];
+
+const ctx = document.getElementById('profitChart').getContext('2d');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: "Profit (₹)",
+            data: profitData,
+            backgroundColor: "rgba(34, 211, 238, 0.7)",
+            borderColor: "#22d3ee",
+            borderWidth: 2,
+            borderRadius: 8
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            x: {
+                ticks: { color: "#d9e5e7" },
+                grid: { display: false }
+            },
+            y: {
+                ticks: { color: "#d9e5e7" },
+                grid: { color: "#1e2a36" }
+            }
+        }
+    }
+});
+</script>
