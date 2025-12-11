@@ -5,97 +5,158 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PHASE 1 : CITY MAP — Nidavellir</title>
 
+<!-- Google Fonts for creativity -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
+    /* ---------- GLOBAL STYLES ---------- */
     body {
         margin: 0;
-        font-family: Arial, sans-serif;
-        background: #f4f5f7;
+        font-family: 'Poppins', Arial, sans-serif;
+        background: linear-gradient(120deg, #f4f5f7, #e6f0ff);
         color: #1a1a1a;
-        line-height: 1.5;
+        line-height: 1.6;
+        scroll-behavior: smooth;
     }
 
     .container {
-        width: 95%;
-        max-width: 1000px;
-        margin: 20px auto;
-    }
-
-    .map-box {
-        background: #ffffff;
-        padding: 15px;
-        border-radius: 10px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        margin-bottom: 25px;
-    }
-
-    .map-img {
-        width: 100%;
-        border-radius: 8px;
+        width: 90%;
+        max-width: 1200px;
+        margin: 30px auto;
     }
 
     h1 {
         text-align: center;
+        font-size: 36px;
         color: #0b2340;
         margin-bottom: 5px;
+        position: relative;
+    }
+
+    h1::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 3px;
+        background: #c21f3a;
+        margin: 10px auto 0;
+        border-radius: 2px;
     }
 
     .sub {
         text-align: center;
-        color: #666;
-        margin-bottom: 20px;
-        font-size: 14px;
+        color: #555;
+        margin-bottom: 30px;
+        font-size: 16px;
     }
 
-    .content-section {
+    /* ---------- MAP BOX ---------- */
+    .map-box {
         background: #ffffff;
         padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        margin-bottom: 20px;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        margin-bottom: 30px;
+        transition: transform 0.3s;
     }
 
-    h2 {
+    .map-box:hover {
+        transform: scale(1.02);
+    }
+
+    .map-img {
+        width: 100%;
+        border-radius: 12px;
+        border: 3px solid #c21f3a;
+    }
+
+    /* ---------- CONTENT SECTIONS ---------- */
+    .content-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        margin-bottom: 40px;
+    }
+
+    .card {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+    }
+
+    .card h2 {
         font-size: 20px;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
         color: #0b2340;
     }
 
-    ul {
-        margin-top: 5px;
-        padding-left: 20px;
+    .card p, .card ul {
+        font-size: 15px;
+        color: #444;
     }
 
-    /* ---------------------- NEW PHASE 2 STYLES ------------------------ */
+    .card ul li {
+        margin-bottom: 8px;
+        position: relative;
+        padding-left: 18px;
+    }
 
+    .card ul li::before {
+        content: '•';
+        position: absolute;
+        left: 0;
+        color: #c21f3a;
+        font-weight: bold;
+    }
+
+    /* ---------- PHASE 2 BUSINESS BOXES ---------- */
     .phase2-title {
         text-align: center;
-        font-size: 28px;
-        font-weight: bold;
-        color: #c21f3a;   /* change color here */
-        margin: 40px 0 15px 0;
+        font-size: 32px;
+        font-weight: 700;
+        color: #c21f3a;
+        margin: 50px 0 30px;
+        position: relative;
+    }
+
+    .phase2-title::after {
+        content: '';
+        display: block;
+        width: 120px;
+        height: 4px;
+        background: linear-gradient(to right, #c21f3a, #ff5a6e);
+        margin: 12px auto 0;
+        border-radius: 2px;
     }
 
     .team-box-container {
         display: flex;
         flex-wrap: wrap;
-        gap: 15px;
         justify-content: center;
-        margin-top: 20px;
-        margin-bottom: 40px;
+        gap: 20px;
+        margin-bottom: 50px;
     }
 
     .team-box {
         background: #ffffff;
-        padding: 12px 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        font-size: 16px;
-        font-weight: bold;
+        padding: 18px 25px;
+        border-radius: 15px;
+        box-shadow: 0 6px 25px rgba(0,0,0,0.12);
+        font-size: 18px;
+        font-weight: 600;
         text-align: center;
-        transition: 0.3s;
-        border-left: 5px solid #c21f3a;
+        transition: transform 0.3s, background 0.3s;
+        border-left: 6px solid #c21f3a;
         cursor: pointer;
-        min-width: 180px;
     }
 
     .team-box a {
@@ -105,8 +166,16 @@
     }
 
     .team-box:hover {
-        transform: scale(1.05);
+        transform: scale(1.1);
         background: #ffe6ea;
+        box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media(max-width: 768px){
+        h1 { font-size: 28px; }
+        .phase2-title { font-size: 26px; }
+        .card h2 { font-size: 18px; }
     }
 
 </style>
@@ -117,64 +186,71 @@
 
     <h1>PHASE 1 : CITY MAP — Nidavellir</h1>
 
-    <!-- IMAGE FIRST -->
+    <!-- MAP IMAGE -->
     <div class="map-box">
-        <!-- Change the src below to your image filename -->
         <img src="Screenshot 2025-12-08 193217.png" class="map-img" alt="City Map">
     </div>
 
-    <!-- CONTENT BELOW IMAGE -->
+    <!-- CONTENT SECTIONS -->
     <div class="content-section">
-        <h2>Location</h2>
-        <p>Southwestern Rajasthan — between Harji, Posalia, Jawal, and Sumerpur near the Aravalli Hills and Jawai River.</p>
-
-        <h2>Terrain</h2>
-        <p>Hilly and rocky near the Aravalli range; flat fertile plains near the Jawai basin — ideal for farming and settlement.</p>
-
-        <h2>Soil</h2>
-        <ul>
-            <li>Sandy-loam in plains — supports bajra, wheat, and pulses</li>
-            <li>Rocky soil in hill areas</li>
-        </ul>
-
-        <h2>Rivers</h2>
-        <p>Jawai and Sukri — major water sources for agriculture and drinking.</p>
-
-        <h2>Climate</h2>
-        <p>Semi-arid climate with hot summers (up to 44°C), mild winters (10–25°C), and moderate monsoon (400–600 mm rainfall).</p>
-
-        <h2>Vegetation</h2>
-        <p>Dry deciduous and thorn forests — Khejri, Babool, Neem, and Ber trees commonly found.</p>
-
-        <h2>Natural Resources</h2>
-        <ul>
-            <li>Granite, marble, limestone, sandstone</li>
-            <li>Medicinal plants and forest produce</li>
-        </ul>
-
-        <h2>Wildlife</h2>
-        <p>Close to Jawai Leopard Hills Sanctuary — rich biodiversity, crocodiles, migratory birds, hyenas, and eco-tourism value.</p>
-
-        <h2>Topography</h2>
-        <p>Mixed landscape of hills, valleys, and river plains — allows natural drainage and scenic city development.</p>
-
-        <h2>Suitability for City Development</h2>
-        <ul>
-            <li>Reliable water supply from Jawai River</li>
-            <li>Stable land for housing & industries</li>
-            <li>Strong potential for eco-friendly tourism and renewable energy</li>
-        </ul>
+        <div class="card">
+            <h2>Location</h2>
+            <p>Southwestern Rajasthan — between Harji, Posalia, Jawal, and Sumerpur near the Aravalli Hills and Jawai River.</p>
+        </div>
+        <div class="card">
+            <h2>Terrain</h2>
+            <p>Hilly and rocky near the Aravalli range; flat fertile plains near the Jawai basin — ideal for farming and settlement.</p>
+        </div>
+        <div class="card">
+            <h2>Soil</h2>
+            <ul>
+                <li>Sandy-loam in plains — supports bajra, wheat, and pulses</li>
+                <li>Rocky soil in hill areas</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h2>Rivers</h2>
+            <p>Jawai and Sukri — major water sources for agriculture and drinking.</p>
+        </div>
+        <div class="card">
+            <h2>Climate</h2>
+            <p>Semi-arid climate with hot summers (up to 44°C), mild winters (10–25°C), and moderate monsoon (400–600 mm rainfall).</p>
+        </div>
+        <div class="card">
+            <h2>Vegetation</h2>
+            <p>Dry deciduous and thorn forests — Khejri, Babool, Neem, and Ber trees commonly found.</p>
+        </div>
+        <div class="card">
+            <h2>Natural Resources</h2>
+            <ul>
+                <li>Granite, marble, limestone, sandstone</li>
+                <li>Medicinal plants and forest produce</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h2>Wildlife</h2>
+            <p>Close to Jawai Leopard Hills Sanctuary — rich biodiversity, crocodiles, migratory birds, hyenas, and eco-tourism value.</p>
+        </div>
+        <div class="card">
+            <h2>Topography</h2>
+            <p>Mixed landscape of hills, valleys, and river plains — allows natural drainage and scenic city development.</p>
+        </div>
+        <div class="card">
+            <h2>Suitability for City Development</h2>
+            <ul>
+                <li>Reliable water supply from Jawai River</li>
+                <li>Stable land for housing & industries</li>
+                <li>Strong potential for eco-friendly tourism and renewable energy</li>
+            </ul>
+        </div>
     </div>
 
-
-    <!-- ----------------------- PHASE 2 ADDED BELOW ------------------------ -->
-
+    <!-- PHASE 2: BUSINESS IDEA GENERATION -->
     <h1 class="phase2-title">PHASE 2 – BUSINESS IDEA GENERATION</h1>
 
     <div class="team-box-container">
-        <!-- Change the href links to your actual pages -->
-        <div class="team-box"><a href="SHRAVANA.html"_blank">Shravana</a></div>
-        <div class="team-box"><a href="SUJANA.html"_blank">Sujana</a></div>
+        <div class="team-box"><a href="SHRAVANA.html" target="_blank">Shravana</a></div>
+        <div class="team-box"><a href="SUJANA.html" target="_blank">Sujana</a></div>
         <div class="team-box"><a href="KHUSHI.html" target="_blank">Khushi</a></div>
         <div class="team-box"><a href="LAXMI.html" target="_blank">Laxmi</a></div>
     </div>
@@ -183,4 +259,3 @@
 
 </body>
 </html>
-
