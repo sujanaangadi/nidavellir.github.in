@@ -6,29 +6,95 @@
     <title>Collabz: DAA Business Ideas</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        /* ---------- NAVIGATION BAR ---------- */
+        .navbar {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 18px 40px;
+            background: linear-gradient(90deg, #0A1A3A, #4a00e0);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 200;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar .logo {
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #E8EBFF;
+            font-size: 18px;
+            font-weight: 500;
+            position: relative;
+            transition: 0.3s;
+            padding-bottom: 3px;
+        }
+
+        .navbar ul li a::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: #00ffd5;
+            transition: 0.3s;
+            border-radius: 5px;
+        }
+
+        .navbar ul li a:hover {
+            color: #00ffd5;
+        }
+
+        .navbar ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* ---------- PAGE CONTENT STYLING --------- */
         body {
             font-family: 'Roboto', sans-serif;
             background: #f9f9ff;
             margin: 0;
             padding: 0;
         }
+
         header {
             background: linear-gradient(90deg, #8e2de2, #4a00e0);
             color: white;
             padding: 2rem;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-top: 80px; /* space for fixed navbar */
         }
         header h1 { margin: 0; font-size: 2rem; }
+
         main {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
+
         table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; }
         th, td { padding: 0.8rem; border: 1px solid #ddd; text-align: left; }
         th { background: linear-gradient(90deg, #8e2de2, #4a00e0); color: white; }
         tr:nth-child(even) { background: #f4f4f8; }
+
         .collab-card {
             background: white;
             border-radius: 12px;
@@ -65,8 +131,11 @@
             white-space: pre-wrap;
         }
         .algorithms, .contributors, .merged-ideas { font-style: italic; margin-top: 0.5rem; color: #555; }
+
         @media (max-width: 768px){
             th, td { font-size: 0.9rem; padding: 0.5rem; }
+            .navbar ul { gap: 15px; }
+            .navbar ul li a { font-size: 16px; }
         }
     </style>
     <script>
@@ -78,12 +147,27 @@
     </script>
 </head>
 <body>
+
+    <!-- ---------- NAVBAR ---------- -->
+    <div class="navbar">
+        <div class="logo">CITY DESIGN</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="project.html">Project</a></li>
+            <li><a href="SHRAVANA.html">SHRAVANA</a></li>
+            <li><a href="SUJANA.html">SUJANA</a></li>
+            <li><a href="KHUSHI.html">KHUSHI</a></li>
+            <li><a href="LAXMI.html">LAXMI</a></li>
+            <li><a href="collabz.html">Collabz</a></li>
+        </ul>
+    </div>
+
     <header>
         <h1>Collabz: DAA-Powered Business Ideas</h1>
     </header>
-    <main>
 
-        <!-- (Your original table goes here - unchanged) -->
+    <main>
         <table>
             <thead>
                 <tr>
@@ -120,7 +204,7 @@
                     <td>Shravana: House-to-House Energy Sharing; Sujana: Smart EV Charging Stations</td>
                     <td>Min-Heap + Red-Black Tree</td>
                 </tr>
-                <tr>
+<tr>
                     <td>4</td>
                     <td>Smart Waste & Recycling Management</td>
                     <td>Smart bins detect fill level, trucks optimized for route scheduling; heat-energy recycling implemented for industrial or municipal waste.</td>
@@ -1375,6 +1459,13 @@ int main(){
             </pre>
         </div>
 
+    </main>
+</body>
+</html>
+
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
     </main>
 </body>
 </html>
