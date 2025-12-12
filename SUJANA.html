@@ -146,7 +146,7 @@
     .header {
         width: 92%;
         margin: auto;
-        margin-top: 125px;
+        margin-top: 25px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -157,9 +157,8 @@
         color: #C4F1F6;
     }
     .header img {
-        width: 50%;
-        max width:700px;
-        border-radius: 20px;
+        width: 340px;
+        border-radius: 12px;
         box-shadow: 0 4px 15px rgba(0,0,0,0.4);
     }
 
@@ -228,7 +227,7 @@ function toggleAlgo(id) {
 
 <div class="header">
     <h2 class="title">Technology Business Ideas</h2>
-    <img src="Screenshot 2025-12-11 115304.png">
+    <img src="https://img.freepik.com/free-vector/industry-4-0-concept-illustration_114360-9928.jpg">
 </div>
 
 <div class="container">
@@ -721,6 +720,7 @@ int main(){
 }
   </pre>
 </div>
+
 <!-- -------------------- 9. EV CHARGING STATIONS -------------------- -->
 <div class="card">
   <h3>9) Smart EV Charging Station Routing</h3>
@@ -745,18 +745,47 @@ int main(){
   <span class="algo-btn" onclick="toggleAlgo('c9')">Show Code</span>
   <pre id="c9">
 #include <iostream>
-#include <map>
+#include <string>
 using namespace std;
 
-int main(){
-    map<string,int> s={{"A",2},{"B",0},{"C",5}};
-    string best; int mx=-1;
-    for(auto &p:s)
-        if(p.second>mx){ mx=p.second; best=p.first; }
-    cout<<"Go to Station: "<<best;
+struct Station {
+    string name;
+    int freeSlots;
+};
+
+int main() {
+    int n;
+    cout << "Enter number of charging stations: ";
+    cin >> n;
+
+    Station stations[n];
+    for(int i = 0; i < n; i++){
+        cout << "Enter name of station " << i+1 << ": ";
+        cin >> stations[i].name;
+        cout << "Enter number of free slots: ";
+        cin >> stations[i].freeSlots;
+    }
+
+    // Find station with maximum free slots
+    int maxIndex = 0;
+    for(int i = 1; i < n; i++){
+        if(stations[i].freeSlots > stations[maxIndex].freeSlots){
+            maxIndex = i;
+        }
+    }
+
+    cout << "Best station to go: " << stations[maxIndex].name
+         << " with " << stations[maxIndex].freeSlots << " free slots.\n";
+
+    return 0;
 }
   </pre>
 </div>
+
+
+
+
+
 
 <!-- -------------------- 10. CIVIC ISSUE AUTO DETECTION -------------------- -->
 <div class="card">
@@ -776,18 +805,37 @@ int main(){
 <pre id="c10">
 #include <iostream>
 #include <string>
+#include <unordered_map>
 using namespace std;
 
-string detect(string t){
-    if(t=="pothole") return "Road Dept";
-    if(t=="leakage") return "Water Dept";
-    if(t=="streetlight") return "Electricity Dept";
-    return "General";
+// Detect civic issue → department
+string detectIssue(string t) {
+
+    // Lookup table (O(1))
+    unordered_map<string,string> dept = {
+        {"pothole", "Road Department"},
+        {"leakage", "Water Department"},
+        {"streetlight", "Electricity Department"},
+        {"garbage", "Sanitation Department"},
+        {"drainage", "Municipal Corporation"},
+        {"traffic", "Traffic Control Department"}
+    };
+
+    // String pattern matching + rule-based classification
+    if (dept.count(t)) 
+        return dept[t];
+
+    // Fallback default
+    return "General Civic Department";
 }
 
-int main(){
-    string t; getline(cin,t);
-    cout<<"Assigned to: "<<detect(t);
+int main() {
+    string t;
+    cout << "Enter issue: ";
+    getline(cin, t);
+
+    cout << "Assigned to: " << detectIssue(t);
+    return 0;
 }
 </pre>
 </div>
@@ -826,49 +874,69 @@ int main(){
 
 <br><br>
 
-<!-- ======== GRAPH (USING YOUR EXACT 10 IDEAS) ======== -->
-<canvas id="profitChart" style="width: 70%; max-width: 650px; margin: auto; display: block;"></canvas>
+
+
+
+<canvas id="profitChart" width="750" height="420"></canvas>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-const ctx = document.getElementById('profitChart').getContext('2d');
+const ctx = document.getElementById("profitChart").getContext("2d");
 
 new Chart(ctx, {
-    type: 'bar',
+    type: "bar",
     data: {
         labels: [
-            'Smart traffic signal system',
-            'Smart waste mgmt system',
-            'Transport tracking sim',
-            'Food ordering system',
-            'Smart parking',
-            'Water & electricity monitor',
-            'Complaint mgmt',
-            'AI disaster mgmt',
-            'EV charging stations',
-            'Civic issue auto-detection'
+            "Smart traffic signal system",
+            "Smart waste management system",
+            "Public transport tracking simulator",
+            "Digital food ordering & billing system",
+            "Smart parking management",
+            "Water & electricity supply monitoring",
+            "Smart City complaint management",
+            "AI based disaster management system",
+            "Smart EV charging stations",
+            "Civic issue auto-detection"
         ],
-        datasets: [{
-            label: 'Profit',
-            data: [120000, 140000, 160000, 110000, 180000, 130000, 125000, 200000, 170000, 140000],
-            borderWidth: 1
-        }]
+        datasets: [
+            {
+                label: "Profit (₹)",
+                data: [
+                    120000,
+                    140000,
+                    160000,
+                    110000,
+                    180000,
+                    130000,
+                    125000,
+                    200000,
+                    170000,
+                    140000
+                ],
+                backgroundColor: "#59C3C3",     
+                borderColor: "#003B46",
+                borderWidth: 2
+            }
+        ]
     },
-
     options: {
-        plugins: {
-            legend: { labels: { color: 'white' } }
-        },
-
+        responsive: false,
         scales: {
             x: {
-                ticks: { color: "#ffffff" },               // White X values
-                grid: { color: "rgba(255,255,255,0.3)" }   // X grid line
+                ticks: { color: "white" },
+                grid: { display: false },
+                border: { display: true }
             },
             y: {
-                ticks: { color: "#ffffff" },               // White Y values
-                grid: { color: "rgba(255,255,255,0.3)" }   // Y grid line
+                ticks: { color: "white" },
+                grid: { display: false },
+                border: { display: true }
+            }
+        },
+        plugins: {
+            legend: {
+                labels: { color: "white" }
             }
         }
     }
