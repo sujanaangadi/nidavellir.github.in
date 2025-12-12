@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Collabz: DAA Business Ideas</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -19,55 +19,35 @@
             text-align: center;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
-        }
+        header h1 { margin: 0; font-size: 2rem; }
         main {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 2rem;
-        }
-        th, td {
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-        th {
-            background: linear-gradient(90deg, #8e2de2, #4a00e0);
-            color: white;
-        }
-        tr:nth-child(even) {
-            background: #f4f4f8;
-        }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; }
+        th, td { padding: 0.8rem; border: 1px solid #ddd; text-align: left; }
+        th { background: linear-gradient(90deg, #8e2de2, #4a00e0); color: white; }
+        tr:nth-child(even) { background: #f4f4f8; }
         .collab-card {
             background: white;
             border-radius: 12px;
             box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+            padding: 1.25rem;
             transition: transform 0.2s;
         }
-        .collab-card:hover {
-            transform: translateY(-5px);
-        }
+        .collab-card:hover { transform: translateY(-5px); }
         .collab-card h2 {
             margin-top: 0;
             background: linear-gradient(90deg, #8e2de2, #4a00e0);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .collab-card p {
-            line-height: 1.6;
-        }
+        .collab-card p { line-height: 1.6; margin: 0.3rem 0; }
         .show-code-btn {
-            margin-top: 1rem;
-            padding: 0.5rem 1rem;
+            margin-top: 0.8rem;
+            padding: 0.45rem 0.9rem;
             background: #4a00e0;
             color: white;
             border: none;
@@ -75,21 +55,16 @@
             cursor: pointer;
             transition: 0.2s;
         }
-        .show-code-btn:hover {
-            background: #8e2de2;
-        }
+        .show-code-btn:hover { background: #8e2de2; }
         pre {
             background: #f4f4f8;
             padding: 1rem;
             border-radius: 8px;
             overflow-x: auto;
             display: none;
+            white-space: pre-wrap;
         }
-        .algorithms, .contributors, .merged-ideas {
-            font-style: italic;
-            margin-top: 0.5rem;
-            color: #555;
-        }
+        .algorithms, .contributors, .merged-ideas { font-style: italic; margin-top: 0.5rem; color: #555; }
         @media (max-width: 768px){
             th, td { font-size: 0.9rem; padding: 0.5rem; }
         }
@@ -97,7 +72,8 @@
     <script>
         function toggleCode(id) {
             const pre = document.getElementById(id);
-            pre.style.display = (pre.style.display === 'block') ? 'none' : 'block';
+            if(pre.style.display === 'block') pre.style.display = 'none';
+            else pre.style.display = 'block';
         }
     </script>
 </head>
@@ -108,610 +84,1298 @@
     </header>
     <main>
 
+        <!-- (Your original table goes here - unchanged) -->
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Collabz Idea</th>
+                    <th>How It Works</th>
+                    <th>Contributors</th>
+                    <th>Original Ideas Merged</th>
+                    <th>Algorithm / Data Structure</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>AI-Powered Smart Energy Traffic System</td>
+                    <td>Use predicted energy demand to optimize traffic signals and reduce city congestion. Energy from surplus sources can power priority roads.</td>
+                    <td>Shravana + Sujana</td>
+                    <td>Shravana: AI Smart Power Distribution Controller; Sujana: Smart traffic signal system</td>
+                    <td>Dijkstra + AVL Tree</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Solar & Wind Farm Monitoring Dashboard</td>
+                    <td>Central dashboard monitors solar panel efficiency, wind turbine RPM, and battery storage. Optimizes energy collection and alerts for maintenance.</td>
+                    <td>Shravana + Laxmi</td>
+                    <td>Shravana: Wind Turbine Smart RPM Controller, Solar Panel Efficiency Analyzer; Laxmi: Solar Farming</td>
+                    <td>Segment Tree + Heap</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Peer-to-Peer Household Energy Sharing</td>
+                    <td>Houses share energy in real-time with dynamic pricing. Surplus energy automatically distributed to high-demand homes.</td>
+                    <td>Shravana + Sujana</td>
+                    <td>Shravana: House-to-House Energy Sharing; Sujana: Smart EV Charging Stations</td>
+                    <td>Min-Heap + Red-Black Tree</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Smart Waste & Recycling Management</td>
+                    <td>Smart bins detect fill level, trucks optimized for route scheduling; heat-energy recycling implemented for industrial or municipal waste.</td>
+                    <td>Sujana + Khushi</td>
+                    <td>Sujana: Smart waste management system; Khushi: Waste-Heat Energy Recycling System</td>
+                    <td>Min-Heap + BFS</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Predictive Industrial Maintenance & Safety</td>
+                    <td>Machines are monitored for failures, worker safety is checked using sensors; maintenance scheduled before failures occur.</td>
+                    <td>Khushi + Laxmi</td>
+                    <td>Khushi: Predictive Maintenance for Industrial Machines, AI-Based Worker Safety Monitoring; Laxmi: Hydroponic/Farming Sensors Analytics (adapted)</td>
+                    <td>Rabin-Karp + Bellman-Ford</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Smart Inventory & Supply Chain Dashboard</td>
+                    <td>Forecast industrial inventory and optimize delivery schedule; predicts supply chain delays to minimize downtime.</td>
+                    <td>Khushi + Sujana</td>
+                    <td>Khushi: Smart Inventory Forecasting System, AI-Powered Supply Chain Delay Predictor; Sujana: Smart City complaint management (for alerts)</td>
+                    <td>AVL Tree + Dijkstra</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Hydroponic & Organic Farming Network</td>
+                    <td>Monitor hydroponic pods and organic farms; automate resource allocation for growth and yield prediction.</td>
+                    <td>Laxmi + Shravana</td>
+                    <td>Laxmi: Hydroponic Farming, Organic Vegetable Farming; Shravana: AI Smart Power Distribution Controller (for energy allocation)</td>
+                    <td>AVL Tree + Segment Tree</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Autonomous Industrial Safety & Sorting System</td>
+                    <td>Faulty products auto-rejected; robots sort materials; worker safety monitored with AI sensors.</td>
+                    <td>Khushi + Sujana</td>
+                    <td>Khushi: Faulty Product Auto-Reject Conveyor, Autonomous Material Sorting Robot; Sujana: Smart EV charging & safety monitoring</td>
+                    <td>BFS + Rabin-Karp</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Coconut Husk & Beekeeping Farm Management</td>
+                    <td>Tracks water reservation for coconut husk and beekeeping; optimizes production and resource allocation.</td>
+                    <td>Laxmi + Shravana</td>
+                    <td>Laxmi: Coconut Husk Water-Reservation System, Beekeeping; Shravana: AI-Based Battery Storage Optimization</td>
+                    <td>Segment Tree + Heap</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Mushroom & Medicinal Plant Growth Optimizer</td>
+                    <td>Sensors track growth cycles; schedules irrigation, nutrients, and harvest.</td>
+                    <td>Laxmi + Khushi</td>
+                    <td>Laxmi: Mushroom Cultivation, Medicinal Plant Farming; Khushi: Smart Inventory Forecasting System</td>
+                    <td>AVL Tree + QuickSort</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>Smart Goat & Cow-Dung Products Farm</td>
+                    <td>Manages livestock and byproduct production; integrates energy optimization for automated farm systems.</td>
+                    <td>Laxmi + Shravana</td>
+                    <td>Laxmi: Smart Goat Farming Unit, Cow-Dung Based Products; Shravana: Real-Time Electricity Price Optimizer</td>
+                    <td>Red-Black Tree + Heap</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>AI Disaster & Pollution Response System</td>
+                    <td>Detects disasters and industrial pollution; sends alerts and automatically adjusts operations to minimize risk.</td>
+                    <td>Sujana + Khushi</td>
+                    <td>Sujana: AI-Based Disaster Management System; Khushi: Factory Pollution Monitoring & Control Dashboard</td>
+                    <td>BFS + Dijkstra</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>Digital Food & Billing + Smart Parking Integration</td>
+                    <td>Tracks commercial area orders, billing, and parking slots; optimizes service flow for customers.</td>
+                    <td>Sujana + Laxmi</td>
+                    <td>Sujana: Digital Food Ordering & Billing System, Smart Parking Management; Laxmi: Hydroponic / Organic Farm Produce for commercial areas</td>
+                    <td>AVL Tree + Heap</td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td>Smart Textile & Packaging Optimization</td>
+                    <td>Detects textile defects, optimizes packaging and material usage using AI for cost reduction.</td>
+                    <td>Khushi + Sujana</td>
+                    <td>Khushi: Smart Textile Quality Detector, AI-Based Product Packaging Optimization; Sujana: Smart EV Charging integration for industrial use</td>
+                    <td>Rabin-Karp + Segment Tree</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>Smart Load & Battery Optimization for Homes & Factories</td>
+                    <td>Balances home and factory energy consumption with battery storage management.</td>
+                    <td>Shravana + Sujana</td>
+                    <td>Shravana: AI-Based Battery Storage Optimization; Sujana: Smart Load Control Inside Homes & Factories</td>
+                    <td>AVL Tree + Min-Heap</td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>AI Electricity Price & Demand Optimizer</td>
+                    <td>Predicts city-wide demand and optimizes electricity pricing dynamically for consumers and industries.</td>
+                    <td>Shravana + Sujana</td>
+                    <td>Shravana: City-Wide Energy Demand Predictor; Sujana: Smart EV Charging Stations</td>
+                    <td>Dijkstra + Heap</td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td>Public Transport & EV Tracker</td>
+                    <td>Tracks public transport fleet and EV chargers; optimizes route assignment and charging schedules.</td>
+                    <td>Sujana + Shravana</td>
+                    <td>Sujana: Public Transport Tracking Simulator, Smart EV Charging Stations; Shravana: Energy Distribution Controller</td>
+                    <td>BFS + AVL Tree</td>
+                </tr>
+                <tr>
+                    <td>18</td>
+                    <td>Autonomous Industrial Material Sorting Robot</td>
+                    <td>Robot sorts materials in factories; combines predictive maintenance to minimize downtime.</td>
+                    <td>Khushi + Shravana</td>
+                    <td>Khushi: Autonomous Material Sorting Robot; Shravana: AI Smart Power Distribution Controller (energy allocation)</td>
+                    <td>BFS + Heap</td>
+                </tr>
+            </tbody>
+        </table>
 
-<table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width: 100%; font-family: 'Roboto', sans-serif;">
-    <thead style="background: linear-gradient(90deg, #8e2de2, #4a00e0); color: white;">
-        <tr>
-            <th>#</th>
-            <th>Collabz Idea</th>
-            <th>Description</th>
-            <th>Contributors</th>
-            <th>Merged Ideas</th>
-            <th>Algorithms / Data Structures</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>AI-Powered Smart Energy Traffic System</td>
-            <td>Optimizes traffic signals based on predicted energy demand and reduces congestion. Surplus energy from renewable sources powers priority roads.</td>
-            <td>Shravana + Sujana</td>
-            <td>Shravana: AI Smart Power Distribution Controller; Sujana: Smart traffic signal system</td>
-            <td>Dijkstra + AVL Tree</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Solar & Wind Farm Monitoring Dashboard</td>
-            <td>Central dashboard monitors solar panel efficiency, wind turbine RPM, and battery storage. Optimizes energy collection and alerts for maintenance.</td>
-            <td>Shravana + Laxmi</td>
-            <td>Shravana: Wind Turbine Smart RPM Controller, Solar Panel Efficiency Analyzer; Laxmi: Solar Farming</td>
-            <td>Segment Tree + Heap</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Peer-to-Peer Household Energy Sharing</td>
-            <td>Houses share energy in real-time with dynamic pricing. Surplus energy automatically distributed to high-demand homes.</td>
-            <td>Shravana + Sujana</td>
-            <td>Shravana: House-to-House Energy Sharing; Sujana: Smart EV Charging Stations</td>
-            <td>Min-Heap + Red-Black Tree</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>Smart Waste Management System</td>
-            <td>Automatically detects bin levels and optimizes collection routes using real-time data.</td>
-            <td>Laxmi + Sujana</td>
-            <td>Laxmi: Waste Sensor Network; Sujana: Route Optimization AI</td>
-            <td>Greedy + Graph</td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>AI-Based Crop Yield Predictor</td>
-            <td>Predicts crop yield based on weather, soil, and historical data to guide farmers’ decisions.</td>
-            <td>Shravana + Laxmi</td>
-            <td>Shravana: ML Weather Predictor; Laxmi: Soil Analysis Tool</td>
-            <td>Regression + Binary Tree</td>
-        </tr>
-        <tr>
-            <td>6</td>
-            <td>Smart Irrigation Control</td>
-            <td>Automates irrigation using soil moisture sensors and predictive water demand algorithms.</td>
-            <td>Laxmi + Sujana</td>
-            <td>Laxmi: Moisture Sensor Network; Sujana: Water Usage Optimizer</td>
-            <td>Queue + Segment Tree</td>
-        </tr>
-        <tr>
-            <td>7</td>
-            <td>Autonomous Drone Delivery</td>
-            <td>Drones deliver small packages using optimized flight paths to reduce time and energy.</td>
-            <td>Shravana + Laxmi</td>
-            <td>Shravana: Pathfinding Algorithm; Laxmi: Delivery Scheduling AI</td>
-            <td>Dijkstra + Heap</td>
-        </tr>
-        <tr>
-            <td>8</td>
-            <td>Smart Parking Management</td>
-            <td>Detects free parking spots and guides vehicles via app, reducing congestion in urban areas.</td>
-            <td>Shravana + Sujana</td>
-            <td>Shravana: Sensor Detection; Sujana: Parking Routing AI</td>
-            <td>Graph + AVL Tree</td>
-        </tr>
-        <tr>
-            <td>9</td>
-            <td>AI-Powered Health Monitoring Wearable</td>
-            <td>Monitors vital signs continuously and predicts potential health risks using AI analytics.</td>
-            <td>Laxmi + Sujana</td>
-            <td>Laxmi: Health Sensor Design; Sujana: Risk Prediction AI</td>
-            <td>Decision Tree + Heap</td>
-        </tr>
-        <tr>
-            <td>10</td>
-            <td>Smart Classroom Attendance System</td>
-            <td>Uses face recognition and AI to mark attendance and analyze class participation.</td>
-            <td>Shravana + Laxmi</td>
-            <td>Shravana: Face Recognition; Laxmi: Participation Analytics</td>
-            <td>HashMap + Trie</td>
-        </tr>
-        <tr>
-            <td>11</td>
-            <td>Intelligent Traffic Violation Detection</td>
-            <td>Cameras detect violations automatically and generate instant e-challans.</td>
-            <td>Shravana + Sujana</td>
-            <td>Shravana: Image Recognition AI; Sujana: E-Challan System</td>
-            <td>Red-Black Tree + Graph</td>
-        </tr>
-        <tr>
-            <td>12</td>
-            <td>Smart Home Energy Optimizer</td>
-            <td>Balances home energy usage dynamically based on occupancy and device priority.</td>
-            <td>Laxmi + Sujana</td>
-            <td>Laxmi: Device Monitoring; Sujana: Energy Optimization AI</td>
-            <td>Min-Heap + AVL Tree</td>
-        </tr>
-        <tr>
-            <td>13</td>
-            <td>AI-Powered Inventory Management</td>
-            <td>Predicts stock requirements, manages orders, and minimizes wastage in warehouses.</td>
-            <td>Shravana + Laxmi</td>
-            <td>Shravana: Stock Prediction; Laxmi: Order Automation</td>
-            <td>Queue + Segment Tree</td>
-        </tr>
-        <tr>
-            <td>14</td>
-            <td>Smart Water Distribution Network</td>
-            <td>Optimizes water flow and detects leakages in municipal water systems using IoT sensors.</td>
-            <td>Laxmi + Sujana</td>
-            <td>Laxmi: IoT Flow Sensors; Sujana: Flow Optimization AI</td>
-            <td>Graph + Dijkstra</td>
-        </tr>
-        <tr>
-            <td>15</td>
-            <td>AI-Based Student Performance Analyzer</td>
-            <td>Tracks student learning patterns and predicts areas needing improvement.</td>
-            <td>Shravana + Sujana</td>
-            <td>Shravana: Performance Analytics; Sujana: Prediction Model</td>
-            <td>Decision Tree + Heap</td>
-        </tr>
-        <tr>
-            <td>16</td>
-            <td>Smart Retail Checkout System</td>
-            <td>Automates billing using image recognition and tracks inventory in real-time.</td>
-            <td>Laxmi + Sujana</td>
-            <td>Laxmi: Image-Based Checkout; Sujana: Inventory Tracking</td>
-            <td>HashMap + AVL Tree</td>
-        </tr>
-        <tr>
-            <td>17</td>
-            <td>AI-Driven Personalized Advertisement</td>
-            <td>Shows real-time personalized ads to users based on browsing and purchase behavior.</td>
-            <td>Shravana + Laxmi</td>
-            <td>Shravana: Behavioral Analysis; Laxmi: Ad Recommendation Engine</td>
-            <td>Trie + Min-Heap</td>
-        </tr>
-        <tr>
-            <td>18</td>
-            <td>Smart Renewable Energy Optimizer</td>
-            <td>Automatically balances multiple renewable sources to provide stable energy supply to grids.</td>
-            <td>Shravana + Sujana</td>
-            <td>Shravana: Solar/Wind Efficiency AI; Sujana: Battery Storage Optimization</td>
-            <td>Segment Tree + Dijkstra</td>
-        </tr>
-    </tbody>
-</table>
-        <!-- Collab 1 Card -->
+        <!-- Collab Cards 1 - 18 with full C++ implementations -->
+        <!-- Card 1 -->
         <div class="collab-card">
             <h2>1. AI-Powered Smart Energy Traffic System</h2>
-            <p>Optimizes traffic signals based on predicted energy demand and reduces congestion. Surplus energy from renewable sources powers priority roads.</p>
+            <p>Optimizes traffic signals based on predicted energy demand. Uses Dijkstra to pick lowest-cost routes and an AVL tree to maintain fast ordered energy-node lookups.</p>
             <p class="contributors">Contributors: Shravana + Sujana</p>
-            <p class="merged-ideas">Merged Ideas: Shravana: AI Smart Power Distribution Controller; Sujana: Smart traffic signal system</p>
+            <p class="merged-ideas">Merged Ideas: AI Smart Power Distribution Controller; Smart traffic signal system</p>
             <p class="algorithms">Algorithms/Data Structures: Dijkstra + AVL Tree</p>
             <button class="show-code-btn" onclick="toggleCode('code1')">Show Code</button>
             <pre id="code1">
-#include &lt;bits/stdc++.h&gt;
+/* Dijkstra + AVL Tree example (C++17)
+   - Dijkstra computes shortest path (weighted graph).
+   - Simple AVL implementation supports insert/search for energy nodes keyed by id or capacity.
+   - Demonstrates using both together.
+*/
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+#include &lt;limits&gt;
 using namespace std;
 
-// AVL Tree + Dijkstra code (full user input version)
-// Paste your Collab 1 C++ code here (from your snippet)
+// Dijkstra (adj list)
+using Edge = pair&lt;int,int&gt;; // (neighbor, weight)
+vector<int> dijkstra(int n, vector<vector&lt;Edge&gt;>& adj, int src) {
+    const int INF = numeric_limits<int>::max();
+    vector<int> dist(n, INF);
+    dist[src] = 0;
+    priority_queue<pair<int,int>, vector<pair<int,int>>, greater&lt;&gt;&gt; pq;
+    pq.push({0, src});
+    while(!pq.empty()) {
+        auto [d,u] = pq.top(); pq.pop();
+        if (d!=dist[u]) continue;
+        for(auto &e: adj[u]) {
+            int v = e.first, w = e.second;
+            if (dist[v] > dist[u] + w) {
+                dist[v] = dist[u] + w;
+                pq.push({dist[v], v});
+            }
+        }
+    }
+    return dist;
+}
+
+// Simple AVL tree for integer keys (capacity/id) storing a value (string)
+struct AVL {
+    int key, height;
+    string val;
+    AVL *left, *right;
+    AVL(int k, string v): key(k), height(1), val(v), left(nullptr), right(nullptr) {}
+};
+int height(AVL* n){ return n? n->height : 0; }
+int balanceFactor(AVL* n){ return n ? height(n->left) - height(n->right) : 0; }
+void updateHeight(AVL* n){ n->height = 1 + max(height(n->left), height(n->right)); }
+AVL* rotateRight(AVL* y){
+    AVL* x = y->left; AVL* T2 = x->right;
+    x->right = y; y->left = T2;
+    updateHeight(y); updateHeight(x);
+    return x;
+}
+AVL* rotateLeft(AVL* x){
+    AVL* y = x->right; AVL* T2 = y->left;
+    y->left = x; x->right = T2;
+    updateHeight(x); updateHeight(y);
+    return y;
+}
+AVL* insertAVL(AVL* node, int key, const string &val) {
+    if(!node) return new AVL(key, val);
+    if(key &lt; node->key) node->left = insertAVL(node->left, key, val);
+    else if(key &gt; node->key) node->right = insertAVL(node->right, key, val);
+    else { node->val = val; return node; }
+    updateHeight(node);
+    int bf = balanceFactor(node);
+    if(bf &gt; 1 && key &lt; node->left->key) return rotateRight(node);
+    if(bf &lt; -1 && key &gt; node->right->key) return rotateLeft(node);
+    if(bf &gt; 1 && key &gt; node->left->key) { node->left = rotateLeft(node->left); return rotateRight(node); }
+    if(bf &lt; -1 && key &lt; node->right->key) { node->right = rotateRight(node->right); return rotateLeft(node); }
+    return node;
+}
+AVL* searchAVL(AVL* root, int key) {
+    if(!root) return nullptr;
+    if(key == root->key) return root;
+    if(key &lt; root->key) return searchAVL(root->left, key);
+    return searchAVL(root->right, key);
+}
+
+int main() {
+    // Example graph (5 nodes)
+    int n = 5;
+    vector<vector<Edge>> adj(n);
+    auto addEdge = [&](int u,int v,int w){ adj[u].push_back({v,w}); adj[v].push_back({u,w}); };
+    addEdge(0,1,10); addEdge(0,2,3); addEdge(1,2,1); addEdge(2,3,2); addEdge(3,4,7);
+    vector<int> dist = dijkstra(n, adj, 0);
+    cout &lt;&lt; "Dijkstra distances from 0:\\n";
+    for(int i=0;i<n;i++) cout &lt;&lt; i &lt;&lt; ": " &lt;&lt; (dist[i]==numeric_limits<int>::max() ? -1 : dist[i]) &lt;&lt; "\\n";
+
+    // AVL usage: store energy nodes keyed by capacity
+    AVL* root = nullptr;
+    root = insertAVL(root, 500, "NodeA");
+    root = insertAVL(root, 300, "NodeB");
+    root = insertAVL(root, 800, "NodeC");
+    AVL* found = searchAVL(root, 300);
+    if(found) cout &lt;&lt; "Found AVL node: " &lt;&lt; found->val &lt;&lt; " (capacity 300)\\n";
+    return 0;
+}
             </pre>
         </div>
 
-        <!-- Collab 2 Card -->
+        <!-- Card 2 -->
         <div class="collab-card">
             <h2>2. Solar & Wind Farm Monitoring Dashboard</h2>
-            <p>Monitors solar panel efficiency and wind turbine RPM; allows fast queries for min/max/overall efficiency.</p>
+            <p>Segment Tree for range queries (e.g., analyze production over intervals) combined with a Heap for quick access to lowest/highest performance panels/turbines.</p>
             <p class="contributors">Contributors: Shravana + Laxmi</p>
-            <p class="merged-ideas">Merged Ideas: Shravana: Wind Turbine Smart RPM Controller, Solar Panel Efficiency Analyzer; Laxmi: Solar Farming</p>
-            <p class="algorithms">Algorithms/Data Structures: Segment Tree + Max Heap</p>
+            <p class="merged-ideas">Merged Ideas: RPM controller, efficiency analyzer</p>
+            <p class="algorithms">Algorithms/Data Structures: Segment Tree + Heap</p>
             <button class="show-code-btn" onclick="toggleCode('code2')">Show Code</button>
             <pre id="code2">
-#include &lt;bits/stdc++.h&gt;
+/* Segment Tree (range sum) + min-heap example
+   - Segment tree supports range sum / update operations (useful for interval analytics).
+   - Min-heap implemented via priority_queue with custom comparator.
+*/
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
 using namespace std;
 
-// Segment Tree + Max Heap code (full user input version)
-// Paste your Collab 2 C++ code here (from your snippet)
+// Segment Tree for range sum
+struct SegmentTree {
+    int n;
+    vector&lt;long long&gt; tree;
+    SegmentTree(const vector&lt;int&gt;&amp; a) {
+        n = a.size();
+        tree.resize(4*n);
+        build(1,0,n-1,a);
+    }
+    void build(int node,int l,int r,const vector&lt;int&gt;&amp; a){
+        if(l==r){ tree[node]=a[l]; return; }
+        int mid=(l+r)/2;
+        build(node*2,l,mid,a); build(node*2+1,mid+1,r,a);
+        tree[node]=tree[node*2]+tree[node*2+1];
+    }
+    void update(int node,int l,int r,int idx,int val){
+        if(l==r){ tree[node]=val; return; }
+        int mid=(l+r)/2;
+        if(idx<=mid) update(node*2,l,mid,idx,val);
+        else update(node*2+1,mid+1,r,idx,val);
+        tree[node]=tree[node*2]+tree[node*2+1];
+    }
+    long long query(int node,int l,int r,int ql,int qr){
+        if(ql>r||qr&lt; l) return 0;
+        if(ql&lt;=l && r&lt;=qr) return tree[node];
+        int mid=(l+r)/2;
+        return query(node*2,l,mid,ql,qr)+query(node*2+1,mid+1,r,ql,qr);
+    }
+};
+
+// Min-heap for worst-performing units
+int main(){
+    vector&lt;int&gt; production = {100, 200, 150, 80, 220, 90}; // sample units production
+    SegmentTree st(production);
+    cout &lt;&lt; "Total production [0..5]: " &lt;&lt; st.query(1,0,production.size()-1,0,5) &lt;&lt; "\\n";
+    // update a turbine
+    st.update(1,0,production.size()-1,3,120);
+    cout &lt;&lt; "After update, total production: " &lt;&lt; st.query(1,0,production.size()-1,0,5) &lt;&lt; "\\n";
+
+    // min-heap to get lowest producers: pair(production, id)
+    priority_queue&lt;pair<int,int&gt;, vector<pair<int,int>>, greater&lt;&gt;&gt; minHeap;
+    for(int i=0;i&lt;(int)production.size();++i) minHeap.push({production[i],i});
+    auto worst = minHeap.top();
+    cout &lt;&lt; "Worst producer id: " &lt;&lt; worst.second &lt;&lt; " value: " &lt;&lt; worst.first &lt;&lt; "\\n";
+    return 0;
+}
             </pre>
         </div>
 
-        <!-- Collab 3 Card -->
+        <!-- Card 3 -->
         <div class="collab-card">
             <h2>3. Peer-to-Peer Household Energy Sharing</h2>
-            <p>Distributes surplus energy among houses using a priority-based system; optimized distribution order using min-heap.</p>
+            <p>Min-Heap for best sellers/buyers and a Red-Black Tree substitute via <code>std::map</code> for ordered user lookup and dynamic pricing management.</p>
             <p class="contributors">Contributors: Shravana + Sujana</p>
-            <p class="merged-ideas">Merged Ideas: Shravana: House-to-House Energy Sharing; Sujana: Smart EV Charging Stations</p>
-            <p class="algorithms">Algorithms/Data Structures: Min-Heap + Red-Black Tree</p>
+            <p class="merged-ideas">Merged Ideas: House-to-House Energy Sharing; Smart EV Charging</p>
+            <p class="algorithms">Algorithms/Data Structures: Min-Heap + Red-Black Tree (std::map)</p>
             <button class="show-code-btn" onclick="toggleCode('code3')">Show Code</button>
             <pre id="code3">
-#include &lt;bits/stdc++.h&gt;
+/* Min-Heap + std::map (RB-tree substitute)
+   - Use priority_queue as min-heap of offers.
+   - Use std::map (balanced tree under the hood) to keep sorted users/prices.
+*/
+#include &lt;iostream&gt;
+#include &lt;queue&gt;
+#include &lt;map&gt;
 using namespace std;
 
-// Min-Heap + Red-Black Tree (map) code
-// Paste your Collab 3 C++ code here (from your snippet)
+struct Offer {
+    int price; // cents per kWh
+    int amount; // kWh
+    int id;
+};
+struct OfferCmp {
+    bool operator()(const Offer &a, const Offer &b) const {
+        if(a.price != b.price) return a.price &gt; b.price; // min-heap
+        return a.id &gt; b.id;
+    }
+};
+
+int main(){
+    priority_queue&lt;Offer, vector&lt;Offer&gt;, OfferCmp&gt; minHeap;
+    minHeap.push({100, 50, 1});
+    minHeap.push({90, 20, 2});
+    minHeap.push({120, 30, 3});
+
+    // std::map used as RB-tree substitute: key = user id, value = available energy
+    map&lt;int,int&gt; userEnergy;
+    userEnergy[1] = 50; userEnergy[2] = 20; userEnergy[3] = 30;
+
+    cout &lt;&lt; "Top offer: price=" &lt;&lt; minHeap.top().price &lt;&lt; " id=" &lt;&lt; minHeap.top().id &lt;&lt; "\\n";
+    // Match requests greedily
+    auto best = minHeap.top(); minHeap.pop();
+    int buyerNeed = 40;
+    if(best.amount &gt;= buyerNeed) {
+        cout &lt;&lt; "Matched buyer with seller id " &lt;&lt; best.id &lt;&lt; "\\n";
+        userEnergy[best.id] -= buyerNeed;
+    }
+    // iterate std::map (ordered)
+    for(auto &p : userEnergy) cout &lt;&lt; "User " &lt;&lt; p.first &lt;&lt; " energy=" &lt;&lt; p.second &lt;&lt; "\\n";
+    return 0;
+}
+            </pre>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="collab-card">
+            <h2>4. Smart Waste & Recycling Management</h2>
+            <p>Min-Heap to prioritize urgent pickups and BFS for route planning in city grids.</p>
+            <p class="contributors">Contributors: Sujana + Khushi</p>
+            <p class="merged-ideas">Merged Ideas: Smart waste management; Waste-Heat Energy Recycling</p>
+            <p class="algorithms">Algorithms/Data Structures: Min-Heap + BFS</p>
+            <button class="show-code-btn" onclick="toggleCode('code4')">Show Code</button>
+            <pre id="code4">
+/* Min-Heap (priority by fill level/time) + BFS for route planning
+   - BFS to compute shortest path in unweighted city-grid graph.
+   - Priority queue to schedule trucks to highest-priority bins.
+*/
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+using namespace std;
+
+struct Bin {
+    int id;
+    int fill; // 0-100
+    int deadline; // timestamp
+};
+struct BinCmp {
+    bool operator()(const Bin &a, const Bin &b) const {
+        if(a.fill != b.fill) return a.fill &lt; b.fill; // max-heap by fill
+        return a.deadline &gt; b.deadline;
+    }
+};
+
+// BFS for shortest path in grid (4-neighbors)
+int bfsShortest(int R,int C,pair<int,int> src,pair<int,int> dst) {
+    vector<vector<int>> vis(R, vector<int>(C,0));
+    queue<pair<pair<int,int>,int>> q;
+    q.push({src,0}); vis[src.first][src.second]=1;
+    int dr[4]={-1,1,0,0}, dc[4]={0,0,-1,1};
+    while(!q.empty()){
+        auto cur=q.front(); q.pop();
+        auto p=cur.first; int d=cur.second;
+        if(p==dst) return d;
+        for(int k=0;k&lt;4;k++){
+            int nr=p.first+dr[k], nc=p.second+dc[k];
+            if(nr&lt;0||nr&gt;=R||nc&lt;0||nc&gt;=C) continue;
+            if(!vis[nr][nc]){ vis[nr][nc]=1; q.push({{nr,nc},d+1}); }
+        }
+    }
+    return -1;
+}
+
+int main(){
+    priority_queue&lt;Bin, vector&lt;Bin&gt;, BinCmp&gt; pq;
+    pq.push({1, 80, 1000});
+    pq.push({2, 95, 900});
+    pq.push({3, 30, 2000});
+    auto top = pq.top(); cout &lt;&lt; "Next pickup bin id: " &lt;&lt; top.id &lt;&lt; " fill: " &lt;&lt; top.fill &lt;&lt; "\\n";
+
+    int R=5,C=5;
+    cout &lt;&lt; "BFS shortest path steps: " &lt;&lt; bfsShortest(R,C,{0,0},{4,4}) &lt;&lt; "\\n";
+    return 0;
+}
+            </pre>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="collab-card">
+            <h2>5. Predictive Industrial Maintenance & Safety</h2>
+            <p>Rabin-Karp for detecting signature patterns in logs and Bellman-Ford for worst-case path/risk propagation analysis.</p>
+            <p class="contributors">Contributors: Khushi + Laxmi</p>
+            <p class="merged-ideas">Merged Ideas: Predictive maintenance; Farming sensors adapted</p>
+            <p class="algorithms">Algorithms/Data Structures: Rabin-Karp + Bellman-Ford</p>
+            <button class="show-code-btn" onclick="toggleCode('code5')">Show Code</button>
+            <pre id="code5">
+/* Rabin-Karp (string pattern matching) + Bellman-Ford (single-source shortest paths with negative edges)
+   - Rabin-Karp helpful for scanning sensor logs for signatures.
+   - Bellman-Ford can model propagation of risk/latency where edge weights may be negative (e.g., cost reductions).
+*/
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &lt;limits&gt;
+using namespace std;
+
+// Rabin-Karp
+vector&lt;int&gt; rabinKarp(const string &text, const string &pat) {
+    const long long base=256, mod=101;
+    int n=text.size(), m=pat.size();
+    if(m&gt;n) return {};
+    long long h=1;
+    for(int i=0;i&lt;m-1;i++) h = (h*base) % mod;
+    long long p_hash=0, t_hash=0;
+    for(int i=0;i&lt;m;i++){ p_hash=(p_hash*base + pat[i])%mod; t_hash=(t_hash*base + text[i])%mod; }
+    vector<int> res;
+    for(int i=0;i&lt;=n-m;i++){
+        if(p_hash==t_hash) if(text.substr(i,m)==pat) res.push_back(i);
+        if(i&lt;n-m) {
+            t_hash = ( (t_hash - text[i]*h)%mod + mod )%mod;
+            t_hash = (t_hash*base + text[i+m])%mod;
+        }
+    }
+    return res;
+}
+
+// Bellman-Ford
+struct Edge { int u,v; int w; };
+vector<int> bellmanFord(int n, vector<Edge>& edges, int src) {
+    const int INF = numeric_limits<int>::max()/4;
+    vector<int> dist(n, INF); dist[src]=0;
+    for(int i=0;i&lt;n-1;i++){
+        for(auto &e: edges){
+            if(dist[e.u] &lt; INF && dist[e.v] &gt; dist[e.u] + e.w)
+                dist[e.v] = dist[e.u] + e.w;
+        }
+    }
+    // detect negative cycle (optional)
+    for(auto &e: edges) {
+        if(dist[e.u] &lt; INF && dist[e.v] &gt; dist[e.u] + e.w)
+            cerr &lt;&lt; "Negative cycle detected\\n";
+    }
+    return dist;
+}
+
+int main(){
+    string logs = "sensorOKfaultXsensorOKfaultXsensorOK";
+    string pattern = "faultX";
+    auto pos = rabinKarp(logs, pattern);
+    for(int p: pos) cout &lt;&lt; "Pattern at " &lt;&lt; p &lt;&lt; "\\n";
+
+    int n=4;
+    vector<Edge> edges = {{0,1,1},{1,2,2},{0,2,4},{2,3,-5}};
+    auto dist = bellmanFord(n, edges, 0);
+    for(int i=0;i&lt;n;i++) cout &lt;&lt; "dist[" &lt;&lt; i &lt;&lt; "]=" &lt;&lt; dist[i] &lt;&lt; "\\n";
+    return 0;
+}
+            </pre>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="collab-card">
+            <h2>6. Smart Inventory & Supply Chain Dashboard</h2>
+            <p>AVL Tree for quick ordered inventory lookups and Dijkstra for delivery route optimization.</p>
+            <p class="contributors">Contributors: Khushi + Sujana</p>
+            <p class="merged-ideas">Merged Ideas: Inventory forecasting; complaint/alert system</p>
+            <p class="algorithms">Algorithms/Data Structures: AVL Tree + Dijkstra</p>
+            <button class="show-code-btn" onclick="toggleCode('code6')">Show Code</button>
+            <pre id="code6">
+/* AVL Tree + Dijkstra combined example
+   - AVL used for inventory keyed by product id (fast ordered operations).
+   - Dijkstra helps compute quickest delivery path for shipments.
+*/
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+#include &lt;limits&gt;
+using namespace std;
+
+// Reuse small AVL from card 1 (simplified)
+struct AVL {
+    int key, height;
+    int qty;
+    AVL *left, *right;
+    AVL(int k,int q): key(k), height(1), qty(q), left(nullptr), right(nullptr) {}
+};
+int heightAVL(AVL* n){ return n? n->height : 0; }
+void updateHeight(AVL* n){ n->height = 1 + max(heightAVL(n->left), heightAVL(n->right)); }
+AVL* rotateRight(AVL* y){ AVL* x = y->left; AVL* T2 = x->right; x->right=y; y->left=T2; updateHeight(y); updateHeight(x); return x; }
+AVL* rotateLeft(AVL* x){ AVL* y = x->right; AVL* T2 = y->left; y->left=x; x->right=T2; updateHeight(x); updateHeight(y); return y; }
+AVL* insertAVL(AVL* node, int key,int qty) {
+    if(!node) return new AVL(key,qty);
+    if(key &lt; node->key) node->left = insertAVL(node->left, key, qty);
+    else if(key &gt; node->key) node->right = insertAVL(node->right, key, qty);
+    else { node->qty += qty; return node; }
+    updateHeight(node);
+    int bf = heightAVL(node->left) - heightAVL(node->right);
+    if(bf &gt; 1 && key &lt; node->left->key) return rotateRight(node);
+    if(bf &lt; -1 && key &gt; node->right->key) return rotateLeft(node);
+    if(bf &gt; 1 && key &gt; node->left->key) { node->left = rotateLeft(node->left); return rotateRight(node); }
+    if(bf &lt; -1 && key &lt; node->right->key) { node->right = rotateRight(node->right); return rotateLeft(node); }
+    return node;
+}
+
+// Dijkstra
+using Edge = pair&lt;int,int&gt;;
+vector<int> dijkstra(int n, vector<vector&lt;Edge&gt;>& adj, int src) {
+    const int INF = numeric_limits<int>::max();
+    vector<int> dist(n, INF); dist[src]=0;
+    priority_queue<pair<int,int>, vector<pair<int,int>>, greater&lt;&gt;&gt; pq;
+    pq.push({0,src});
+    while(!pq.empty()){
+        auto [d,u]=pq.top(); pq.pop();
+        if(d!=dist[u]) continue;
+        for(auto &e: adj[u]){
+            int v=e.first,w=e.second;
+            if(dist[v] > dist[u]+w){ dist[v]=dist[u]+w; pq.push({dist[v],v}); }
+        }
+    }
+    return dist;
+}
+
+int main(){
+    // Inventory AVL
+    AVL* inv=nullptr;
+    inv=insertAVL(inv, 101, 50);
+    inv=insertAVL(inv, 200, 100);
+    cout &lt;&lt; "Inserted inventory items (101,200)\\n";
+
+    // Delivery graph
+    int n=4; vector<vector<Edge>> adj(n);
+    auto addEdge=[&](int u,int v,int w){ adj[u].push_back({v,w}); adj[v].push_back({u,w}); };
+    addEdge(0,1,5); addEdge(1,2,10); addEdge(0,2,15); addEdge(2,3,5);
+    auto dist = dijkstra(n, adj, 0);
+    cout &lt;&lt; "Distance to node 3: " &lt;&lt; dist[3] &lt;&lt; "\\n";
+    return 0;
+}
+            </pre>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="collab-card">
+            <h2>7. Hydroponic & Organic Farming Network</h2>
+            <p>AVL tree for ordered farm nodes and Segment Tree for range analytics across pods.</p>
+            <p class="contributors">Contributors: Laxmi + Shravana</p>
+            <p class="merged-ideas">Merged Ideas: Hydroponic farming; AI-powered energy allocation</p>
+            <p class="algorithms">Algorithms/Data Structures: AVL Tree + Segment Tree</p>
+            <button class="show-code-btn" onclick="toggleCode('code7')">Show Code</button>
+            <pre id="code7">
+/* AVL + Segment Tree example
+   - AVL: manage pods keyed by id.
+   - Segment tree: range max yield queries across pods.
+*/
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+// Simple AVL node storing pod id and expected yield
+struct AVL {
+    int key;
+    int yield;
+    int height;
+    AVL *left,*right;
+    AVL(int k,int y): key(k), yield(y), height(1), left(nullptr), right(nullptr) {}
+};
+int h(AVL* n){ return n? n->height:0; }
+void upd(AVL* n){ n->height = 1 + max(h(n->left), h(n->right)); }
+AVL* rRight(AVL* y){ AVL* x=y->left; AVL* T2=x->right; x->right=y; y->left=T2; upd(y); upd(x); return x; }
+AVL* rLeft(AVL* x){ AVL* y=x->right; AVL* T2=y->left; y->left=x; x->right=T2; upd(x); upd(y); return y; }
+AVL* insertAVL(AVL* node,int key,int yld){
+    if(!node) return new AVL(key,yld);
+    if(key&lt;node->key) node->left=insertAVL(node->left,key,yld);
+    else if(key&gt;node->key) node->right=insertAVL(node->right,key,yld);
+    else { node->yield=yld; return node; }
+    upd(node);
+    int bf = h(node->left)-h(node->right);
+    if(bf&gt;1 && key&lt;node->left->key) return rRight(node);
+    if(bf&lt;-1 && key&gt;node->right->key) return rLeft(node);
+    if(bf&gt;1 && key&gt;node->left->key){ node->left=rLeft(node->left); return rRight(node); }
+    if(bf&lt;-1 && key&lt;node->right->key){ node->right=rRight(node->right); return rLeft(node); }
+    return node;
+}
+
+// Segment Tree for max yield
+struct SegTree {
+    int n; vector<int> st;
+    SegTree(const vector<int>& a){ n=a.size(); st.assign(4*n,0); build(1,0,n-1,a); }
+    void build(int p,int l,int r,const vector<int>& a){
+        if(l==r){ st[p]=a[l]; return; }
+        int m=(l+r)/2; build(p*2,l,m,a); build(p*2+1,m+1,r,a);
+        st[p]=max(st[p*2], st[p*2+1]);
+    }
+    int queryMax(int p,int l,int r,int i,int j){
+        if(i>r||j&lt;l) return INT_MIN;
+        if(i&lt;=l && r&lt;=j) return st[p];
+        int m=(l+r)/2;
+        return max(queryMax(p*2,l,m,i,j), queryMax(p*2+1,m+1,r,i,j));
+    }
+};
+
+int main(){
+    // AVL pods
+    AVL* root=nullptr;
+    root = insertAVL(root, 1, 120);
+    root = insertAVL(root, 2, 95);
+    cout &lt;&lt; "Inserted hydroponic pods 1 and 2.\\n";
+
+    // Segment tree for yields across 5 pods
+    vector<int> yields = {120,95,140,110,80};
+    SegTree st(yields);
+    cout &lt;&lt; "Max yield in [0,2]: " &lt;&lt; st.queryMax(1,0,yields.size()-1,0,2) &lt;&lt; "\\n";
+    return 0;
+}
+            </pre>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="collab-card">
+            <h2>8. Autonomous Industrial Safety & Sorting System</h2>
+            <p>BFS to analyze conveyor/plant areas and Rabin-Karp to detect defect signatures from camera logs or serial data.</p>
+            <p class="contributors">Contributors: Khushi + Sujana</p>
+            <p class="merged-ideas">Merged Ideas: Auto-reject conveyor; sorting robot</p>
+            <p class="algorithms">Algorithms/Data Structures: BFS + Rabin-Karp</p>
+            <button class="show-code-btn" onclick="toggleCode('code8')">Show Code</button>
+            <pre id="code8">
+/* BFS (graph traversal for robot pathfinding) + Rabin-Karp (detect defect markers)
+*/
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int bfsSteps(vector<vector<int>>& grid, pair<int,int> s, pair<int,int> t) {
+    int R=grid.size(), C=grid[0].size();
+    vector<vector<int>> vis(R, vector<int>(C,0));
+    queue<pair<pair<int,int>,int>> q;
+    q.push({s,0}); vis[s.first][s.second]=1;
+    int dr[4]={-1,1,0,0}, dc[4]={0,0,-1,1};
+    while(!q.empty()){
+        auto [pos,d] = q.front(); q.pop();
+        if(pos==t) return d;
+        for(int k=0;k&lt;4;k++){
+            int nr=pos.first+dr[k], nc=pos.second+dc[k];
+            if(nr&lt;0||nr&gt;=R||nc&lt;0||nc&gt;=C) continue;
+            if(!vis[nr][nc] && grid[nr][nc]==0){
+                vis[nr][nc]=1; q.push({{nr,nc},d+1});
+            }
+        }
+    }
+    return -1;
+}
+
+vector<int> rabinKarp(const string &text, const string &pat){
+    const long long base=256, mod=101;
+    int n=text.size(), m=pat.size();
+    if(m&gt;n) return {};
+    long long h=1, p_hash=0, t_hash=0;
+    for(int i=0;i&lt;m-1;i++) h=(h*base)%mod;
+    for(int i=0;i&lt;m;i++){ p_hash=(p_hash*base + pat[i])%mod; t_hash=(t_hash*base + text[i])%mod; }
+    vector<int> res;
+    for(int i=0;i&lt;=n-m;i++){
+        if(p_hash==t_hash && text.substr(i,m)==pat) res.push_back(i);
+        if(i&lt;n-m){
+            t_hash = ((t_hash - text[i]*h)%mod + mod)%mod;
+            t_hash = (t_hash*base + text[i+m])%mod;
+        }
+    }
+    return res;
+}
+
+int main(){
+    vector<vector<int>> grid = {
+        {0,0,0,1},
+        {0,1,0,0},
+        {0,0,0,0},
+        {1,0,0,0}
+    };
+    cout &lt;&lt; "BFS steps from (0,0) to (2,3): " &lt;&lt; bfsSteps(grid,{0,0},{2,3}) &lt;&lt; "\\n";
+
+    string cameraLog = "OKDEFECTOKOKDEFECT";
+    string pattern = "DEFECT";
+    auto matches = rabinKarp(cameraLog, pattern);
+    for(auto pos: matches) cout &lt;&lt; "Defect signature at " &lt;&lt; pos &lt;&lt; "\\n";
+    return 0;
+}
+            </pre>
+        </div>
+
+        <!-- Card 9 -->
+        <div class="collab-card">
+            <h2>9. Coconut Husk & Beekeeping Farm Management</h2>
+            <p>Segment Tree for water-reservation analytics and a Heap for prioritizing resource distribution.</p>
+            <p class="contributors">Contributors: Laxmi + Shravana</p>
+            <p class="merged-ideas">Merged Ideas: Water-reservation system; battery storage optimization</p>
+            <p class="algorithms">Algorithms/Data Structures: Segment Tree + Heap</p>
+            <button class="show-code-btn" onclick="toggleCode('code9')">Show Code</button>
+            <pre id="code9">
+/* Segment tree (range sum) + heap for resource priority
+*/
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+using namespace std;
+
+struct SegTree {
+    int n; vector<int> st;
+    SegTree(const vector<int>& a){ n=a.size(); st.assign(4*n,0); build(1,0,n-1,a); }
+    void build(int p,int l,int r,const vector<int>& a){
+        if(l==r){ st[p]=a[l]; return; }
+        int m=(l+r)/2; build(p*2,l,m,a); build(p*2+1,m+1,r,a);
+        st[p]=st[p*2]+st[p*2+1];
+    }
+    int query(int p,int l,int r,int i,int j){
+        if(i>r||j&lt;l) return 0;
+        if(i&lt;=l&&r&lt;=j) return st[p];
+        int m=(l+r)/2;
+        return query(p*2,l,m,i,j)+query(p*2+1,m+1,r,i,j);
+    }
+};
+
+int main(){
+    vector<int> water = {50, 30, 45, 60, 20}; // litres reserved in zones
+    SegTree st(water);
+    cout &lt;&lt; "Total water [0..2]: " &lt;&lt; st.query(1,0,water.size()-1,0,2) &lt;&lt; "\\n";
+
+    // Heap to prioritize beekeeping tasks by urgency (higher urgency first)
+    priority_queue&lt;pair<int,string&gt; &gt; pq;
+    pq.push({10, "Inspect hive A"});
+    pq.push({5, "Feed bees"});
+    pq.push({12, "Relocate queen"});
+    cout &lt;&lt; "Top task: " &lt;&lt; pq.top().second &lt;&lt; "\\n";
+    return 0;
+}
+            </pre>
+        </div>
+
+        <!-- Card 10 -->
+        <div class="collab-card">
+            <h2>10. Mushroom & Medicinal Plant Growth Optimizer</h2>
+            <p>AVL tree for managing growth stages and QuickSort for sorting sensor readings/historical yields.</p>
+            <p class="contributors">Contributors: Laxmi + Khushi</p>
+            <p class="merged-ideas">Merged Ideas: Mushroom cultivation; smart inventory forecasting</p>
+            <p class="algorithms">Algorithms/Data Structures: AVL Tree + QuickSort</p>
+            <button class="show-code-btn" onclick="toggleCode('code10')">Show Code</button>
+            <pre id="code10">
+/* AVL + QuickSort
+   - QuickSort for sorting recent yield values.
+   - AVL to store pods keyed by expected harvest time.
+*/
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+// QuickSort
+void quicksort(vector<int>& a,int l,int r){
+    if(l>=r) return;
+    int i=l,j=r,pivot=a[(l+r)/2];
+    while(i&lt;=j){
+        while(a[i]&lt;pivot) i++;
+        while(a[j]&gt;pivot) j--;
+        if(i&lt;=j) swap(a[i++], a[j--]);
+    }
+    if(l&lt;j) quicksort(a,l,j);
+    if(i&lt;r) quicksort(a,i,r);
+}
+
+// AVL minimal
+struct AVL { int key; int height; int data; AVL *l,*r; AVL(int k,int d):key(k),height(1),data(d),l(nullptr),r(nullptr){} };
+int h(AVL* n){ return n? n->height:0; }
+void upd(AVL* n){ n->height = 1 + max(h(n->l), h(n->r)); }
+AVL* rR(AVL* y){ AVL* x=y->l; AVL* T2=x->r; x->r=y; y->l=T2; upd(y); upd(x); return x;}
+AVL* rL(AVL* x){ AVL* y=x->r; AVL* T2=y->l; y->l=x; x->r=T2; upd(x); upd(y); return y;}
+AVL* insertAVL(AVL* node,int key,int d){
+    if(!node) return new AVL(key,d);
+    if(key&lt;node->key) node->l=insertAVL(node->l,key,d);
+    else if(key&gt;node->key) node->r=insertAVL(node->r,key,d);
+    else { node->data=d; return node; }
+    upd(node); int bf = h(node->l)-h(node->r);
+    if(bf&gt;1 && key&lt;node->l->key) return rR(node);
+    if(bf&lt;-1 && key&gt;node->r->key) return rL(node);
+    if(bf&gt;1 && key&gt;node->l->key){ node->l=rL(node->l); return rR(node); }
+    if(bf&lt;-1 && key&lt;node->r->key){ node->r=rR(node->r); return rL(node); }
+    return node;
+}
+
+int main(){
+    vector<int> recentYields = {30,45,20,60,50};
+    quicksort(recentYields,0,recentYields.size()-1);
+    cout &lt;&lt; "Sorted yields: ";
+    for(int v: recentYields) cout &lt;&lt; v &lt;&lt; " ";
+    cout &lt;&lt; "\\n";
+
+    AVL* root=nullptr;
+    root = insertAVL(root, 20251201, 60); // example: key = expected harvest date int
+    cout &lt;&lt; "Inserted AVL harvest node.\\n";
+    return 0;
+}
+            </pre>
+        </div>
+
+        <!-- Card 11 -->
+        <div class="collab-card">
+            <h2>11. Smart Goat & Cow-Dung Products Farm</h2>
+            <p>Red-Black Tree via <code>std::map</code> to manage ordered livestock records and a Heap for prioritized tasks or resource dispatch.</p>
+            <p class="contributors">Contributors: Laxmi + Shravana</p>
+            <p class="merged-ideas">Merged Ideas: Smart goat farming; energy price optimizer</p>
+            <p class="algorithms">Algorithms/Data Structures: Red-Black Tree (std::map) + Heap</p>
+            <button class="show-code-btn" onclick="toggleCode('code11')">Show Code</button>
+            <pre id="code11">
+/* Use std::map (RB-tree) + heap (priority_queue)
+   - std::map gives ordered key-value storage (balance via RB-tree under the hood).
+*/
+#include &lt;iostream&gt;
+#include &lt;map&gt;
+#include &lt;queue&gt;
+using namespace std;
+
+int main(){
+    // std::map as RB-tree substitute: key=animalID, value=milkProduction
+    map&lt;int,double&gt; animals;
+    animals[101] = 2.5;
+    animals[102] = 3.1;
+    animals[103] = 1.8;
+    cout &lt;&lt; "Goat 102 milk: " &lt;&lt; animals[102] &lt;&lt; " liters\\n";
+
+    // heap for tasks: higher priority first
+    priority_queue&lt;pair<int,string&gt;&gt; tasks;
+    tasks.push({10,"Collect dung from shed A"});
+    tasks.push({7,"Check goat 101"});
+    cout &lt;&lt; "Top task: " &lt;&lt; tasks.top().second &lt;&lt; "\\n";
+    return 0;
+}
+            </pre>
+        </div>
+
+        <!-- Card 12 -->
+        <div class="collab-card">
+            <h2>12. AI Disaster & Pollution Response System</h2>
+            <p>BFS for region scanning / evacuations and Dijkstra for fastest-response routing in weighted road networks.</p>
+            <p class="contributors">Contributors: Sujana + Khushi</p>
+            <p class="merged-ideas">Merged Ideas: AI disaster management; pollution monitoring</p>
+            <p class="algorithms">Algorithms/Data Structures: BFS + Dijkstra</p>
+            <button class="show-code-btn" onclick="toggleCode('code12')">Show Code</button>
+            <pre id="code12">
+/* BFS (for area reachability) + Dijkstra (weighted shortest path)
+*/
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+#include &lt;limits&gt;
+using namespace std;
+
+int bfsReachability(vector<vector<int>>& grid, pair<int,int> s){
+    int R=grid.size(), C=grid[0].size();
+    vector<vector<int>> vis(R, vector<int>(C,0));
+    queue<pair<int,int>> q; q.push(s); vis[s.first][s.second]=1; int count=0;
+    int dr[4]={-1,1,0,0}, dc[4]={0,0,-1,1};
+    while(!q.empty()){
+        auto p=q.front(); q.pop(); count++;
+        for(int k=0;k&lt;4;k++){
+            int nr=p.first+dr[k], nc=p.second+dc[k];
+            if(nr&lt;0||nr&gt;=R||nc&lt;0||nc&gt;=C) continue;
+            if(!vis[nr][nc] && grid[nr][nc]==0){ vis[nr][nc]=1; q.push({nr,nc}); }
+        }
+    }
+    return count;
+}
+
+using Edge = pair<int,int>;
+vector<int> dijkstra(int n, vector<vector<Edge>>& adj, int src){
+    const int INF = numeric_limits<int>::max();
+    vector<int> dist(n,INF); dist[src]=0;
+    priority_queue<pair<int,int>, vector<pair<int,int>>, greater&lt;&gt;&gt; pq; pq.push({0,src});
+    while(!pq.empty()){
+        auto [d,u]=pq.top(); pq.pop();
+        if(d!=dist[u]) continue;
+        for(auto &e: adj[u]){
+            int v=e.first,w=e.second;
+            if(dist[v] > dist[u] + w){ dist[v] = dist[u] + w; pq.push({dist[v], v}); }
+        }
+    }
+    return dist;
+}
+
+int main(){
+    vector<vector<int>> city = {
+        {0,0,1},
+        {0,0,0},
+        {1,0,0}
+    };
+    cout &lt;&lt; "Reachable nodes from (0,0): " &lt;&lt; bfsReachability(city, {0,0}) &lt;&lt; "\\n";
+
+    int n=4; vector<vector<Edge>> adj(n);
+    auto addEdge=[&](int u,int v,int w){ adj[u].push_back({v,w}); adj[v].push_back({u,w}); };
+    addEdge(0,1,10); addEdge(1,2,5); addEdge(2,3,2);
+    auto d = dijkstra(n, adj, 0);
+    cout &lt;&lt; "Distance to node3: " &lt;&lt; d[3] &lt;&lt; "\\n";
+    return 0;
+}
+            </pre>
+        </div>
+
+        <!-- Card 13 -->
+        <div class="collab-card">
+            <h2>13. Digital Food & Billing + Smart Parking Integration</h2>
+            <p>AVL Tree for ordered billing/accounts and a Heap to find nearest available parking slot (priority by distance/time).</p>
+            <p class="contributors">Contributors: Sujana + Laxmi</p>
+            <p class="merged-ideas">Merged Ideas: Digital ordering; hydroponic produce for commercial areas</p>
+            <p class="algorithms">Algorithms/Data Structures: AVL Tree + Heap</p>
+            <button class="show-code-btn" onclick="toggleCode('code13')">Show Code</button>
+            <pre id="code13">
+/* AVL for accounts + heap for parking suggestions
+*/
+#include &lt;iostream&gt;
+#include &lt;queue&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+// Simple AVL node for accounts keyed by account id
+struct AVL { int id; double balance; int height; AVL *l,*r; AVL(int i,double b):id(i),balance(b),height(1),l(nullptr),r(nullptr){} };
+int h(AVL* n){ return n? n->height:0; }
+void upd(AVL* n){ n->height = 1 + max(h(n->l), h(n->r)); }
+AVL* rR(AVL* y){ AVL* x=y->l; AVL* T2=x->r; x->r=y; y->l=T2; upd(y); upd(x); return x; }
+AVL* rL(AVL* x){ AVL* y=x->r; AVL* T2=y->l; y->l=x; x->r=T2; upd(x); upd(y); return y; }
+AVL* insertAVL(AVL* node,int id,double bal){
+    if(!node) return new AVL(id,bal);
+    if(id&lt;node->id) node->l=insertAVL(node->l,id,bal);
+    else if(id&gt;node->id) node->r=insertAVL(node->r,id,bal);
+    else { node->balance=bal; return node; }
+    upd(node); int bf = h(node->l)-h(node->r);
+    if(bf&gt;1 && id&lt;node->l->id) return rR(node);
+    if(bf&lt;-1 && id&gt;node->r->id) return rL(node);
+    if(bf&gt;1 && id&gt;node->l->id){ node->l=rL(node->l); return rR(node); }
+    if(bf&lt;-1 && id&lt;node->r->id){ node->r=rR(node->r); return rL(node); }
+    return node;
+}
+
+int main(){
+    AVL* accounts = nullptr;
+    accounts = insertAVL(accounts, 501, 120.50);
+    accounts = insertAVL(accounts, 502, 20.00);
+    cout &lt;&lt; "Inserted accounts 501 and 502.\\n";
+
+    // Parking heap: pair(distance, slotId)
+    priority_queue&lt;pair<int,int&gt;, vector<pair<int,int>>, greater&lt;&gt;&gt; parking;
+    parking.push({50, 1});
+    parking.push({100, 2});
+    parking.push({30, 3});
+    cout &lt;&lt; "Best parking slot id: " &lt;&lt; parking.top().second &lt;&lt; "\\n";
+    return 0;
+}
+            </pre>
+        </div>
+
+        <!-- Card 14 -->
+        <div class="collab-card">
+            <h2>14. Smart Textile & Packaging Optimization</h2>
+            <p>Rabin-Karp for defect pattern detection in inspection strings/images and Segment Tree for batch-level metrics analytics.</p>
+            <p class="contributors">Contributors: Khushi + Sujana</p>
+            <p class="merged-ideas">Merged Ideas: Textile quality detector; packaging optimization</p>
+            <p class="algorithms">Algorithms/Data Structures: Rabin-Karp + Segment Tree</p>
+            <button class="show-code-btn" onclick="toggleCode('code14')">Show Code</button>
+            <pre id="code14">
+/* Rabin-Karp to detect defect signatures + Segment Tree for metrics (range min or sum)
+*/
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+using namespace std;
+
+vector<int> rabinKarp(const string &text, const string &pat){
+    const long long base=256, mod=101;
+    int n=text.size(), m=pat.size();
+    if(m&gt;n) return {};
+    long long h=1,p=0,t=0;
+    for(int i=0;i&lt;m-1;i++) h=(h*base)%mod;
+    for(int i=0;i&lt;m;i++){ p=(p*base + pat[i])%mod; t=(t*base + text[i])%mod; }
+    vector<int> res;
+    for(int i=0;i&lt;=n-m;i++){
+        if(p==t && text.substr(i,m)==pat) res.push_back(i);
+        if(i&lt;n-m){ t = ((t - text[i]*h)%mod + mod)%mod; t = (t*base + text[i+m])%mod; }
+    }
+    return res;
+}
+
+struct SegTree {
+    int n; vector<int> st;
+    SegTree(const vector<int>& a){ n=a.size(); st.assign(4*n,0); build(1,0,n-1,a); }
+    void build(int p,int l,int r,const vector<int>& a){ if(l==r){ st[p]=a[l]; return;} int m=(l+r)/2; build(p*2,l,m,a); build(p*2+1,m+1,r,a); st[p]=min(st[p*2], st[p*2+1]); }
+    int queryMin(int p,int l,int r,int i,int j){
+        if(i>r||j&lt;l) return INT_MAX;
+        if(i&lt;=l&&r&lt;=j) return st[p];
+        int m=(l+r)/2;
+        return min(queryMin(p*2,l,m,i,j), queryMin(p*2+1,m+1,r,i,j));
+    }
+};
+
+int main(){
+    string scan = "OKOKDEFECTOKOK";
+    auto matches = rabinKarp(scan, "DEFECT");
+    for(auto pos: matches) cout &lt;&lt; "Defect at " &lt;&lt; pos &lt;&lt; "\\n";
+
+    vector<int> batchQuality = {80, 75, 90, 60, 85};
+    SegTree st(batchQuality);
+    cout &lt;&lt; "Worst batch quality in [1..3]: " &lt;&lt; st.queryMin(1,0,batchQuality.size()-1,1,3) &lt;&lt; "\\n";
+    return 0;
+}
+            </pre>
+        </div>
+
+        <!-- Card 15 -->
+        <div class="collab-card">
+            <h2>15. Smart Load & Battery Optimization for Homes & Factories</h2>
+            <p>AVL tree for device profiles and a Min-Heap for dispatching stored energy where needed.</p>
+            <p class="contributors">Contributors: Shravana + Sujana</p>
+            <p class="merged-ideas">Merged Ideas: Battery storage optimization; smart load control</p>
+            <p class="algorithms">Algorithms/Data Structures: AVL Tree + Min-Heap</p>
+            <button class="show-code-btn" onclick="toggleCode('code15')">Show Code</button>
+            <pre id="code15">
+/* AVL + Min-Heap for battery dispatch
+*/
+#include &lt;iostream&gt;
+#include &lt;queue&gt;
+using namespace std;
+
+// Minimal AVL for device profiles keyed by device id
+struct AVL { int id; int priority; int height; AVL *l,*r; AVL(int i,int p):id(i),priority(p),height(1),l(nullptr),r(nullptr){} };
+int h(AVL* n){ return n? n->height:0; }
+void upd(AVL* n){ n->height = 1 + max(h(n->l), h(n->r)); }
+AVL* rR(AVL* y){ AVL* x=y->l; AVL* T2=x->r; x->r=y; y->l=T2; upd(y); upd(x); return x; }
+AVL* rL(AVL* x){ AVL* y=x->r; AVL* T2=y->l; y->l=x; x->r=T2; upd(x); upd(y); return y; }
+AVL* insertAVL(AVL* node,int id,int pr){
+    if(!node) return new AVL(id,pr);
+    if(id&lt;node->id) node->l=insertAVL(node->l,id,pr);
+    else if(id&gt;node->id) node->r=insertAVL(node->r,id,pr);
+    else { node->priority=pr; return node; }
+    upd(node); int bf = h(node->l)-h(node->r);
+    if(bf&gt;1 && id&lt;node->l->id) return rR(node);
+    if(bf&lt;-1 && id&gt;node->r->id) return rL(node);
+    if(bf&gt;1 && id&gt;node->l->id){ node->l=rL(node->l); return rR(node); }
+    if(bf&lt;-1 && id&lt;node->r->id){ node->r=rR(node->r); return rL(node); }
+    return node;
+}
+
+int main(){
+    // min-heap of battery dispatch requests: (cost, requestId)
+    priority_queue&lt;pair<int,int&gt;, vector<pair<int,int>>, greater&lt;&gt;&gt; minHeap;
+    minHeap.push({10, 1});
+    minHeap.push({5, 2});
+    minHeap.push({8, 3});
+    cout &lt;&lt; "Dispatch request with lowest cost id: " &lt;&lt; minHeap.top().second &lt;&lt; "\\n";
+
+    AVL* devices=nullptr;
+    devices = insertAVL(devices, 1001, 5);
+    devices = insertAVL(devices, 1002, 2);
+    cout &lt;&lt; "Inserted device profiles.\\n";
+    return 0;
+}
+            </pre>
+        </div>
+
+        <!-- Card 16 -->
+        <div class="collab-card">
+            <h2>16. AI Electricity Price & Demand Optimizer</h2>
+            <p>Dijkstra for distribution cost minimization and Heap for maintaining top demand areas dynamically.</p>
+            <p class="contributors">Contributors: Shravana + Sujana</p>
+            <p class="merged-ideas">Merged Ideas: Demand predictor; smart EV charging</p>
+            <p class="algorithms">Algorithms/Data Structures: Dijkstra + Heap</p>
+            <button class="show-code-btn" onclick="toggleCode('code16')">Show Code</button>
+            <pre id="code16">
+/* Dijkstra + Heap for demand handling
+*/
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+#include &lt;limits&gt;
+using namespace std;
+
+using Edge = pair<int,int>;
+vector<int> dijkstra(int n, vector<vector<Edge>>& adj, int src){
+    const int INF = numeric_limits<int>::max();
+    vector<int> dist(n,INF); dist[src]=0;
+    priority_queue<pair<int,int>, vector<pair<int,int>>, greater&lt;&gt;&gt; pq;
+    pq.push({0,src});
+    while(!pq.empty()){
+        auto [d,u]=pq.top(); pq.pop();
+        if(d!=dist[u]) continue;
+        for(auto &e: adj[u]){
+            int v=e.first, w=e.second;
+            if(dist[v] > dist[u]+w){ dist[v]=dist[u]+w; pq.push({dist[v],v}); }
+        }
+    }
+    return dist;
+}
+
+int main(){
+    int n=4; vector<vector<Edge>> adj(n);
+    auto addEdge=[&](int u,int v,int w){ adj[u].push_back({v,w}); adj[v].push_back({u,w}); };
+    addEdge(0,1,7); addEdge(0,2,3); addEdge(1,3,2); addEdge(2,3,8);
+    auto dist = dijkstra(n, adj, 0);
+    cout &lt;&lt; "Cost to node 3: " &lt;&lt; dist[3] &lt;&lt; "\\n";
+
+    // heap storing high-demand regions (demand, regionId)
+    priority_queue&lt;pair<int,int&gt; &gt; highDemand;
+    highDemand.push({500, 10});
+    highDemand.push({800, 12});
+    cout &lt;&lt; "Top demand region: " &lt;&lt; highDemand.top().second &lt;&lt; "\\n";
+    return 0;
+}
+            </pre>
+        </div>
+
+        <!-- Card 17 -->
+        <div class="collab-card">
+            <h2>17. Public Transport & EV Tracker</h2>
+            <p>BFS for transit network layer exploration and AVL for station data management.</p>
+            <p class="contributors">Contributors: Sujana + Shravana</p>
+            <p class="merged-ideas">Merged Ideas: Public transport tracking; energy distribution controller</p>
+            <p class="algorithms">Algorithms/Data Structures: BFS + AVL Tree</p>
+            <button class="show-code-btn" onclick="toggleCode('code17')">Show Code</button>
+            <pre id="code17">
+/* BFS (transport hops) + AVL for station info
+*/
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+using namespace std;
+
+int bfsHops(vector<vector<int>>& graph, int src, int dst){
+    int n = graph.size();
+    vector<int> vis(n,0), dist(n,-1);
+    queue<int> q; q.push(src); vis[src]=1; dist[src]=0;
+    while(!q.empty()){
+        int u=q.front(); q.pop();
+        if(u==dst) return dist[u];
+        for(int v: graph[u]){
+            if(!vis[v]){ vis[v]=1; dist[v]=dist[u]+1; q.push(v); }
+        }
+    }
+    return -1;
+}
+
+// small AVL for station (id -> capacity)
+struct AVL { int id; int cap; int h; AVL *l,*r; AVL(int i,int c):id(i),cap(c),h(1),l(nullptr),r(nullptr){} };
+int hh(AVL* n){ return n? n->h:0; }
+void upd(AVL* n){ n->h=1+max(hh(n->l), hh(n->r)); }
+AVL* rR(AVL* y){ AVL* x=y->l; AVL* T2=x->r; x->r=y; y->l=T2; upd(y); upd(x); return x; }
+AVL* rL(AVL* x){ AVL* y=x->r; AVL* T2=y->l; y->l=x; x->r=T2; upd(x); upd(y); return y; }
+AVL* insertAVL(AVL* node,int id,int cap){
+    if(!node) return new AVL(id,cap);
+    if(id&lt;node->id) node->l=insertAVL(node->l,id,cap);
+    else if(id&gt;node->id) node->r=insertAVL(node->r,id,cap);
+    else { node->cap=cap; return node; }
+    upd(node); int bf = hh(node->l)-hh(node->r);
+    if(bf&gt;1 && id&lt;node->l->id) return rR(node);
+    if(bf&lt;-1 && id&gt;node->r->id) return rL(node);
+    if(bf&gt;1 && id&gt;node->l->id){ node->l=rL(node->l); return rR(node); }
+    if(bf&lt;-1 && id&lt;node->r->id){ node->r=rR(node->r); return rL(node); }
+    return node;
+}
+
+int main(){
+    vector<vector<int>> graph = {{1,2},{0,2,3},{0,1,3},{1,2}};
+    cout &lt;&lt; "Hops from 0 to 3: " &lt;&lt; bfsHops(graph,0,3) &lt;&lt; "\\n";
+    AVL* stations=nullptr;
+    stations = insertAVL(stations, 10, 50);
+    stations = insertAVL(stations, 11, 30);
+    cout &lt;&lt; "Inserted station nodes.\\n";
+    return 0;
+}
+            </pre>
+        </div>
+
+        <!-- Card 18 -->
+        <div class="collab-card">
+            <h2>18. Autonomous Industrial Material Sorting Robot</h2>
+            <p>BFS for mapping sorting areas and a Heap for prioritizing items to sort (e.g., by criticality / defect score).</p>
+            <p class="contributors">Contributors: Khushi + Shravana</p>
+            <p class="merged-ideas">Merged Ideas: Material sorting robot; predictive maintenance</p>
+            <p class="algorithms">Algorithms/Data Structures: BFS + Heap</p>
+            <button class="show-code-btn" onclick="toggleCode('code18')">Show Code</button>
+            <pre id="code18">
+/* BFS to map reachable sorting locations + heap for prioritizing items
+*/
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+using namespace std;
+
+int bfsMap(vector<vector<int>>& grid, pair<int,int> s){
+    int R=grid.size(), C=grid[0].size();
+    vector<vector<int>> vis(R, vector<int>(C,0));
+    queue<pair<int,int>> q; q.push(s); vis[s.first][s.second]=1;
+    int count=0;
+    int dr[4]={-1,1,0,0}, dc[4]={0,0,-1,1};
+    while(!q.empty()){
+        auto p = q.front(); q.pop(); count++;
+        for(int k=0;k&lt;4;k++){
+            int nr=p.first+dr[k], nc=p.second+dc[k];
+            if(nr&lt;0||nr&gt;=R||nc&lt;0||nc&gt;=C) continue;
+            if(!vis[nr][nc] && grid[nr][nc]==0){ vis[nr][nc]=1; q.push({nr,nc}); }
+        }
+    }
+    return count;
+}
+
+int main(){
+    vector<vector<int>> factory = {
+        {0,0,1,0},
+        {0,1,0,0},
+        {0,0,0,0},
+        {1,0,0,0}
+    };
+    cout &lt;&lt; "Reachable sorting spots: " &lt;&lt; bfsMap(factory, {0,0}) &lt;&lt; "\\n";
+
+    // prioritize items by defect score (highest first)
+    priority_queue&lt;pair<int,string&gt;&gt; items;
+    items.push({95,"ItemA"});
+    items.push({60,"ItemB"});
+    items.push({99,"ItemC"});
+    cout &lt;&lt; "Highest priority item: " &lt;&lt; items.top().second &lt;&lt; "\\n";
+    return 0;
+}
             </pre>
         </div>
 
     </main>
 </body>
 </html>
-
-<!-- Collab 4 Card -->
-<div class="collab-card">
-    <h2>4. Smart Waste & Recycling Management</h2>
-    <p>Schedules waste pickup based on urgency and fill-level. Uses BFS to check bin reachability and min-heap to prioritize pickups.</p>
-    <p class="contributors">Contributors: Sujana + Khushi</p>
-    <p class="merged-ideas">Merged Ideas: Sujana: Smart waste management; Khushi: Waste-Heat Energy Recycling</p>
-    <p class="algorithms">Algorithms/Data Structures: Min-Heap + BFS</p>
-    <button class="show-code-btn" onclick="toggleCode('code4')">Show Code</button>
-    <pre id="code4">
-#include &lt;bits/stdc++.h&gt;
-using namespace std;
-
-struct Job {
-    int urgency;
-    int dist;
-    int binId;
-};
-struct Cmp {
-    bool operator()(const Job &a, const Job &b) const {
-        if(a.urgency != b.urgency) return a.urgency < b.urgency;
-        return a.dist > b.dist;
-    }
-};
-
-int main(){
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    int n_bins; cout &lt;&lt; "Enter number of bins: "; cin &gt;&gt; n_bins;
-    struct Bin { int id; int fill; int urgency; int node; };
-    vector&lt;Bin&gt; bins;
-    cout &lt;&lt; "For each bin: id fill_level(0-100) urgency(0-100) nodeIndex\n";
-    for(int i=0;i&lt;n_bins;i++){ Bin b; cin &gt;&gt; b.id &gt;&gt; b.fill &gt;&gt; b.urgency &gt;&gt; b.node; bins.push_back(b); }
-    int nodes, edges; cout &lt;&lt; "Enter number of street-nodes and edges: "; cin &gt;&gt; nodes &gt;&gt; edges;
-    vector&lt;vector&lt;int&gt;&gt; g(nodes);
-    cout &lt;&lt; "Enter edges (u v) 0-indexed:\n";
-    for(int i=0;i&lt;edges;i++){ int u,v; cin &gt;&gt; u &gt;&gt; v; g[u].push_back(v); g[v].push_back(u); }
-    int depotNode; cout &lt;&lt; "Enter depot node index: "; cin &gt;&gt; depotNode;
-
-    vector&lt;int&gt; dist(nodes,-1); queue&lt;int&gt; q; q.push(depotNode); dist[depotNode]=0;
-    while(!q.empty()){ int u=q.front(); q.pop(); for(int v: g[u]) if(dist[v]==-1){ dist[v]=dist[u]+1; q.push(v); } }
-
-    priority_queue&lt;Job, vector&lt;Job&gt;, Cmp&gt; pq;
-    for(auto &b: bins){ int d = (b.node &gt;=0 &amp;&amp; b.node&lt;nodes) ? dist[b.node] : -1;
-        if(d==-1) cout &lt;&lt; "Warning: bin " &lt;&lt; b.id &lt;&lt; " node " &lt;&lt; b.node &lt;&lt; " unreachable from depot\n";
-        pq.push({b.urgency, (d==-1?1e9:d), b.id});
-    }
-
-    cout &lt;&lt; "\nPickup schedule (most urgent first):\n";
-    while(!pq.empty()){ auto j=pq.top(); pq.pop();
-        cout &lt;&lt; "Bin " &lt;&lt; j.binId &lt;&lt; " | urgency=" &lt;&lt; j.urgency;
-        if(j.dist &gt;= 1e9) cout &lt;&lt; " | unreachable\n"; else cout &lt;&lt; " | hops_from_depot=" &lt;&lt; j.dist &lt;&lt; "\n";
-    }
-    return 0;
-}
-    </pre>
-</div>
-
-<!-- Collab 5 Card -->
-<div class="collab-card">
-    <h2>5. Predictive Industrial Maintenance & Safety</h2>
-    <p>Detects machine fault patterns using logs and schedules maintenance optimally. Supports negative-cost incentives with Bellman-Ford.</p>
-    <p class="contributors">Contributors: Khushi + Laxmi</p>
-    <p class="merged-ideas">Merged Ideas: Khushi: Predictive maintenance, Worker safety; Laxmi: Supporting sensors & analytics</p>
-    <p class="algorithms">Algorithms/Data Structures: Rabin-Karp + Bellman-Ford</p>
-    <button class="show-code-btn" onclick="toggleCode('code5')">Show Code</button>
-    <pre id="code5">
-#include &lt;bits/stdc++.h&gt;
-using namespace std;
-
-vector&lt;int&gt; rabinKarp(const string &amp;text, const string &amp;pat){ /*...*/ }
-struct Edge{ int u,v; long long w; };
-bool bellmanFord(int V, vector&lt;Edge&gt;&amp; edges, int src, vector&lt;long long&gt;&amp; dist){ /*...*/ }
-
-int main(){
-    ios::sync_with_stdio(false); cin.tie(nullptr);
-    cin.ignore(numeric_limits&lt;streamsize&gt;::max(), '\n');
-    cout &lt;&lt; "Enter sensor log text (single line):\n"; string log; getline(cin,log);
-    cout &lt;&lt; "Enter number of fault patterns: "; int P; cin &gt;&gt; P; cin.ignore();
-    vector&lt;string&gt; patterns(P);
-    for(int i=0;i&lt;P;i++){ cout &lt;&lt; "Pattern " &lt;&lt; i &lt;&lt; ": "; getline(cin, patterns[i]); }
-    for(int i=0;i&lt;P;i++){ auto pos=rabinKarp(log,patterns[i]);
-        if(pos.empty()) cout &lt;&lt; "Pattern '"&lt;&lt;patterns[i]&lt;&lt;"' not found\n";
-        else { cout &lt;&lt; "Pattern '"&lt;&lt;patterns[i]&lt;&lt;"' found at positions: "; for(int p:pos) cout &lt;&lt; p &lt;&lt; " "; cout &lt;&lt; "\n"; }
-    }
-
-    int V,E; cout &lt;&lt; "\nEnter number of machines/nodes for maintenance graph: "; cin &gt;&gt; V;
-    cout &lt;&lt; "Enter number of edges (u v weight) - weight can be negative: "; cin &gt;&gt; E;
-    vector&lt;Edge&gt; edges(E); cout &lt;&lt; "Enter edges (u v w):\n";
-    for(int i=0;i&lt;E;i++) cin &gt;&gt; edges[i].u &gt;&gt; edges[i].v &gt;&gt; edges[i].w;
-    int source; cout &lt;&lt; "Enter source node: "; cin &gt;&gt; source;
-    vector&lt;long long&gt; dist; bool ok=bellmanFord(V,edges,source,dist);
-    if(!ok) cout &lt;&lt; "Negative cycle detected in maintenance graph\n";
-    else{ cout &lt;&lt; "Shortest maintenance cost from " &lt;&lt; source &lt;&lt; ":\n";
-        for(int i=0;i&lt;V;i++){ if(dist[i] &gt; (1LL&lt;&lt;59)) cout &lt;&lt; "Node " &lt;&lt; i &lt;&lt; ": unreachable\n"; else cout &lt;&lt; "Node " &lt;&lt; i &lt;&lt; ": cost " &lt;&lt; dist[i] &lt;&lt; "\n"; }
-    }
-    return 0;
-}
-    </pre>
-</div>
-
-<!-- Collab 6 Card -->
-<div class="collab-card">
-    <h2>6. Smart Inventory & Supply Chain Dashboard</h2>
-    <p>Tracks inventory using an ordered map and computes shortest shipping paths in supply network using Dijkstra.</p>
-    <p class="contributors">Contributors: Khushi + Sujana</p>
-    <p class="merged-ideas">Merged Ideas: Khushi: Inventory forecasting & supply chain predictor; Sujana: Complaint/alert link for supply issues</p>
-    <p class="algorithms">Algorithms/Data Structures: AVL Tree + Dijkstra</p>
-    <button class="show-code-btn" onclick="toggleCode('code6')">Show Code</button>
-    <pre id="code6">
-#include &lt;bits/stdc++.h&gt;
-using namespace std;
-using pii = pair&lt;int,int&gt;; const long long INF = (1LL&lt;&lt;60);
-
-vector&lt;long long&gt; dijkstra(int src, vector&lt;vector&lt;pair&lt;int,long long&gt;&gt;&gt;&amp; adj){ /*...*/ }
-
-int main(){
-    ios::sync_with_stdio(false); cin.tie(nullptr);
-    int m; cout &lt;&lt; "Enter number of inventory items: "; cin &gt;&gt; m;
-    map&lt;string,int&gt; inventory; cout &lt;&lt; "Enter itemName quantity (one per line):\n";
-    for(int i=0;i&lt;m;i++){ string name; int qty; cin &gt;&gt; name &gt;&gt; qty; inventory[name]=qty; }
-    cout &lt;&lt; "\nInventory (ordered):\n";
-    for(auto &p: inventory) cout &lt;&lt; p.first &lt;&lt; " : " &lt;&lt; p.second &lt;&lt; "\n";
-
-    int V,E; cout &lt;&lt; "\nEnter number of supply nodes and edges: "; cin &gt;&gt; V &gt;&gt; E;
-    vector&lt;vector&lt;pair&lt;int,long long&gt;&gt;&gt; adj(V);
-    cout &lt;&lt; "Enter edges (u v weight) 0-indexed:\n";
-    for(int i=0;i&lt;E;i++){ int u,v; long long w; cin &gt;&gt; u &gt;&gt; v &gt;&gt; w; adj[u].push_back({v,w}); adj[v].push_back({u,w}); }
-    int src; cout &lt;&lt; "Enter source node for shipping: "; cin &gt;&gt; src;
-    auto dist = dijkstra(src,adj);
-    cout &lt;&lt; "\nShortest shipping costs/times from node " &lt;&lt; src &lt;&lt; ":\n";
-    for(int i=0;i&lt;V;i++){ if(dist[i]==INF) cout &lt;&lt; "Node " &lt;&lt; i &lt;&lt; ": unreachable\n"; else cout &lt;&lt; "Node " &lt;&lt; i &lt;&lt; ": " &lt;&lt; dist[i] &lt;&lt; "\n"; }
-    return 0;
-}
-    </pre>
-</div>
-<!-- Collab 7 Card -->
-<div class="collab-card">
-    <h2>7. Hydroponic & Organic Farming Network</h2>
-    <p>Manages hydroponic pods/farm plots with ordered scheduling (AVL) and supports efficient resource-level range queries (Segment Tree).</p>
-    <p class="contributors">Contributors: Laxmi + Shravana</p>
-    <p class="merged-ideas">Merged Ideas: Laxmi: Hydroponics; Shravana: Organic farming management</p>
-    <p class="algorithms">Algorithms/Data Structures: AVL Tree (std::map) + Segment Tree</p>
-    <button class="show-code-btn" onclick="toggleCode('code7')">Show Code</button>
-    <pre id="code7">
-#include &lt;bits/stdc++.h&gt;
-using namespace std;
-
-struct SegmentTree { /* ... Segment Tree code as above ... */ };
-
-int main(){
-    ios::sync_with_stdio(false); cin.tie(nullptr);
-    cout<<"Hydroponic pods management\n";
-    map&lt;int,pair&lt;int,string&gt;&gt; pods; /* AVL-like registry using std::map */
-    /* Input pod data, sensor readings, interactive options (query/update/show pods) */
-}
-    </pre>
-</div>
-
-<!-- Collab 8 Card -->
-<div class="collab-card">
-    <h2>8. Autonomous Industrial Safety & Sorting System</h2>
-    <p>Robots explore factory floor using BFS and detect faulty products via Rabin-Karp pattern search in logs.</p>
-    <p class="contributors">Contributors: Khushi + Sujana</p>
-    <p class="merged-ideas">Merged Ideas: Khushi: Safety/robot navigation; Sujana: Fault detection & sorting</p>
-    <p class="algorithms">Algorithms/Data Structures: BFS + Rabin-Karp</p>
-    <button class="show-code-btn" onclick="toggleCode('code8')">Show Code</button>
-    <pre id="code8">
-#include &lt;bits/stdc++.h&gt;
-using namespace std;
-
-vector&lt;int&gt; bfs(int start, vector&lt;vector&lt;int&gt;&gt;&amp; adj){ /* BFS code */ }
-vector&lt;int&gt; rabinKarp(const string &amp;text, const string &amp;pat){ /* Rabin-Karp code */ }
-
-int main(){
-    ios::sync_with_stdio(false); cin.tie(nullptr);
-    /* Input floor graph, start node, perform BFS, input logs and patterns, show matches */
-}
-    </pre>
-</div>
-
-<!-- Collab 9 Card -->
-<div class="collab-card">
-    <h2>9. Coconut Husk Water & Beekeeping Hub</h2>
-    <p>Manages reservoirs using Segment Tree for range queries and prioritizes hive alerts using heap.</p>
-    <p class="contributors">Contributors: Laxmi + Shravana</p>
-    <p class="merged-ideas">Merged Ideas: Laxmi: Coconut husk water management; Shravana: Beekeeping hub</p>
-    <p class="algorithms">Algorithms/Data Structures: Segment Tree + Heap</p>
-    <button class="show-code-btn" onclick="toggleCode('code9')">Show Code</button>
-    <pre id="code9">
-#include &lt;bits/stdc++.h&gt;
-using namespace std;
-
-struct SegmentTree { /* Segment Tree code as above */ };
-
-int main(){
-    ios::sync_with_stdio(false); cin.tie(nullptr);
-    /* Input reservoir levels, hive alerts, perform range queries, update, pop next alert */
-}
-    </pre>
-</div>
-<!-- Collab 10 Card -->
-<div class="collab-card">
-    <h2>10. SolarSmart Harvest Grid</h2>
-    <p>Optimizes solar farming with panel efficiency measurement, battery storage, and farmer reports.</p>
-    <p class="contributors">Contributors: Shravana + Laxmi</p>
-    <p class="merged-ideas">Merged Ideas: Solar Panel Analyzer + Solar Farming + Battery Optimization</p>
-    <p class="algorithms">Algorithms/Data Structures: Linear Search + Divide &amp; Conquer + Merge Sort + Max Finder</p>
-    <button class="show-code-btn" onclick="toggleCode('code10')">Show Code</button>
-    <pre id="code10">
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
-using namespace std;
-
-/* Merge Sort + Max Finder for efficiency and battery management */
-int main(){
-    int n; cin &gt;&gt; n;
-    vector&lt;int&gt; efficiency(n), battery(n);
-    /* Input efficiency and battery levels */
-    int maxIdx = 0;
-    for(int i=1;i&lt;n;i++) if(efficiency[i]&gt;efficiency[maxIdx]) maxIdx=i;
-    cout &lt;&lt; "Best Solar Panel: " &lt;&lt; maxIdx+1 &lt;&lt; " (" &lt;&lt; efficiency[maxIdx] &lt;&lt; "% efficiency)\n";
-    /* Merge Sort battery levels and display */
-}
-    </pre>
-</div>
-
-<!-- Collab 11 Card -->
-<div class="collab-card">
-    <h2>11. City–Factory Automation Bridge</h2>
-    <p>Smart traffic & waste handling with automated material sorting and faulty product detection.</p>
-    <p class="contributors">Contributors: Sujana + Khushi</p>
-    <p class="merged-ideas">Merged Ideas: Smart Traffic & Waste + Auto-Sorting Conveyor</p>
-    <p class="algorithms">Algorithms/Data Structures: Dijkstra + Linear Search + Merge Sort + Greedy</p>
-    <button class="show-code-btn" onclick="toggleCode('code11')">Show Code</button>
-    <pre id="code11">
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
-using namespace std;
-
-/* Linear Search to detect faulty products */
-int main(){
-    int n; cin &gt;&gt; n;
-    vector&lt;int&gt; quality(n);
-    /* Input product quality values (0=faulty) and print indices */
-}
-    </pre>
-</div>
-
-<!-- Collab 12 Card -->
-<div class="collab-card">
-    <h2>12. Eco-Factory PowerSync</h2>
-    <p>Controls renewable energy in factories, predicts electricity usage, and monitors pollution.</p>
-    <p class="contributors">Contributors: Khushi + Shravana</p>
-    <p class="merged-ideas">Merged Ideas: Predictive Maintenance + Pollution Monitoring + Load Control</p>
-    <p class="algorithms">Algorithms/Data Structures: Divide &amp; Conquer + DP + Greedy + Min Finder</p>
-    <button class="show-code-btn" onclick="toggleCode('code12')">Show Code</button>
-    <pre id="code12">
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
-using namespace std;
-
-/* Min Finder to find cleanest factory section */
-int main(){
-    int n; cin &gt;&gt; n;
-    vector&lt;int&gt; pollution(n);
-    /* Input pollution values and output section with minimum pollution */
-}
-    </pre>
-</div>
-
-<!-- Collab 13 Card -->
-<div class="collab-card">
-    <h2>13. Agro–Civic Harmony System</h2>
-    <p>Automates farm waste collection, complaint sorting, and smart detection of over-waste zones.</p>
-    <p class="contributors">Contributors: Laxmi + Sujana</p>
-    <p class="merged-ideas">Merged Ideas: Beekeeping &amp; Nursery + Smart Waste &amp; Complaint Management</p>
-    <p class="algorithms">Algorithms/Data Structures: Merge Sort + Linear Search + Decision Tree + BFS</p>
-    <button class="show-code-btn" onclick="toggleCode('code13')">Show Code</button>
-    <pre id="code13">
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
-using namespace std;
-
-/* Linear Search + Merge Sort + BFS for waste management and complaint sorting */
-int main(){
-    int n; cin &gt;&gt; n;
-    vector&lt;int&gt; waste(n);
-    /* Input waste levels and print bins above 70% */
-}
-    </pre>
-</div>
-<!-- Collab 14 Card -->
-<div class="collab-card">
-    <h2>14. CrisisPower Response Grid</h2>
-    <p>AI-driven emergency power switching and disaster evacuation routing.</p>
-    <p class="contributors">Contributors: Sujana + Shravana</p>
-    <p class="merged-ideas">Merged Ideas: Energy Emergency Auto-Switching + AI Disaster Management + Smart Traffic</p>
-    <p class="algorithms">Algorithms/Data Structures: Dijkstra + Greedy + Max-Heap + DFS</p>
-    <button class="show-code-btn" onclick="toggleCode('code14')">Show Code</button>
-    <pre id="code14">
-#include &lt;bits/stdc++.h&gt;
-using namespace std;
-
-/* Dijkstra for evacuation + Max-Heap for power priority */
-int main(){
-    int n,e; cin &gt;&gt; n &gt;&gt; e;
-    /* Input city zones and roads, run dijkstra from disaster source */
-}
-    </pre>
-</div>
-
-<!-- Collab 15 Card -->
-<div class="collab-card">
-    <h2>15. IndusTraffic Safety Grid</h2>
-    <p>Smart industrial traffic and faulty product detection system with emergency routing.</p>
-    <p class="contributors">Contributors: Khushi + Sujana</p>
-    <p class="merged-ideas">Merged Ideas: Worker Safety Monitoring + Faulty Product Auto-Reject + Smart Traffic</p>
-    <p class="algorithms">Algorithms/Data Structures: Linear Search + Decision Tree + Dijkstra + Merge Sort</p>
-    <button class="show-code-btn" onclick="toggleCode('code15')">Show Code</button>
-    <pre id="code15">
-#include &lt;bits/stdc++.h&gt;
-using namespace std;
-
-/* Linear Search + Dijkstra + Merge Sort for emergency response */
-int main(){
-    int n; cin &gt;&gt; n;
-    /* Input conveyor product quality and detect faulty items */
-}
-    </pre>
-</div>
-
-<!-- Collab 16 Card -->
-<div class="collab-card">
-    <h2>16. AgroIndustry EcoWatch</h2>
-    <p>Pollution monitoring and inventory forecasting for smart agro-industry management.</p>
-    <p class="contributors">Contributors: Laxmi + Khushi</p>
-    <p class="merged-ideas">Merged Ideas: Organic + Hydroponic Farming + Pollution Monitoring + Inventory Forecasting</p>
-    <p class="algorithms">Algorithms/Data Structures: Segment Tree + DP + Linear Search</p>
-    <button class="show-code-btn" onclick="toggleCode('code16')">Show Code</button>
-    <pre id="code16">
-#include &lt;bits/stdc++.h&gt;
-using namespace std;
-
-/* Segment Tree for pollution range queries */
-int main(){
-    int n; cin &gt;&gt; n;
-    /* Input pollution readings and query range */
-}
-    </pre>
-</div>
-
-<!-- Collab 17 Card -->
-<div class="collab-card">
-    <h2>17. HydroSolar Reserve Optimizer</h2>
-    <p>Optimizes water reservation and battery backup using solar energy for irrigation.</p>
-    <p class="contributors">Contributors: Shravana + Laxmi</p>
-    <p class="merged-ideas">Merged Ideas: Battery Storage + Solar Farming + Coconut Husk Water System</p>
-    <p class="algorithms">Algorithms/Data Structures: Greedy + Queue (BFS) + Quick Sort + Max Finder</p>
-    <button class="show-code-btn" onclick="toggleCode('code17')">Show Code</button>
-    <pre id="code17">
-#include &lt;bits/stdc++.h&gt;
-using namespace std;
-
-/* Queue-based water distribution simulation */
-int main(){
-    int n; cin &gt;&gt; n;
-    /* Input water needs of farm sections and distribute */
-}
-    </pre>
-</div>
-
-<!-- Collab 18 Card -->
-<div class="collab-card">
-    <h2>18. AgroParking Delivery Hub</h2>
-    <p>Smart parking management combined with vegetable delivery optimization for farmers.</p>
-    <p class="contributors">Contributors: Sujana + Laxmi</p>
-    <p class="merged-ideas">Merged Ideas: Smart Parking + Digital Food Ordering + Organic Vegetable Farming</p>
-    <p class="algorithms">Algorithms/Data Structures: Binary Search + Dijkstra + Insertion Sort</p>
-    <button class="show-code-btn" onclick="toggleCode('code18')">Show Code</button>
-    <pre id="code18">
-#include &lt;bits/stdc++.h&gt;
-using namespace std;
-
-/* Dijkstra + Binary Search for parking & delivery path optimization */
-int main(){
-    int n; cin &gt;&gt; n;
-    /* Input parking slots and find nearest free slot */
-}
-    </pre>
-</div>
-
-
-        
