@@ -510,19 +510,31 @@ int main(){
         <div id="algo7" class="algo-panel">
           <div class="algo-name">C++ Code — Moving Average</div>
           <pre>
-#include &lt;bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-int main(){
-    vector<double> h = {1200,1250,1300,1280,1350,1400,1380};
+int main() {
+    vector<double> h = {1200, 1250, 1300, 1280, 1350, 1400, 1380};
     int w = 3;
 
-    double s = 0;
-    for(int i=h.size()-w; i<h.size(); i++)
-        s += h[i];
+    // Ensure window is valid
+    if (h.size() < w) {
+        cout << "Not enough data";
+        return 0;
+    }
 
-    cout << "Next-day prediction: " << s/w;
+    double sum = 0;
+
+    // Add last w days consumption
+    for (int i = h.size() - w; i < h.size(); i++)
+        sum += h[i];
+
+    double prediction = sum / w;
+
+    cout << "Next-day prediction: " << prediction;
+    return 0;
 }
+
           </pre>
         </div>
       </section>
@@ -788,3 +800,25 @@ int main(){
       }
   });
 </script>
+
+
+<script>
+document.querySelectorAll(".btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+        let id = btn.getAttribute("data-toggle");
+        let panel = document.getElementById(id);
+
+        if(panel.style.display === "block"){
+            panel.style.display = "none";
+            btn.textContent = "Show Algorithm";
+        } 
+        else {
+            panel.style.display = "block";
+            btn.textContent = "Hide Algorithm";
+        }
+    });
+});
+</script>
+
+</body>
+</html>
