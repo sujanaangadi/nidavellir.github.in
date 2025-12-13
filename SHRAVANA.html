@@ -156,7 +156,7 @@ pre{
 <div class="container">
     
 <div class="header" style="
-    margin-top: 100px;
+    margin-top: 140px;
     margin-bottom: 40px;
 
 ">
@@ -172,7 +172,7 @@ pre{
     <img src="Screenshot 2025-12-11 173139.png" 
          style="
             width: 60%;
-            max-width: 220px;
+            max-width: 150px;
             border-radius: 10px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.2);
          ">
@@ -188,6 +188,15 @@ pre{
 
         <div class="explain-title">How it works:</div>
         <p>This greedy algorithm always gives priority to home demand first, then allocates leftover energy to industries.</p>
+
+   
+<p>Collects real-time energy data from solar, wind, and powerhouses.</p>
+<p>Calculates total available energy at the control center.</p>
+<p>Prioritizes household demand before industrial demand.</p>
+<p>Allocates remaining energy to industries greedily.</p>
+<p>Stops allocation once energy supply is exhausted.</p>
+
+
 
         <div class="explain-title">Efficiency Analysis:</div>
         <p>Time Complexity: O(1) — only arithmetic operations.  
@@ -241,6 +250,11 @@ int main(){
 
         <div class="explain-title">How it works:</div>
         <p>Uses a sliding window to compute moving average of efficiency values to detect dust or shading issues.</p>
+ <p>Reads daily efficiency values from solar panels.</p>
+<p>Maintains a sliding window of recent efficiency readings.</p>
+<p>Calculates moving average for each window.</p>
+<p>Compares average with threshold efficiency.</p>
+<p>Triggers alert when efficiency drops due to dust or shading.</p>
 
         <div class="explain-title">Efficiency Analysis:</div>
         <p>Time Complexity: O(n).  
@@ -299,6 +313,11 @@ int main(){
 
         <div class="explain-title">How it works:</div>
         <p>Binary search finds blade angle where RPM becomes equal to target RPM.</p>
+<p>Defines minimum and maximum blade angles.</p>
+<p>Uses wind speed as input.</p>
+<p>Applies binary search to find optimal blade angle.</p>
+<p>Adjusts angle until RPM matches target value.</p>
+<p>Ensures turbine runs safely without over-speed.</p>
 
         <div class="explain-title">Efficiency Analysis:</div>
         <p>Time Complexity: O(log n).  
@@ -352,6 +371,11 @@ int main(){
 
         <div class="explain-title">How it works:</div>
         <p>Dynamic Programming decides which batteries to charge to maximize storage benefit within capacity.</p>
+<p>Stores battery options with cost and benefit values.</p>
+<p>Defines total storage capacity.</p>
+<p>Uses dynamic programming to test charge combinations.</p>
+<p>Selects batteries giving maximum benefit within capacity.</p>
+<p>Prevents overloading of storage units.</p>
 
         <div class="explain-title">Efficiency Analysis:</div>
         <p>Time Complexity: O(n * capacity).  
@@ -399,6 +423,11 @@ int main(){
 
         <div class="explain-title">How it works:</div>
         <p>Compares consumed energy vs billed energy and finds anomalies using prefix-based scanning.</p>
+<p>Collects sensor-reported energy usage.</p>
+<p>Compares billed data with actual consumption.</p>
+<p>Computes difference using prefix scan.</p>
+<p>Checks abnormal spikes using sliding window.</p>
+<p>Flags suspicious days as potential power theft.</p>
 
         <div class="explain-title">Efficiency Analysis:</div>
         <p>Time Complexity: O(n).  
@@ -455,6 +484,11 @@ int main(){
 
         <div class="explain-title">How it works:</div>
         <p>Chooses largest available energy sources first using a max-heap.</p>
+<p>Lists all available backup energy sources.</p>
+<p>Pushes sources into a max-heap by capacity.</p>
+<p>Extracts highest capacity source first.</p>
+<p>Supplies energy until emergency demand is met.</p>
+<p>Ensures fastest recovery during power failure.</p>
 
         <div class="explain-title">Efficiency Analysis:</div>
         <p>Time Complexity: O(n log n).  
@@ -510,6 +544,11 @@ int main(){
 
         <div class="explain-title">How it works:</div>
         <p>Takes last 3 days' consumption and predicts next day using average.</p>
+<p>Stores daily city energy consumption.</p>
+<p>Selects last few days using a fixed window.</p>
+<p>Computes average demand.</p>
+<p>Predicts next-day energy requirement.</p>
+<p>Helps authorities plan energy distribution.</p>
 
         <div class="explain-title">Efficiency Analysis:</div>
         <p>Time Complexity: O(1).  
@@ -564,6 +603,11 @@ int main() {
 
         <div class="explain-title">How it works:</div>
         <p>Binary search finds the maximum price such that demand does not exceed safe load.</p>
+<p>Defines safe maximum load limit.</p>
+<p>Models demand as a function of price.</p>
+<p>Uses binary search to test price values.</p>
+<p>Adjusts price to keep demand under safe load.</p>
+<p>Balances profit and grid safety.</p>
 
         <div class="explain-title">Efficiency Analysis:</div>
         <p>Time Complexity: O(log n).  
@@ -619,6 +663,11 @@ int main(){
           Surpluses sorted descending, deficits sorted descending.  
           Matching done greedily.
         </p>
+<p>Identifies houses with surplus and deficit energy.</p>
+<p>Sorts surplus houses by highest available energy.</p>
+<p>Sorts deficit houses by highest requirement.</p>
+<p>Transfers energy greedily between houses.</p>
+<p>Stops when all deficits are satisfied.</p>
 
         <div class="explain-title">Efficiency Analysis:</div>
         <p>Time Complexity: O(n log n).  
@@ -691,6 +740,11 @@ int main(){
 
         <div class="explain-title">How it works:</div>
         <p>Devices with highest priority × power are turned off first until load goes below the limit.</p>
+<p>Stores devices with priority and power usage.</p>
+<p>Calculates total current load.</p>
+<p>Uses priority queue based on priority × power.</p>
+<p>Turns off highest-impact devices first.</p>
+<p>Maintains load below safety threshold.</p>
 
         <div class="explain-title">Efficiency Analysis:</div>
         <p>Time Complexity: O(n log n).  
