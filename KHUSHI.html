@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Industry Business Ideas</title>
 
-<!-- NAVBAR STYLING -->
 <style>
 body {
     margin: 0;
@@ -13,281 +12,73 @@ body {
     background: #0d131d;
     color: #d9e5e7;
 }
-
 .navbar {
     width: 100%;
     background: #0A1A3A;
     padding: 20px 40px;
-    display: flex;
-    align-items: center;
     position: fixed;
     top: 0;
-    left: 0;
     z-index: 10;
 }
-
 .navbar .logo {
     font-size: 28px;
     font-weight: 700;
     color: white;
-    margin-right: 40px;
 }
-
-.navbar ul {
-    display: flex;
-    list-style: none;
-    gap: 25px;
-    margin: 0;
-    padding: 0;
-}
-
-.navbar ul li a {
-    text-decoration: none;
-    color: #C8D6FF;
-    font-size: 18px;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-.navbar ul li a:hover {
-    color: #00E5A8;
-}
-</style>
-
-<!-- PAGE CONTENT STYLING -->
-<style>
-
-.header {
-    width: 92%;
-    margin: auto;
-    margin-top: 100px; /* adjusted for navbar */
-    text-align: center;
-}
-.title {
-    font-size: 40px;
-    font-weight: bold;
-    color: #22d3ee;
-    text-shadow: 0 0 10px #22d3ee;
-}
-
 .container {
     width: 92%;
     margin: auto;
-    margin-top: 25px;
+    margin-top: 120px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 25px;
 }
-
-
-.hero {
-    width: 100%;
-    margin-top: 90px; /* space below navbar */
-    background: #e9f2df;
-    padding: 50px 0;
-}
-
-.hero-content {
-    width: 92%;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-}
-
-.hero-text {
-    flex: 1;
-}
-
-.hero-text h1 {
-    font-size: 48px;
-    font-weight: 800;
-    color: #1f7a1f;
-}
-
-.hero-image {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.hero-image img {
-    width: 100%;
-    max-width: 480px;
-    border-radius: 18px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-}
-
-.header-orient {
-    width: 92%;
-    margin: auto;
-    margin-top: 100px; /* already adjusted for navbar */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.header-orient h2 {
-    font-size: 40px;
-    font-weight: bold;
-    color: #22d3ee;
-    text-shadow: 0 0 10px #22d3ee;
-}
-
-.header-orient img {
-    width: 380px;       /* adjust size if needed */
-    max-width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-}
-
 .card {
     background: #111a22;
     padding: 20px;
     border-radius: 12px;
     border-left: 4px solid #22d3ee;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.35);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    color: white; /* ALL text white */
 }
-
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 25px rgba(34,211,238,0.4);
-    border-left-color: #67e8f9;
-}
-
-.card h3 {
-    color: #ffffff; /* headings white */
-}
-
-.card b {
-    color: #ffffff; /* bold labels white */
-}
-
-.card ul li {
-    color: #ffffff; /* list items white */
-}
-
 pre {
     background: #0a0f17;
     padding: 12px;
     border-radius: 8px;
     display: none;
     white-space: pre-wrap;
-    border: 1px solid #1b2a35;
     color: #22d3ee;
 }
-
 .algo-btn {
     background: #22d3ee;
     padding: 8px 12px;
     border-radius: 6px;
     cursor: pointer;
-    display: inline-block;
-    margin-top: 10px;
+    font-weight: bold;
     color: #0d131d;
-    font-weight: bold;
-}
-
-.algo-btn:hover {
-    background: #67e8f9;
-}
-
-/* TABLE & CHART STYLING */
-table {
-    width: 92%;
-    margin: 40px auto;
-    border-collapse: collapse;
-    background: #111a22;
-    color: #d9e5e7;
-    border-radius: 10px;
-    overflow: hidden;
-    font-size: 16px;
-}
-
-th, td {
-    padding: 12px;
-    border: 1px solid #1e2a36;
-    text-align: center;
-}
-
-th {
-    background: #22d3ee;
-    color: black;
-    font-weight: bold;
-}
-
-tr:nth-child(even) {
-    background: #0f171f;
-}
-
-.chart-box {
-    width: 92%;
-    margin: 40px auto;
-    background: #111a22;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.4);
 }
 </style>
 
-<!-- SCRIPT FOR TOGGLING CODE -->
 <script>
 function toggleAlgo(id) {
     const x = document.getElementById(id);
-    x.style.display = x.style.display === "block" ? "none" : "block";
+    x.style.display = (x.style.display === "block") ? "none" : "block";
 }
 </script>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <div class="navbar">
     <div class="logo">CITY DESIGN</div>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="project.html">Project</a></li>
-        <li><a href="SHRAVANA.html">SHRAVANA</a></li>
-        <li><a href="SUJANA.html">SUJANA</a></li>
-        <li><a href="KHUSHI.html">KHUSHI</a></li>
-        <li><a href="LAXMI.html">LAXMI</a></li>
-        <li><a href="collabz.html">Collabz</a></li>
-    </ul>
 </div>
 
-<div class="header-orient">
-    <h2>Industry Business Ideas</h2>
-
-    <img src="Screenshot 2025-12-11 172452.png" alt="Business Ideas Image">
-</div>
-</div>
-         </div>
 <div class="container">
 
-<!-- ------------------------------------------------------- -->
-<!-- 1) Smart Textile Quality Detector -->
-<!-- ------------------------------------------------------- -->
+<!-- 1 -->
 <div class="card">
 <h3>1) Smart Textile Quality Detector</h3>
-
-<b>Algorithms Used:</b> KMP Pattern Matching, BFS/DFS  
-<br><br>
-
-<b>Explanation:</b>
-<ul>
-<li>Industries scan fabric surfaces for repeated defect patterns such as holes or weaving errors.</li>
-<li>KMP Pattern Matching helps detect patterns efficiently without rechecking characters.</li>
-<li>BFS/DFS can map how defects are spreading across the cloth area.</li>
-<li>This automation reduces manual inspection time and increases textile quality.</li>
-</ul>
-
-<b>Time Complexity:</b> O(n + m)  
-<br>
-
+<b>Algorithms Used:</b> KMP Pattern Matching, BFS/DFS<br><br>
+<b>Time Complexity:</b> O(n + m)<br>
+<b>Related SDGs:</b> SDG 9 (Industry, Innovation & Infrastructure), SDG 12 (Responsible Consumption & Production)<br><br>
 <span class="algo-btn" onclick="toggleAlgo('c1')">Show Code</span>
 <pre id="c1">
 #include <bits/stdc++.h>
@@ -311,7 +102,6 @@ bool KMP(vector<int>& text, vector<int>& pat){
         if(text[i] == pat[j]){ i++; j++; }
         else if(j) j = lps[j-1];
         else i++;
-
         if(j == pat.size()) return true;
     }
     return false;
@@ -325,27 +115,12 @@ int main(){
 </pre>
 </div>
 
-
-<!-- ------------------------------------------------------- -->
-<!-- 2) AI-Based Worker Safety Monitoring -->
-<!-- ------------------------------------------------------- -->
+<!-- 2 -->
 <div class="card">
 <h3>2) AI-Based Worker Safety Monitoring</h3>
-
-<b>Algorithms Used:</b> Dijkstra’s Algorithm, Priority Queue  
-<br><br>
-
-<b>Explanation:</b>
-<ul>
-<li>Industrial areas are treated as interconnected nodes (factory map).</li>
-<li>During accidents (gas leak/fire), workers must reach the safest exit.</li>
-<li>Dijkstra’s algorithm finds the fastest and safest escape route.</li>
-<li>Priority queue ensures the shortest paths are explored first.</li>
-</ul>
-
-<b>Time Complexity:</b> O(E log V)  
-<br>
-
+<b>Algorithms Used:</b> Dijkstra’s Algorithm, Priority Queue<br><br>
+<b>Time Complexity:</b> O(E log V)<br>
+<b>Related SDGs:</b> SDG 3 (Good Health & Well-Being), SDG 8 (Decent Work & Economic Growth)<br><br>
 <span class="algo-btn" onclick="toggleAlgo('c2')">Show Code</span>
 <pre id="c2">
 #include <iostream>
@@ -354,24 +129,16 @@ int main(){
 #include <climits>
 using namespace std;
 
-// Dijkstra's Algorithm
 vector<int> dijkstra(int n, int src, vector<vector<pair<int,int>>>& adj) {
     vector<int> dist(n, INT_MAX);
     priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;
-
     dist[src] = 0;
     pq.push({0, src});
-
     while (!pq.empty()) {
-        auto [d, u] = pq.top();
-        pq.pop();
-
+        auto [d, u] = pq.top(); pq.pop();
         if (d > dist[u]) continue;
-
         for (auto &e : adj[u]) {
-            int v = e.first;
-            int w = e.second;
-
+            int v = e.first, w = e.second;
             if (dist[u] + w < dist[v]) {
                 dist[v] = dist[u] + w;
                 pq.push({dist[v], v});
@@ -381,47 +148,25 @@ vector<int> dijkstra(int n, int src, vector<vector<pair<int,int>>>& adj) {
     return dist;
 }
 
-int main() {
+int main(){
     int n = 5;
     vector<vector<pair<int,int>>> adj(n);
-
-    adj[0] = {{1,3}, {2,1}};
-    adj[1] = {{3,4}};
-    adj[2] = {{3,2}};
-    adj[3] = {{4,1}};
-
-    vector<int> safe = dijkstra(n, 0, adj);
-
-    for (int d : safe)
-        cout << d << " ";
-
-    return 0;
+    adj[0]={{1,3},{2,1}};
+    adj[1]={{3,4}};
+    adj[2]={{3,2}};
+    adj[3]={{4,1}};
+    auto safe = dijkstra(n,0,adj);
+    for(int d : safe) cout << d << " ";
 }
-
 </pre>
 </div>
 
-
-<!-- ------------------------------------------------------- -->
-<!-- 3) Predictive Maintenance for Industrial Machines -->
-<!-- ------------------------------------------------------- -->
+<!-- 3 -->
 <div class="card">
 <h3>3) Predictive Maintenance for Industrial Machines</h3>
-
-<b>Algorithms Used:</b> Segment Tree, Max Query  
-<br><br>
-
-<b>Explanation:</b>
-<ul>
-<li>Industrial machines generate sensor readings (heat/vibration).</li>
-<li>Segment Tree helps check vibration spikes in any time range.</li>
-<li>This predicts breakdowns early and reduces maintenance cost.</li>
-<li>Prevents machine downtime and improves safety.</li>
-</ul>
-
-<b>Time Complexity:</b> O(log n) per query  
-<br>
-
+<b>Algorithms Used:</b> Segment Tree<br><br>
+<b>Time Complexity:</b> O(log n)<br>
+<b>Related SDGs:</b> SDG 9, SDG 12<br><br>
 <span class="algo-btn" onclick="toggleAlgo('c3')">Show Code</span>
 <pre id="c3">
 #include <bits/stdc++.h>
@@ -446,423 +191,206 @@ int main(){
     int n; cin>>n;
     vector<int> vib(n);
     for(int &x:vib) cin>>x;
-
     vector<int> st(4*n);
     build(vib,st,0,0,n-1);
-
     int L,R; cin>>L>>R;
     int mx = query(st,0,0,n-1,L,R);
-
     cout << (mx>100 ? "Maintenance Needed" : "Normal");
 }
 </pre>
 </div>
 
-
-<!-- ------------------------------------------------------- -->
-<!-- 4) Autonomous Material Sorting Robot -->
-<!-- ------------------------------------------------------- -->
+<!-- 4 -->
 <div class="card">
 <h3>4) Autonomous Material Sorting Robot</h3>
-
-<b>Algorithms Used:</b> Classification Logic, Conditional Checks  
-<br><br>
-
-<b>Explanation:</b>
-<ul>
-<li>Factory robots sort products based on weight or size.</li>
-<li>Conditional checks classify items into categories (light/medium/heavy).</li>
-<li>This automation reduces manual sorting effort.</li>
-<li>Used in warehouses, logistics centers, and production lines.</li>
-</ul>
-
-<b>Time Complexity:</b> O(1)  
-<br>
-
+<b>Algorithms Used:</b> Conditional Logic<br><br>
+<b>Time Complexity:</b> O(1)<br>
+<b>Related SDGs:</b> SDG 8, SDG 9<br><br>
 <span class="algo-btn" onclick="toggleAlgo('c4')">Show Code</span>
 <pre id="c4">
 #include <bits/stdc++.h>
 using namespace std;
 
-string classify(float w){
-    if(w < 1) return "Light";
-    if(w < 5) return "Medium";
-    return "Heavy";
-}
-
 int main(){
     int n; cin>>n;
     while(n--){
-        float w; 
-        cin>>w;
-        cout << classify(w) << "\n";
+        float w; cin>>w;
+        if(w < 1) cout<<"Light\n";
+        else if(w < 5) cout<<"Medium\n";
+        else cout<<"Heavy\n";
     }
 }
 </pre>
 </div>
 
-
-<!-- ------------------------------------------------------- -->
-<!-- 5) Smart Inventory Forecasting System -->
-<!-- ------------------------------------------------------- -->
+<!-- 5 -->
 <div class="card">
 <h3>5) Smart Inventory Forecasting System</h3>
-
-<b>Algorithms Used:</b> Moving Average, Summation  
-<br><br>
-
-<b>Explanation:</b>
-<ul>
-<li>Industries track daily product usage to forecast future demand.</li>
-<li>Moving Average smooths fluctuations and predicts next cycle needs.</li>
-<li>Prevents overstocking and stock-outs.</li>
-<li>Simple but effective for short-term industry forecasting.</li>
-</ul>
-
-<b>Time Complexity:</b> O(n)  
-<br>
-
+<b>Algorithms Used:</b> Moving Average<br><br>
+<b>Time Complexity:</b> O(n)<br>
+<b>Related SDGs:</b> SDG 12, SDG 9<br><br>
 <span class="algo-btn" onclick="toggleAlgo('c5')">Show Code</span>
 <pre id="c5">
 #include <bits/stdc++.h>
 using namespace std;
 
 int main(){
-    int n; 
-    cin>>n;
+    int n; cin>>n;
     vector<int> s(n);
     for(int &x:s) cin>>x;
-
     int sum = accumulate(s.begin(), s.end(), 0);
     cout << "Forecast: " << sum/n;
 }
 </pre>
 </div>
-<!-- ------------------------------------------------------- -->
-<!-- 6) Waste-Heat Energy Recycling System -->
-<!-- ------------------------------------------------------- -->
+
+<!-- 6 -->
 <div class="card">
 <h3>6) Waste-Heat Energy Recycling System</h3>
-
-<b>Algorithms Used:</b> Max Heap, Threshold Calculation  
-<br><br>
-
-<b>Explanation:</b>
-<ul>
-<li>Industries generate waste heat from machines and boilers.</li>
-<li>A max heap stores heat readings so hottest sources are processed first.</li>
-<li>Heat above threshold (40°C) is converted to usable energy.</li>
-<li>This reduces electricity usage and improves energy efficiency.</li>
-</ul>
-
-<b>Time Complexity:</b> O(n log n)  
-<br>
-
+<b>Algorithms Used:</b> Max Heap<br><br>
+<b>Time Complexity:</b> O(n log n)<br>
+<b>Related SDGs:</b> SDG 7 (Affordable & Clean Energy), SDG 13 (Climate Action)<br><br>
 <span class="algo-btn" onclick="toggleAlgo('c6')">Show Code</span>
 <pre id="c6">
 #include <bits/stdc++.h>
 using namespace std;
 
 int main(){
-    int n;
-    cin >> n;
-
+    int n; cin>>n;
     priority_queue<float> pq;
     for(int i=0;i<n;i++){
-        float t;
-        cin >> t;
+        float t; cin>>t;
         pq.push(t);
     }
-
-    float total = 0;
+    float total=0;
     while(!pq.empty()){
-        float t = pq.top();
-        pq.pop();
-
-        float energy = max(0.0f, (t - 40) * 0.6f);
-        cout << "Temp " << t << "°C -> " << energy << " kW\n";
-        total += energy;
+        float t=pq.top(); pq.pop();
+        if(t>40) total+=(t-40)*0.6;
     }
-
-    cout << "Total Recycled Energy: " << total << " kW";
+    cout<<"Total Recycled Energy: "<<total;
 }
 </pre>
 </div>
 
-
-<!-- ------------------------------------------------------- -->
-<!-- 7) AI-Based Product Packaging Optimization -->
-<!-- ------------------------------------------------------- -->
+<!-- 7 -->
 <div class="card">
 <h3>7) AI-Based Product Packaging Optimization</h3>
-
-<b>Algorithms Used:</b> Binary Search, Sorting  
-<br><br>
-
-<b>Explanation:</b>
-<ul>
-<li>Products require specific box sizes based on volume.</li>
-<li>Box sizes are sorted to enable binary search.</li>
-<li>Binary search finds the smallest possible suitable box.</li>
-<li>This reduces material waste and speeds packing operations.</li>
-</ul>
-
-<b>Time Complexity:</b> O(log n)  
-<br>
-
+<b>Algorithms Used:</b> Binary Search<br><br>
+<b>Time Complexity:</b> O(log n)<br>
+<b>Related SDGs:</b> SDG 12, SDG 9<br><br>
 <span class="algo-btn" onclick="toggleAlgo('c7')">Show Code</span>
 <pre id="c7">
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> boxes = {100, 300, 500};
-
-int findBox(int v){
-    int low=0, high=boxes.size()-1, ans=-1;
-    while(low<=high){
-        int mid=(low+high)/2;
-        if(boxes[mid] >= v){
-            ans = mid;
-            high = mid - 1;
-        } else low = mid + 1;
-    }
-    return ans;
-}
+vector<int> boxes = {100,300,500};
 
 int main(){
-    int n;
-    cin >> n;
-
+    int n; cin>>n;
     while(n--){
-        int v;
-        cin >> v;
-        int idx = findBox(v);
-
-        if(idx == -1) cout << "No suitable box\n";
-        else cout << "Use box: " << boxes[idx] << " ml\n";
+        int v; cin>>v;
+        int l=0,r=boxes.size()-1,ans=-1;
+        while(l<=r){
+            int m=(l+r)/2;
+            if(boxes[m]>=v){ ans=boxes[m]; r=m-1; }
+            else l=m+1;
+        }
+        if(ans==-1) cout<<"No suitable box\n";
+        else cout<<"Use box: "<<ans<<" ml\n";
     }
 }
 </pre>
 </div>
 
-
-<!-- ------------------------------------------------------- -->
-<!-- 8) Faulty Product Auto-Reject Conveyor System -->
-<!-- ------------------------------------------------------- -->
+<!-- 8 -->
 <div class="card">
 <h3>8) Faulty Product Auto-Reject Conveyor System</h3>
-
-<b>Algorithms Used:</b> Range Checking, Instant Validation  
-<br><br>
-
-<b>Explanation:</b>
-<ul>
-<li>Products pass over a weight sensor in the conveyor belt.</li>
-<li>Valid range = 90g to 110g.</li>
-<li>Out-of-range products get auto-rejected to maintain quality.</li>
-<li>Fast O(1) validation supports high-speed industrial lines.</li>
-</ul>
-
-<b>Time Complexity:</b> O(1)  
-<br>
-
+<b>Algorithms Used:</b> Range Checking<br><br>
+<b>Time Complexity:</b> O(1)<br>
+<b>Related SDGs:</b> SDG 9, SDG 12<br><br>
 <span class="algo-btn" onclick="toggleAlgo('c8')">Show Code</span>
 <pre id="c8">
 #include <bits/stdc++.h>
 using namespace std;
 
-bool reject(float w){
-    return (w < 90 || w > 110);
-}
-
 int main(){
-    int n; 
-    cin >> n;
-
+    int n; cin>>n;
     while(n--){
-        float w;
-        cin >> w;
-
-        if(reject(w)) cout << "Rejected\n";
-        else cout << "Accepted\n";
+        float w; cin>>w;
+        if(w<90 || w>110) cout<<"Rejected\n";
+        else cout<<"Accepted\n";
     }
 }
 </pre>
 </div>
 
-
-<!-- ------------------------------------------------------- -->
-<!-- 9) Factory Pollution Monitoring & Control Dashboard -->
-<!-- ------------------------------------------------------- -->
+<!-- 9 -->
 <div class="card">
 <h3>9) Factory Pollution Monitoring & Control Dashboard</h3>
-
-<b>Algorithms Used:</b> Segment Tree, Range Max Query  
-<br><br>
-
-<b>Explanation:</b>
-<ul>
-<li>Pollution levels recorded from different factory zones.</li>
-<li>Segment Tree allows fast detection of pollution spikes.</li>
-<li>Helps identify dangerous areas that need urgent ventilation.</li>
-<li>Improves worker safety and environmental compliance.</li>
-</ul>
-
-<b>Time Complexity:</b> O(log n)  
-<br>
-
+<b>Algorithms Used:</b> Segment Tree<br><br>
+<b>Time Complexity:</b> O(log n)<br>
+<b>Related SDGs:</b> SDG 3 (Good Health & Well-Being), SDG 13 (Climate Action)<br><br>
 <span class="algo-btn" onclick="toggleAlgo('c9')">Show Code</span>
 <pre id="c9">
 #include <bits/stdc++.h>
 using namespace std;
 
 int build(vector<int>& a, vector<int>& st, int i, int l, int r){
-    if(l==r) return st[i] = a[l];
-    int m = (l+r)/2;
-    return st[i] = max(
-        build(a, st, 2*i+1, l, m),
-        build(a, st, 2*i+2, m+1, r)
-    );
+    if(l==r) return st[i]=a[l];
+    int m=(l+r)/2;
+    return st[i]=max(build(a,st,2*i+1,l,m),
+                     build(a,st,2*i+2,m+1,r));
 }
 
 int query(vector<int>& st, int i, int l, int r, int L, int R){
-    if(R < l || L > r) return -1;
-    if(L <= l && r <= R) return st[i];
-    int m = (l+r)/2;
-    return max(
-        query(st, 2*i+1, l, m, L, R),
-        query(st, 2*i+2, m+1, r, L, R)
-    );
+    if(R<l||L>r) return -1;
+    if(L<=l&&r<=R) return st[i];
+    int m=(l+r)/2;
+    return max(query(st,2*i+1,l,m,L,R),
+               query(st,2*i+2,m+1,r,L,R));
 }
 
 int main(){
-    int n; 
-    cin >> n;
-
+    int n; cin>>n;
     vector<int> a(n);
-    for(int &x : a) cin >> x;
-
+    for(int &x:a) cin>>x;
     vector<int> st(4*n);
-    build(a, st, 0, 0, n-1);
-
-    int L, R;
-    cin >> L >> R;
-
-    int mx = query(st, 0, 0, n-1, L, R);
-
-    if(mx > 900) cout << "High Pollution\n";
-    else cout << "Normal\n";
+    build(a,st,0,0,n-1);
+    int L,R; cin>>L>>R;
+    int mx=query(st,0,0,n-1,L,R);
+    cout<<(mx>900?"High Pollution":"Normal");
 }
 </pre>
 </div>
 
-
-<!-- ------------------------------------------------------- -->
-<!-- 10) AI-Powered Supply Chain Delay Predictor -->
-<!-- ------------------------------------------------------- -->
+<!-- 10 -->
 <div class="card">
 <h3>10) AI-Powered Supply Chain Delay Predictor</h3>
-
-<b>Algorithms Used:</b> Delay Calculation, Comparative Analysis  
-<br><br>
-
-<b>Explanation:</b>
-<ul>
-<li>Each shipment has expected vs actual delivery time.</li>
-<li>Delay = actual - expected.</li>
-<li>Positive delay means shipment is late.</li>
-<li>Helps industries predict supply chain disruptions early.</li>
-</ul>
-
-<b>Time Complexity:</b> O(n)  
-<br>
-
+<b>Algorithms Used:</b> Delay Calculation<br><br>
+<b>Time Complexity:</b> O(n)<br>
+<b>Related SDGs:</b> SDG 9, SDG 8<br><br>
 <span class="algo-btn" onclick="toggleAlgo('c10')">Show Code</span>
 <pre id="c10">
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 int main(){
-    int n; 
+    int n;
     cin >> n;
-
-    vector<float> expected(n), actual(n);
-
-    for(float &x : expected) cin >> x;
-    for(float &x : actual) cin >> x;
-
     for(int i=0;i<n;i++){
-        float d = actual[i] - expected[i];
-        
-        if(d > 0) 
-            cout << "Delivery " << i+1 << ": Delayed by " << d << " hours\n";
-        else 
+        float expected, actual;
+        cin >> expected >> actual;
+        float delay = actual - expected;
+        if(delay > 0)
+            cout << "Delivery " << i+1
+                 << ": Delayed by " << delay << " hours\n";
+        else
             cout << "Delivery " << i+1 << ": On Time\n";
     }
 }
 </pre>
 </div>
 
-</div> <!-- END container -->
-</body>
-</html>
-
-
-</div> <!-- container -->
-
-<!-- TABLE -->
-<table>
-<tr>
-    <th>No.</th>
-    <th>Business Idea</th>
-    <th>Investment (₹)</th>
-    <th>Profit (₹)</th>
-</tr>
-<tr><td>1</td><td>Smart Textile Quality Detector</td><td>40,000</td><td>1,20,000</td></tr>
-<tr><td>2</td><td>AI-Based Worker Safety Monitoring</td><td>50,000</td><td>1,80,000</td></tr>
-<tr><td>3</td><td>Predictive Maintenance System</td><td>35,000</td><td>1,40,000</td></tr>
-<tr><td>4</td><td>Material Sorting Robot</td><td>25,000</td><td>90,000</td></tr>
-<tr><td>5</td><td>Smart Inventory Forecasting</td><td>20,000</td><td>75,000</td></tr>
-<tr><td>6</td><td>Waste-Heat Energy Recycling</td><td>60,000</td><td>2,30,000</td></tr>
-<tr><td>7</td><td>Packaging Optimization System</td><td>30,000</td><td>1,10,000</td></tr>
-<tr><td>8</td><td>Auto-Reject Conveyor System</td><td>15,000</td><td>60,000</td></tr>
-<tr><td>9</td><td>Pollution Monitoring Dashboard</td><td>45,000</td><td>1,50,000</td></tr>
-<tr><td>10</td><td>Supply Chain Delay Predictor</td><td>55,000</td><td>2,00,000</td></tr>
-</table>
-
-<!-- CHART -->
-<div class="chart-box">
-    <canvas id="profitChart"></canvas>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-const labels = ["Textile","Safety","Maintenance","Sorting","Inventory","Energy","Packaging","Conveyor","Pollution","Supply Chain"];
-const profitData = [120000,180000,140000,90000,75000,230000,110000,60000,150000,200000];
-const ctx = document.getElementById('profitChart').getContext('2d');
-
-new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: labels,
-        datasets: [{
-            label: "Profit (₹)",
-            data: profitData,
-            backgroundColor: "rgba(34, 211, 238, 0.7)",
-            borderColor: "#22d3ee",
-            borderWidth: 2,
-            borderRadius: 8
-        }]
-    },
-    options: {
-        responsive: true,
-        scales: {
-            x: { ticks: { color: "#d9e5e7" }, grid: { display: false } },
-            y: { ticks: { color: "#d9e5e7" }, grid: { color: "#1e2a36" } }
-        }
-    }
-});
-</script>
-
 </body>
 </html>
