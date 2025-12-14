@@ -284,9 +284,9 @@ function toggleAlgo(id) {
 </ol>
 
 <b>Efficiency Analysis:</b><br>
-Time Complexity: <b>O(n)</b><br>
-Space Complexity: <b>O(n)</b><br>
-SDGs mapped: <b>3, 9, 11, 13</b>
+Time Complexity: <b>O(n log n)</b> — inserting and extracting lanes from Max-Heap<br>
+Space Complexity: <b>O(n)</b> — priority queue stores all lanes<br>
+SDGs mapped: <b>3, 9, 11, 13</b><br>
 
 <span class="algo-btn" onclick="toggleAlgo('c1')">Show Code</span>
 <pre id="c1">
@@ -375,9 +375,10 @@ int main() {
   </ol>
 
   <b>Efficiency Analysis:</b><br>
-Time Complexity: <b>O(1)</b> — direct mapping using decision logic<br>
-Space Complexity: <b>O(1)</b> — fixed dictionary of categories<br>
-SDGs mapped: <b>3, 11, 12, 13</b>
+Time Complexity: <b>O(1)</b> — direct rule-based classification<br>
+Space Complexity: <b>O(1)</b> — fixed lookup rules<br>
+
+<b>SDGs mapped: <b>3, 11, 12, 13</b><br>
 
   <span class="algo-btn" onclick="toggleAlgo('c2')">Show Code</span>
   <pre id="c2">
@@ -435,22 +436,23 @@ int main() {
   <li>Distance/time/traffic as weights</li>
 </ul>
 
-<p><strong>Dijkstra:</strong></p>
+<p><strong>How it works:</strong></p>
 <ol>
   <li>Start from current stop (example: Stop A)</li>
   <li>Check all neighbors</li>
   <li>Pick the one with minimum travel cost</li>
   <li>Repeat until Stop B is reached</li>
-</ol>
-
-<ul>
   <li>Prevents buses from taking long or blocked roads</li>
   <li>Minimizes delays</li>
   <li>Reduces fuel usage</li>
   <li>Helps in real-time dynamic routing</li>
-</ul>
-<b>Efficiency:</b> O(n)  
-<b>SDG:</b> 9, 11, 13, 3
+</ol>
+
+
+<b>Efficiency Analysis:</b><br>
+Time Complexity: <b>O(n)</b> — linear scan to find best stop<br>
+Space Complexity: <b>O(n)</b> — storage of stop-passenger data<br>
+<b>SDG: 9, 11, 13, 3</b><br>
 
 <span class="algo-btn" onclick="toggleAlgo('c3')">Show Code</span>
 <pre id="c3">
@@ -480,17 +482,31 @@ int main() {
   <h3>4) Digital Food Ordering & Billing</h3>
 
   <b>Algorithms Used:</b>Hash Table
-  <ul>
+  <ol>
     <li>Food ID becomes the key in the hash table</li>
     <li>A hash function converts the key into a bucket number</li>
     <li>The item is stored in that bucket</li>
     <li>When ordering, menu[id] jumps directly to the bucket</li>
     <li>The item is found in O(1) time (very fast)</li>
     <li>Billing uses this fast lookup to get price and calculate totals</li>
-  </ul>
+  </ol>
 
-  <b>Efficiency:</b> O(1)  
-  <b>SDG:</b> 9,12, 8,11
+<b>How it works:</b>
+<p>
+<ol>
+<li>The system stores all food items in a hash table where the food ID acts as the key.<br></li>
+<li>When a customer selects an item, the system uses the ID to instantly retrieve item details.<br></li>
+<li>The price is fetched in constant time and multiplied by the quantity ordered.<br></li>
+<li>All ordered items are added to generate the subtotal.<br></li>
+<li>Taxes and service charges are calculated automatically to produce the final bill.</li>
+</ol>
+</p>
+
+<b>Efficiency Analysis:</b><br>
+Time Complexity: <b>O(1)</b> — hash table lookup for menu items<br>
+Space Complexity: <b>O(n)</b> — storing menu and orders<br>
+
+  <b>SDG:</b> 9,12, 8,11</b><br>
 
   <span class="algo-btn" onclick="toggleAlgo('c4')">Show Code</span>
   <pre id="c4">
@@ -553,21 +569,24 @@ int main() {
 <div class="card">
   <h3>5) Smart Parking Management System</h3>
 
-  <b>This is algorithm used:</b>
-  <ul>
+  <b>Algorithm used:</b>
+  <ol>
     <li>Linear Search</li>
     <li>Greedy Allocation (First Fit)</li>
-  </ul>
+  </ol>
 
   <b>How it works:</b>
   <p>
-    When a vehicle arrives, the system checks slots from 1 → n linearly.<br>
-    It selects the first free slot it finds.<br>
-    This is a Greedy “First Fit” algorithm, choosing the earliest available slot without checking further.<br>
-    <b>Time complexity = O(n) for search</b>
+<ol>
+    <li>When a vehicle arrives, the system checks slots from 1 → n linearly.<br></li>
+    <li>It selects the first free slot it finds.<br></li>
+    <li>This is a Greedy “First Fit” algorithm, choosing the earliest available slot without checking further.<br></li>
+ </ol>
   </p>
-
-  <b>SDG:</b> 9, 11
+<b>Efficiency Analysis:</b><br>
+Time Complexity: <b>O(n)</b> — linear search for first free slot<br>
+Space Complexity: <b>O(n)</b> — parking slot array<br>
+  <b>SDG:</b> 9, 11<br>
 
   <span class="algo-btn" onclick="toggleAlgo('c5')">Show Code</span>
   <pre id="c5">
@@ -600,21 +619,27 @@ int main() {
 <div class="card">
   <h3>6) City Water & Electricity Supply Monitoring</h3>
 
-  <b>Summation Algorithm (O(n))</b>
-  <ul>
+  <b>Algorithm used:</b>
+  <ol>
+     <li>Summation algorithm</li>
     <li>Mean / Prediction Algorithm</li>
     <li>Simple Forecasting (5% Increase Prediction)</li>
-  </ul>
+  </ol>
 
   <b>How it works:</b>
   <p>
-    Reads daily usage into arrays.<br>
-    Calculates total and average using linear scans → O(n).<br>
-    Predicts next day usage using:<br>
-    <b>Predicted = Average × 1.05</b>
+<ol>
+    <li>Reads daily usage into arrays.<br></li>
+    <li>Calculates total and average using linear scans → O(n).<br></li>
+    <li>Predicts next day usage using:<br></li>
+   <li><b>Predicted = Average × 1.05</b></li>
+</ol>
   </p>
+<b>Efficiency Analysis:</b><br>
+Time Complexity: <b>O(n)</b> — summation and averaging<br>
+Space Complexity: <b>O(n)</b> — daily usage arrays<br>
 
-  <b>SDG:</b> 6, 7, 11
+  <b>SDG:</b> 6, 7, 11<br>
 
   <span class="algo-btn" onclick="toggleAlgo('c6')">Show Code</span>
   <pre id="c6">
@@ -641,19 +666,24 @@ int main() {
 <div class="card">
   <h3>7) Smart City Complaint Management</h3>
 
-  <b>Linear Search</b>
-  <ul>
-    <li>✔ Dynamic Array (Vector Insertion / Deletion)</li>
-    <li>✔ String Matching (Exact Match)</li>
-  </ul>
+  <b>Algorithm used:</b>
+  <ol>
+    <li>linear search</li>  
+    <li>Dynamic Array (Vector Insertion / Deletion)</li>
+    <li>String Matching (Exact Match)</li>
+  </ol>
 
   <b>How it works:</b>
   <p>
-    To view status, it scans all complaints linearly until matching name/ID is found → O(n).<br>
-    Updating status uses vector operations (<code>push_back</code>, <code>erase</code>).
+<ol>
+    <li>To view status, it scans all complaints linearly until matching name/ID is found → O(n).<br></li>
+    <li>Updating status uses vector operations (<code>push_back</code>, <code>erase</code>).</li>
+</ol>
   </p>
-
-  <b>SDG:</b> 9, 11, 16
+<b>Efficiency Analysis:</b><br>
+Time Complexity: <b>O(n)</b> — linear search for complaint status<br>
+Space Complexity: <b>O(n)</b> — complaint storage using vectors<br>
+  <b>SDG:</b> 9, 11, 16<br>
 
   <span class="algo-btn" onclick="toggleAlgo('c7')">Show Code</span>
   <pre id="c7">
@@ -694,26 +724,32 @@ int main(){
   <h3>8) AI-Based Disaster Management System</h3>
 
   <b>Algorithm used:</b>
-  <ul>
+  <ol>
     <li>Greedy Priority Assignment</li>
     <li>Simple Scoring Algorithm</li>
     <li>Linear Ranking</li>
-  </ul>
+  </ol>
 
   <b>How it works:</b>
   <p>
-    For each zone:<br>
-    Flood + Earthquake + Fire = Risk Score<br><br>
+<ol>
+    <li>For each zone:<br>
+    Flood + Earthquake + Fire = Risk Score<br><br></li>
 
+    <li>
     A Greedy rule assigns priority:<br>
     <b>High</b> if score ≥ 200<br>
     <b>Medium</b> if score ≥ 120<br>
-    <b>Low</b> otherwise<br><br>
+    <b>Low</b> otherwise<br><br></li>
 
-    It does not optimize globally; it makes the best decision for each zone independently.
+    <li>It does not optimize globally; it makes the best decision for each zone independently.</li>
+</ol>
   </p>
+<b>Efficiency Analysis:</b><br>
+Time Complexity: <b>O(n)</b> — linear risk scoring and priority assignment<br>
+Space Complexity: <b>O(n)</b> — zone data storage<br>
 
-  <b>SDG:</b> 11, 13
+  <b>SDG:</b> 11, 13<br>
 
   <span class="algo-btn" onclick="toggleAlgo('c8')">Show Code</span>
   <pre id="c8">
@@ -746,21 +782,26 @@ int main(){
   <h3>9) Smart EV Charging Station Routing</h3>
 
   <b>Algorithms used:</b>
-  <ul>
+  <ol>
     <li>Maximum Selection Algorithm</li>
     <li>Linear Search</li>
     <li>Argmax Algorithm</li>
-  </ul>
+  </ol>
 
   <b>How it works:</b>
   <p>
-    Loops through all charging stations.<br>
-    Keeps track of the station with maximum free slots.<br>
-    This is a max-finding algorithm, which is linear: O(n).<br>
-    Returns the best station.
+<ol>
+    <li>Loops through all charging stations.<br></li>
+    <li>Keeps track of the station with maximum free slots.<br></li>
+    <li>This is a max-finding algorithm, which is linear: O(n).<br></li>
+    <li>Returns the best station.</li>
+</ol>
   </p>
+<b>Efficiency Analysis:</b><br>
+Time Complexity: <b>O(n)</b> — scanning all stations to find maximum slots<br>
+Space Complexity: <b>O(n)</b> — station list storage<br>
 
-  <b>SDG:</b> 7, 11, 13
+  <b>SDG:</b> 7, 11, 13<br>
 
   <span class="algo-btn" onclick="toggleAlgo('c9')">Show Code</span>
   <pre id="c9">
@@ -812,14 +853,27 @@ int main() {
 <h3>10) Civic Issue Auto-Detection System</h3>
 
 <b>Algorithms Used:</b>
-<ul>
+<ol>
 <li>String Pattern Matching</li>
 <li>Rule-Based Classifier</li>
 <li>Lookup Table for Issue → Department mapping</li>
-</ul>
+</ol>
 
-<b>Efficiency:</b> O(1)  
-<b>SDG:</b> 11, 16
+<b>How it works:</b>
+<p>
+<ol>
+<li>The system takes the reported civic issue as text input.<br></li>
+<li>It compares the input string with predefined issue keywords using string pattern matching.<br></li>
+<li>A lookup table maps each detected issue to its responsible department.<br></li>
+<li>If a match is found, the issue is automatically assigned to the correct department.<br></li>
+<li>If no match is found, the issue is forwarded to a general civic department for review.</li>
+</ol>
+</p>
+
+<b>Efficiency Analysis:</b><br>
+Time Complexity: <b>O(1)</b> — lookup table and rule-based mapping<br>
+Space Complexity: <b>O(1)</b> — fixed department dictionary<br>
+<b>SDG:</b> 11, 16<br>
 
 <span class="algo-btn" onclick="toggleAlgo('c10')">Show Code</span>
 <pre id="c10">
