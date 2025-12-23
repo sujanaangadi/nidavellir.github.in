@@ -4,190 +4,183 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Collabz: DAA Business Ideas</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-/* ---------- NAVIGATION BAR ---------- */
-.navbar {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding: 18px 40px;
-    background: linear-gradient(90deg, #4f46e5, #3b82f6);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 200;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
+    /* ---------- NAVIGATION BAR ---------- */
+    .navbar {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 18px 40px;
+        background: linear-gradient(90deg, #0A1A3A, #3a0ca3);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 200;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        transition: background 0.4s;
+    }
+    .navbar:hover {
+        background: linear-gradient(90deg, #0A1A3A, #7209b7);
+    }
+    .navbar .logo {
+        color: #fff;
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+    }
+    .navbar ul {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
+    }
+    .navbar ul li a {
+        text-decoration: none;
+        color: #E8EBFF;
+        font-size: 18px;
+        font-weight: 500;
+        position: relative;
+        transition: 0.3s;
+        padding-bottom: 3px;
+    }
+    .navbar ul li a::after {
+        content: "";
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background: #00ffd5;
+        transition: 0.3s;
+        border-radius: 5px;
+    }
+    .navbar ul li a:hover {
+        color: #00ffd5;
+    }
+    .navbar ul li a:hover::after {
+        width: 100%;
+    }
 
-.navbar .logo {
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
+    /* ---------- PAGE CONTENT STYLING --------- */
+    body {
+        font-family: 'Roboto', sans-serif;
+        background: #f4f6ff;
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+    }
+    header {
+        background: linear-gradient(90deg, #6a11cb, #2575fc);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        margin-top: 80px;
+        transition: background 0.5s;
+    }
+    header h1 { 
+        margin: 0; 
+        font-size: 2rem; 
+        animation: fadeInDown 1s ease forwards;
+    }
 
-.navbar ul {
-    display: flex;
-    list-style: none;
-    gap: 25px;
-    margin: 0;
-    padding: 0;
-}
+    main {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
 
-.navbar ul li a {
-    text-decoration: none;
-    color: #E8EBFF;
-    font-size: 18px;
-    font-weight: 500;
-    position: relative;
-    transition: 0.3s;
-    padding-bottom: 3px;
-}
+    table { 
+        width: 100%; 
+        border-collapse: collapse; 
+        margin-bottom: 2rem; 
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    th, td { 
+        padding: 0.8rem; 
+        border: 1px solid #ddd; 
+        text-align: left; 
+    }
+    th { 
+        background: linear-gradient(90deg, #6a11cb, #2575fc); 
+        color: white; 
+    }
+    tr:nth-child(even) { 
+        background: #f0f2ff; 
+    }
 
-.navbar ul li a::after {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background: #06b6d4;
-    transition: 0.3s;
-    border-radius: 5px;
-}
+    .collab-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        margin-bottom: 1.5rem;
+        padding: 1.25rem;
+        transform: translateY(50px);
+        opacity: 0;
+        animation: fadeUp 0.8s forwards;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .collab-card:hover { 
+        transform: translateY(-5px); 
+        box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+    .collab-card h2 {
+        margin-top: 0;
+        background: linear-gradient(90deg, #6a11cb, #2575fc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .collab-card p { 
+        line-height: 1.6; 
+        margin: 0.3rem 0; 
+    }
+    .show-code-btn {
+        margin-top: 0.8rem;
+        padding: 0.45rem 0.9rem;
+        background: #2575fc;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: transform 0.2s, background 0.2s;
+    }
+    .show-code-btn:hover { 
+        background: #6a11cb;
+        transform: scale(1.05);
+    }
+    pre {
+        background: #f0f2ff;
+        padding: 1rem;
+        border-radius: 8px;
+        overflow-x: auto;
+        display: none;
+        white-space: pre-wrap;
+    }
+    .algorithms, .contributors, .merged-ideas { 
+        font-style: italic; 
+        margin-top: 0.5rem; 
+        color: #555; 
+    }
 
-.navbar ul li a:hover {
-    color: #06b6d4;
-}
+    /* ---------- ANIMATIONS ---------- */
+    @keyframes fadeUp {
+        0% { opacity: 0; transform: translateY(50px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInDown {
+        0% { opacity: 0; transform: translateY(-30px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
 
-.navbar ul li a:hover::after {
-    width: 100%;
-}
-
-/* ---------- PAGE CONTENT STYLING --------- */
-body {
-    font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #eaf2ff, #f6f9ff);
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
-
-header {
-    background: linear-gradient(135deg, #4f46e5, #3b82f6);
-    color: white;
-    padding: 2rem;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    margin-top: 80px;
-}
-header h1 {
-    margin: 0;
-    font-size: 2rem;
-    font-family: 'Poppins', sans-serif;
-}
-
-main {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 2rem;
-    animation: fadeUp 0.8s ease forwards;
-}
-th, td {
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-th {
-    background: linear-gradient(135deg, #4f46e5, #3b82f6);
-    color: white;
-}
-tr:nth-child(even) {
-    background: #f4f4f8;
-}
-
-/* ---------- CARDS ---------- */
-.collab-card {
-    background: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0,64,128,0.15);
-    margin-bottom: 1.25rem;
-    padding: 1.25rem;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    animation: fadeUp 0.8s ease forwards;
-}
-
-.collab-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 18px 40px rgba(0,64,128,0.25);
-}
-
-.collab-card h2 {
-    margin-top: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #4f46e5, #3b82f6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.collab-card p {
-    line-height: 1.6;
-    margin: 0.3rem 0;
-}
-
-.show-code-btn {
-    margin-top: 0.8rem;
-    padding: 0.45rem 0.9rem;
-    background: linear-gradient(135deg, #4f46e5, #3b82f6);
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: transform 0.3s ease, background 0.3s ease;
-}
-.show-code-btn:hover {
-    transform: scale(1.08);
-    background: linear-gradient(135deg, #3b82f6, #4f46e5);
-}
-
-pre {
-    background: #f4f4f8;
-    padding: 1rem;
-    border-radius: 12px;
-    overflow-x: auto;
-    display: none;
-    white-space: pre-wrap;
-}
-
-/* Additional text styling */
-.algorithms, .contributors, .merged-ideas {
-    font-style: italic;
-    margin-top: 0.5rem;
-    color: #555;
-}
-
-/* ---------- ANIMATIONS ---------- */
-@keyframes fadeUp {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-
-/* ---------- MEDIA QUERIES ---------- */
-@media (max-width: 768px){
-    th, td { font-size: 0.9rem; padding: 0.5rem; }
-    .navbar ul { gap: 15px; }
-    .navbar ul li a { font-size: 16px; }
-}
+    @media (max-width: 768px){
+        th, td { font-size: 0.9rem; padding: 0.5rem; }
+        .navbar ul { gap: 15px; }
+        .navbar ul li a { font-size: 16px; }
+    }
 </style>
 
 <script>
@@ -220,19 +213,25 @@ function toggleCode(id) {
 </header>
 
 <main>
-    <!-- Example Card -->
-    <div class="collab-card">
-        <h2>1. AI-Powered Smart Energy Traffic System</h2>
-        <p>Optimizes traffic signals based on predicted energy demand. Uses Dijkstra to pick lowest-cost routes and an AVL tree to maintain fast ordered energy-node lookups.</p>
-        <p class="contributors">Contributors: Shravana + Sujana</p>
-        <p class="merged-ideas">Merged Ideas: AI Smart Power Distribution Controller; Smart traffic signal system</p>
-        <p class="algorithms">Algorithms/Data Structures: Dijkstra + AVL Tree</p>
-        <button class="show-code-btn" onclick="toggleCode('code1')">Show Code</button>
-        <pre id="code1">
-// Your C++ code here
-        </pre>
-    </div>
-</main>
+    <!-- ---------- TABLE ---------- -->
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Collabz Idea</th>
+                <th>How It Works</th>
+                <th>Contributors</th>
+                <th>Original Ideas Merged</th>
+                <th>Algorithm / Data Structure</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Include all your original 18 rows here exactly as in your original code -->
+        </tbody>
+    </table>
 
+    <!-- ---------- COLLAB CARDS ---------- -->
+    <!-- Include all 18 cards exactly as your original code, only styles and animations changed -->
+</main>
 </body>
 </html>
