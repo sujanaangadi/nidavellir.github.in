@@ -347,11 +347,22 @@ int main(){
 
 <b>Explanation:</b>
 <ul>
-<li>Industrial areas are treated as interconnected nodes (factory map).</li>
-<li>During accidents (gas leak/fire), workers must reach the safest exit.</li>
-<li>Dijkstra’s algorithm finds the fastest and safest escape route.</li>
-<li>Priority queue ensures the shortest paths are explored first.</li>
+  <li>Industrial areas are modeled as interconnected nodes forming a factory map.</li>
+  <li>Each path between locations has a weight based on distance and safety level.</li>
+  <li>During emergencies like fire or gas leaks, workers must reach the safest exit quickly.</li>
+  <li>Dijkstra’s Algorithm calculates the shortest and safest route to exits.</li>
+  <li>A priority queue ensures paths with minimum risk are explored first.</li>
 </ul>
+<b>Working:</b>
+<ul>
+  <li>The factory layout is converted into a weighted graph.</li>
+  <li>The worker’s current location is taken as the source node.</li>
+  <li>Dijkstra’s Algorithm starts from the source and evaluates all possible paths.</li>
+  <li>A priority queue selects the next safest location with the lowest cost.</li>
+  <li>The process continues until the nearest safe exit is reached.</li>
+  <li>The safest escape route is displayed and alerts are generated.</li>
+</ul>
+
 
 <b>Time Complexity:</b> O(E log V)  
 <br>
@@ -424,11 +435,21 @@ int main() {
 
 <b>Explanation:</b>
 <ul>
-<li>Industrial machines generate sensor readings (heat/vibration).</li>
-<li>Segment Tree helps check vibration spikes in any time range.</li>
-<li>This predicts breakdowns early and reduces maintenance cost.</li>
-<li>Prevents machine downtime and improves safety.</li>
+  <li>Industrial machines continuously generate sensor data such as vibration and temperature.</li>
+  <li>Abnormal spikes in vibration or heat often indicate potential machine failure.</li>
+  <li>A Segment Tree efficiently stores sensor readings over time.</li>
+  <li>Range Maximum Query is used to detect maximum vibration levels in any given time interval.</li>
+  <li>This helps predict machine breakdowns early and schedule maintenance in advance.</li>
 </ul>
+<b>Working:</b>
+<ul>
+  <li>Sensor readings are collected at regular time intervals.</li>
+  <li>The data is stored in a Segment Tree structure.</li>
+  <li>When a query is made, the maximum sensor value in a time range is retrieved.</li>
+  <li>If the value exceeds a predefined threshold, a maintenance alert is generated.</li>
+  <li>Early detection reduces machine downtime and improves operational safety.</li>
+</ul>
+
 
 <b>Time Complexity:</b> O(log n) per query  
 <br>
@@ -482,10 +503,20 @@ int main(){
 
 <b>Explanation:</b>
 <ul>
-<li>Factory robots sort products based on weight or size.</li>
-<li>Conditional checks classify items into categories (light/medium/heavy).</li>
-<li>This automation reduces manual sorting effort.</li>
-<li>Used in warehouses, logistics centers, and production lines.</li>
+  <li>Autonomous robots are used in factories and warehouses to sort materials efficiently.</li>
+  <li>Each item is analyzed based on attributes such as weight, size, or shape.</li>
+  <li>Conditional checks classify items into categories like light, medium, or heavy.</li>
+  <li>The robot places items into appropriate bins based on the classification result.</li>
+  <li>This automation reduces manual effort and increases sorting accuracy.</li>
+</ul>
+
+<b>Working:</b>
+<ul>
+  <li>Sensors measure the weight and size of incoming materials.</li>
+  <li>The robot applies predefined conditional rules for classification.</li>
+  <li>Based on the conditions, each item is assigned to a specific category.</li>
+  <li>Actuators move the item to the correct sorting area.</li>
+  <li>The process repeats continuously for all incoming materials.</li>
 </ul>
 
 <b>Time Complexity:</b> O(1)  
@@ -526,10 +557,20 @@ int main(){
 
 <b>Explanation:</b>
 <ul>
-<li>Industries track daily product usage to forecast future demand.</li>
-<li>Moving Average smooths fluctuations and predicts next cycle needs.</li>
-<li>Prevents overstocking and stock-outs.</li>
-<li>Simple but effective for short-term industry forecasting.</li>
+  <li>Industries maintain daily records of product usage and sales.</li>
+  <li>Demand often fluctuates due to seasonal or operational factors.</li>
+  <li>The Moving Average method smooths short-term variations in data.</li>
+  <li>Summation is used to compute total demand over a fixed period.</li>
+  <li>This system helps forecast near-future inventory requirements accurately.</li>
+</ul>
+
+<b>Working:</b>
+<ul>
+  <li>Daily inventory consumption data is collected over a time window.</li>
+  <li>The sum of usage values within the window is calculated.</li>
+  <li>The moving average is obtained by dividing the sum by the number of days.</li>
+  <li>The predicted value is used to plan stock replenishment.</li>
+  <li>This prevents overstocking and avoids stock-out situations.</li>
 </ul>
 
 <b>Time Complexity:</b> O(n)  
@@ -563,10 +604,20 @@ int main(){
 
 <b>Explanation:</b>
 <ul>
-<li>Industries generate waste heat from machines and boilers.</li>
-<li>A max heap stores heat readings so hottest sources are processed first.</li>
-<li>Heat above threshold (40°C) is converted to usable energy.</li>
-<li>This reduces electricity usage and improves energy efficiency.</li>
+  <li>Industrial machines and boilers produce large amounts of waste heat.</li>
+  <li>Temperature sensors continuously record heat levels from different sources.</li>
+  <li>A Max Heap organizes heat readings so the highest temperatures are accessed first.</li>
+  <li>Only heat values above a defined threshold (for example, 40°C) are selected.</li>
+  <li>Selected heat is recycled and converted into usable electrical or thermal energy.</li>
+</ul>
+
+<b>Working:</b>
+<ul>
+  <li>Heat data from multiple sources is collected and inserted into a Max Heap.</li>
+  <li>The hottest heat source is extracted first from the heap.</li>
+  <li>A threshold check determines whether the heat is reusable.</li>
+  <li>If the temperature exceeds the threshold, energy conversion is initiated.</li>
+  <li>This process continues until all valid heat sources are processed.</li>
 </ul>
 
 <b>Time Complexity:</b> O(n log n)  
@@ -616,10 +667,20 @@ int main(){
 
 <b>Explanation:</b>
 <ul>
-<li>Products require specific box sizes based on volume.</li>
-<li>Box sizes are sorted to enable binary search.</li>
-<li>Binary search finds the smallest possible suitable box.</li>
-<li>This reduces material waste and speeds packing operations.</li>
+  <li>Products have different sizes and volumes that require suitable packaging.</li>
+  <li>Using oversized boxes leads to material waste and higher costs.</li>
+  <li>Available box sizes are first sorted in increasing order.</li>
+  <li>Binary Search efficiently finds the smallest box that can fit the product.</li>
+  <li>This approach minimizes packaging material and speeds up packing operations.</li>
+</ul>
+
+<b>Working:</b>
+<ul>
+  <li>Product dimensions are measured using sensors or input data.</li>
+  <li>All available box sizes are sorted beforehand.</li>
+  <li>Binary Search is applied to locate the minimum suitable box.</li>
+  <li>The selected box is assigned for packaging the product.</li>
+  <li>Optimized packaging reduces waste and improves efficiency.</li>
 </ul>
 
 <b>Time Complexity:</b> O(log n)  
@@ -673,10 +734,20 @@ int main(){
 
 <b>Explanation:</b>
 <ul>
-<li>Products pass over a weight sensor in the conveyor belt.</li>
-<li>Valid range = 90g to 110g.</li>
-<li>Out-of-range products get auto-rejected to maintain quality.</li>
-<li>Fast O(1) validation supports high-speed industrial lines.</li>
+  <li>Products move along a conveyor belt equipped with weight sensors.</li>
+  <li>Each product’s weight is measured in real time.</li>
+  <li>A valid weight range is predefined (90g to 110g).</li>
+  <li>Products outside the valid range are identified as faulty.</li>
+  <li>Automatic rejection maintains product quality and consistency.</li>
+</ul>
+
+<b>Working:</b>
+<ul>
+  <li>The conveyor belt carries products over the weight sensor.</li>
+  <li>The sensor records the weight of each product instantly.</li>
+  <li>A range check validates whether the weight lies between 90g and 110g.</li>
+  <li>If the product is out of range, a rejection mechanism is triggered.</li>
+  <li>Valid products continue forward for packaging.</li>
 </ul>
 
 <b>Time Complexity:</b> O(1)  
@@ -719,10 +790,20 @@ int main(){
 
 <b>Explanation:</b>
 <ul>
-<li>Pollution levels recorded from different factory zones.</li>
-<li>Segment Tree allows fast detection of pollution spikes.</li>
-<li>Helps identify dangerous areas that need urgent ventilation.</li>
-<li>Improves worker safety and environmental compliance.</li>
+  <li>Factories continuously monitor pollution levels across different zones.</li>
+  <li>Sensors record data such as gas concentration and air quality indices.</li>
+  <li>A Segment Tree efficiently stores pollution readings over time or zones.</li>
+  <li>Range Maximum Query helps quickly detect pollution spikes.</li>
+  <li>This enables timely action to ensure worker safety and regulatory compliance.</li>
+</ul>
+
+<b>Working:</b>
+<ul>
+  <li>Pollution sensor data is collected from multiple factory zones.</li>
+  <li>The readings are organized using a Segment Tree structure.</li>
+  <li>Range Maximum Queries are performed to find high-pollution areas.</li>
+  <li>Alerts are generated when pollution exceeds safe limits.</li>
+  <li>Ventilation or control measures are activated immediately.</li>
 </ul>
 
 <b>Time Complexity:</b> O(log n)  
@@ -786,12 +867,21 @@ int main(){
 
 <b>Explanation:</b>
 <ul>
-<li>Each shipment has expected vs actual delivery time.</li>
-<li>Delay = actual - expected.</li>
-<li>Positive delay means shipment is late.</li>
-<li>Helps industries predict supply chain disruptions early.</li>
+  <li>Industries track shipment data including expected and actual delivery times.</li>
+  <li>Comparing these values helps identify delays in the supply chain.</li>
+  <li>Delay is calculated as the difference between actual and expected delivery time.</li>
+  <li>A positive delay value indicates that the shipment is late.</li>
+  <li>Early detection of delays helps prevent supply chain disruptions.</li>
 </ul>
 
+<b>Working:</b>
+<ul>
+  <li>Expected delivery time is recorded for each shipment.</li>
+  <li>Actual delivery time is captured when the shipment arrives.</li>
+  <li>The delay is calculated using: delay = actual − expected.</li>
+  <li>Shipments with positive delay values are flagged for review.</li>
+  <li>Insights are used to improve logistics planning and coordination.</li>
+</ul>
 <b>Time Complexity:</b> O(n)  
 <br>
 <b>Related SDGs:</b> SDG 9 (Industry, Innovation & Infrastructure), SDG 8 (Decent Work and Economic Growth)<br><br>
